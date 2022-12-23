@@ -23,4 +23,5 @@ const project = new cdk.JsiiProject({
     module: 'neulabs_cdk_constructs',
   },
 });
+
 project.synth();
