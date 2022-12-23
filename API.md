@@ -2,37 +2,37 @@
 
 ## Constructs <a name="Constructs" id="Constructs"></a>
 
-### MultistackStack <a name="MultistackStack" id="v1.MultistackStack"></a>
+### MultistackStack <a name="MultistackStack" id="neulabs-cdk-constructs.MultistackStack"></a>
 
-#### Initializers <a name="Initializers" id="v1.MultistackStack.Initializer"></a>
+#### Initializers <a name="Initializers" id="neulabs-cdk-constructs.MultistackStack.Initializer"></a>
 
 ```typescript
-import { MultistackStack } from 'v1'
+import { MultistackStack } from 'neulabs-cdk-constructs'
 
 new MultistackStack(scope: Construct, id: string, props?: StackProps)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#v1.MultistackStack.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#v1.MultistackStack.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#v1.MultistackStack.Initializer.parameter.props">props</a></code> | <code>aws-cdk-lib.StackProps</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.Initializer.parameter.props">props</a></code> | <code>aws-cdk-lib.StackProps</code> | *No description.* |
 
 ---
 
-##### `scope`<sup>Required</sup> <a name="scope" id="v1.MultistackStack.Initializer.parameter.scope"></a>
+##### `scope`<sup>Required</sup> <a name="scope" id="neulabs-cdk-constructs.MultistackStack.Initializer.parameter.scope"></a>
 
 - *Type:* constructs.Construct
 
 ---
 
-##### `id`<sup>Required</sup> <a name="id" id="v1.MultistackStack.Initializer.parameter.id"></a>
+##### `id`<sup>Required</sup> <a name="id" id="neulabs-cdk-constructs.MultistackStack.Initializer.parameter.id"></a>
 
 - *Type:* string
 
 ---
 
-##### `props`<sup>Optional</sup> <a name="props" id="v1.MultistackStack.Initializer.parameter.props"></a>
+##### `props`<sup>Optional</sup> <a name="props" id="neulabs-cdk-constructs.MultistackStack.Initializer.parameter.props"></a>
 
 - *Type:* aws-cdk-lib.StackProps
 
@@ -42,23 +42,23 @@ new MultistackStack(scope: Construct, id: string, props?: StackProps)
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#v1.MultistackStack.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#v1.MultistackStack.addDependency">addDependency</a></code> | Add a dependency between this stack and another stack. |
-| <code><a href="#v1.MultistackStack.addMetadata">addMetadata</a></code> | Adds an arbitary key-value pair, with information you want to record about the stack. |
-| <code><a href="#v1.MultistackStack.addTransform">addTransform</a></code> | Add a Transform to this stack. A Transform is a macro that AWS CloudFormation uses to process your template. |
-| <code><a href="#v1.MultistackStack.exportValue">exportValue</a></code> | Create a CloudFormation Export for a value. |
-| <code><a href="#v1.MultistackStack.formatArn">formatArn</a></code> | Creates an ARN from components. |
-| <code><a href="#v1.MultistackStack.getLogicalId">getLogicalId</a></code> | Allocates a stack-unique CloudFormation-compatible logical identity for a specific resource. |
-| <code><a href="#v1.MultistackStack.regionalFact">regionalFact</a></code> | Look up a fact value for the given fact for the region of this stack. |
-| <code><a href="#v1.MultistackStack.renameLogicalId">renameLogicalId</a></code> | Rename a generated logical identities. |
-| <code><a href="#v1.MultistackStack.reportMissingContextKey">reportMissingContextKey</a></code> | Indicate that a context key was expected. |
-| <code><a href="#v1.MultistackStack.resolve">resolve</a></code> | Resolve a tokenized value in the context of the current stack. |
-| <code><a href="#v1.MultistackStack.splitArn">splitArn</a></code> | Splits the provided ARN into its components. |
-| <code><a href="#v1.MultistackStack.toJsonString">toJsonString</a></code> | Convert an object, potentially containing tokens, to a JSON string. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.addDependency">addDependency</a></code> | Add a dependency between this stack and another stack. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.addMetadata">addMetadata</a></code> | Adds an arbitary key-value pair, with information you want to record about the stack. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.addTransform">addTransform</a></code> | Add a Transform to this stack. A Transform is a macro that AWS CloudFormation uses to process your template. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.exportValue">exportValue</a></code> | Create a CloudFormation Export for a value. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.formatArn">formatArn</a></code> | Creates an ARN from components. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.getLogicalId">getLogicalId</a></code> | Allocates a stack-unique CloudFormation-compatible logical identity for a specific resource. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.regionalFact">regionalFact</a></code> | Look up a fact value for the given fact for the region of this stack. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.renameLogicalId">renameLogicalId</a></code> | Rename a generated logical identities. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.reportMissingContextKey">reportMissingContextKey</a></code> | Indicate that a context key was expected. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.resolve">resolve</a></code> | Resolve a tokenized value in the context of the current stack. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.splitArn">splitArn</a></code> | Splits the provided ARN into its components. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.toJsonString">toJsonString</a></code> | Convert an object, potentially containing tokens, to a JSON string. |
 
 ---
 
-##### `toString` <a name="toString" id="v1.MultistackStack.toString"></a>
+##### `toString` <a name="toString" id="neulabs-cdk-constructs.MultistackStack.toString"></a>
 
 ```typescript
 public toString(): string
@@ -66,7 +66,7 @@ public toString(): string
 
 Returns a string representation of this construct.
 
-##### `addDependency` <a name="addDependency" id="v1.MultistackStack.addDependency"></a>
+##### `addDependency` <a name="addDependency" id="neulabs-cdk-constructs.MultistackStack.addDependency"></a>
 
 ```typescript
 public addDependency(target: Stack, reason?: string): void
@@ -77,19 +77,19 @@ Add a dependency between this stack and another stack.
 This can be used to define dependencies between any two stacks within an
 app, and also supports nested stacks.
 
-###### `target`<sup>Required</sup> <a name="target" id="v1.MultistackStack.addDependency.parameter.target"></a>
+###### `target`<sup>Required</sup> <a name="target" id="neulabs-cdk-constructs.MultistackStack.addDependency.parameter.target"></a>
 
 - *Type:* aws-cdk-lib.Stack
 
 ---
 
-###### `reason`<sup>Optional</sup> <a name="reason" id="v1.MultistackStack.addDependency.parameter.reason"></a>
+###### `reason`<sup>Optional</sup> <a name="reason" id="neulabs-cdk-constructs.MultistackStack.addDependency.parameter.reason"></a>
 
 - *Type:* string
 
 ---
 
-##### `addMetadata` <a name="addMetadata" id="v1.MultistackStack.addMetadata"></a>
+##### `addMetadata` <a name="addMetadata" id="neulabs-cdk-constructs.MultistackStack.addMetadata"></a>
 
 ```typescript
 public addMetadata(key: string, value: any): void
@@ -101,19 +101,19 @@ These get translated to the Metadata section of the generated template.
 
 > [https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/metadata-section-structure.html](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/metadata-section-structure.html)
 
-###### `key`<sup>Required</sup> <a name="key" id="v1.MultistackStack.addMetadata.parameter.key"></a>
+###### `key`<sup>Required</sup> <a name="key" id="neulabs-cdk-constructs.MultistackStack.addMetadata.parameter.key"></a>
 
 - *Type:* string
 
 ---
 
-###### `value`<sup>Required</sup> <a name="value" id="v1.MultistackStack.addMetadata.parameter.value"></a>
+###### `value`<sup>Required</sup> <a name="value" id="neulabs-cdk-constructs.MultistackStack.addMetadata.parameter.value"></a>
 
 - *Type:* any
 
 ---
 
-##### `addTransform` <a name="addTransform" id="v1.MultistackStack.addTransform"></a>
+##### `addTransform` <a name="addTransform" id="neulabs-cdk-constructs.MultistackStack.addTransform"></a>
 
 ```typescript
 public addTransform(transform: string): void
@@ -134,7 +134,7 @@ stack.addTransform('AWS::Serverless-2016-10-31')
 ```
 
 
-###### `transform`<sup>Required</sup> <a name="transform" id="v1.MultistackStack.addTransform.parameter.transform"></a>
+###### `transform`<sup>Required</sup> <a name="transform" id="neulabs-cdk-constructs.MultistackStack.addTransform.parameter.transform"></a>
 
 - *Type:* string
 
@@ -142,7 +142,7 @@ The transform to add.
 
 ---
 
-##### `exportValue` <a name="exportValue" id="v1.MultistackStack.exportValue"></a>
+##### `exportValue` <a name="exportValue" id="neulabs-cdk-constructs.MultistackStack.exportValue"></a>
 
 ```typescript
 public exportValue(exportedValue: any, options?: ExportValueOptions): string
@@ -193,19 +193,19 @@ Instead, the process takes two deployments:
 - Don't forget to remove the `exportValue()` call as well.
 - Deploy again (this time only the `producerStack` will be changed -- the bucket will be deleted).
 
-###### `exportedValue`<sup>Required</sup> <a name="exportedValue" id="v1.MultistackStack.exportValue.parameter.exportedValue"></a>
+###### `exportedValue`<sup>Required</sup> <a name="exportedValue" id="neulabs-cdk-constructs.MultistackStack.exportValue.parameter.exportedValue"></a>
 
 - *Type:* any
 
 ---
 
-###### `options`<sup>Optional</sup> <a name="options" id="v1.MultistackStack.exportValue.parameter.options"></a>
+###### `options`<sup>Optional</sup> <a name="options" id="neulabs-cdk-constructs.MultistackStack.exportValue.parameter.options"></a>
 
 - *Type:* aws-cdk-lib.ExportValueOptions
 
 ---
 
-##### `formatArn` <a name="formatArn" id="v1.MultistackStack.formatArn"></a>
+##### `formatArn` <a name="formatArn" id="neulabs-cdk-constructs.MultistackStack.formatArn"></a>
 
 ```typescript
 public formatArn(components: ArnComponents): string
@@ -227,13 +227,13 @@ The required ARN pieces that are omitted will be taken from the stack that
 the 'scope' is attached to. If all ARN pieces are supplied, the supplied scope
 can be 'undefined'.
 
-###### `components`<sup>Required</sup> <a name="components" id="v1.MultistackStack.formatArn.parameter.components"></a>
+###### `components`<sup>Required</sup> <a name="components" id="neulabs-cdk-constructs.MultistackStack.formatArn.parameter.components"></a>
 
 - *Type:* aws-cdk-lib.ArnComponents
 
 ---
 
-##### `getLogicalId` <a name="getLogicalId" id="v1.MultistackStack.getLogicalId"></a>
+##### `getLogicalId` <a name="getLogicalId" id="neulabs-cdk-constructs.MultistackStack.getLogicalId"></a>
 
 ```typescript
 public getLogicalId(element: CfnElement): string
@@ -249,7 +249,7 @@ This method uses the protected method `allocateLogicalId` to render the
 logical ID for an element. To modify the naming scheme, extend the `Stack`
 class and override this method.
 
-###### `element`<sup>Required</sup> <a name="element" id="v1.MultistackStack.getLogicalId.parameter.element"></a>
+###### `element`<sup>Required</sup> <a name="element" id="neulabs-cdk-constructs.MultistackStack.getLogicalId.parameter.element"></a>
 
 - *Type:* aws-cdk-lib.CfnElement
 
@@ -257,7 +257,7 @@ The CloudFormation element for which a logical identity is needed.
 
 ---
 
-##### `regionalFact` <a name="regionalFact" id="v1.MultistackStack.regionalFact"></a>
+##### `regionalFact` <a name="regionalFact" id="neulabs-cdk-constructs.MultistackStack.regionalFact"></a>
 
 ```typescript
 public regionalFact(factName: string, defaultValue?: string): string
@@ -281,19 +281,19 @@ not have to worry about regional facts.
 If `defaultValue` is not given, it is an error if the fact is unknown for
 the given region.
 
-###### `factName`<sup>Required</sup> <a name="factName" id="v1.MultistackStack.regionalFact.parameter.factName"></a>
+###### `factName`<sup>Required</sup> <a name="factName" id="neulabs-cdk-constructs.MultistackStack.regionalFact.parameter.factName"></a>
 
 - *Type:* string
 
 ---
 
-###### `defaultValue`<sup>Optional</sup> <a name="defaultValue" id="v1.MultistackStack.regionalFact.parameter.defaultValue"></a>
+###### `defaultValue`<sup>Optional</sup> <a name="defaultValue" id="neulabs-cdk-constructs.MultistackStack.regionalFact.parameter.defaultValue"></a>
 
 - *Type:* string
 
 ---
 
-##### `renameLogicalId` <a name="renameLogicalId" id="v1.MultistackStack.renameLogicalId"></a>
+##### `renameLogicalId` <a name="renameLogicalId" id="neulabs-cdk-constructs.MultistackStack.renameLogicalId"></a>
 
 ```typescript
 public renameLogicalId(oldId: string, newId: string): void
@@ -304,19 +304,19 @@ Rename a generated logical identities.
 To modify the naming scheme strategy, extend the `Stack` class and
 override the `allocateLogicalId` method.
 
-###### `oldId`<sup>Required</sup> <a name="oldId" id="v1.MultistackStack.renameLogicalId.parameter.oldId"></a>
+###### `oldId`<sup>Required</sup> <a name="oldId" id="neulabs-cdk-constructs.MultistackStack.renameLogicalId.parameter.oldId"></a>
 
 - *Type:* string
 
 ---
 
-###### `newId`<sup>Required</sup> <a name="newId" id="v1.MultistackStack.renameLogicalId.parameter.newId"></a>
+###### `newId`<sup>Required</sup> <a name="newId" id="neulabs-cdk-constructs.MultistackStack.renameLogicalId.parameter.newId"></a>
 
 - *Type:* string
 
 ---
 
-##### `reportMissingContextKey` <a name="reportMissingContextKey" id="v1.MultistackStack.reportMissingContextKey"></a>
+##### `reportMissingContextKey` <a name="reportMissingContextKey" id="neulabs-cdk-constructs.MultistackStack.reportMissingContextKey"></a>
 
 ```typescript
 public reportMissingContextKey(report: MissingContext): void
@@ -327,7 +327,7 @@ Indicate that a context key was expected.
 Contains instructions which will be emitted into the cloud assembly on how
 the key should be supplied.
 
-###### `report`<sup>Required</sup> <a name="report" id="v1.MultistackStack.reportMissingContextKey.parameter.report"></a>
+###### `report`<sup>Required</sup> <a name="report" id="neulabs-cdk-constructs.MultistackStack.reportMissingContextKey.parameter.report"></a>
 
 - *Type:* aws-cdk-lib.cloud_assembly_schema.MissingContext
 
@@ -335,7 +335,7 @@ The set of parameters needed to obtain the context.
 
 ---
 
-##### `resolve` <a name="resolve" id="v1.MultistackStack.resolve"></a>
+##### `resolve` <a name="resolve" id="neulabs-cdk-constructs.MultistackStack.resolve"></a>
 
 ```typescript
 public resolve(obj: any): any
@@ -343,13 +343,13 @@ public resolve(obj: any): any
 
 Resolve a tokenized value in the context of the current stack.
 
-###### `obj`<sup>Required</sup> <a name="obj" id="v1.MultistackStack.resolve.parameter.obj"></a>
+###### `obj`<sup>Required</sup> <a name="obj" id="neulabs-cdk-constructs.MultistackStack.resolve.parameter.obj"></a>
 
 - *Type:* any
 
 ---
 
-##### `splitArn` <a name="splitArn" id="v1.MultistackStack.splitArn"></a>
+##### `splitArn` <a name="splitArn" id="neulabs-cdk-constructs.MultistackStack.splitArn"></a>
 
 ```typescript
 public splitArn(arn: string, arnFormat: ArnFormat): ArnComponents
@@ -362,7 +362,7 @@ and a Token representing a dynamic CloudFormation expression
 (in which case the returned components will also be dynamic CloudFormation expressions,
 encoded as Tokens).
 
-###### `arn`<sup>Required</sup> <a name="arn" id="v1.MultistackStack.splitArn.parameter.arn"></a>
+###### `arn`<sup>Required</sup> <a name="arn" id="neulabs-cdk-constructs.MultistackStack.splitArn.parameter.arn"></a>
 
 - *Type:* string
 
@@ -370,7 +370,7 @@ the ARN to split into its components.
 
 ---
 
-###### `arnFormat`<sup>Required</sup> <a name="arnFormat" id="v1.MultistackStack.splitArn.parameter.arnFormat"></a>
+###### `arnFormat`<sup>Required</sup> <a name="arnFormat" id="neulabs-cdk-constructs.MultistackStack.splitArn.parameter.arnFormat"></a>
 
 - *Type:* aws-cdk-lib.ArnFormat
 
@@ -378,7 +378,7 @@ the expected format of 'arn' - depends on what format the service 'arn' represen
 
 ---
 
-##### `toJsonString` <a name="toJsonString" id="v1.MultistackStack.toJsonString"></a>
+##### `toJsonString` <a name="toJsonString" id="neulabs-cdk-constructs.MultistackStack.toJsonString"></a>
 
 ```typescript
 public toJsonString(obj: any, space?: number): string
@@ -386,13 +386,13 @@ public toJsonString(obj: any, space?: number): string
 
 Convert an object, potentially containing tokens, to a JSON string.
 
-###### `obj`<sup>Required</sup> <a name="obj" id="v1.MultistackStack.toJsonString.parameter.obj"></a>
+###### `obj`<sup>Required</sup> <a name="obj" id="neulabs-cdk-constructs.MultistackStack.toJsonString.parameter.obj"></a>
 
 - *Type:* any
 
 ---
 
-###### `space`<sup>Optional</sup> <a name="space" id="v1.MultistackStack.toJsonString.parameter.space"></a>
+###### `space`<sup>Optional</sup> <a name="space" id="neulabs-cdk-constructs.MultistackStack.toJsonString.parameter.space"></a>
 
 - *Type:* number
 
@@ -402,16 +402,16 @@ Convert an object, potentially containing tokens, to a JSON string.
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#v1.MultistackStack.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
-| <code><a href="#v1.MultistackStack.isStack">isStack</a></code> | Return whether the given object is a Stack. |
-| <code><a href="#v1.MultistackStack.of">of</a></code> | Looks up the first stack scope in which `construct` is defined. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.isStack">isStack</a></code> | Return whether the given object is a Stack. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.of">of</a></code> | Looks up the first stack scope in which `construct` is defined. |
 
 ---
 
-##### `isConstruct` <a name="isConstruct" id="v1.MultistackStack.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="neulabs-cdk-constructs.MultistackStack.isConstruct"></a>
 
 ```typescript
-import { MultistackStack } from 'v1'
+import { MultistackStack } from 'neulabs-cdk-constructs'
 
 MultistackStack.isConstruct(x: any)
 ```
@@ -432,7 +432,7 @@ library can be accidentally installed, and `instanceof` will behave
 unpredictably. It is safest to avoid using `instanceof`, and using
 this type-testing method instead.
 
-###### `x`<sup>Required</sup> <a name="x" id="v1.MultistackStack.isConstruct.parameter.x"></a>
+###### `x`<sup>Required</sup> <a name="x" id="neulabs-cdk-constructs.MultistackStack.isConstruct.parameter.x"></a>
 
 - *Type:* any
 
@@ -440,10 +440,10 @@ Any object.
 
 ---
 
-##### `isStack` <a name="isStack" id="v1.MultistackStack.isStack"></a>
+##### `isStack` <a name="isStack" id="neulabs-cdk-constructs.MultistackStack.isStack"></a>
 
 ```typescript
-import { MultistackStack } from 'v1'
+import { MultistackStack } from 'neulabs-cdk-constructs'
 
 MultistackStack.isStack(x: any)
 ```
@@ -452,16 +452,16 @@ Return whether the given object is a Stack.
 
 We do attribute detection since we can't reliably use 'instanceof'.
 
-###### `x`<sup>Required</sup> <a name="x" id="v1.MultistackStack.isStack.parameter.x"></a>
+###### `x`<sup>Required</sup> <a name="x" id="neulabs-cdk-constructs.MultistackStack.isStack.parameter.x"></a>
 
 - *Type:* any
 
 ---
 
-##### `of` <a name="of" id="v1.MultistackStack.of"></a>
+##### `of` <a name="of" id="neulabs-cdk-constructs.MultistackStack.of"></a>
 
 ```typescript
-import { MultistackStack } from 'v1'
+import { MultistackStack } from 'neulabs-cdk-constructs'
 
 MultistackStack.of(construct: IConstruct)
 ```
@@ -470,7 +470,7 @@ Looks up the first stack scope in which `construct` is defined.
 
 Fails if there is no stack up the tree.
 
-###### `construct`<sup>Required</sup> <a name="construct" id="v1.MultistackStack.of.parameter.construct"></a>
+###### `construct`<sup>Required</sup> <a name="construct" id="neulabs-cdk-constructs.MultistackStack.of.parameter.construct"></a>
 
 - *Type:* constructs.IConstruct
 
@@ -482,31 +482,31 @@ The construct to start the search from.
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#v1.MultistackStack.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
-| <code><a href="#v1.MultistackStack.property.account">account</a></code> | <code>string</code> | The AWS account into which this stack will be deployed. |
-| <code><a href="#v1.MultistackStack.property.artifactId">artifactId</a></code> | <code>string</code> | The ID of the cloud assembly artifact for this stack. |
-| <code><a href="#v1.MultistackStack.property.availabilityZones">availabilityZones</a></code> | <code>string[]</code> | Returns the list of AZs that are available in the AWS environment (account/region) associated with this stack. |
-| <code><a href="#v1.MultistackStack.property.bundlingRequired">bundlingRequired</a></code> | <code>boolean</code> | Indicates whether the stack requires bundling or not. |
-| <code><a href="#v1.MultistackStack.property.dependencies">dependencies</a></code> | <code>aws-cdk-lib.Stack[]</code> | Return the stacks this stack depends on. |
-| <code><a href="#v1.MultistackStack.property.environment">environment</a></code> | <code>string</code> | The environment coordinates in which this stack is deployed. |
-| <code><a href="#v1.MultistackStack.property.nested">nested</a></code> | <code>boolean</code> | Indicates if this is a nested stack, in which case `parentStack` will include a reference to it's parent. |
-| <code><a href="#v1.MultistackStack.property.notificationArns">notificationArns</a></code> | <code>string[]</code> | Returns the list of notification Amazon Resource Names (ARNs) for the current stack. |
-| <code><a href="#v1.MultistackStack.property.partition">partition</a></code> | <code>string</code> | The partition in which this stack is defined. |
-| <code><a href="#v1.MultistackStack.property.region">region</a></code> | <code>string</code> | The AWS region into which this stack will be deployed (e.g. `us-west-2`). |
-| <code><a href="#v1.MultistackStack.property.stackId">stackId</a></code> | <code>string</code> | The ID of the stack. |
-| <code><a href="#v1.MultistackStack.property.stackName">stackName</a></code> | <code>string</code> | The concrete CloudFormation physical stack name. |
-| <code><a href="#v1.MultistackStack.property.synthesizer">synthesizer</a></code> | <code>aws-cdk-lib.IStackSynthesizer</code> | Synthesis method for this stack. |
-| <code><a href="#v1.MultistackStack.property.tags">tags</a></code> | <code>aws-cdk-lib.TagManager</code> | Tags to be applied to the stack. |
-| <code><a href="#v1.MultistackStack.property.templateFile">templateFile</a></code> | <code>string</code> | The name of the CloudFormation template file emitted to the output directory during synthesis. |
-| <code><a href="#v1.MultistackStack.property.templateOptions">templateOptions</a></code> | <code>aws-cdk-lib.ITemplateOptions</code> | Options for CloudFormation template (like version, transform, description). |
-| <code><a href="#v1.MultistackStack.property.urlSuffix">urlSuffix</a></code> | <code>string</code> | The Amazon domain suffix for the region in which this stack is defined. |
-| <code><a href="#v1.MultistackStack.property.nestedStackParent">nestedStackParent</a></code> | <code>aws-cdk-lib.Stack</code> | If this is a nested stack, returns it's parent stack. |
-| <code><a href="#v1.MultistackStack.property.nestedStackResource">nestedStackResource</a></code> | <code>aws-cdk-lib.CfnResource</code> | If this is a nested stack, this represents its `AWS::CloudFormation::Stack` resource. |
-| <code><a href="#v1.MultistackStack.property.terminationProtection">terminationProtection</a></code> | <code>boolean</code> | Whether termination protection is enabled for this stack. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.property.account">account</a></code> | <code>string</code> | The AWS account into which this stack will be deployed. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.property.artifactId">artifactId</a></code> | <code>string</code> | The ID of the cloud assembly artifact for this stack. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.property.availabilityZones">availabilityZones</a></code> | <code>string[]</code> | Returns the list of AZs that are available in the AWS environment (account/region) associated with this stack. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.property.bundlingRequired">bundlingRequired</a></code> | <code>boolean</code> | Indicates whether the stack requires bundling or not. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.property.dependencies">dependencies</a></code> | <code>aws-cdk-lib.Stack[]</code> | Return the stacks this stack depends on. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.property.environment">environment</a></code> | <code>string</code> | The environment coordinates in which this stack is deployed. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.property.nested">nested</a></code> | <code>boolean</code> | Indicates if this is a nested stack, in which case `parentStack` will include a reference to it's parent. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.property.notificationArns">notificationArns</a></code> | <code>string[]</code> | Returns the list of notification Amazon Resource Names (ARNs) for the current stack. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.property.partition">partition</a></code> | <code>string</code> | The partition in which this stack is defined. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.property.region">region</a></code> | <code>string</code> | The AWS region into which this stack will be deployed (e.g. `us-west-2`). |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.property.stackId">stackId</a></code> | <code>string</code> | The ID of the stack. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.property.stackName">stackName</a></code> | <code>string</code> | The concrete CloudFormation physical stack name. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.property.synthesizer">synthesizer</a></code> | <code>aws-cdk-lib.IStackSynthesizer</code> | Synthesis method for this stack. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.property.tags">tags</a></code> | <code>aws-cdk-lib.TagManager</code> | Tags to be applied to the stack. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.property.templateFile">templateFile</a></code> | <code>string</code> | The name of the CloudFormation template file emitted to the output directory during synthesis. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.property.templateOptions">templateOptions</a></code> | <code>aws-cdk-lib.ITemplateOptions</code> | Options for CloudFormation template (like version, transform, description). |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.property.urlSuffix">urlSuffix</a></code> | <code>string</code> | The Amazon domain suffix for the region in which this stack is defined. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.property.nestedStackParent">nestedStackParent</a></code> | <code>aws-cdk-lib.Stack</code> | If this is a nested stack, returns it's parent stack. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.property.nestedStackResource">nestedStackResource</a></code> | <code>aws-cdk-lib.CfnResource</code> | If this is a nested stack, this represents its `AWS::CloudFormation::Stack` resource. |
+| <code><a href="#neulabs-cdk-constructs.MultistackStack.property.terminationProtection">terminationProtection</a></code> | <code>boolean</code> | Whether termination protection is enabled for this stack. |
 
 ---
 
-##### `node`<sup>Required</sup> <a name="node" id="v1.MultistackStack.property.node"></a>
+##### `node`<sup>Required</sup> <a name="node" id="neulabs-cdk-constructs.MultistackStack.property.node"></a>
 
 ```typescript
 public readonly node: Node;
@@ -518,7 +518,7 @@ The tree node.
 
 ---
 
-##### `account`<sup>Required</sup> <a name="account" id="v1.MultistackStack.property.account"></a>
+##### `account`<sup>Required</sup> <a name="account" id="neulabs-cdk-constructs.MultistackStack.property.account"></a>
 
 ```typescript
 public readonly account: string;
@@ -547,7 +547,7 @@ implement some other region-agnostic behavior.
 
 ---
 
-##### `artifactId`<sup>Required</sup> <a name="artifactId" id="v1.MultistackStack.property.artifactId"></a>
+##### `artifactId`<sup>Required</sup> <a name="artifactId" id="neulabs-cdk-constructs.MultistackStack.property.artifactId"></a>
 
 ```typescript
 public readonly artifactId: string;
@@ -559,7 +559,7 @@ The ID of the cloud assembly artifact for this stack.
 
 ---
 
-##### `availabilityZones`<sup>Required</sup> <a name="availabilityZones" id="v1.MultistackStack.property.availabilityZones"></a>
+##### `availabilityZones`<sup>Required</sup> <a name="availabilityZones" id="neulabs-cdk-constructs.MultistackStack.property.availabilityZones"></a>
 
 ```typescript
 public readonly availabilityZones: string[];
@@ -582,7 +582,7 @@ To specify a different strategy for selecting availability zones override this m
 
 ---
 
-##### `bundlingRequired`<sup>Required</sup> <a name="bundlingRequired" id="v1.MultistackStack.property.bundlingRequired"></a>
+##### `bundlingRequired`<sup>Required</sup> <a name="bundlingRequired" id="neulabs-cdk-constructs.MultistackStack.property.bundlingRequired"></a>
 
 ```typescript
 public readonly bundlingRequired: boolean;
@@ -594,7 +594,7 @@ Indicates whether the stack requires bundling or not.
 
 ---
 
-##### `dependencies`<sup>Required</sup> <a name="dependencies" id="v1.MultistackStack.property.dependencies"></a>
+##### `dependencies`<sup>Required</sup> <a name="dependencies" id="neulabs-cdk-constructs.MultistackStack.property.dependencies"></a>
 
 ```typescript
 public readonly dependencies: Stack[];
@@ -606,7 +606,7 @@ Return the stacks this stack depends on.
 
 ---
 
-##### `environment`<sup>Required</sup> <a name="environment" id="v1.MultistackStack.property.environment"></a>
+##### `environment`<sup>Required</sup> <a name="environment" id="neulabs-cdk-constructs.MultistackStack.property.environment"></a>
 
 ```typescript
 public readonly environment: string;
@@ -630,7 +630,7 @@ region/account-agnostic.
 
 ---
 
-##### `nested`<sup>Required</sup> <a name="nested" id="v1.MultistackStack.property.nested"></a>
+##### `nested`<sup>Required</sup> <a name="nested" id="neulabs-cdk-constructs.MultistackStack.property.nested"></a>
 
 ```typescript
 public readonly nested: boolean;
@@ -642,7 +642,7 @@ Indicates if this is a nested stack, in which case `parentStack` will include a 
 
 ---
 
-##### `notificationArns`<sup>Required</sup> <a name="notificationArns" id="v1.MultistackStack.property.notificationArns"></a>
+##### `notificationArns`<sup>Required</sup> <a name="notificationArns" id="neulabs-cdk-constructs.MultistackStack.property.notificationArns"></a>
 
 ```typescript
 public readonly notificationArns: string[];
@@ -654,7 +654,7 @@ Returns the list of notification Amazon Resource Names (ARNs) for the current st
 
 ---
 
-##### `partition`<sup>Required</sup> <a name="partition" id="v1.MultistackStack.property.partition"></a>
+##### `partition`<sup>Required</sup> <a name="partition" id="neulabs-cdk-constructs.MultistackStack.property.partition"></a>
 
 ```typescript
 public readonly partition: string;
@@ -666,7 +666,7 @@ The partition in which this stack is defined.
 
 ---
 
-##### `region`<sup>Required</sup> <a name="region" id="v1.MultistackStack.property.region"></a>
+##### `region`<sup>Required</sup> <a name="region" id="neulabs-cdk-constructs.MultistackStack.property.region"></a>
 
 ```typescript
 public readonly region: string;
@@ -695,7 +695,7 @@ implement some other region-agnostic behavior.
 
 ---
 
-##### `stackId`<sup>Required</sup> <a name="stackId" id="v1.MultistackStack.property.stackId"></a>
+##### `stackId`<sup>Required</sup> <a name="stackId" id="neulabs-cdk-constructs.MultistackStack.property.stackId"></a>
 
 ```typescript
 public readonly stackId: string;
@@ -715,7 +715,7 @@ The ID of the stack.
 ```
 
 
-##### `stackName`<sup>Required</sup> <a name="stackName" id="v1.MultistackStack.property.stackName"></a>
+##### `stackName`<sup>Required</sup> <a name="stackName" id="neulabs-cdk-constructs.MultistackStack.property.stackName"></a>
 
 ```typescript
 public readonly stackName: string;
@@ -736,7 +736,7 @@ you can use `Aws.STACK_NAME` directly.
 
 ---
 
-##### `synthesizer`<sup>Required</sup> <a name="synthesizer" id="v1.MultistackStack.property.synthesizer"></a>
+##### `synthesizer`<sup>Required</sup> <a name="synthesizer" id="neulabs-cdk-constructs.MultistackStack.property.synthesizer"></a>
 
 ```typescript
 public readonly synthesizer: IStackSynthesizer;
@@ -748,7 +748,7 @@ Synthesis method for this stack.
 
 ---
 
-##### `tags`<sup>Required</sup> <a name="tags" id="v1.MultistackStack.property.tags"></a>
+##### `tags`<sup>Required</sup> <a name="tags" id="neulabs-cdk-constructs.MultistackStack.property.tags"></a>
 
 ```typescript
 public readonly tags: TagManager;
@@ -760,7 +760,7 @@ Tags to be applied to the stack.
 
 ---
 
-##### `templateFile`<sup>Required</sup> <a name="templateFile" id="v1.MultistackStack.property.templateFile"></a>
+##### `templateFile`<sup>Required</sup> <a name="templateFile" id="neulabs-cdk-constructs.MultistackStack.property.templateFile"></a>
 
 ```typescript
 public readonly templateFile: string;
@@ -774,7 +774,7 @@ Example value: `MyStack.template.json`
 
 ---
 
-##### `templateOptions`<sup>Required</sup> <a name="templateOptions" id="v1.MultistackStack.property.templateOptions"></a>
+##### `templateOptions`<sup>Required</sup> <a name="templateOptions" id="neulabs-cdk-constructs.MultistackStack.property.templateOptions"></a>
 
 ```typescript
 public readonly templateOptions: ITemplateOptions;
@@ -786,7 +786,7 @@ Options for CloudFormation template (like version, transform, description).
 
 ---
 
-##### `urlSuffix`<sup>Required</sup> <a name="urlSuffix" id="v1.MultistackStack.property.urlSuffix"></a>
+##### `urlSuffix`<sup>Required</sup> <a name="urlSuffix" id="neulabs-cdk-constructs.MultistackStack.property.urlSuffix"></a>
 
 ```typescript
 public readonly urlSuffix: string;
@@ -798,7 +798,7 @@ The Amazon domain suffix for the region in which this stack is defined.
 
 ---
 
-##### `nestedStackParent`<sup>Optional</sup> <a name="nestedStackParent" id="v1.MultistackStack.property.nestedStackParent"></a>
+##### `nestedStackParent`<sup>Optional</sup> <a name="nestedStackParent" id="neulabs-cdk-constructs.MultistackStack.property.nestedStackParent"></a>
 
 ```typescript
 public readonly nestedStackParent: Stack;
@@ -810,7 +810,7 @@ If this is a nested stack, returns it's parent stack.
 
 ---
 
-##### `nestedStackResource`<sup>Optional</sup> <a name="nestedStackResource" id="v1.MultistackStack.property.nestedStackResource"></a>
+##### `nestedStackResource`<sup>Optional</sup> <a name="nestedStackResource" id="neulabs-cdk-constructs.MultistackStack.property.nestedStackResource"></a>
 
 ```typescript
 public readonly nestedStackResource: CfnResource;
@@ -824,7 +824,7 @@ If this is a nested stack, this represents its `AWS::CloudFormation::Stack` reso
 
 ---
 
-##### `terminationProtection`<sup>Optional</sup> <a name="terminationProtection" id="v1.MultistackStack.property.terminationProtection"></a>
+##### `terminationProtection`<sup>Optional</sup> <a name="terminationProtection" id="neulabs-cdk-constructs.MultistackStack.property.terminationProtection"></a>
 
 ```typescript
 public readonly terminationProtection: boolean;

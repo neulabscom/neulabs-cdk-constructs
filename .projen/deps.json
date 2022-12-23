@@ -21,6 +21,10 @@
       "type": "build"
     },
     {
+      "name": "eslint-config-prettier",
+      "type": "build"
+    },
+    {
       "name": "eslint-import-resolver-node",
       "type": "build"
     },
@@ -30,6 +34,10 @@
     },
     {
       "name": "eslint-plugin-import",
+      "type": "build"
+    },
+    {
+      "name": "eslint-plugin-prettier",
       "type": "build"
     },
     {
@@ -73,6 +81,10 @@
       "type": "build"
     },
     {
+      "name": "prettier",
+      "type": "build"
+    },
+    {
       "name": "projen",
       "type": "build"
     },
@@ -84,6 +96,10 @@
     {
       "name": "ts-jest",
       "version": "^27",
+      "type": "build"
+    },
+    {
+      "name": "ts-node",
       "type": "build"
     },
     {

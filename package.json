@@ -1,8 +1,8 @@
 {
-  "name": "v1",
+  "name": "neulabs-cdk-constructs",
   "repository": {
     "type": "git",
-    "url": "git@github.com:FabrizioCafolla/neulabs-cdk-constructs.git"
+    "url": "git@github.com:neulabscom/neulabs-cdk-constructs.git"
   },
   "scripts": {
     "build": "npx projen build",
@@ -30,8 +30,8 @@
     "projen": "npx projen"
   },
   "author": {
-    "name": "FabrizioCafolla",
-    "email": "developer@fabriziocafolla.com",
+    "name": "Neulabs",
+    "email": "tech@neulabs.com",
     "organization": false
   },
   "devDependencies": {
@@ -40,9 +40,11 @@
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
     "eslint": "^8",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-node": "^0.3.6",
     "eslint-import-resolver-typescript": "^3.5.2",
     "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "jest": "^27",
     "jest-junit": "^13",
     "jsii": "^1.72.0",
@@ -51,9 +53,11 @@
     "jsii-pacmak": "^1.72.0",
     "json-schema": "^0.4.0",
     "npm-check-updates": "^16",
+    "prettier": "^2.8.1",
     "projen": "^0.65.67",
     "standard-version": "^9",
     "ts-jest": "^27",
+    "ts-node": "^10.9.1",
     "typescript": "^4.9.4"
   },
   "dependencies": {
@@ -111,8 +115,8 @@
     "outdir": "dist",
     "targets": {
       "python": {
-        "distName": "cdk-sample-lib",
-        "module": "cdk_sample_lib"
+        "distName": "neulabs-cdk-constructs",
+        "module": "neulabs_cdk_constructs"
       }
     },
     "tsc": {
