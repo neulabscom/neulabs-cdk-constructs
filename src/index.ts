@@ -1,2 +1,1 @@
-export * from './stacks/base';
-export * from './stacks/newrelic';
+export * as stacks from './stacks';
