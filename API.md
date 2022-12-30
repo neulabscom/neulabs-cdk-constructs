@@ -55,6 +55,8 @@ new BaseStack(scope: Construct, id: string, props: BaseStackProps)
 | <code><a href="#neulabs-cdk-constructs.BaseStack.resolve">resolve</a></code> | Resolve a tokenized value in the context of the current stack. |
 | <code><a href="#neulabs-cdk-constructs.BaseStack.splitArn">splitArn</a></code> | Splits the provided ARN into its components. |
 | <code><a href="#neulabs-cdk-constructs.BaseStack.toJsonString">toJsonString</a></code> | Convert an object, potentially containing tokens, to a JSON string. |
+| <code><a href="#neulabs-cdk-constructs.BaseStack.addBaseTag">addBaseTag</a></code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.BaseStack.createResourcesGroup">createResourcesGroup</a></code> | *No description.* |
 
 ---
 
@@ -398,6 +400,24 @@ Convert an object, potentially containing tokens, to a JSON string.
 
 ---
 
+##### `addBaseTag` <a name="addBaseTag" id="neulabs-cdk-constructs.BaseStack.addBaseTag"></a>
+
+```typescript
+public addBaseTag(module: any): void
+```
+
+###### `module`<sup>Required</sup> <a name="module" id="neulabs-cdk-constructs.BaseStack.addBaseTag.parameter.module"></a>
+
+- *Type:* any
+
+---
+
+##### `createResourcesGroup` <a name="createResourcesGroup" id="neulabs-cdk-constructs.BaseStack.createResourcesGroup"></a>
+
+```typescript
+public createResourcesGroup(): CfnGroup
+```
+
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
 | **Name** | **Description** |
@@ -503,6 +523,12 @@ The construct to start the search from.
 | <code><a href="#neulabs-cdk-constructs.BaseStack.property.nestedStackParent">nestedStackParent</a></code> | <code>aws-cdk-lib.Stack</code> | If this is a nested stack, returns it's parent stack. |
 | <code><a href="#neulabs-cdk-constructs.BaseStack.property.nestedStackResource">nestedStackResource</a></code> | <code>aws-cdk-lib.CfnResource</code> | If this is a nested stack, this represents its `AWS::CloudFormation::Stack` resource. |
 | <code><a href="#neulabs-cdk-constructs.BaseStack.property.terminationProtection">terminationProtection</a></code> | <code>boolean</code> | Whether termination protection is enabled for this stack. |
+| <code><a href="#neulabs-cdk-constructs.BaseStack.property.businessUnit">businessUnit</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.BaseStack.property.date">date</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.BaseStack.property.domain">domain</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.BaseStack.property.repository">repository</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.BaseStack.property.stage">stage</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.BaseStack.property.version">version</a></code> | <code>string</code> | *No description.* |
 
 ---
 
@@ -836,38 +862,98 @@ Whether termination protection is enabled for this stack.
 
 ---
 
-
-### NewRelic <a name="NewRelic" id="neulabs-cdk-constructs.NewRelic"></a>
-
-#### Initializers <a name="Initializers" id="neulabs-cdk-constructs.NewRelic.Initializer"></a>
+##### `businessUnit`<sup>Required</sup> <a name="businessUnit" id="neulabs-cdk-constructs.BaseStack.property.businessUnit"></a>
 
 ```typescript
-import { NewRelic } from 'neulabs-cdk-constructs'
-
-new NewRelic(scope: Construct, id: string, props: NewRelicStackProps)
+public readonly businessUnit: string;
 ```
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.Initializer.parameter.props">props</a></code> | <code><a href="#neulabs-cdk-constructs.NewRelicStackProps">NewRelicStackProps</a></code> | *No description.* |
-
----
-
-##### `scope`<sup>Required</sup> <a name="scope" id="neulabs-cdk-constructs.NewRelic.Initializer.parameter.scope"></a>
-
-- *Type:* constructs.Construct
-
----
-
-##### `id`<sup>Required</sup> <a name="id" id="neulabs-cdk-constructs.NewRelic.Initializer.parameter.id"></a>
 
 - *Type:* string
 
 ---
 
-##### `props`<sup>Required</sup> <a name="props" id="neulabs-cdk-constructs.NewRelic.Initializer.parameter.props"></a>
+##### `date`<sup>Required</sup> <a name="date" id="neulabs-cdk-constructs.BaseStack.property.date"></a>
+
+```typescript
+public readonly date: string;
+```
+
+- *Type:* string
+
+---
+
+##### `domain`<sup>Required</sup> <a name="domain" id="neulabs-cdk-constructs.BaseStack.property.domain"></a>
+
+```typescript
+public readonly domain: string;
+```
+
+- *Type:* string
+
+---
+
+##### `repository`<sup>Required</sup> <a name="repository" id="neulabs-cdk-constructs.BaseStack.property.repository"></a>
+
+```typescript
+public readonly repository: string;
+```
+
+- *Type:* string
+
+---
+
+##### `stage`<sup>Required</sup> <a name="stage" id="neulabs-cdk-constructs.BaseStack.property.stage"></a>
+
+```typescript
+public readonly stage: string;
+```
+
+- *Type:* string
+
+---
+
+##### `version`<sup>Required</sup> <a name="version" id="neulabs-cdk-constructs.BaseStack.property.version"></a>
+
+```typescript
+public readonly version: string;
+```
+
+- *Type:* string
+
+---
+
+
+### NewRelicStack <a name="NewRelicStack" id="neulabs-cdk-constructs.NewRelicStack"></a>
+
+#### Initializers <a name="Initializers" id="neulabs-cdk-constructs.NewRelicStack.Initializer"></a>
+
+```typescript
+import { NewRelicStack } from 'neulabs-cdk-constructs'
+
+new NewRelicStack(scope: Construct, id: string, props: NewRelicStackProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.Initializer.parameter.props">props</a></code> | <code><a href="#neulabs-cdk-constructs.NewRelicStackProps">NewRelicStackProps</a></code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="neulabs-cdk-constructs.NewRelicStack.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="neulabs-cdk-constructs.NewRelicStack.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="neulabs-cdk-constructs.NewRelicStack.Initializer.parameter.props"></a>
 
 - *Type:* <a href="#neulabs-cdk-constructs.NewRelicStackProps">NewRelicStackProps</a>
 
@@ -877,23 +963,29 @@ new NewRelic(scope: Construct, id: string, props: NewRelicStackProps)
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.addDependency">addDependency</a></code> | Add a dependency between this stack and another stack. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.addMetadata">addMetadata</a></code> | Adds an arbitary key-value pair, with information you want to record about the stack. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.addTransform">addTransform</a></code> | Add a Transform to this stack. A Transform is a macro that AWS CloudFormation uses to process your template. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.exportValue">exportValue</a></code> | Create a CloudFormation Export for a value. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.formatArn">formatArn</a></code> | Creates an ARN from components. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.getLogicalId">getLogicalId</a></code> | Allocates a stack-unique CloudFormation-compatible logical identity for a specific resource. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.regionalFact">regionalFact</a></code> | Look up a fact value for the given fact for the region of this stack. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.renameLogicalId">renameLogicalId</a></code> | Rename a generated logical identities. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.reportMissingContextKey">reportMissingContextKey</a></code> | Indicate that a context key was expected. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.resolve">resolve</a></code> | Resolve a tokenized value in the context of the current stack. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.splitArn">splitArn</a></code> | Splits the provided ARN into its components. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.toJsonString">toJsonString</a></code> | Convert an object, potentially containing tokens, to a JSON string. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.addDependency">addDependency</a></code> | Add a dependency between this stack and another stack. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.addMetadata">addMetadata</a></code> | Adds an arbitary key-value pair, with information you want to record about the stack. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.addTransform">addTransform</a></code> | Add a Transform to this stack. A Transform is a macro that AWS CloudFormation uses to process your template. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.exportValue">exportValue</a></code> | Create a CloudFormation Export for a value. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.formatArn">formatArn</a></code> | Creates an ARN from components. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.getLogicalId">getLogicalId</a></code> | Allocates a stack-unique CloudFormation-compatible logical identity for a specific resource. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.regionalFact">regionalFact</a></code> | Look up a fact value for the given fact for the region of this stack. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.renameLogicalId">renameLogicalId</a></code> | Rename a generated logical identities. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.reportMissingContextKey">reportMissingContextKey</a></code> | Indicate that a context key was expected. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.resolve">resolve</a></code> | Resolve a tokenized value in the context of the current stack. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.splitArn">splitArn</a></code> | Splits the provided ARN into its components. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.toJsonString">toJsonString</a></code> | Convert an object, potentially containing tokens, to a JSON string. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.addBaseTag">addBaseTag</a></code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.createResourcesGroup">createResourcesGroup</a></code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.createFirehoseBucket">createFirehoseBucket</a></code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.createFirehoseRole">createFirehoseRole</a></code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.createFirehoseStream">createFirehoseStream</a></code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.createSecrets">createSecrets</a></code> | *No description.* |
 
 ---
 
-##### `toString` <a name="toString" id="neulabs-cdk-constructs.NewRelic.toString"></a>
+##### `toString` <a name="toString" id="neulabs-cdk-constructs.NewRelicStack.toString"></a>
 
 ```typescript
 public toString(): string
@@ -901,7 +993,7 @@ public toString(): string
 
 Returns a string representation of this construct.
 
-##### `addDependency` <a name="addDependency" id="neulabs-cdk-constructs.NewRelic.addDependency"></a>
+##### `addDependency` <a name="addDependency" id="neulabs-cdk-constructs.NewRelicStack.addDependency"></a>
 
 ```typescript
 public addDependency(target: Stack, reason?: string): void
@@ -912,19 +1004,19 @@ Add a dependency between this stack and another stack.
 This can be used to define dependencies between any two stacks within an
 app, and also supports nested stacks.
 
-###### `target`<sup>Required</sup> <a name="target" id="neulabs-cdk-constructs.NewRelic.addDependency.parameter.target"></a>
+###### `target`<sup>Required</sup> <a name="target" id="neulabs-cdk-constructs.NewRelicStack.addDependency.parameter.target"></a>
 
 - *Type:* aws-cdk-lib.Stack
 
 ---
 
-###### `reason`<sup>Optional</sup> <a name="reason" id="neulabs-cdk-constructs.NewRelic.addDependency.parameter.reason"></a>
+###### `reason`<sup>Optional</sup> <a name="reason" id="neulabs-cdk-constructs.NewRelicStack.addDependency.parameter.reason"></a>
 
 - *Type:* string
 
 ---
 
-##### `addMetadata` <a name="addMetadata" id="neulabs-cdk-constructs.NewRelic.addMetadata"></a>
+##### `addMetadata` <a name="addMetadata" id="neulabs-cdk-constructs.NewRelicStack.addMetadata"></a>
 
 ```typescript
 public addMetadata(key: string, value: any): void
@@ -936,19 +1028,19 @@ These get translated to the Metadata section of the generated template.
 
 > [https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/metadata-section-structure.html](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/metadata-section-structure.html)
 
-###### `key`<sup>Required</sup> <a name="key" id="neulabs-cdk-constructs.NewRelic.addMetadata.parameter.key"></a>
+###### `key`<sup>Required</sup> <a name="key" id="neulabs-cdk-constructs.NewRelicStack.addMetadata.parameter.key"></a>
 
 - *Type:* string
 
 ---
 
-###### `value`<sup>Required</sup> <a name="value" id="neulabs-cdk-constructs.NewRelic.addMetadata.parameter.value"></a>
+###### `value`<sup>Required</sup> <a name="value" id="neulabs-cdk-constructs.NewRelicStack.addMetadata.parameter.value"></a>
 
 - *Type:* any
 
 ---
 
-##### `addTransform` <a name="addTransform" id="neulabs-cdk-constructs.NewRelic.addTransform"></a>
+##### `addTransform` <a name="addTransform" id="neulabs-cdk-constructs.NewRelicStack.addTransform"></a>
 
 ```typescript
 public addTransform(transform: string): void
@@ -969,7 +1061,7 @@ stack.addTransform('AWS::Serverless-2016-10-31')
 ```
 
 
-###### `transform`<sup>Required</sup> <a name="transform" id="neulabs-cdk-constructs.NewRelic.addTransform.parameter.transform"></a>
+###### `transform`<sup>Required</sup> <a name="transform" id="neulabs-cdk-constructs.NewRelicStack.addTransform.parameter.transform"></a>
 
 - *Type:* string
 
@@ -977,7 +1069,7 @@ The transform to add.
 
 ---
 
-##### `exportValue` <a name="exportValue" id="neulabs-cdk-constructs.NewRelic.exportValue"></a>
+##### `exportValue` <a name="exportValue" id="neulabs-cdk-constructs.NewRelicStack.exportValue"></a>
 
 ```typescript
 public exportValue(exportedValue: any, options?: ExportValueOptions): string
@@ -1028,19 +1120,19 @@ Instead, the process takes two deployments:
 - Don't forget to remove the `exportValue()` call as well.
 - Deploy again (this time only the `producerStack` will be changed -- the bucket will be deleted).
 
-###### `exportedValue`<sup>Required</sup> <a name="exportedValue" id="neulabs-cdk-constructs.NewRelic.exportValue.parameter.exportedValue"></a>
+###### `exportedValue`<sup>Required</sup> <a name="exportedValue" id="neulabs-cdk-constructs.NewRelicStack.exportValue.parameter.exportedValue"></a>
 
 - *Type:* any
 
 ---
 
-###### `options`<sup>Optional</sup> <a name="options" id="neulabs-cdk-constructs.NewRelic.exportValue.parameter.options"></a>
+###### `options`<sup>Optional</sup> <a name="options" id="neulabs-cdk-constructs.NewRelicStack.exportValue.parameter.options"></a>
 
 - *Type:* aws-cdk-lib.ExportValueOptions
 
 ---
 
-##### `formatArn` <a name="formatArn" id="neulabs-cdk-constructs.NewRelic.formatArn"></a>
+##### `formatArn` <a name="formatArn" id="neulabs-cdk-constructs.NewRelicStack.formatArn"></a>
 
 ```typescript
 public formatArn(components: ArnComponents): string
@@ -1062,13 +1154,13 @@ The required ARN pieces that are omitted will be taken from the stack that
 the 'scope' is attached to. If all ARN pieces are supplied, the supplied scope
 can be 'undefined'.
 
-###### `components`<sup>Required</sup> <a name="components" id="neulabs-cdk-constructs.NewRelic.formatArn.parameter.components"></a>
+###### `components`<sup>Required</sup> <a name="components" id="neulabs-cdk-constructs.NewRelicStack.formatArn.parameter.components"></a>
 
 - *Type:* aws-cdk-lib.ArnComponents
 
 ---
 
-##### `getLogicalId` <a name="getLogicalId" id="neulabs-cdk-constructs.NewRelic.getLogicalId"></a>
+##### `getLogicalId` <a name="getLogicalId" id="neulabs-cdk-constructs.NewRelicStack.getLogicalId"></a>
 
 ```typescript
 public getLogicalId(element: CfnElement): string
@@ -1084,7 +1176,7 @@ This method uses the protected method `allocateLogicalId` to render the
 logical ID for an element. To modify the naming scheme, extend the `Stack`
 class and override this method.
 
-###### `element`<sup>Required</sup> <a name="element" id="neulabs-cdk-constructs.NewRelic.getLogicalId.parameter.element"></a>
+###### `element`<sup>Required</sup> <a name="element" id="neulabs-cdk-constructs.NewRelicStack.getLogicalId.parameter.element"></a>
 
 - *Type:* aws-cdk-lib.CfnElement
 
@@ -1092,7 +1184,7 @@ The CloudFormation element for which a logical identity is needed.
 
 ---
 
-##### `regionalFact` <a name="regionalFact" id="neulabs-cdk-constructs.NewRelic.regionalFact"></a>
+##### `regionalFact` <a name="regionalFact" id="neulabs-cdk-constructs.NewRelicStack.regionalFact"></a>
 
 ```typescript
 public regionalFact(factName: string, defaultValue?: string): string
@@ -1116,19 +1208,19 @@ not have to worry about regional facts.
 If `defaultValue` is not given, it is an error if the fact is unknown for
 the given region.
 
-###### `factName`<sup>Required</sup> <a name="factName" id="neulabs-cdk-constructs.NewRelic.regionalFact.parameter.factName"></a>
+###### `factName`<sup>Required</sup> <a name="factName" id="neulabs-cdk-constructs.NewRelicStack.regionalFact.parameter.factName"></a>
 
 - *Type:* string
 
 ---
 
-###### `defaultValue`<sup>Optional</sup> <a name="defaultValue" id="neulabs-cdk-constructs.NewRelic.regionalFact.parameter.defaultValue"></a>
+###### `defaultValue`<sup>Optional</sup> <a name="defaultValue" id="neulabs-cdk-constructs.NewRelicStack.regionalFact.parameter.defaultValue"></a>
 
 - *Type:* string
 
 ---
 
-##### `renameLogicalId` <a name="renameLogicalId" id="neulabs-cdk-constructs.NewRelic.renameLogicalId"></a>
+##### `renameLogicalId` <a name="renameLogicalId" id="neulabs-cdk-constructs.NewRelicStack.renameLogicalId"></a>
 
 ```typescript
 public renameLogicalId(oldId: string, newId: string): void
@@ -1139,19 +1231,19 @@ Rename a generated logical identities.
 To modify the naming scheme strategy, extend the `Stack` class and
 override the `allocateLogicalId` method.
 
-###### `oldId`<sup>Required</sup> <a name="oldId" id="neulabs-cdk-constructs.NewRelic.renameLogicalId.parameter.oldId"></a>
+###### `oldId`<sup>Required</sup> <a name="oldId" id="neulabs-cdk-constructs.NewRelicStack.renameLogicalId.parameter.oldId"></a>
 
 - *Type:* string
 
 ---
 
-###### `newId`<sup>Required</sup> <a name="newId" id="neulabs-cdk-constructs.NewRelic.renameLogicalId.parameter.newId"></a>
+###### `newId`<sup>Required</sup> <a name="newId" id="neulabs-cdk-constructs.NewRelicStack.renameLogicalId.parameter.newId"></a>
 
 - *Type:* string
 
 ---
 
-##### `reportMissingContextKey` <a name="reportMissingContextKey" id="neulabs-cdk-constructs.NewRelic.reportMissingContextKey"></a>
+##### `reportMissingContextKey` <a name="reportMissingContextKey" id="neulabs-cdk-constructs.NewRelicStack.reportMissingContextKey"></a>
 
 ```typescript
 public reportMissingContextKey(report: MissingContext): void
@@ -1162,7 +1254,7 @@ Indicate that a context key was expected.
 Contains instructions which will be emitted into the cloud assembly on how
 the key should be supplied.
 
-###### `report`<sup>Required</sup> <a name="report" id="neulabs-cdk-constructs.NewRelic.reportMissingContextKey.parameter.report"></a>
+###### `report`<sup>Required</sup> <a name="report" id="neulabs-cdk-constructs.NewRelicStack.reportMissingContextKey.parameter.report"></a>
 
 - *Type:* aws-cdk-lib.cloud_assembly_schema.MissingContext
 
@@ -1170,7 +1262,7 @@ The set of parameters needed to obtain the context.
 
 ---
 
-##### `resolve` <a name="resolve" id="neulabs-cdk-constructs.NewRelic.resolve"></a>
+##### `resolve` <a name="resolve" id="neulabs-cdk-constructs.NewRelicStack.resolve"></a>
 
 ```typescript
 public resolve(obj: any): any
@@ -1178,13 +1270,13 @@ public resolve(obj: any): any
 
 Resolve a tokenized value in the context of the current stack.
 
-###### `obj`<sup>Required</sup> <a name="obj" id="neulabs-cdk-constructs.NewRelic.resolve.parameter.obj"></a>
+###### `obj`<sup>Required</sup> <a name="obj" id="neulabs-cdk-constructs.NewRelicStack.resolve.parameter.obj"></a>
 
 - *Type:* any
 
 ---
 
-##### `splitArn` <a name="splitArn" id="neulabs-cdk-constructs.NewRelic.splitArn"></a>
+##### `splitArn` <a name="splitArn" id="neulabs-cdk-constructs.NewRelicStack.splitArn"></a>
 
 ```typescript
 public splitArn(arn: string, arnFormat: ArnFormat): ArnComponents
@@ -1197,7 +1289,7 @@ and a Token representing a dynamic CloudFormation expression
 (in which case the returned components will also be dynamic CloudFormation expressions,
 encoded as Tokens).
 
-###### `arn`<sup>Required</sup> <a name="arn" id="neulabs-cdk-constructs.NewRelic.splitArn.parameter.arn"></a>
+###### `arn`<sup>Required</sup> <a name="arn" id="neulabs-cdk-constructs.NewRelicStack.splitArn.parameter.arn"></a>
 
 - *Type:* string
 
@@ -1205,7 +1297,7 @@ the ARN to split into its components.
 
 ---
 
-###### `arnFormat`<sup>Required</sup> <a name="arnFormat" id="neulabs-cdk-constructs.NewRelic.splitArn.parameter.arnFormat"></a>
+###### `arnFormat`<sup>Required</sup> <a name="arnFormat" id="neulabs-cdk-constructs.NewRelicStack.splitArn.parameter.arnFormat"></a>
 
 - *Type:* aws-cdk-lib.ArnFormat
 
@@ -1213,7 +1305,7 @@ the expected format of 'arn' - depends on what format the service 'arn' represen
 
 ---
 
-##### `toJsonString` <a name="toJsonString" id="neulabs-cdk-constructs.NewRelic.toJsonString"></a>
+##### `toJsonString` <a name="toJsonString" id="neulabs-cdk-constructs.NewRelicStack.toJsonString"></a>
 
 ```typescript
 public toJsonString(obj: any, space?: number): string
@@ -1221,15 +1313,93 @@ public toJsonString(obj: any, space?: number): string
 
 Convert an object, potentially containing tokens, to a JSON string.
 
-###### `obj`<sup>Required</sup> <a name="obj" id="neulabs-cdk-constructs.NewRelic.toJsonString.parameter.obj"></a>
+###### `obj`<sup>Required</sup> <a name="obj" id="neulabs-cdk-constructs.NewRelicStack.toJsonString.parameter.obj"></a>
 
 - *Type:* any
 
 ---
 
-###### `space`<sup>Optional</sup> <a name="space" id="neulabs-cdk-constructs.NewRelic.toJsonString.parameter.space"></a>
+###### `space`<sup>Optional</sup> <a name="space" id="neulabs-cdk-constructs.NewRelicStack.toJsonString.parameter.space"></a>
 
 - *Type:* number
+
+---
+
+##### `addBaseTag` <a name="addBaseTag" id="neulabs-cdk-constructs.NewRelicStack.addBaseTag"></a>
+
+```typescript
+public addBaseTag(module: any): void
+```
+
+###### `module`<sup>Required</sup> <a name="module" id="neulabs-cdk-constructs.NewRelicStack.addBaseTag.parameter.module"></a>
+
+- *Type:* any
+
+---
+
+##### `createResourcesGroup` <a name="createResourcesGroup" id="neulabs-cdk-constructs.NewRelicStack.createResourcesGroup"></a>
+
+```typescript
+public createResourcesGroup(): CfnGroup
+```
+
+##### `createFirehoseBucket` <a name="createFirehoseBucket" id="neulabs-cdk-constructs.NewRelicStack.createFirehoseBucket"></a>
+
+```typescript
+public createFirehoseBucket(): IBucket
+```
+
+##### `createFirehoseRole` <a name="createFirehoseRole" id="neulabs-cdk-constructs.NewRelicStack.createFirehoseRole"></a>
+
+```typescript
+public createFirehoseRole(bucket: IBucket): IRole
+```
+
+###### `bucket`<sup>Required</sup> <a name="bucket" id="neulabs-cdk-constructs.NewRelicStack.createFirehoseRole.parameter.bucket"></a>
+
+- *Type:* aws-cdk-lib.aws_s3.IBucket
+
+---
+
+##### `createFirehoseStream` <a name="createFirehoseStream" id="neulabs-cdk-constructs.NewRelicStack.createFirehoseStream"></a>
+
+```typescript
+public createFirehoseStream(endpointType: EndpointType, endpointUrl: string, newRelicLicenseLey: string): CfnDeliveryStream
+```
+
+###### `endpointType`<sup>Required</sup> <a name="endpointType" id="neulabs-cdk-constructs.NewRelicStack.createFirehoseStream.parameter.endpointType"></a>
+
+- *Type:* <a href="#neulabs-cdk-constructs.EndpointType">EndpointType</a>
+
+---
+
+###### `endpointUrl`<sup>Required</sup> <a name="endpointUrl" id="neulabs-cdk-constructs.NewRelicStack.createFirehoseStream.parameter.endpointUrl"></a>
+
+- *Type:* string
+
+---
+
+###### `newRelicLicenseLey`<sup>Required</sup> <a name="newRelicLicenseLey" id="neulabs-cdk-constructs.NewRelicStack.createFirehoseStream.parameter.newRelicLicenseLey"></a>
+
+- *Type:* string
+
+---
+
+##### `createSecrets` <a name="createSecrets" id="neulabs-cdk-constructs.NewRelicStack.createSecrets"></a>
+
+```typescript
+public createSecrets(newRelicAccountId: string, newRelicLicenseLey: string): Secret
+```
+
+###### `newRelicAccountId`<sup>Required</sup> <a name="newRelicAccountId" id="neulabs-cdk-constructs.NewRelicStack.createSecrets.parameter.newRelicAccountId"></a>
+
+- *Type:* string
+
+---
+
+###### `newRelicLicenseLey`<sup>Required</sup> <a name="newRelicLicenseLey" id="neulabs-cdk-constructs.NewRelicStack.createSecrets.parameter.newRelicLicenseLey"></a>
+
+- *Type:* string
 
 ---
 
@@ -1237,18 +1407,18 @@ Convert an object, potentially containing tokens, to a JSON string.
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.isStack">isStack</a></code> | Return whether the given object is a Stack. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.of">of</a></code> | Looks up the first stack scope in which `construct` is defined. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.isStack">isStack</a></code> | Return whether the given object is a Stack. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.of">of</a></code> | Looks up the first stack scope in which `construct` is defined. |
 
 ---
 
-##### `isConstruct` <a name="isConstruct" id="neulabs-cdk-constructs.NewRelic.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="neulabs-cdk-constructs.NewRelicStack.isConstruct"></a>
 
 ```typescript
-import { NewRelic } from 'neulabs-cdk-constructs'
+import { NewRelicStack } from 'neulabs-cdk-constructs'
 
-NewRelic.isConstruct(x: any)
+NewRelicStack.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
@@ -1267,7 +1437,7 @@ library can be accidentally installed, and `instanceof` will behave
 unpredictably. It is safest to avoid using `instanceof`, and using
 this type-testing method instead.
 
-###### `x`<sup>Required</sup> <a name="x" id="neulabs-cdk-constructs.NewRelic.isConstruct.parameter.x"></a>
+###### `x`<sup>Required</sup> <a name="x" id="neulabs-cdk-constructs.NewRelicStack.isConstruct.parameter.x"></a>
 
 - *Type:* any
 
@@ -1275,37 +1445,37 @@ Any object.
 
 ---
 
-##### `isStack` <a name="isStack" id="neulabs-cdk-constructs.NewRelic.isStack"></a>
+##### `isStack` <a name="isStack" id="neulabs-cdk-constructs.NewRelicStack.isStack"></a>
 
 ```typescript
-import { NewRelic } from 'neulabs-cdk-constructs'
+import { NewRelicStack } from 'neulabs-cdk-constructs'
 
-NewRelic.isStack(x: any)
+NewRelicStack.isStack(x: any)
 ```
 
 Return whether the given object is a Stack.
 
 We do attribute detection since we can't reliably use 'instanceof'.
 
-###### `x`<sup>Required</sup> <a name="x" id="neulabs-cdk-constructs.NewRelic.isStack.parameter.x"></a>
+###### `x`<sup>Required</sup> <a name="x" id="neulabs-cdk-constructs.NewRelicStack.isStack.parameter.x"></a>
 
 - *Type:* any
 
 ---
 
-##### `of` <a name="of" id="neulabs-cdk-constructs.NewRelic.of"></a>
+##### `of` <a name="of" id="neulabs-cdk-constructs.NewRelicStack.of"></a>
 
 ```typescript
-import { NewRelic } from 'neulabs-cdk-constructs'
+import { NewRelicStack } from 'neulabs-cdk-constructs'
 
-NewRelic.of(construct: IConstruct)
+NewRelicStack.of(construct: IConstruct)
 ```
 
 Looks up the first stack scope in which `construct` is defined.
 
 Fails if there is no stack up the tree.
 
-###### `construct`<sup>Required</sup> <a name="construct" id="neulabs-cdk-constructs.NewRelic.of.parameter.construct"></a>
+###### `construct`<sup>Required</sup> <a name="construct" id="neulabs-cdk-constructs.NewRelicStack.of.parameter.construct"></a>
 
 - *Type:* constructs.IConstruct
 
@@ -1317,31 +1487,42 @@ The construct to start the search from.
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.property.account">account</a></code> | <code>string</code> | The AWS account into which this stack will be deployed. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.property.artifactId">artifactId</a></code> | <code>string</code> | The ID of the cloud assembly artifact for this stack. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.property.availabilityZones">availabilityZones</a></code> | <code>string[]</code> | Returns the list of AZs that are available in the AWS environment (account/region) associated with this stack. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.property.bundlingRequired">bundlingRequired</a></code> | <code>boolean</code> | Indicates whether the stack requires bundling or not. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.property.dependencies">dependencies</a></code> | <code>aws-cdk-lib.Stack[]</code> | Return the stacks this stack depends on. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.property.environment">environment</a></code> | <code>string</code> | The environment coordinates in which this stack is deployed. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.property.nested">nested</a></code> | <code>boolean</code> | Indicates if this is a nested stack, in which case `parentStack` will include a reference to it's parent. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.property.notificationArns">notificationArns</a></code> | <code>string[]</code> | Returns the list of notification Amazon Resource Names (ARNs) for the current stack. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.property.partition">partition</a></code> | <code>string</code> | The partition in which this stack is defined. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.property.region">region</a></code> | <code>string</code> | The AWS region into which this stack will be deployed (e.g. `us-west-2`). |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.property.stackId">stackId</a></code> | <code>string</code> | The ID of the stack. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.property.stackName">stackName</a></code> | <code>string</code> | The concrete CloudFormation physical stack name. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.property.synthesizer">synthesizer</a></code> | <code>aws-cdk-lib.IStackSynthesizer</code> | Synthesis method for this stack. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.property.tags">tags</a></code> | <code>aws-cdk-lib.TagManager</code> | Tags to be applied to the stack. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.property.templateFile">templateFile</a></code> | <code>string</code> | The name of the CloudFormation template file emitted to the output directory during synthesis. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.property.templateOptions">templateOptions</a></code> | <code>aws-cdk-lib.ITemplateOptions</code> | Options for CloudFormation template (like version, transform, description). |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.property.urlSuffix">urlSuffix</a></code> | <code>string</code> | The Amazon domain suffix for the region in which this stack is defined. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.property.nestedStackParent">nestedStackParent</a></code> | <code>aws-cdk-lib.Stack</code> | If this is a nested stack, returns it's parent stack. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.property.nestedStackResource">nestedStackResource</a></code> | <code>aws-cdk-lib.CfnResource</code> | If this is a nested stack, this represents its `AWS::CloudFormation::Stack` resource. |
-| <code><a href="#neulabs-cdk-constructs.NewRelic.property.terminationProtection">terminationProtection</a></code> | <code>boolean</code> | Whether termination protection is enabled for this stack. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.account">account</a></code> | <code>string</code> | The AWS account into which this stack will be deployed. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.artifactId">artifactId</a></code> | <code>string</code> | The ID of the cloud assembly artifact for this stack. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.availabilityZones">availabilityZones</a></code> | <code>string[]</code> | Returns the list of AZs that are available in the AWS environment (account/region) associated with this stack. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.bundlingRequired">bundlingRequired</a></code> | <code>boolean</code> | Indicates whether the stack requires bundling or not. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.dependencies">dependencies</a></code> | <code>aws-cdk-lib.Stack[]</code> | Return the stacks this stack depends on. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.environment">environment</a></code> | <code>string</code> | The environment coordinates in which this stack is deployed. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.nested">nested</a></code> | <code>boolean</code> | Indicates if this is a nested stack, in which case `parentStack` will include a reference to it's parent. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.notificationArns">notificationArns</a></code> | <code>string[]</code> | Returns the list of notification Amazon Resource Names (ARNs) for the current stack. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.partition">partition</a></code> | <code>string</code> | The partition in which this stack is defined. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.region">region</a></code> | <code>string</code> | The AWS region into which this stack will be deployed (e.g. `us-west-2`). |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.stackId">stackId</a></code> | <code>string</code> | The ID of the stack. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.stackName">stackName</a></code> | <code>string</code> | The concrete CloudFormation physical stack name. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.synthesizer">synthesizer</a></code> | <code>aws-cdk-lib.IStackSynthesizer</code> | Synthesis method for this stack. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.tags">tags</a></code> | <code>aws-cdk-lib.TagManager</code> | Tags to be applied to the stack. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.templateFile">templateFile</a></code> | <code>string</code> | The name of the CloudFormation template file emitted to the output directory during synthesis. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.templateOptions">templateOptions</a></code> | <code>aws-cdk-lib.ITemplateOptions</code> | Options for CloudFormation template (like version, transform, description). |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.urlSuffix">urlSuffix</a></code> | <code>string</code> | The Amazon domain suffix for the region in which this stack is defined. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.nestedStackParent">nestedStackParent</a></code> | <code>aws-cdk-lib.Stack</code> | If this is a nested stack, returns it's parent stack. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.nestedStackResource">nestedStackResource</a></code> | <code>aws-cdk-lib.CfnResource</code> | If this is a nested stack, this represents its `AWS::CloudFormation::Stack` resource. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.terminationProtection">terminationProtection</a></code> | <code>boolean</code> | Whether termination protection is enabled for this stack. |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.businessUnit">businessUnit</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.date">date</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.domain">domain</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.repository">repository</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.stage">stage</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.version">version</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.newRelicBucket">newRelicBucket</a></code> | <code>aws-cdk-lib.aws_s3.IBucket</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.newRelicFirehoseLogs">newRelicFirehoseLogs</a></code> | <code>any</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.newRelicFirehoseMetrics">newRelicFirehoseMetrics</a></code> | <code>any</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.newRelicRole">newRelicRole</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStack.property.newRelicSecret">newRelicSecret</a></code> | <code>aws-cdk-lib.aws_secretsmanager.ISecret</code> | *No description.* |
 
 ---
 
-##### `node`<sup>Required</sup> <a name="node" id="neulabs-cdk-constructs.NewRelic.property.node"></a>
+##### `node`<sup>Required</sup> <a name="node" id="neulabs-cdk-constructs.NewRelicStack.property.node"></a>
 
 ```typescript
 public readonly node: Node;
@@ -1353,7 +1534,7 @@ The tree node.
 
 ---
 
-##### `account`<sup>Required</sup> <a name="account" id="neulabs-cdk-constructs.NewRelic.property.account"></a>
+##### `account`<sup>Required</sup> <a name="account" id="neulabs-cdk-constructs.NewRelicStack.property.account"></a>
 
 ```typescript
 public readonly account: string;
@@ -1382,7 +1563,7 @@ implement some other region-agnostic behavior.
 
 ---
 
-##### `artifactId`<sup>Required</sup> <a name="artifactId" id="neulabs-cdk-constructs.NewRelic.property.artifactId"></a>
+##### `artifactId`<sup>Required</sup> <a name="artifactId" id="neulabs-cdk-constructs.NewRelicStack.property.artifactId"></a>
 
 ```typescript
 public readonly artifactId: string;
@@ -1394,7 +1575,7 @@ The ID of the cloud assembly artifact for this stack.
 
 ---
 
-##### `availabilityZones`<sup>Required</sup> <a name="availabilityZones" id="neulabs-cdk-constructs.NewRelic.property.availabilityZones"></a>
+##### `availabilityZones`<sup>Required</sup> <a name="availabilityZones" id="neulabs-cdk-constructs.NewRelicStack.property.availabilityZones"></a>
 
 ```typescript
 public readonly availabilityZones: string[];
@@ -1417,7 +1598,7 @@ To specify a different strategy for selecting availability zones override this m
 
 ---
 
-##### `bundlingRequired`<sup>Required</sup> <a name="bundlingRequired" id="neulabs-cdk-constructs.NewRelic.property.bundlingRequired"></a>
+##### `bundlingRequired`<sup>Required</sup> <a name="bundlingRequired" id="neulabs-cdk-constructs.NewRelicStack.property.bundlingRequired"></a>
 
 ```typescript
 public readonly bundlingRequired: boolean;
@@ -1429,7 +1610,7 @@ Indicates whether the stack requires bundling or not.
 
 ---
 
-##### `dependencies`<sup>Required</sup> <a name="dependencies" id="neulabs-cdk-constructs.NewRelic.property.dependencies"></a>
+##### `dependencies`<sup>Required</sup> <a name="dependencies" id="neulabs-cdk-constructs.NewRelicStack.property.dependencies"></a>
 
 ```typescript
 public readonly dependencies: Stack[];
@@ -1441,7 +1622,7 @@ Return the stacks this stack depends on.
 
 ---
 
-##### `environment`<sup>Required</sup> <a name="environment" id="neulabs-cdk-constructs.NewRelic.property.environment"></a>
+##### `environment`<sup>Required</sup> <a name="environment" id="neulabs-cdk-constructs.NewRelicStack.property.environment"></a>
 
 ```typescript
 public readonly environment: string;
@@ -1465,7 +1646,7 @@ region/account-agnostic.
 
 ---
 
-##### `nested`<sup>Required</sup> <a name="nested" id="neulabs-cdk-constructs.NewRelic.property.nested"></a>
+##### `nested`<sup>Required</sup> <a name="nested" id="neulabs-cdk-constructs.NewRelicStack.property.nested"></a>
 
 ```typescript
 public readonly nested: boolean;
@@ -1477,7 +1658,7 @@ Indicates if this is a nested stack, in which case `parentStack` will include a 
 
 ---
 
-##### `notificationArns`<sup>Required</sup> <a name="notificationArns" id="neulabs-cdk-constructs.NewRelic.property.notificationArns"></a>
+##### `notificationArns`<sup>Required</sup> <a name="notificationArns" id="neulabs-cdk-constructs.NewRelicStack.property.notificationArns"></a>
 
 ```typescript
 public readonly notificationArns: string[];
@@ -1489,7 +1670,7 @@ Returns the list of notification Amazon Resource Names (ARNs) for the current st
 
 ---
 
-##### `partition`<sup>Required</sup> <a name="partition" id="neulabs-cdk-constructs.NewRelic.property.partition"></a>
+##### `partition`<sup>Required</sup> <a name="partition" id="neulabs-cdk-constructs.NewRelicStack.property.partition"></a>
 
 ```typescript
 public readonly partition: string;
@@ -1501,7 +1682,7 @@ The partition in which this stack is defined.
 
 ---
 
-##### `region`<sup>Required</sup> <a name="region" id="neulabs-cdk-constructs.NewRelic.property.region"></a>
+##### `region`<sup>Required</sup> <a name="region" id="neulabs-cdk-constructs.NewRelicStack.property.region"></a>
 
 ```typescript
 public readonly region: string;
@@ -1530,7 +1711,7 @@ implement some other region-agnostic behavior.
 
 ---
 
-##### `stackId`<sup>Required</sup> <a name="stackId" id="neulabs-cdk-constructs.NewRelic.property.stackId"></a>
+##### `stackId`<sup>Required</sup> <a name="stackId" id="neulabs-cdk-constructs.NewRelicStack.property.stackId"></a>
 
 ```typescript
 public readonly stackId: string;
@@ -1550,7 +1731,7 @@ The ID of the stack.
 ```
 
 
-##### `stackName`<sup>Required</sup> <a name="stackName" id="neulabs-cdk-constructs.NewRelic.property.stackName"></a>
+##### `stackName`<sup>Required</sup> <a name="stackName" id="neulabs-cdk-constructs.NewRelicStack.property.stackName"></a>
 
 ```typescript
 public readonly stackName: string;
@@ -1571,7 +1752,7 @@ you can use `Aws.STACK_NAME` directly.
 
 ---
 
-##### `synthesizer`<sup>Required</sup> <a name="synthesizer" id="neulabs-cdk-constructs.NewRelic.property.synthesizer"></a>
+##### `synthesizer`<sup>Required</sup> <a name="synthesizer" id="neulabs-cdk-constructs.NewRelicStack.property.synthesizer"></a>
 
 ```typescript
 public readonly synthesizer: IStackSynthesizer;
@@ -1583,7 +1764,7 @@ Synthesis method for this stack.
 
 ---
 
-##### `tags`<sup>Required</sup> <a name="tags" id="neulabs-cdk-constructs.NewRelic.property.tags"></a>
+##### `tags`<sup>Required</sup> <a name="tags" id="neulabs-cdk-constructs.NewRelicStack.property.tags"></a>
 
 ```typescript
 public readonly tags: TagManager;
@@ -1595,7 +1776,7 @@ Tags to be applied to the stack.
 
 ---
 
-##### `templateFile`<sup>Required</sup> <a name="templateFile" id="neulabs-cdk-constructs.NewRelic.property.templateFile"></a>
+##### `templateFile`<sup>Required</sup> <a name="templateFile" id="neulabs-cdk-constructs.NewRelicStack.property.templateFile"></a>
 
 ```typescript
 public readonly templateFile: string;
@@ -1609,7 +1790,7 @@ Example value: `MyStack.template.json`
 
 ---
 
-##### `templateOptions`<sup>Required</sup> <a name="templateOptions" id="neulabs-cdk-constructs.NewRelic.property.templateOptions"></a>
+##### `templateOptions`<sup>Required</sup> <a name="templateOptions" id="neulabs-cdk-constructs.NewRelicStack.property.templateOptions"></a>
 
 ```typescript
 public readonly templateOptions: ITemplateOptions;
@@ -1621,7 +1802,7 @@ Options for CloudFormation template (like version, transform, description).
 
 ---
 
-##### `urlSuffix`<sup>Required</sup> <a name="urlSuffix" id="neulabs-cdk-constructs.NewRelic.property.urlSuffix"></a>
+##### `urlSuffix`<sup>Required</sup> <a name="urlSuffix" id="neulabs-cdk-constructs.NewRelicStack.property.urlSuffix"></a>
 
 ```typescript
 public readonly urlSuffix: string;
@@ -1633,7 +1814,7 @@ The Amazon domain suffix for the region in which this stack is defined.
 
 ---
 
-##### `nestedStackParent`<sup>Optional</sup> <a name="nestedStackParent" id="neulabs-cdk-constructs.NewRelic.property.nestedStackParent"></a>
+##### `nestedStackParent`<sup>Optional</sup> <a name="nestedStackParent" id="neulabs-cdk-constructs.NewRelicStack.property.nestedStackParent"></a>
 
 ```typescript
 public readonly nestedStackParent: Stack;
@@ -1645,7 +1826,7 @@ If this is a nested stack, returns it's parent stack.
 
 ---
 
-##### `nestedStackResource`<sup>Optional</sup> <a name="nestedStackResource" id="neulabs-cdk-constructs.NewRelic.property.nestedStackResource"></a>
+##### `nestedStackResource`<sup>Optional</sup> <a name="nestedStackResource" id="neulabs-cdk-constructs.NewRelicStack.property.nestedStackResource"></a>
 
 ```typescript
 public readonly nestedStackResource: CfnResource;
@@ -1659,7 +1840,7 @@ If this is a nested stack, this represents its `AWS::CloudFormation::Stack` reso
 
 ---
 
-##### `terminationProtection`<sup>Optional</sup> <a name="terminationProtection" id="neulabs-cdk-constructs.NewRelic.property.terminationProtection"></a>
+##### `terminationProtection`<sup>Optional</sup> <a name="terminationProtection" id="neulabs-cdk-constructs.NewRelicStack.property.terminationProtection"></a>
 
 ```typescript
 public readonly terminationProtection: boolean;
@@ -1668,6 +1849,116 @@ public readonly terminationProtection: boolean;
 - *Type:* boolean
 
 Whether termination protection is enabled for this stack.
+
+---
+
+##### `businessUnit`<sup>Required</sup> <a name="businessUnit" id="neulabs-cdk-constructs.NewRelicStack.property.businessUnit"></a>
+
+```typescript
+public readonly businessUnit: string;
+```
+
+- *Type:* string
+
+---
+
+##### `date`<sup>Required</sup> <a name="date" id="neulabs-cdk-constructs.NewRelicStack.property.date"></a>
+
+```typescript
+public readonly date: string;
+```
+
+- *Type:* string
+
+---
+
+##### `domain`<sup>Required</sup> <a name="domain" id="neulabs-cdk-constructs.NewRelicStack.property.domain"></a>
+
+```typescript
+public readonly domain: string;
+```
+
+- *Type:* string
+
+---
+
+##### `repository`<sup>Required</sup> <a name="repository" id="neulabs-cdk-constructs.NewRelicStack.property.repository"></a>
+
+```typescript
+public readonly repository: string;
+```
+
+- *Type:* string
+
+---
+
+##### `stage`<sup>Required</sup> <a name="stage" id="neulabs-cdk-constructs.NewRelicStack.property.stage"></a>
+
+```typescript
+public readonly stage: string;
+```
+
+- *Type:* string
+
+---
+
+##### `version`<sup>Required</sup> <a name="version" id="neulabs-cdk-constructs.NewRelicStack.property.version"></a>
+
+```typescript
+public readonly version: string;
+```
+
+- *Type:* string
+
+---
+
+##### `newRelicBucket`<sup>Required</sup> <a name="newRelicBucket" id="neulabs-cdk-constructs.NewRelicStack.property.newRelicBucket"></a>
+
+```typescript
+public readonly newRelicBucket: IBucket;
+```
+
+- *Type:* aws-cdk-lib.aws_s3.IBucket
+
+---
+
+##### `newRelicFirehoseLogs`<sup>Required</sup> <a name="newRelicFirehoseLogs" id="neulabs-cdk-constructs.NewRelicStack.property.newRelicFirehoseLogs"></a>
+
+```typescript
+public readonly newRelicFirehoseLogs: any;
+```
+
+- *Type:* any
+
+---
+
+##### `newRelicFirehoseMetrics`<sup>Required</sup> <a name="newRelicFirehoseMetrics" id="neulabs-cdk-constructs.NewRelicStack.property.newRelicFirehoseMetrics"></a>
+
+```typescript
+public readonly newRelicFirehoseMetrics: any;
+```
+
+- *Type:* any
+
+---
+
+##### `newRelicRole`<sup>Required</sup> <a name="newRelicRole" id="neulabs-cdk-constructs.NewRelicStack.property.newRelicRole"></a>
+
+```typescript
+public readonly newRelicRole: IRole;
+```
+
+- *Type:* aws-cdk-lib.aws_iam.IRole
+
+---
+
+##### `newRelicSecret`<sup>Required</sup> <a name="newRelicSecret" id="neulabs-cdk-constructs.NewRelicStack.property.newRelicSecret"></a>
+
+```typescript
+public readonly newRelicSecret: ISecret;
+```
+
+- *Type:* aws-cdk-lib.aws_secretsmanager.ISecret
 
 ---
 
@@ -1952,8 +2243,8 @@ const newRelicStackProps: NewRelicStackProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.NewRelicStackProps.property.stage">stage</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.NewRelicStackProps.property.version">version</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.NewRelicStackProps.property.newRelicAccountId">newRelicAccountId</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.NewRelicStackProps.property.newRelicApiUrlLogs">newRelicApiUrlLogs</a></code> | <code>boolean</code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.NewRelicStackProps.property.newRelicApiUrlMetrics">newRelicApiUrlMetrics</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStackProps.property.newRelicApiUrlLogs">newRelicApiUrlLogs</a></code> | <code><a href="#neulabs-cdk-constructs.EndpointUrlLogs">EndpointUrlLogs</a></code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.NewRelicStackProps.property.newRelicApiUrlMetrics">newRelicApiUrlMetrics</a></code> | <code><a href="#neulabs-cdk-constructs.EndpointUrlMetrics">EndpointUrlMetrics</a></code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.NewRelicStackProps.property.newRelicLicenseKey">newRelicLicenseKey</a></code> | <code>string</code> | *No description.* |
 
 ---
@@ -2191,20 +2482,20 @@ public readonly newRelicAccountId: string;
 ##### `newRelicApiUrlLogs`<sup>Required</sup> <a name="newRelicApiUrlLogs" id="neulabs-cdk-constructs.NewRelicStackProps.property.newRelicApiUrlLogs"></a>
 
 ```typescript
-public readonly newRelicApiUrlLogs: boolean;
+public readonly newRelicApiUrlLogs: EndpointUrlLogs;
 ```
 
-- *Type:* boolean
+- *Type:* <a href="#neulabs-cdk-constructs.EndpointUrlLogs">EndpointUrlLogs</a>
 
 ---
 
 ##### `newRelicApiUrlMetrics`<sup>Required</sup> <a name="newRelicApiUrlMetrics" id="neulabs-cdk-constructs.NewRelicStackProps.property.newRelicApiUrlMetrics"></a>
 
 ```typescript
-public readonly newRelicApiUrlMetrics: boolean;
+public readonly newRelicApiUrlMetrics: EndpointUrlMetrics;
 ```
 
-- *Type:* boolean
+- *Type:* <a href="#neulabs-cdk-constructs.EndpointUrlMetrics">EndpointUrlMetrics</a>
 
 ---
 
@@ -2219,4 +2510,68 @@ public readonly newRelicLicenseKey: string;
 ---
 
 
+
+## Enums <a name="Enums" id="Enums"></a>
+
+### EndpointType <a name="EndpointType" id="neulabs-cdk-constructs.EndpointType"></a>
+
+#### Members <a name="Members" id="Members"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#neulabs-cdk-constructs.EndpointType.METRICS">METRICS</a></code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.EndpointType.LOGS">LOGS</a></code> | *No description.* |
+
+---
+
+##### `METRICS` <a name="METRICS" id="neulabs-cdk-constructs.EndpointType.METRICS"></a>
+
+---
+
+
+##### `LOGS` <a name="LOGS" id="neulabs-cdk-constructs.EndpointType.LOGS"></a>
+
+---
+
+
+### EndpointUrlLogs <a name="EndpointUrlLogs" id="neulabs-cdk-constructs.EndpointUrlLogs"></a>
+
+#### Members <a name="Members" id="Members"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#neulabs-cdk-constructs.EndpointUrlLogs.EU_LOGS">EU_LOGS</a></code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.EndpointUrlLogs.US_LOGS">US_LOGS</a></code> | *No description.* |
+
+---
+
+##### `EU_LOGS` <a name="EU_LOGS" id="neulabs-cdk-constructs.EndpointUrlLogs.EU_LOGS"></a>
+
+---
+
+
+##### `US_LOGS` <a name="US_LOGS" id="neulabs-cdk-constructs.EndpointUrlLogs.US_LOGS"></a>
+
+---
+
+
+### EndpointUrlMetrics <a name="EndpointUrlMetrics" id="neulabs-cdk-constructs.EndpointUrlMetrics"></a>
+
+#### Members <a name="Members" id="Members"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#neulabs-cdk-constructs.EndpointUrlMetrics.EU_METRICS">EU_METRICS</a></code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.EndpointUrlMetrics.US_METRICS">US_METRICS</a></code> | *No description.* |
+
+---
+
+##### `EU_METRICS` <a name="EU_METRICS" id="neulabs-cdk-constructs.EndpointUrlMetrics.EU_METRICS"></a>
+
+---
+
+
+##### `US_METRICS` <a name="US_METRICS" id="neulabs-cdk-constructs.EndpointUrlMetrics.US_METRICS"></a>
+
+---
 
