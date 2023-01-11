@@ -200,7 +200,7 @@ export class NewRelicStack extends BaseStack {
     return bucket;
   }
 
-  createFirehoseRole(bucket: s3.IBucket): iam.IRole {
+  createFirehoseRole(newRelicFirehoseBucket: s3.IBucket): iam.IRole {
     let role = new iam.Role(
       this,
       'newrelic-firehose-role', {
@@ -209,6 +209,7 @@ export class NewRelicStack extends BaseStack {
     );
     addBaseTags(role);
 
+    // TODO: create more restrictive policy
     role.addToPolicy(
       new iam.PolicyStatement({
         actions: [
@@ -256,8 +257,8 @@ export class NewRelicStack extends BaseStack {
           'S3:PutObjectAcl',
         ],
         resources: [
-          `${bucket.bucketArn}`,
-          `${bucket.bucketArn}/*`,
+          `${newRelicFirehoseBucket.bucketArn}`,
+          `${newRelicFirehoseBucket.bucketArn}/*`,
         ],
       }),
     );
