@@ -36,8 +36,8 @@ export class NewRelicStack extends BaseStack {
   newRelicBucket: s3.IBucket;
   newRelicRole: iam.IRole;
   newRelicFirehoseRole: iam.IRole;
-  newRelicFirehoseMetrics: firehose.CfnDeliveryStream | null;
-  newRelicFirehoseLogs: firehose.CfnDeliveryStream | null;
+  newRelicFirehoseMetrics: any;
+  newRelicFirehoseLogs: any;
 
   constructor(scope: Construct, id: string, props: NewRelicStackProps) {
     super(scope, id, props);
