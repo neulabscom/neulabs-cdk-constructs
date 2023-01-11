@@ -4,6 +4,7 @@ import * as firehose from 'aws-cdk-lib/aws-kinesisfirehose';
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import * as secretsmanager from 'aws-cdk-lib/aws-secretsmanager';
 import { Construct } from 'constructs';
+import { addBaseTags } from '../../common/utils';
 import { BaseStack, BaseStackProps } from '../base';
 
 export enum EndpointType {
@@ -113,7 +114,7 @@ export class NewRelicStack extends BaseStack {
         httpEndpointDestinationConfiguration: httpEndpointMetrics,
       },
     );
-    this.addBaseTag(firehoseStream);
+    addBaseTags(firehoseStream);
     return firehoseStream;
   }
 
@@ -129,7 +130,7 @@ export class NewRelicStack extends BaseStack {
         },
       },
     );
-    this.addBaseTag(secret);
+    addBaseTags(secret);
     return secret;
   }
 
@@ -155,7 +156,7 @@ export class NewRelicStack extends BaseStack {
         ],
       },
     );
-    this.addBaseTag(bucket);
+    addBaseTags(bucket);
     return bucket;
   }
 
@@ -166,7 +167,7 @@ export class NewRelicStack extends BaseStack {
         assumedBy: new iam.ServicePrincipal('firehose.amazonaws.com'),
       },
     );
-    this.addBaseTag(role);
+    addBaseTags(role);
 
     role.addToPolicy(
       new iam.PolicyStatement({
@@ -198,7 +199,7 @@ export class NewRelicStack extends BaseStack {
           'kafka-cluster:DescribeGroup',
 
           'lambda:InvokeFunction',
-          'lambda:GetFunctionConfiguration'
+          'lambda:GetFunctionConfiguration',
         ],
       }),
     );
