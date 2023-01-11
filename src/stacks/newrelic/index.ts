@@ -99,7 +99,7 @@ export class NewRelicStack extends BaseStack {
 
     addBaseTags(role);
 
-    new CfnOutput(this, 'bucketName', {
+    new CfnOutput(this, 'newrelic-role-output', {
       value: role.roleArn,
       description: 'New Relic role arn',
       exportName: 'newRelicRole',
