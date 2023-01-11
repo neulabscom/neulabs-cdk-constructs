@@ -1,4 +1,4 @@
-import { Duration, SecretValue } from 'aws-cdk-lib';
+import { Duration, SecretValue, RemovalPolicy, CfnOutput } from 'aws-cdk-lib';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as firehose from 'aws-cdk-lib/aws-kinesisfirehose';
 import * as s3 from 'aws-cdk-lib/aws-s3';
@@ -6,6 +6,8 @@ import * as secretsmanager from 'aws-cdk-lib/aws-secretsmanager';
 import { Construct } from 'constructs';
 import { addBaseTags } from '../../common/utils';
 import { BaseStack, BaseStackProps } from '../base';
+
+export const NEW_RELIC_AWS_ACCOUNT_ID = '754728514883';
 
 export enum EndpointType {
   METRICS = 'metrics',
@@ -33,23 +35,22 @@ export class NewRelicStack extends BaseStack {
   newRelicSecret: secretsmanager.ISecret;
   newRelicBucket: s3.IBucket;
   newRelicRole: iam.IRole;
+  newRelicFirehoseRole: iam.IRole;
   newRelicFirehoseMetrics: any;
   newRelicFirehoseLogs: any;
 
   constructor(scope: Construct, id: string, props: NewRelicStackProps) {
     super(scope, id, props);
 
-    // TODO:
-    //  - create new relic integration https://docs.newrelic.com/docs/infrastructure/amazon-integrations/connect/connect-aws-new-relic-infrastructure-monitoring/
-    //  - remove bucket if destroy stack
+    this.newRelicRole = this.createNewRelicRole(props.newRelicAccountId);
 
     this.newRelicSecret = this.createSecrets(props.newRelicAccountId, props.newRelicLicenseKey);
     this.newRelicBucket = this.createFirehoseBucket();
-    this.newRelicRole = this.createFirehoseRole(this.newRelicBucket);
+    this.newRelicFirehoseRole = this.createFirehoseRole(this.newRelicBucket);
 
     if (props.newRelicApiUrlLogs) {
       this.newRelicFirehoseLogs = this.createFirehoseStream(
-        this.newRelicRole,
+        this.newRelicFirehoseRole,
         EndpointType.LOGS,
         props.newRelicApiUrlLogs,
         props.newRelicLicenseKey,
@@ -60,7 +61,7 @@ export class NewRelicStack extends BaseStack {
 
     if (props.newRelicApiUrlMetrics) {
       this.newRelicFirehoseMetrics = this.createFirehoseStream(
-        this.newRelicRole,
+        this.newRelicFirehoseRole,
         EndpointType.METRICS,
         props.newRelicApiUrlMetrics,
         props.newRelicLicenseKey,
@@ -68,6 +69,43 @@ export class NewRelicStack extends BaseStack {
     } else {
       this.newRelicFirehoseMetrics = null;
     }
+  }
+
+  createNewRelicRole(newRelicAccountId: string): iam.IRole {
+    let role = new iam.Role(
+      this,
+      'newrelic-role', {
+        roleName: 'NewRelicInfrastructure-Integrations',
+        assumedBy: new iam.AccountPrincipal(NEW_RELIC_AWS_ACCOUNT_ID),
+        externalIds: [
+          newRelicAccountId,
+        ],
+        managedPolicies: [
+          iam.ManagedPolicy.fromAwsManagedPolicyName('ReadOnlyAccess'),
+        ],
+      },
+    );
+
+    role.addToPolicy(
+      new iam.PolicyStatement({
+        actions: [
+          'budgets:ViewBudget',
+        ],
+        resources: [
+          '*',
+        ],
+      }),
+    );
+
+    addBaseTags(role);
+
+    new CfnOutput(this, 'bucketName', {
+      value: role.roleArn,
+      description: 'New Relic role arn',
+      exportName: 'newRelicRole',
+    });
+
+    return role;
   }
 
   createFirehoseStream(role: iam.IRole, endpointType: EndpointType, endpointUrl: string, newRelicLicenseLey: string):firehose.CfnDeliveryStream {
@@ -154,6 +192,8 @@ export class NewRelicStack extends BaseStack {
             ],
           },
         ],
+        removalPolicy: RemovalPolicy.DESTROY,
+        autoDeleteObjects: true,
       },
     );
     addBaseTags(bucket);

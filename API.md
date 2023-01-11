@@ -55,7 +55,6 @@ new stacks.BaseStack(scope: Construct, id: string, props: BaseStackProps)
 | <code><a href="#neulabs-cdk-constructs.stacks.BaseStack.resolve">resolve</a></code> | Resolve a tokenized value in the context of the current stack. |
 | <code><a href="#neulabs-cdk-constructs.stacks.BaseStack.splitArn">splitArn</a></code> | Splits the provided ARN into its components. |
 | <code><a href="#neulabs-cdk-constructs.stacks.BaseStack.toJsonString">toJsonString</a></code> | Convert an object, potentially containing tokens, to a JSON string. |
-| <code><a href="#neulabs-cdk-constructs.stacks.BaseStack.addBaseTag">addBaseTag</a></code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.stacks.BaseStack.createResourcesGroup">createResourcesGroup</a></code> | *No description.* |
 
 ---
@@ -400,18 +399,6 @@ Convert an object, potentially containing tokens, to a JSON string.
 
 ---
 
-##### `addBaseTag` <a name="addBaseTag" id="neulabs-cdk-constructs.stacks.BaseStack.addBaseTag"></a>
-
-```typescript
-public addBaseTag(module: any): void
-```
-
-###### `module`<sup>Required</sup> <a name="module" id="neulabs-cdk-constructs.stacks.BaseStack.addBaseTag.parameter.module"></a>
-
-- *Type:* any
-
----
-
 ##### `createResourcesGroup` <a name="createResourcesGroup" id="neulabs-cdk-constructs.stacks.BaseStack.createResourcesGroup"></a>
 
 ```typescript
@@ -523,12 +510,7 @@ The construct to start the search from.
 | <code><a href="#neulabs-cdk-constructs.stacks.BaseStack.property.nestedStackParent">nestedStackParent</a></code> | <code>aws-cdk-lib.Stack</code> | If this is a nested stack, returns it's parent stack. |
 | <code><a href="#neulabs-cdk-constructs.stacks.BaseStack.property.nestedStackResource">nestedStackResource</a></code> | <code>aws-cdk-lib.CfnResource</code> | If this is a nested stack, this represents its `AWS::CloudFormation::Stack` resource. |
 | <code><a href="#neulabs-cdk-constructs.stacks.BaseStack.property.terminationProtection">terminationProtection</a></code> | <code>boolean</code> | Whether termination protection is enabled for this stack. |
-| <code><a href="#neulabs-cdk-constructs.stacks.BaseStack.property.businessUnit">businessUnit</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.stacks.BaseStack.property.date">date</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.stacks.BaseStack.property.domain">domain</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.stacks.BaseStack.property.repository">repository</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.stacks.BaseStack.property.stage">stage</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.stacks.BaseStack.property.version">version</a></code> | <code>string</code> | *No description.* |
 
 ---
 
@@ -862,60 +844,10 @@ Whether termination protection is enabled for this stack.
 
 ---
 
-##### `businessUnit`<sup>Required</sup> <a name="businessUnit" id="neulabs-cdk-constructs.stacks.BaseStack.property.businessUnit"></a>
-
-```typescript
-public readonly businessUnit: string;
-```
-
-- *Type:* string
-
----
-
-##### `date`<sup>Required</sup> <a name="date" id="neulabs-cdk-constructs.stacks.BaseStack.property.date"></a>
-
-```typescript
-public readonly date: string;
-```
-
-- *Type:* string
-
----
-
-##### `domain`<sup>Required</sup> <a name="domain" id="neulabs-cdk-constructs.stacks.BaseStack.property.domain"></a>
-
-```typescript
-public readonly domain: string;
-```
-
-- *Type:* string
-
----
-
-##### `repository`<sup>Required</sup> <a name="repository" id="neulabs-cdk-constructs.stacks.BaseStack.property.repository"></a>
-
-```typescript
-public readonly repository: string;
-```
-
-- *Type:* string
-
----
-
 ##### `stage`<sup>Required</sup> <a name="stage" id="neulabs-cdk-constructs.stacks.BaseStack.property.stage"></a>
 
 ```typescript
 public readonly stage: string;
-```
-
-- *Type:* string
-
----
-
-##### `version`<sup>Required</sup> <a name="version" id="neulabs-cdk-constructs.stacks.BaseStack.property.version"></a>
-
-```typescript
-public readonly version: string;
 ```
 
 - *Type:* string
@@ -947,11 +879,7 @@ const baseStackProps: stacks.BaseStackProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.stacks.BaseStackProps.property.synthesizer">synthesizer</a></code> | <code>aws-cdk-lib.IStackSynthesizer</code> | Synthesis method to use while deploying this stack. |
 | <code><a href="#neulabs-cdk-constructs.stacks.BaseStackProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Stack tags that will be applied to all the taggable resources and the stack itself. |
 | <code><a href="#neulabs-cdk-constructs.stacks.BaseStackProps.property.terminationProtection">terminationProtection</a></code> | <code>boolean</code> | Whether to enable termination protection for this stack. |
-| <code><a href="#neulabs-cdk-constructs.stacks.BaseStackProps.property.businessUnit">businessUnit</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.stacks.BaseStackProps.property.domain">domain</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.stacks.BaseStackProps.property.repository">repository</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.stacks.BaseStackProps.property.stage">stage</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.stacks.BaseStackProps.property.version">version</a></code> | <code>string</code> | *No description.* |
 
 ---
 
@@ -1125,50 +1053,10 @@ Whether to enable termination protection for this stack.
 
 ---
 
-##### `businessUnit`<sup>Required</sup> <a name="businessUnit" id="neulabs-cdk-constructs.stacks.BaseStackProps.property.businessUnit"></a>
-
-```typescript
-public readonly businessUnit: string;
-```
-
-- *Type:* string
-
----
-
-##### `domain`<sup>Required</sup> <a name="domain" id="neulabs-cdk-constructs.stacks.BaseStackProps.property.domain"></a>
-
-```typescript
-public readonly domain: string;
-```
-
-- *Type:* string
-
----
-
-##### `repository`<sup>Required</sup> <a name="repository" id="neulabs-cdk-constructs.stacks.BaseStackProps.property.repository"></a>
-
-```typescript
-public readonly repository: string;
-```
-
-- *Type:* string
-
----
-
 ##### `stage`<sup>Required</sup> <a name="stage" id="neulabs-cdk-constructs.stacks.BaseStackProps.property.stage"></a>
 
 ```typescript
 public readonly stage: string;
-```
-
-- *Type:* string
-
----
-
-##### `version`<sup>Required</sup> <a name="version" id="neulabs-cdk-constructs.stacks.BaseStackProps.property.version"></a>
-
-```typescript
-public readonly version: string;
 ```
 
 - *Type:* string
