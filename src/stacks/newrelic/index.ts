@@ -48,6 +48,7 @@ export class NewRelicStack extends BaseStack {
 
     if (props.newRelicApiUrlLogs) {
       this.newRelicFirehoseLogs = this.createFirehoseStream(
+        this.newRelicRole,
         EndpointType.LOGS,
         props.newRelicApiUrlLogs,
         props.newRelicLicenseKey,
@@ -58,6 +59,7 @@ export class NewRelicStack extends BaseStack {
 
     if (props.newRelicApiUrlMetrics) {
       this.newRelicFirehoseMetrics = this.createFirehoseStream(
+        this.newRelicRole,
         EndpointType.METRICS,
         props.newRelicApiUrlMetrics,
         props.newRelicLicenseKey,
@@ -67,7 +69,7 @@ export class NewRelicStack extends BaseStack {
     }
   }
 
-  createFirehoseStream(endpointType: EndpointType, endpointUrl: string, newRelicLicenseLey: string):firehose.CfnDeliveryStream {
+  createFirehoseStream(role: iam.IRole, endpointType: EndpointType, endpointUrl: string, newRelicLicenseLey: string):firehose.CfnDeliveryStream {
     if (this.stage == 'production') {
       // Minute in one day: 1440
       // Interval: 5min
@@ -99,11 +101,12 @@ export class NewRelicStack extends BaseStack {
       requestConfiguration: {
         contentEncoding: 'GZIP',
       },
+      roleArn: role.roleArn,
     };
 
     let firehoseStream = new firehose.CfnDeliveryStream(
       this,
-      `monitoring-firehose-${endpointType}`,
+      `newrelic-firehose-${endpointType}`,
       {
         deliveryStreamName: `NewRelic-stream-${endpointType}`,
         deliveryStreamType: 'DirectPut',
@@ -159,12 +162,46 @@ export class NewRelicStack extends BaseStack {
   createFirehoseRole(bucket: s3.IBucket): iam.IRole {
     let role = new iam.Role(
       this,
-      'new-relic-firehose-role', {
+      'newrelic-firehose-role', {
         assumedBy: new iam.ServicePrincipal('firehose.amazonaws.com'),
       },
     );
     this.addBaseTag(role);
 
+    role.addToPolicy(
+      new iam.PolicyStatement({
+        actions: [
+          'glue:GetTable',
+          'glue:GetTableVersion',
+          'glue:GetTableVersions',
+          'glue:GetSchemaByDefinition',
+          'glue:GetSchemaVersion',
+
+          'logs:PutLogEvents',
+
+          'kinesis:DescribeStream',
+          'kinesis:GetShardIterator',
+          'kinesis:GetRecords',
+          'kinesis:ListShards',
+
+          'kms:Decrypt',
+          'kms:GenerateDataKey',
+          'kms:Decrypt',
+
+          'kafka:GetBootstrapBrokers',
+          'kafka:DescribeCluster',
+          'kafka:DescribeClusterV2',
+          'kafka-cluster:Connect',
+          'kafka-cluster:DescribeTopic',
+          'kafka-cluster:DescribeTopicDynamicConfiguration',
+          'kafka-cluster:ReadData',
+          'kafka-cluster:DescribeGroup',
+
+          'lambda:InvokeFunction',
+          'lambda:GetFunctionConfiguration'
+        ],
+      }),
+    );
 
     role.addToPolicy(
       new iam.PolicyStatement({
