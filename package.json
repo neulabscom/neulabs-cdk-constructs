@@ -2,7 +2,7 @@
   "name": "neulabs-cdk-constructs",
   "repository": {
     "type": "git",
-    "url": "git@github.com:neulabscom/neulabs-cdk-constructs.git"
+    "url": "https://github.com/neulabscom/neulabs-cdk-constructs.git"
   },
   "scripts": {
     "build": "npx projen build",

@@ -7,7 +7,7 @@ const project = new cdk.JsiiProject({
   authorAddress: 'tech@neulabs.com',
   defaultReleaseBranch: 'main',
   name: 'neulabs-cdk-constructs',
-  repositoryUrl: 'git@github.com:neulabscom/neulabs-cdk-constructs.git',
+  repositoryUrl: 'https://github.com/neulabscom/neulabs-cdk-constructs.git',
 
   deps: [
     `@aws-cdk/aws-apigatewayv2-alpha@${cdkVersion}-alpha.0`,
