@@ -35,7 +35,7 @@ export interface NewRelicStackProps extends BaseStackProps {
 export class NewRelicStack extends BaseStack {
   newRelicSecret: secretsmanager.ISecret;
   newRelicBucket: s3.IBucket;
-  newRelicRole: iam.IRole;
+  newRelicIntegrationRole: iam.IRole;
   newRelicFirehoseRole: iam.IRole;
   newRelicFirehoseMetrics?: firehose.CfnDeliveryStream;
   newRelicFirehoseLogs?: firehose.CfnDeliveryStream;
@@ -43,7 +43,7 @@ export class NewRelicStack extends BaseStack {
   constructor(scope: Construct, id: string, props: NewRelicStackProps) {
     super(scope, id, props);
 
-    this.newRelicRole = this.createNewRelicRole(props.newRelicAccountId);
+    this.newRelicIntegrationRole = this.createNewRelicRole(props.newRelicAccountId);
 
     this.newRelicSecret = this.createSecrets(props.newRelicAccountId, props.newRelicLicenseKey);
     this.newRelicBucket = this.createFirehoseBucket(props.newRelicBucketName);
@@ -51,6 +51,7 @@ export class NewRelicStack extends BaseStack {
 
     if (props.newRelicApiUrlLogs) {
       this.newRelicFirehoseLogs = this.createFirehoseStream(
+        this.newRelicBucket,
         this.newRelicFirehoseRole,
         EndpointType.LOGS,
         props.newRelicApiUrlLogs,
@@ -60,6 +61,7 @@ export class NewRelicStack extends BaseStack {
 
     if (props.newRelicApiUrlMetrics) {
       this.newRelicFirehoseMetrics = this.createFirehoseStream(
+        this.newRelicBucket,
         this.newRelicFirehoseRole,
         EndpointType.METRICS,
         props.newRelicApiUrlMetrics,
@@ -77,10 +79,11 @@ export class NewRelicStack extends BaseStack {
         externalIds: [
           newRelicAccountId,
         ],
-        managedPolicies: [
-          iam.ManagedPolicy.fromAwsManagedPolicyName('ReadOnlyAccess'),
-        ],
       },
+    );
+
+    role.addManagedPolicy(
+      iam.ManagedPolicy.fromAwsManagedPolicyName('ReadOnlyAccess'),
     );
 
     role.addToPolicy(
@@ -88,9 +91,7 @@ export class NewRelicStack extends BaseStack {
         actions: [
           'budgets:ViewBudget',
         ],
-        resources: [
-          '*',
-        ],
+        resources: ['*'],
       }),
     );
 
@@ -105,7 +106,13 @@ export class NewRelicStack extends BaseStack {
     return role;
   }
 
-  createFirehoseStream(role: iam.IRole, endpointType: EndpointType, endpointUrl: string, newRelicLicenseLey: string):firehose.CfnDeliveryStream {
+  createFirehoseStream(
+    newRelicBucket: s3.IBucket,
+    role: iam.IRole,
+    endpointType: EndpointType,
+    endpointUrl: string,
+    newRelicLicenseLey: string,
+  ):firehose.CfnDeliveryStream {
     if (this.stage == 'production') {
       // Minute in one day: 1440
       // Interval: 5min
@@ -131,8 +138,8 @@ export class NewRelicStack extends BaseStack {
         name: endpointType,
       },
       s3Configuration: {
-        bucketArn: this.newRelicBucket.bucketArn,
-        roleArn: this.newRelicRole.roleArn,
+        bucketArn: newRelicBucket.bucketArn,
+        roleArn: role.roleArn,
       },
       requestConfiguration: {
         contentEncoding: 'GZIP',
@@ -239,6 +246,7 @@ export class NewRelicStack extends BaseStack {
           'lambda:InvokeFunction',
           'lambda:GetFunctionConfiguration',
         ],
+        resources: ['*'],
       }),
     );
 

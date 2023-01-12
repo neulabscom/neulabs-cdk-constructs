@@ -10,15 +10,30 @@
     "@jridgewell/gen-mapping" "^0.1.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@aws-cdk/aws-apigatewayv2-alpha@2.50.0-alpha.0":
-  version "2.50.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/@aws-cdk/aws-apigatewayv2-alpha/-/aws-apigatewayv2-alpha-2.50.0-alpha.0.tgz#e4879e9cef6816933efd4b906904c8d0f76f662a"
-  integrity sha512-dttWDqy+nTg/fD9y0egvj7/zdnOVEo0qyGsep1RV+p16R3F4ObMKyPVIg15fz57tK//Gp/i1QgXsZaSqbcWHOg==
+"@aws-cdk/asset-awscli-v1@^2.2.9":
+  version "2.2.49"
+  resolved "https://registry.yarnpkg.com/@aws-cdk/asset-awscli-v1/-/asset-awscli-v1-2.2.49.tgz#af7618a3a39bf103f82d7aa396efa50e6ae79092"
+  integrity sha512-Qd5bdLlC/sphWQQPNn7etKXWCh+fij7DWxtkIwvhhZ+LM6UEApGLS8sBLBQcRO2ZQdEuNb+zeClUy+3DNojfeg==
 
-"@aws-cdk/aws-apigatewayv2-integrations-alpha@2.50.0-alpha.0":
-  version "2.50.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/@aws-cdk/aws-apigatewayv2-integrations-alpha/-/aws-apigatewayv2-integrations-alpha-2.50.0-alpha.0.tgz#be5a64f862232d89acef79778d50f750d44f2d75"
-  integrity sha512-XEhz4HsU0HtQJnbs9XSb/yPN/1EEYAOZthWRKyniS9IWeGruVjEhWndoXpu0S7w+M5Bni7D9wrCTkqTgmTEvlw==
+"@aws-cdk/asset-kubectl-v20@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@aws-cdk/asset-kubectl-v20/-/asset-kubectl-v20-2.1.1.tgz#d01c1efb867fb7f2cfd8c8b230b8eae16447e156"
+  integrity sha512-U1ntiX8XiMRRRH5J1IdC+1t5CE89015cwyt5U63Cpk0GnMlN5+h9WsWMlKlPXZR4rdq/m806JRlBMRpBUB2Dhw==
+
+"@aws-cdk/asset-node-proxy-agent-v5@^2.0.15":
+  version "2.0.38"
+  resolved "https://registry.yarnpkg.com/@aws-cdk/asset-node-proxy-agent-v5/-/asset-node-proxy-agent-v5-2.0.38.tgz#6765bef55f95220c52decb4adba8f75c1817b0f7"
+  integrity sha512-BBwAjORhuUkTGO3CxGS5Evcp5n20h9v06Sftn2R1DuSm8zIoUlPsNlI1HUk8XqYuoEI4aD7IKRQBLglv09ciJQ==
+
+"@aws-cdk/aws-apigatewayv2-alpha@2.53.0-alpha.0":
+  version "2.53.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@aws-cdk/aws-apigatewayv2-alpha/-/aws-apigatewayv2-alpha-2.53.0-alpha.0.tgz#c3e123f1e78911cb952bc688ae425498ad186c0c"
+  integrity sha512-54/18zTCAfHr3CpGI0hmzpxRaXZ8SEC1qU6uUi9927TWc6uN68MN7VGD4mkxWqsiBxatVa1aTuvrX/9I0hrwLw==
+
+"@aws-cdk/aws-apigatewayv2-integrations-alpha@2.53.0-alpha.0":
+  version "2.53.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@aws-cdk/aws-apigatewayv2-integrations-alpha/-/aws-apigatewayv2-integrations-alpha-2.53.0-alpha.0.tgz#61bc262d30e97dd58b0ef235df5c22f0ec76b4d3"
+  integrity sha512-lHzRA4PwWu+RpGwlhtb1hdJ83wdN1quthbTvIRGbcLctSQ81GZ50Fo2WkoDPHwJY4DIgmwy8sc/sni747XL1lg==
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.12.13", "@babel/code-frame@^7.18.6":
   version "7.18.6"
@@ -1278,11 +1293,14 @@ at-least-node@^1.0.0:
   resolved "https://registry.yarnpkg.com/at-least-node/-/at-least-node-1.0.0.tgz#602cd4b46e844ad4effc92a8011a3c46e0238dc2"
   integrity sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg==
 
-aws-cdk-lib@2.50.0:
-  version "2.50.0"
-  resolved "https://registry.yarnpkg.com/aws-cdk-lib/-/aws-cdk-lib-2.50.0.tgz#2b3a9ba4c1c4c56fd32e3e4f57eea8bf9fa3dbba"
-  integrity sha512-deDbZTI7oyu3rqUyqjwhP6tnUO8MD70lE98yR65xiYty4yXBpsWKbeH3s1wNLpLAWS3hWJYyMtjZ4ZfC35NtVg==
+aws-cdk-lib@2.53.0:
+  version "2.53.0"
+  resolved "https://registry.yarnpkg.com/aws-cdk-lib/-/aws-cdk-lib-2.53.0.tgz#c36ecfb87ba4e7d1cdfe0c620161beda0ce4aa67"
+  integrity sha512-ADpJ9luJxzmOrP/GJ37nA1YtdNmsOsjE+NZnQOpB7YL0spUxZJGNVAselaFLSDZmIsC6d9mSnW81fj4SDP1gAw==
   dependencies:
+    "@aws-cdk/asset-awscli-v1" "^2.2.9"
+    "@aws-cdk/asset-kubectl-v20" "^2.1.1"
+    "@aws-cdk/asset-node-proxy-agent-v5" "^2.0.15"
     "@balena/dockerignore" "^1.0.2"
     case "1.6.3"
     fs-extra "^9.1.0"

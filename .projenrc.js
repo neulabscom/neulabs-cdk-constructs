@@ -1,6 +1,6 @@
 const { cdk, javascript } = require('projen');
 
-const cdkVersion = '2.50.0';
+const cdkVersion = '2.53.0';
 
 const project = new cdk.JsiiProject({
   author: 'Neulabs',
@@ -8,7 +8,9 @@ const project = new cdk.JsiiProject({
   defaultReleaseBranch: 'main',
   name: 'neulabs-cdk-constructs',
   repositoryUrl: 'https://github.com/neulabscom/neulabs-cdk-constructs.git',
-
+  peerDeps: [
+    `aws-cdk-lib@${cdkVersion}`,
+  ],
   deps: [
     `@aws-cdk/aws-apigatewayv2-alpha@${cdkVersion}-alpha.0`,
     `@aws-cdk/aws-apigatewayv2-integrations-alpha@${cdkVersion}-alpha.0`,
