@@ -27,6 +27,7 @@ export enum EndpointUrlMetrics {
 export interface NewRelicStackProps extends BaseStackProps {
   readonly newRelicLicenseKey: string;
   readonly newRelicAccountId: string;
+  readonly newRelicBucketName: string;
   readonly newRelicApiUrlMetrics: EndpointUrlMetrics;
   readonly newRelicApiUrlLogs: EndpointUrlLogs;
 }
@@ -36,8 +37,8 @@ export class NewRelicStack extends BaseStack {
   newRelicBucket: s3.IBucket;
   newRelicRole: iam.IRole;
   newRelicFirehoseRole: iam.IRole;
-  newRelicFirehoseMetrics: any;
-  newRelicFirehoseLogs: any;
+  newRelicFirehoseMetrics?: firehose.CfnDeliveryStream;
+  newRelicFirehoseLogs?: firehose.CfnDeliveryStream;
 
   constructor(scope: Construct, id: string, props: NewRelicStackProps) {
     super(scope, id, props);
@@ -45,7 +46,7 @@ export class NewRelicStack extends BaseStack {
     this.newRelicRole = this.createNewRelicRole(props.newRelicAccountId);
 
     this.newRelicSecret = this.createSecrets(props.newRelicAccountId, props.newRelicLicenseKey);
-    this.newRelicBucket = this.createFirehoseBucket();
+    this.newRelicBucket = this.createFirehoseBucket(props.newRelicBucketName);
     this.newRelicFirehoseRole = this.createFirehoseRole(this.newRelicBucket);
 
     if (props.newRelicApiUrlLogs) {
@@ -55,8 +56,6 @@ export class NewRelicStack extends BaseStack {
         props.newRelicApiUrlLogs,
         props.newRelicLicenseKey,
       );
-    } else {
-      this.newRelicFirehoseLogs = null;
     }
 
     if (props.newRelicApiUrlMetrics) {
@@ -66,8 +65,6 @@ export class NewRelicStack extends BaseStack {
         props.newRelicApiUrlMetrics,
         props.newRelicLicenseKey,
       );
-    } else {
-      this.newRelicFirehoseMetrics = null;
     }
   }
 
@@ -172,12 +169,12 @@ export class NewRelicStack extends BaseStack {
     return secret;
   }
 
-  createFirehoseBucket(): s3.IBucket {
+  createFirehoseBucket(newRelicBucketName: string): s3.IBucket {
     let bucket = new s3.Bucket(
       this,
       'newrelic-bucket',
       {
-        bucketName: `neulabs-newrelic-${this.stage}-${(Math.random() + 1).toString(36).substring(6)}`,
+        bucketName: newRelicBucketName,
         versioned: true,
         lifecycleRules: [
           {
