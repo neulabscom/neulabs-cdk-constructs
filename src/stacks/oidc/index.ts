@@ -19,8 +19,8 @@ export interface GithubOIDCStackStackProps extends BaseStackProps {
   readonly githubUser: string;
   readonly githubRepository: string;
   readonly tokenAction: TokenActions;
-  readonly cdkDeployRoleManagedPolicy?: iam.ManagedPolicy[];
-  readonly cdkDeployRolePolicyStatement?: iam.PolicyStatement[];
+  readonly cdkDeployRoleManagedPolicies?: iam.ManagedPolicy[];
+  readonly cdkDeployRolePolicyStatements?: iam.PolicyStatement[];
   readonly tokenActionCustom?: string;
 }
 
@@ -31,8 +31,8 @@ export class GithubOIDCStack extends BaseStack {
   oidcRole: iam.IRole;
   cdkBootstrapRole: iam.IRole;
   cdkDeployRole: iam.IRole;
-  cdkDeployRoleManagedPolicy?: iam.ManagedPolicy[];
-  cdkDeployRolePolicyStatement?: iam.PolicyStatement[];
+  cdkDeployRoleManagedPolicies?: iam.ManagedPolicy[];
+  cdkDeployRolePolicyStatements?: iam.PolicyStatement[];
 
   constructor(scope: Construct, id: string, props: GithubOIDCStackStackProps) {
     super(scope, id, props);
@@ -46,9 +46,9 @@ export class GithubOIDCStack extends BaseStack {
     this.oidcRole = this.createOidcRole(ProviderUrl.GITHUB, token);
     this.cdkBootstrapRole = this.createCdkBootstrapRole();
 
-    this.cdkDeployRoleManagedPolicy = props.cdkDeployRoleManagedPolicy;
-    this.cdkDeployRolePolicyStatement = props.cdkDeployRolePolicyStatement;
-    this.cdkDeployRole = this.createCdkDeployRole(this.cdkDeployRoleManagedPolicy, this.cdkDeployRolePolicyStatement);
+    this.cdkDeployRoleManagedPolicies = props.cdkDeployRoleManagedPolicies;
+    this.cdkDeployRolePolicyStatements = props.cdkDeployRolePolicyStatements;
+    this.cdkDeployRole = this.createCdkDeployRole(this.cdkDeployRoleManagedPolicies, this.cdkDeployRolePolicyStatements);
   }
 
   createTokenAction(tokenAction: TokenActions, githubUser: string, githubRepository: string, tokenActionCustom?: string): string {
@@ -72,7 +72,7 @@ export class GithubOIDCStack extends BaseStack {
   }
 
 
-  createCdkDeployRole(managed_policy?: iam.IManagedPolicy[], policy_statement?: iam.PolicyStatement[]): iam.IRole {
+  createCdkDeployRole(managed_policies?: iam.IManagedPolicy[], policy_statements?: iam.PolicyStatement[]): iam.IRole {
     let basePolicy = new iam.PolicyDocument(
       {
         statements: [
@@ -112,15 +112,15 @@ export class GithubOIDCStack extends BaseStack {
       },
     );
 
-    if (policy_statement) {
-      for (let index = 0; index < policy_statement.length; index++) {
-        role.addToPolicy(policy_statement[index]);
+    if (policy_statements) {
+      for (let index = 0; index < policy_statements.length; index++) {
+        role.addToPolicy(policy_statements[index]);
       }
     }
 
-    if (managed_policy) {
-      for (let index = 0; index < managed_policy.length; index++) {
-        role.addManagedPolicy(managed_policy[index]);
+    if (managed_policies) {
+      for (let index = 0; index < managed_policies.length; index++) {
+        role.addManagedPolicy(managed_policies[index]);
       }
     }
 
