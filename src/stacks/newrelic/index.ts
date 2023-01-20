@@ -1,4 +1,5 @@
 import { Duration, SecretValue, RemovalPolicy, CfnOutput } from 'aws-cdk-lib';
+import * as cloudwatch from 'aws-cdk-lib/aws-cloudwatch';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as firehose from 'aws-cdk-lib/aws-kinesisfirehose';
 import * as s3 from 'aws-cdk-lib/aws-s3';
@@ -6,6 +7,7 @@ import * as secretsmanager from 'aws-cdk-lib/aws-secretsmanager';
 import { Construct } from 'constructs';
 import { addBaseTags } from '../../common/utils';
 import { BaseStack, BaseStackProps } from '../base';
+
 
 export const NEW_RELIC_AWS_ACCOUNT_ID = '754728514883';
 
@@ -39,6 +41,7 @@ export class NewRelicStack extends BaseStack {
   newRelicFirehoseRole: iam.IRole;
   newRelicFirehoseMetrics?: firehose.CfnDeliveryStream;
   newRelicFirehoseLogs?: firehose.CfnDeliveryStream;
+  newRelicCloudwatchLogsStreamRole?: iam.IRole;
 
   constructor(scope: Construct, id: string, props: NewRelicStackProps) {
     super(scope, id, props);
@@ -57,6 +60,7 @@ export class NewRelicStack extends BaseStack {
         props.newRelicApiUrlLogs,
         props.newRelicLicenseKey,
       );
+      this.newRelicCloudwatchLogsStreamRole = this.createCloudwatchLogsStreamRole();
     }
 
     if (props.newRelicApiUrlMetrics) {
@@ -68,6 +72,41 @@ export class NewRelicStack extends BaseStack {
         props.newRelicLicenseKey,
       );
     }
+  }
+
+  createCloudwatchMetricStream(roleArn:string, firehoseArn: string) {
+    return new cloudwatch.CfnMetricStream(this, 'newrelic-cloudwatch-stream-metrics', {
+      firehoseArn: firehoseArn,
+      outputFormat: 'opentelemetry0.7',
+      roleArn: roleArn,
+      name: 'newelic-stream-metrics',
+    });
+  }
+
+  createCloudwatchLogsStreamRole(): iam.IRole {
+    let role = new iam.Role(
+      this,
+      'newrelic-logstream-role', {
+        roleName: 'NewRelicInfrastructure-CloudwatchStream',
+        assumedBy: new iam.ServicePrincipal('logs.amazonaws.com'),
+      },
+    );
+
+    role.addToPolicy(
+      new iam.PolicyStatement({
+        actions: [
+          'firehose:PutRecord',
+          'firehose:PutRecordBatch',
+          'kinesis:PutRecords',
+          'kinesis:PutRecord',
+        ],
+        resources: ['*'],
+      }),
+    );
+
+    addBaseTags(role);
+
+    return role;
   }
 
   createNewRelicRole(newRelicAccountId: string): iam.IRole {
