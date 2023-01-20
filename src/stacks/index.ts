@@ -1,3 +1,3 @@
 export * from './base';
-export * as newrelic from './newrelic';
+export * as monitoring from './monitoring';
 export * as oidc from './oidc';
