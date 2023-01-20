@@ -55,6 +55,7 @@ new stacks.BaseStack(scope: Construct, id: string, props: BaseStackProps)
 | <code><a href="#neulabs-cdk-constructs.stacks.BaseStack.resolve">resolve</a></code> | Resolve a tokenized value in the context of the current stack. |
 | <code><a href="#neulabs-cdk-constructs.stacks.BaseStack.splitArn">splitArn</a></code> | Splits the provided ARN into its components. |
 | <code><a href="#neulabs-cdk-constructs.stacks.BaseStack.toJsonString">toJsonString</a></code> | Convert an object, potentially containing tokens, to a JSON string. |
+| <code><a href="#neulabs-cdk-constructs.stacks.BaseStack.addBaseTags">addBaseTags</a></code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.stacks.BaseStack.createResourcesGroup">createResourcesGroup</a></code> | *No description.* |
 
 ---
@@ -396,6 +397,24 @@ Convert an object, potentially containing tokens, to a JSON string.
 ###### `space`<sup>Optional</sup> <a name="space" id="neulabs-cdk-constructs.stacks.BaseStack.toJsonString.parameter.space"></a>
 
 - *Type:* number
+
+---
+
+##### `addBaseTags` <a name="addBaseTags" id="neulabs-cdk-constructs.stacks.BaseStack.addBaseTags"></a>
+
+```typescript
+public addBaseTags(model: any, props?: BaseTagProps): void
+```
+
+###### `model`<sup>Required</sup> <a name="model" id="neulabs-cdk-constructs.stacks.BaseStack.addBaseTags.parameter.model"></a>
+
+- *Type:* any
+
+---
+
+###### `props`<sup>Optional</sup> <a name="props" id="neulabs-cdk-constructs.stacks.BaseStack.addBaseTags.parameter.props"></a>
+
+- *Type:* neulabs-cdk-constructs.utils.BaseTagProps
 
 ---
 
@@ -1057,6 +1076,67 @@ Whether to enable termination protection for this stack.
 
 ```typescript
 public readonly stage: string;
+```
+
+- *Type:* string
+
+---
+
+### BaseTagProps <a name="BaseTagProps" id="neulabs-cdk-constructs.utils.BaseTagProps"></a>
+
+#### Initializer <a name="Initializer" id="neulabs-cdk-constructs.utils.BaseTagProps.Initializer"></a>
+
+```typescript
+import { utils } from 'neulabs-cdk-constructs'
+
+const baseTagProps: utils.BaseTagProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#neulabs-cdk-constructs.utils.BaseTagProps.property.businessUnit">businessUnit</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.utils.BaseTagProps.property.domain">domain</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.utils.BaseTagProps.property.repositoryName">repositoryName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.utils.BaseTagProps.property.repositoryVersion">repositoryVersion</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `businessUnit`<sup>Optional</sup> <a name="businessUnit" id="neulabs-cdk-constructs.utils.BaseTagProps.property.businessUnit"></a>
+
+```typescript
+public readonly businessUnit: string;
+```
+
+- *Type:* string
+
+---
+
+##### `domain`<sup>Optional</sup> <a name="domain" id="neulabs-cdk-constructs.utils.BaseTagProps.property.domain"></a>
+
+```typescript
+public readonly domain: string;
+```
+
+- *Type:* string
+
+---
+
+##### `repositoryName`<sup>Optional</sup> <a name="repositoryName" id="neulabs-cdk-constructs.utils.BaseTagProps.property.repositoryName"></a>
+
+```typescript
+public readonly repositoryName: string;
+```
+
+- *Type:* string
+
+---
+
+##### `repositoryVersion`<sup>Optional</sup> <a name="repositoryVersion" id="neulabs-cdk-constructs.utils.BaseTagProps.property.repositoryVersion"></a>
+
+```typescript
+public readonly repositoryVersion: string;
 ```
 
 - *Type:* string

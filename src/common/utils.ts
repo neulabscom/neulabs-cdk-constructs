@@ -1,14 +1,14 @@
 import { Tags } from 'aws-cdk-lib';
 import * as env from './env';
 
-interface BaseTagPorps {
-  businessUnit?: string;
-  domain?: string;
-  repositoryName?: string;
-  repositoryVersion?: string;
+export interface BaseTagProps {
+  readonly businessUnit?: string;
+  readonly domain?: string;
+  readonly repositoryName?: string;
+  readonly repositoryVersion?: string;
 }
 
-export function addBaseTags(module: any, props?: BaseTagPorps) {
+export function addBaseTags(module: any, props?: BaseTagProps) {
   Tags.of(module).add(env.TagsKey.ENVIRONMENT, env.ENVIRONMENT);
   Tags.of(module).add(env.TagsKey.TIMESTAMP_DEPLOY_CDK, env.TIMESTAMP_DEPLOY_CDK);
 
