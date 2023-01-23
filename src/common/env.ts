@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-shadow */
+export const CDK_REGION = process.env.CDK_DEFAULT_REGION ?? '';
+export const CDK_ACCOUNT_ID = process.env.CDK_DEFAULT_ACCOUNT ?? '';
 export const ENVIRONMENT = process.env.ENVIRONMENT ?? '';
 export const BUSINESS_UNIT = process.env.BUSINESS_UNIT ?? '';
 export const DOMAIN = process.env.DOMAIN ?? '';
