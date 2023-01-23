@@ -10,7 +10,7 @@ export interface FunctionProps extends lambda.FunctionProps {
   readonly stage: string;
 }
 
-export interface FucntionNewRelicProps extends FunctionProps {
+export interface FunctionNewRelicProps extends FunctionProps {
   readonly newRelicLayerName: string;
   readonly newRelicLayerVersion: number;
   readonly newRelicAccountId: string;
@@ -21,7 +21,7 @@ function getFunctionId(id: string, stage: string) {
   return id + '-' + stage;
 }
 
-export class Fucntion extends Construct {
+export class Function extends Construct {
   public readonly function: lambda.Function;
 
   constructor(scope: Construct, id: string, props: FunctionProps) {
@@ -33,10 +33,10 @@ export class Fucntion extends Construct {
   }
 }
 
-export class FucntionNewRelic extends Construct {
+export class FunctionNewRelic extends Construct {
   public readonly function: lambda.Function;
 
-  constructor(scope: Construct, id: string, props: FucntionNewRelicProps) {
+  constructor(scope: Construct, id: string, props: FunctionNewRelicProps) {
     super(scope, id);
 
     let handler = 'newrelic_lambda_wrapper.handler';
