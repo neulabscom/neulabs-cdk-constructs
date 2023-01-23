@@ -11,12 +11,10 @@ export interface FunctionProps extends lambda.FunctionProps {
 }
 
 export interface FucntionNewRelicProps extends FunctionProps {
-  readonly stage: string;
   readonly newRelicLayerName: string;
   readonly newRelicLayerVersion: number;
   readonly newRelicAccountId: string;
   readonly newRelicwithExtensionSendLogs?: boolean;
-  handler: string;
 }
 
 function getFunctionId(id: string, stage: string) {
@@ -41,10 +39,10 @@ export class FucntionNewRelic extends Construct {
   constructor(scope: Construct, id: string, props: FucntionNewRelicProps) {
     super(scope, id);
 
-    let handler = props.handler;
-    props.handler = 'newrelic_lambda_wrapper.handler';
+    let handler = 'newrelic_lambda_wrapper.handler';
+    let app_handler = props.handler;
 
-    let lambdaFunction = new lambda.Function(scope, getFunctionId(id, props.stage), { ...props });
+    let lambdaFunction = new lambda.Function(scope, getFunctionId(id, props.stage), { ...props, handler });
 
     lambdaFunction.addToRolePolicy(
       new iam.PolicyStatement({
@@ -55,7 +53,7 @@ export class FucntionNewRelic extends Construct {
 
     lambdaFunction.addEnvironment('ENVIRONMENT', props.stage);
     lambdaFunction.addEnvironment('NEW_RELIC_ACCOUNT_ID', props.newRelicAccountId);
-    lambdaFunction.addEnvironment('NEW_RELIC_LAMBDA_HANDLER', handler);
+    lambdaFunction.addEnvironment('NEW_RELIC_LAMBDA_HANDLER', app_handler);
     lambdaFunction.addEnvironment('NEW_RELIC_LAMBDA_EXTENSION_ENABLED', 'true');
     if (props.newRelicwithExtensionSendLogs) {
       lambdaFunction.addEnvironment('NEW_RELIC_EXTENSION_SEND_FUNCTION_LOGS', 'true');
