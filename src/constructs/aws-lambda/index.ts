@@ -2,6 +2,7 @@ import * as iam from 'aws-cdk-lib/aws-iam';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
 import { CDK_ACCOUNT_ID, CDK_REGION } from '../../common/env';
+import * as env from '../../common/env';
 import { addBaseTags } from '../../common/utils';
 
 export const NEW_RELIC_LAYERS_ACCOUNT_ID = '451483290750';
@@ -17,32 +18,61 @@ export interface FunctionNewRelicProps extends FunctionProps {
   readonly newRelicwithExtensionSendLogs?: boolean;
 }
 
-function getFunctionId(id: string, stage: string) {
-  return id + '-' + stage;
+function getConstructId(id: string, stage: string) {
+  return id + '-construct-' + stage;
 }
 
-export class Function extends Construct {
+abstract class BaseFunction extends Construct {
+  public readonly stage: string;
   public readonly function: lambda.Function;
 
   constructor(scope: Construct, id: string, props: FunctionProps) {
-    super(scope, id);
+    super(scope, getConstructId(id, props.stage));
+    this.stage = props.stage;
+    this.function = this.createFunction(scope, id, props);
 
-    this.function = new lambda.Function(scope, getFunctionId(id, props.stage), { ...props });
+    this.addEnvironment({
+      ENVIRONMENT: this.stage,
+      TIMESTAMP_DEPLOY_CDK: env.TIMESTAMP_DEPLOY_CDK,
+      BUSINESS_UNIT: env.BUSINESS_UNIT,
+      DOMAIN: env.DOMAIN,
+      REPOSITORY_NAME: env.REPOSITORY_NAME,
+      REPOSITORY_VERSION: env.REPOSITORY_VERSION,
+    });
 
     addBaseTags(this.function);
   }
+
+  abstract createFunction(scope: Construct, id: string, props: FunctionProps): lambda.Function;
+
+  addEnvironment(props: { [key: string]: string }) {
+    let keys = Object.keys(props);
+    for (let index = 0; index < keys.length; index++) {
+      let key = keys[index];
+      this.function.addEnvironment(key.toUpperCase(), props[key]);
+    }
+  }
+}
+export class Function extends BaseFunction {
+  constructor(scope: Construct, id: string, props: FunctionProps) {
+    super(scope, id, props);
+  }
+
+  createFunction(scope: Construct, id: string, props: FunctionNewRelicProps) {
+    return new lambda.Function(scope, id, props);
+  }
 }
 
-export class FunctionNewRelic extends Construct {
-  public readonly function: lambda.Function;
-
+export class FunctionNewRelic extends BaseFunction {
   constructor(scope: Construct, id: string, props: FunctionNewRelicProps) {
-    super(scope, id);
+    super(scope, id, props);
+  }
 
+  createFunction(scope: Construct, id: string, props: FunctionNewRelicProps) {
     let handler = 'newrelic_lambda_wrapper.handler';
     let app_handler = props.handler;
 
-    let lambdaFunction = new lambda.Function(scope, getFunctionId(id, props.stage), { ...props, handler });
+    let lambdaFunction = new lambda.Function(scope, id, { ...props, handler });
 
     lambdaFunction.addToRolePolicy(
       new iam.PolicyStatement({
@@ -51,7 +81,6 @@ export class FunctionNewRelic extends Construct {
       }),
     );
 
-    lambdaFunction.addEnvironment('ENVIRONMENT', props.stage);
     lambdaFunction.addEnvironment('NEW_RELIC_ACCOUNT_ID', props.newRelicAccountId);
     lambdaFunction.addEnvironment('NEW_RELIC_LAMBDA_HANDLER', app_handler);
     lambdaFunction.addEnvironment('NEW_RELIC_LAMBDA_EXTENSION_ENABLED', 'true');
@@ -67,9 +96,7 @@ export class FunctionNewRelic extends Construct {
       CDK_REGION,
     ));
 
-    this.function = lambdaFunction;
-
-    addBaseTags(this.function);
+    return lambdaFunction;
   }
 
   getNewRelicLayer(scope: Construct, functionName:string, layerName: string, layerVersion: number, region: string) {
