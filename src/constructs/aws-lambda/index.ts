@@ -5,7 +5,7 @@ import { CDK_ACCOUNT_ID, CDK_REGION } from '../../common/env';
 import * as env from '../../common/env';
 import { addBaseTags } from '../../common/utils';
 
-export const NEW_RELIC_LAYERS_ACCOUNT_ID = '451483290750';
+export const NEW_RELIC_LAYERS_ACCOUNT_ID = '451483290750'; // AWS account id of NewRelic where exposed layers https://layers.newrelic-external.com/
 
 export interface FunctionProps extends lambda.FunctionProps {
   readonly stage: string;
