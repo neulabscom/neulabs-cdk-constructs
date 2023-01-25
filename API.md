@@ -1147,47 +1147,47 @@ public readonly repositoryVersion: string;
 
 ## Enums <a name="Enums" id="Enums"></a>
 
-### TagsKey <a name="TagsKey" id="neulabs-cdk-constructs.env.TagsKey"></a>
+### TagsKey <a name="TagsKey" id="neulabs-cdk-constructs.utils.TagsKey"></a>
 
 #### Members <a name="Members" id="Members"></a>
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#neulabs-cdk-constructs.env.TagsKey.ENVIRONMENT">ENVIRONMENT</a></code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.env.TagsKey.TIMESTAMP_DEPLOY_CDK">TIMESTAMP_DEPLOY_CDK</a></code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.env.TagsKey.BUSINESS_UNIT">BUSINESS_UNIT</a></code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.env.TagsKey.DOMAIN">DOMAIN</a></code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.env.TagsKey.REPOSITORY_NAME">REPOSITORY_NAME</a></code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.env.TagsKey.REPOSITORY_VERSION">REPOSITORY_VERSION</a></code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.utils.TagsKey.ENVIRONMENT">ENVIRONMENT</a></code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.utils.TagsKey.TIMESTAMP_DEPLOY_CDK">TIMESTAMP_DEPLOY_CDK</a></code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.utils.TagsKey.BUSINESS_UNIT">BUSINESS_UNIT</a></code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.utils.TagsKey.DOMAIN">DOMAIN</a></code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.utils.TagsKey.REPOSITORY_NAME">REPOSITORY_NAME</a></code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.utils.TagsKey.REPOSITORY_VERSION">REPOSITORY_VERSION</a></code> | *No description.* |
 
 ---
 
-##### `ENVIRONMENT` <a name="ENVIRONMENT" id="neulabs-cdk-constructs.env.TagsKey.ENVIRONMENT"></a>
-
----
-
-
-##### `TIMESTAMP_DEPLOY_CDK` <a name="TIMESTAMP_DEPLOY_CDK" id="neulabs-cdk-constructs.env.TagsKey.TIMESTAMP_DEPLOY_CDK"></a>
+##### `ENVIRONMENT` <a name="ENVIRONMENT" id="neulabs-cdk-constructs.utils.TagsKey.ENVIRONMENT"></a>
 
 ---
 
 
-##### `BUSINESS_UNIT` <a name="BUSINESS_UNIT" id="neulabs-cdk-constructs.env.TagsKey.BUSINESS_UNIT"></a>
+##### `TIMESTAMP_DEPLOY_CDK` <a name="TIMESTAMP_DEPLOY_CDK" id="neulabs-cdk-constructs.utils.TagsKey.TIMESTAMP_DEPLOY_CDK"></a>
 
 ---
 
 
-##### `DOMAIN` <a name="DOMAIN" id="neulabs-cdk-constructs.env.TagsKey.DOMAIN"></a>
+##### `BUSINESS_UNIT` <a name="BUSINESS_UNIT" id="neulabs-cdk-constructs.utils.TagsKey.BUSINESS_UNIT"></a>
 
 ---
 
 
-##### `REPOSITORY_NAME` <a name="REPOSITORY_NAME" id="neulabs-cdk-constructs.env.TagsKey.REPOSITORY_NAME"></a>
+##### `DOMAIN` <a name="DOMAIN" id="neulabs-cdk-constructs.utils.TagsKey.DOMAIN"></a>
 
 ---
 
 
-##### `REPOSITORY_VERSION` <a name="REPOSITORY_VERSION" id="neulabs-cdk-constructs.env.TagsKey.REPOSITORY_VERSION"></a>
+##### `REPOSITORY_NAME` <a name="REPOSITORY_NAME" id="neulabs-cdk-constructs.utils.TagsKey.REPOSITORY_NAME"></a>
+
+---
+
+
+##### `REPOSITORY_VERSION` <a name="REPOSITORY_VERSION" id="neulabs-cdk-constructs.utils.TagsKey.REPOSITORY_VERSION"></a>
 
 ---
 
