@@ -20,7 +20,6 @@ export interface FunctionNewRelicProps extends FunctionProps {
   readonly newRelicwithExtensionSendLogs?: boolean;
 }
 
-
 export interface NewRelicProps {
   readonly handler: string;
   readonly newRelicLayerName: string;
@@ -28,7 +27,6 @@ export interface NewRelicProps {
   readonly newRelicAccountId: string;
   readonly newRelicwithExtensionSendLogs?: boolean;
 }
-
 
 export function getNewRelicLayer(scope: Construct, functionName:string, layerName: string, layerVersion: number, region: string) {
   return lambda.LayerVersion.fromLayerVersionArn(
