@@ -9,6 +9,8 @@ export const NEW_RELIC_LAYERS_ACCOUNT_ID = '451483290750'; // AWS account id of 
 
 export interface FunctionProps extends lambda.FunctionProps {
   readonly stage: string;
+  readonly withBaseEnvironment?: boolean;
+  readonly withBaseTags?: boolean;
 }
 
 export interface FunctionNewRelicProps extends FunctionProps {
@@ -18,92 +20,102 @@ export interface FunctionNewRelicProps extends FunctionProps {
   readonly newRelicwithExtensionSendLogs?: boolean;
 }
 
-function getConstructId(id: string, stage: string) {
-  return id + '-construct-' + stage;
+
+export interface NewRelicProps {
+  readonly handler: string;
+  readonly newRelicLayerName: string;
+  readonly newRelicLayerVersion: number;
+  readonly newRelicAccountId: string;
+  readonly newRelicwithExtensionSendLogs?: boolean;
 }
 
-abstract class BaseFunction extends Construct {
+
+export function getNewRelicLayer(scope: Construct, functionName:string, layerName: string, layerVersion: number, region: string) {
+  return lambda.LayerVersion.fromLayerVersionArn(
+    scope,
+    `new-relic-layer-${functionName}`,
+    `arn:aws:lambda:${region}:${NEW_RELIC_LAYERS_ACCOUNT_ID}:layer:${layerName}:${layerVersion}`,
+  );
+}
+
+export function addNewRelicLayer(scope: Construct, lambdaFunction: lambda.Function, props: NewRelicProps) {
+  lambdaFunction.addToRolePolicy(
+    new iam.PolicyStatement({
+      actions: ['secretsmanager:GetSecretValue'],
+      resources: [`arn:aws:secretsmanager:eu-west-1:${CDK_ACCOUNT_ID}:secret:NEW_RELIC_LICENSE_KEY-??????`],
+    }),
+  );
+
+  lambdaFunction.addEnvironment('NEW_RELIC_ACCOUNT_ID', props.newRelicAccountId);
+  lambdaFunction.addEnvironment('NEW_RELIC_LAMBDA_HANDLER', props.handler);
+  lambdaFunction.addEnvironment('NEW_RELIC_LAMBDA_EXTENSION_ENABLED', 'true');
+  if (props.newRelicwithExtensionSendLogs) {
+    lambdaFunction.addEnvironment('NEW_RELIC_EXTENSION_SEND_FUNCTION_LOGS', 'true');
+  }
+
+  const layer = getNewRelicLayer(
+    scope,
+    lambdaFunction.functionName,
+    props.newRelicLayerName,
+    props.newRelicLayerVersion,
+    CDK_REGION,
+  );
+
+  lambdaFunction.addLayers(layer);
+}
+
+export class Function extends lambda.Function {
   public readonly stage: string;
-  public readonly function: lambda.Function;
 
   constructor(scope: Construct, id: string, props: FunctionProps) {
-    super(scope, getConstructId(id, props.stage));
+    super(scope, id, props);
     this.stage = props.stage;
-    this.function = this.createFunction(scope, id, props);
 
-    this.addEnvironment({
-      ENVIRONMENT: this.stage,
-      TIMESTAMP_DEPLOY_CDK: env.TIMESTAMP_DEPLOY_CDK,
-      BUSINESS_UNIT: env.BUSINESS_UNIT,
-      DOMAIN: env.DOMAIN,
-      REPOSITORY_NAME: env.REPOSITORY_NAME,
-      REPOSITORY_VERSION: env.REPOSITORY_VERSION,
-    });
+    if (props.withBaseEnvironment) {
+      this.addBaseEnvironment();
+    }
 
-    addBaseTags(this.function);
+    if (props.withBaseTags) {
+      this.addBaseTags();
+    }
   }
 
-  abstract createFunction(scope: Construct, id: string, props: FunctionProps): lambda.Function;
+  addBaseTags() {
+    addBaseTags(this);
+  }
 
-  addEnvironment(props: { [key: string]: string }) {
-    let keys = Object.keys(props);
-    for (let index = 0; index < keys.length; index++) {
-      let key = keys[index];
-      this.function.addEnvironment(key.toUpperCase(), props[key]);
+  addBaseEnvironment() {
+    this.addEnvironment('ENVIRONMENT', this.stage);
+    this.addEnvironment('TIMESTAMP_DEPLOY_CDK', env.TIMESTAMP_DEPLOY_CDK);
+
+    if (env.BUSINESS_UNIT) {
+      this.addEnvironment('BUSINESS_UNIT', env.BUSINESS_UNIT);
+    }
+    if (env.DOMAIN) {
+      this.addEnvironment('DOMAIN', env.DOMAIN);
+    }
+    if (env.REPOSITORY_NAME) {
+      this.addEnvironment('REPOSITORY_NAME', env.REPOSITORY_NAME);
+    }
+    if (env.REPOSITORY_VERSION) {
+      this.addEnvironment('REPOSITORY_VERSION', env.REPOSITORY_VERSION);
     }
   }
 }
-export class Function extends BaseFunction {
-  constructor(scope: Construct, id: string, props: FunctionProps) {
-    super(scope, id, props);
-  }
 
-  createFunction(scope: Construct, id: string, props: FunctionNewRelicProps) {
-    return new lambda.Function(scope, id, props);
-  }
-}
-
-export class FunctionNewRelic extends BaseFunction {
+export class NewRelicFunction extends Function {
   constructor(scope: Construct, id: string, props: FunctionNewRelicProps) {
-    super(scope, id, props);
-  }
+    const app_handler = props.handler;
+    const handler = 'newrelic_lambda_wrapper.handler';
 
-  createFunction(scope: Construct, id: string, props: FunctionNewRelicProps) {
-    let handler = 'newrelic_lambda_wrapper.handler';
-    let app_handler = props.handler;
+    super(scope, id, { ...props, handler });
 
-    let lambdaFunction = new lambda.Function(scope, id, { ...props, handler });
-
-    lambdaFunction.addToRolePolicy(
-      new iam.PolicyStatement({
-        actions: ['secretsmanager:GetSecretValue'],
-        resources: [`arn:aws:secretsmanager:eu-west-1:${CDK_ACCOUNT_ID}:secret:NEW_RELIC_LICENSE_KEY-??????`],
-      }),
-    );
-
-    lambdaFunction.addEnvironment('NEW_RELIC_ACCOUNT_ID', props.newRelicAccountId);
-    lambdaFunction.addEnvironment('NEW_RELIC_LAMBDA_HANDLER', app_handler);
-    lambdaFunction.addEnvironment('NEW_RELIC_LAMBDA_EXTENSION_ENABLED', 'true');
-    if (props.newRelicwithExtensionSendLogs) {
-      lambdaFunction.addEnvironment('NEW_RELIC_EXTENSION_SEND_FUNCTION_LOGS', 'true');
-    }
-
-    lambdaFunction.addLayers(this.getNewRelicLayer(
-      scope,
-      lambdaFunction.functionName,
-      props.newRelicLayerName,
-      props.newRelicLayerVersion,
-      CDK_REGION,
-    ));
-
-    return lambdaFunction;
-  }
-
-  getNewRelicLayer(scope: Construct, functionName:string, layerName: string, layerVersion: number, region: string) {
-    return lambda.LayerVersion.fromLayerVersionArn(
-      scope,
-      `new-relic-layer-${functionName}`,
-      `arn:aws:lambda:${region}:${NEW_RELIC_LAYERS_ACCOUNT_ID}:layer:${layerName}:${layerVersion}`,
-    );
+    addNewRelicLayer(scope, this, {
+      handler: app_handler,
+      newRelicLayerName: props.newRelicLayerName,
+      newRelicLayerVersion: props.newRelicLayerVersion,
+      newRelicAccountId: props.newRelicAccountId,
+      newRelicwithExtensionSendLogs: props.newRelicwithExtensionSendLogs,
+    });
   }
 }
