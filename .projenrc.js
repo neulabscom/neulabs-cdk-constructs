@@ -15,7 +15,7 @@ const project = new cdk.JsiiProject({
     `@aws-cdk/aws-apigatewayv2-alpha@${cdkVersion}-alpha.0`,
     `@aws-cdk/aws-apigatewayv2-integrations-alpha@${cdkVersion}-alpha.0`,
     `aws-cdk-lib@${cdkVersion}`,
-    'constructs',
+    'constructs@^10.0.29',
   ],
 
   devDeps: ['ts-node', 'prettier', 'eslint-config-prettier', 'eslint-plugin-prettier', 'standard-version'],

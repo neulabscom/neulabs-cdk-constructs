@@ -67,7 +67,7 @@
     "@aws-cdk/aws-apigatewayv2-alpha": "2.50.0-alpha.0",
     "@aws-cdk/aws-apigatewayv2-integrations-alpha": "2.50.0-alpha.0",
     "aws-cdk-lib": "2.50.0",
-    "constructs": "^10.1.195"
+    "constructs": "^10.0.29"
   },
   "main": "lib/index.js",
   "license": "Apache-2.0",
