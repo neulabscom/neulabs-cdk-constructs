@@ -8,6 +8,11 @@ const project = new cdk.JsiiProject({
   defaultReleaseBranch: 'main',
   name: 'neulabs-cdk-constructs',
   repositoryUrl: 'https://github.com/neulabscom/neulabs-cdk-constructs.git',
+  authorOrganization: true,
+  entrypoint: 'lib/index.js',
+
+  packageManager: javascript.NodePackageManager.YARN,
+
   peerDeps: [
     `aws-cdk-lib@${cdkVersion}`,
   ],

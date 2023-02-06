@@ -32,7 +32,7 @@
   "author": {
     "name": "Neulabs",
     "email": "tech@neulabs.com",
-    "organization": false
+    "organization": true
   },
   "devDependencies": {
     "@types/jest": "^27",
