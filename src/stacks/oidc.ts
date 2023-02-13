@@ -1,8 +1,8 @@
 import { CfnOutput } from 'aws-cdk-lib';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import { Construct } from 'constructs';
-import { addBaseTags } from '../../common/utils';
-import { BaseStack, BaseStackProps } from '../base';
+import { BaseStack, BaseStackProps } from './base';
+import { addBaseTags } from '../common/utils';
 
 export enum ProviderUrl {
   GITHUB = 'https://token.actions.githubusercontent.com'
