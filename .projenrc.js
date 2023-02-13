@@ -29,6 +29,8 @@ const project = new cdk.JsiiProject({
     distName: 'neulabs-cdk-constructs',
     module: 'neulabs_cdk_constructs',
   },
+  docgen: true,
+  docgenFilePath: './docs/docs/api.md',
 });
 
 project.synth();
