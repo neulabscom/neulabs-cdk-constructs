@@ -5,8 +5,8 @@ import * as firehose from 'aws-cdk-lib/aws-kinesisfirehose';
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import * as secretsmanager from 'aws-cdk-lib/aws-secretsmanager';
 import { Construct } from 'constructs';
-import { BaseStack, BaseStackProps } from './base';
 import { addBaseTags } from '../common/utils';
+import { BaseStack, BaseStackProps } from '../stack';
 
 
 export const NEW_RELIC_AWS_ACCOUNT_ID = '754728514883';

@@ -1,7 +1,7 @@
 import { Stack, StackProps } from 'aws-cdk-lib';
 import * as resourcegroups from 'aws-cdk-lib/aws-resourcegroups';
 import { Construct } from 'constructs';
-import * as utils from '../common/utils';
+import * as utils from './common/utils';
 
 export interface BaseStackProps extends StackProps {
   readonly stage: string;
