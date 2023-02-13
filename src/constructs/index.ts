@@ -1,1 +1,0 @@
-export * as aws_lambda from './aws-lambda';
