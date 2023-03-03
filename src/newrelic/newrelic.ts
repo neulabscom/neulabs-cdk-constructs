@@ -71,6 +71,7 @@ export class NewRelicStack extends BaseStack {
         props.newRelicApiUrlMetrics,
         props.newRelicLicenseKey,
       );
+      this.createCloudwatchMetricStream(this.newRelicFirehoseRole.roleArn, this.newRelicFirehoseMetrics.attrArn);
     }
   }
 

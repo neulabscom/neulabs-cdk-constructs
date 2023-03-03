@@ -210,14 +210,11 @@ export class GithubOIDCStack extends BaseStack {
   }
 
   createOidcRole(providerUrl: string, token: string): iam.IRole {
-    let oidcProvider = new iam.OpenIdConnectProvider(
-      this,
-      'oidc-provider',
-      {
-        url: providerUrl,
-        clientIds: ['sts.amazonaws.com'],
-      },
-    );
+    const oidcProvider = new iam.OpenIdConnectProvider(this, 'OIDCProvider', {
+      url: providerUrl,
+      clientIds: ['sts.amazonaws.com'],
+      thumbprints: ['6938fd4d98bab03faadb97b34396831e3780aea1'],
+    });
 
     let role = new iam.Role(
       this,
