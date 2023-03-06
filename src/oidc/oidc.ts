@@ -84,7 +84,7 @@ export class GithubOIDCStack extends BaseStack {
             effect: iam.Effect.ALLOW,
           }),
           new iam.PolicyStatement({
-            resources: [`arn:aws:iam::${this.account}:role/cdk-*`],
+            resources: ['*'],
             actions: [
               'iam:PassRole',
               'iam:CreateRole',
