@@ -19,7 +19,7 @@ export interface GithubOIDCStackStackProps extends BaseStackProps {
   readonly githubUser: string;
   readonly githubRepository: string;
   readonly tokenAction: TokenActions;
-  readonly cdkDeployRoleManagedPolicies?: iam.ManagedPolicy[];
+  readonly cdkDeployRoleManagedPolicies?: string[];
   readonly cdkDeployRolePolicyStatements?: iam.PolicyStatement[];
   readonly tokenActionCustom?: string;
 }
@@ -31,7 +31,7 @@ export class GithubOIDCStack extends BaseStack {
   oidcRole: iam.IRole;
   cdkBootstrapRole: iam.IRole;
   cdkDeployRole: iam.IRole;
-  cdkDeployRoleManagedPolicies?: iam.ManagedPolicy[];
+  cdkDeployRoleManagedPolicies?: string[];
   cdkDeployRolePolicyStatements?: iam.PolicyStatement[];
 
   constructor(scope: Construct, id: string, props: GithubOIDCStackStackProps) {
@@ -72,7 +72,7 @@ export class GithubOIDCStack extends BaseStack {
   }
 
 
-  createCdkDeployRole(managed_policies?: iam.IManagedPolicy[], policy_statements?: iam.PolicyStatement[]): iam.IRole {
+  createCdkDeployRole(managed_policies?: string[], policy_statements?: iam.PolicyStatement[]): iam.IRole {
     let basePolicy = new iam.PolicyDocument(
       {
         statements: [
@@ -120,7 +120,7 @@ export class GithubOIDCStack extends BaseStack {
 
     if (managed_policies) {
       for (let index = 0; index < managed_policies.length; index++) {
-        role.addManagedPolicy(managed_policies[index]);
+        role.addManagedPolicy(iam.ManagedPolicy.fromAwsManagedPolicyName(managed_policies[index]));
       }
     }
 
