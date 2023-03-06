@@ -2367,12 +2367,12 @@ public createCdkBootstrapRole(): IRole
 ##### `createCdkDeployRole` <a name="createCdkDeployRole" id="neulabs-cdk-constructs.oidc.GithubOIDCStack.createCdkDeployRole"></a>
 
 ```typescript
-public createCdkDeployRole(managed_policies?: IManagedPolicy[], policy_statements?: PolicyStatement[]): IRole
+public createCdkDeployRole(managed_policies?: string[], policy_statements?: PolicyStatement[]): IRole
 ```
 
 ###### `managed_policies`<sup>Optional</sup> <a name="managed_policies" id="neulabs-cdk-constructs.oidc.GithubOIDCStack.createCdkDeployRole.parameter.managed_policies"></a>
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy[]
+- *Type:* string[]
 
 ---
 
@@ -2542,7 +2542,7 @@ The construct to start the search from.
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStack.property.githubUser">githubUser</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStack.property.oidcRole">oidcRole</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStack.property.tokenAction">tokenAction</a></code> | <code>neulabs-cdk-constructs.oidc.TokenActions</code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStack.property.cdkDeployRoleManagedPolicies">cdkDeployRoleManagedPolicies</a></code> | <code>aws-cdk-lib.aws_iam.ManagedPolicy[]</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStack.property.cdkDeployRoleManagedPolicies">cdkDeployRoleManagedPolicies</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStack.property.cdkDeployRolePolicyStatements">cdkDeployRolePolicyStatements</a></code> | <code>aws-cdk-lib.aws_iam.PolicyStatement[]</code> | *No description.* |
 
 ---
@@ -2950,10 +2950,10 @@ public readonly tokenAction: TokenActions;
 ##### `cdkDeployRoleManagedPolicies`<sup>Optional</sup> <a name="cdkDeployRoleManagedPolicies" id="neulabs-cdk-constructs.oidc.GithubOIDCStack.property.cdkDeployRoleManagedPolicies"></a>
 
 ```typescript
-public readonly cdkDeployRoleManagedPolicies: ManagedPolicy[];
+public readonly cdkDeployRoleManagedPolicies: string[];
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.ManagedPolicy[]
+- *Type:* string[]
 
 ---
 
@@ -6781,7 +6781,7 @@ const githubOIDCStackStackProps: oidc.GithubOIDCStackStackProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.githubRepository">githubRepository</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.githubUser">githubUser</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.tokenAction">tokenAction</a></code> | <code>neulabs-cdk-constructs.oidc.TokenActions</code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.cdkDeployRoleManagedPolicies">cdkDeployRoleManagedPolicies</a></code> | <code>aws-cdk-lib.aws_iam.ManagedPolicy[]</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.cdkDeployRoleManagedPolicies">cdkDeployRoleManagedPolicies</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.cdkDeployRolePolicyStatements">cdkDeployRolePolicyStatements</a></code> | <code>aws-cdk-lib.aws_iam.PolicyStatement[]</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.tokenActionCustom">tokenActionCustom</a></code> | <code>string</code> | *No description.* |
 
@@ -7000,10 +7000,10 @@ public readonly tokenAction: TokenActions;
 ##### `cdkDeployRoleManagedPolicies`<sup>Optional</sup> <a name="cdkDeployRoleManagedPolicies" id="neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.cdkDeployRoleManagedPolicies"></a>
 
 ```typescript
-public readonly cdkDeployRoleManagedPolicies: ManagedPolicy[];
+public readonly cdkDeployRoleManagedPolicies: string[];
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.ManagedPolicy[]
+- *Type:* string[]
 
 ---
 
