@@ -46,7 +46,8 @@ new stack.BaseStack(scope: Construct, id: string, props: BaseStackProps)
 | <code><a href="#neulabs-cdk-constructs.stack.BaseStack.addDependency">addDependency</a></code> | Add a dependency between this stack and another stack. |
 | <code><a href="#neulabs-cdk-constructs.stack.BaseStack.addMetadata">addMetadata</a></code> | Adds an arbitary key-value pair, with information you want to record about the stack. |
 | <code><a href="#neulabs-cdk-constructs.stack.BaseStack.addTransform">addTransform</a></code> | Add a Transform to this stack. A Transform is a macro that AWS CloudFormation uses to process your template. |
-| <code><a href="#neulabs-cdk-constructs.stack.BaseStack.exportValue">exportValue</a></code> | Create a CloudFormation Export for a value. |
+| <code><a href="#neulabs-cdk-constructs.stack.BaseStack.exportStringListValue">exportStringListValue</a></code> | Create a CloudFormation Export for a string list value. |
+| <code><a href="#neulabs-cdk-constructs.stack.BaseStack.exportValue">exportValue</a></code> | Create a CloudFormation Export for a string value. |
 | <code><a href="#neulabs-cdk-constructs.stack.BaseStack.formatArn">formatArn</a></code> | Creates an ARN from components. |
 | <code><a href="#neulabs-cdk-constructs.stack.BaseStack.getLogicalId">getLogicalId</a></code> | Allocates a stack-unique CloudFormation-compatible logical identity for a specific resource. |
 | <code><a href="#neulabs-cdk-constructs.stack.BaseStack.regionalFact">regionalFact</a></code> | Look up a fact value for the given fact for the region of this stack. |
@@ -144,13 +145,51 @@ The transform to add.
 
 ---
 
+##### `exportStringListValue` <a name="exportStringListValue" id="neulabs-cdk-constructs.stack.BaseStack.exportStringListValue"></a>
+
+```typescript
+public exportStringListValue(exportedValue: any, options?: ExportValueOptions): string[]
+```
+
+Create a CloudFormation Export for a string list value.
+
+Returns a string list representing the corresponding `Fn.importValue()`
+expression for this Export. The export expression is automatically wrapped with an
+`Fn::Join` and the import value with an `Fn::Split`, since CloudFormation can only
+export strings. You can control the name for the export by passing the `name` option.
+
+If you don't supply a value for `name`, the value you're exporting must be
+a Resource attribute (for example: `bucket.bucketName`) and it will be
+given the same name as the automatic cross-stack reference that would be created
+if you used the attribute in another Stack.
+
+One of the uses for this method is to *remove* the relationship between
+two Stacks established by automatic cross-stack references. It will
+temporarily ensure that the CloudFormation Export still exists while you
+remove the reference from the consuming stack. After that, you can remove
+the resource and the manual export.
+
+See `exportValue` for an example of this process.
+
+###### `exportedValue`<sup>Required</sup> <a name="exportedValue" id="neulabs-cdk-constructs.stack.BaseStack.exportStringListValue.parameter.exportedValue"></a>
+
+- *Type:* any
+
+---
+
+###### `options`<sup>Optional</sup> <a name="options" id="neulabs-cdk-constructs.stack.BaseStack.exportStringListValue.parameter.options"></a>
+
+- *Type:* aws-cdk-lib.ExportValueOptions
+
+---
+
 ##### `exportValue` <a name="exportValue" id="neulabs-cdk-constructs.stack.BaseStack.exportValue"></a>
 
 ```typescript
 public exportValue(exportedValue: any, options?: ExportValueOptions): string
 ```
 
-Create a CloudFormation Export for a value.
+Create a CloudFormation Export for a string value.
 
 Returns a string representing the corresponding `Fn.importValue()`
 expression for this Export. You can control the name for the export by
@@ -565,7 +604,7 @@ This value is resolved according to the following rules:
 
 Preferably, you should use the return value as an opaque string and not
 attempt to parse it to implement your logic. If you do, you must first
-check that it is a concerete value an not an unresolved token. If this
+check that it is a concrete value an not an unresolved token. If this
 value is an unresolved token (`Token.isUnresolved(stack.account)` returns
 `true`), this implies that the user wishes that this stack will synthesize
 into a **account-agnostic template**. In this case, your code should either
@@ -706,14 +745,14 @@ The AWS region into which this stack will be deployed (e.g. `us-west-2`).
 This value is resolved according to the following rules:
 
 1. The value provided to `env.region` when the stack is defined. This can
-    either be a concerete region (e.g. `us-west-2`) or the `Aws.REGION`
+    either be a concrete region (e.g. `us-west-2`) or the `Aws.REGION`
     token.
 3. `Aws.REGION`, which is represents the CloudFormation intrinsic reference
     `{ "Ref": "AWS::Region" }` encoded as a string token.
 
 Preferably, you should use the return value as an opaque string and not
 attempt to parse it to implement your logic. If you do, you must first
-check that it is a concerete value an not an unresolved token. If this
+check that it is a concrete value an not an unresolved token. If this
 value is an unresolved token (`Token.isUnresolved(stack.region)` returns
 `true`), this implies that the user wishes that this stack will synthesize
 into a **region-agnostic template**. In this case, your code should either
@@ -933,6 +972,7 @@ new aws_lambda.Function(scope: Construct, id: string, props: FunctionProps)
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.Function.addAlias">addAlias</a></code> | Defines an alias for this function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.Function.addEnvironment">addEnvironment</a></code> | Adds an environment variable to this Lambda function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.Function.addLayers">addLayers</a></code> | Adds one or more Lambda Layers to this Lambda function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.Function.invalidateVersionBasedOn">invalidateVersionBasedOn</a></code> | Mix additional information into the hash of the Version object. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.Function.addBaseEnvironment">addBaseEnvironment</a></code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.Function.addBaseTags">addBaseTags</a></code> | *No description.* |
 
@@ -1302,6 +1342,35 @@ Adds one or more Lambda Layers to this Lambda function.
 - *Type:* aws-cdk-lib.aws_lambda.ILayerVersion
 
 the layers to be added.
+
+---
+
+##### `invalidateVersionBasedOn` <a name="invalidateVersionBasedOn" id="neulabs-cdk-constructs.aws_lambda.Function.invalidateVersionBasedOn"></a>
+
+```typescript
+public invalidateVersionBasedOn(x: string): void
+```
+
+Mix additional information into the hash of the Version object.
+
+The Lambda Function construct does its best to automatically create a new
+Version when anything about the Function changes (its code, its layers,
+any of the other properties).
+
+However, you can sometimes source information from places that the CDK cannot
+look into, like the deploy-time values of SSM parameters. In those cases,
+the CDK would not force the creation of a new Version object when it actually
+should.
+
+This method can be used to invalidate the current Version object. Pass in
+any string into this method, and make sure the string changes when you know
+a new Version needs to be created.
+
+This method may be called more than once.
+
+###### `x`<sup>Required</sup> <a name="x" id="neulabs-cdk-constructs.aws_lambda.Function.invalidateVersionBasedOn.parameter.x"></a>
+
+- *Type:* string
 
 ---
 
@@ -1976,7 +2045,8 @@ new oidc.GithubOIDCStack(scope: Construct, id: string, props: GithubOIDCStackSta
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStack.addDependency">addDependency</a></code> | Add a dependency between this stack and another stack. |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStack.addMetadata">addMetadata</a></code> | Adds an arbitary key-value pair, with information you want to record about the stack. |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStack.addTransform">addTransform</a></code> | Add a Transform to this stack. A Transform is a macro that AWS CloudFormation uses to process your template. |
-| <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStack.exportValue">exportValue</a></code> | Create a CloudFormation Export for a value. |
+| <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStack.exportStringListValue">exportStringListValue</a></code> | Create a CloudFormation Export for a string list value. |
+| <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStack.exportValue">exportValue</a></code> | Create a CloudFormation Export for a string value. |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStack.formatArn">formatArn</a></code> | Creates an ARN from components. |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStack.getLogicalId">getLogicalId</a></code> | Allocates a stack-unique CloudFormation-compatible logical identity for a specific resource. |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStack.regionalFact">regionalFact</a></code> | Look up a fact value for the given fact for the region of this stack. |
@@ -2078,13 +2148,51 @@ The transform to add.
 
 ---
 
+##### `exportStringListValue` <a name="exportStringListValue" id="neulabs-cdk-constructs.oidc.GithubOIDCStack.exportStringListValue"></a>
+
+```typescript
+public exportStringListValue(exportedValue: any, options?: ExportValueOptions): string[]
+```
+
+Create a CloudFormation Export for a string list value.
+
+Returns a string list representing the corresponding `Fn.importValue()`
+expression for this Export. The export expression is automatically wrapped with an
+`Fn::Join` and the import value with an `Fn::Split`, since CloudFormation can only
+export strings. You can control the name for the export by passing the `name` option.
+
+If you don't supply a value for `name`, the value you're exporting must be
+a Resource attribute (for example: `bucket.bucketName`) and it will be
+given the same name as the automatic cross-stack reference that would be created
+if you used the attribute in another Stack.
+
+One of the uses for this method is to *remove* the relationship between
+two Stacks established by automatic cross-stack references. It will
+temporarily ensure that the CloudFormation Export still exists while you
+remove the reference from the consuming stack. After that, you can remove
+the resource and the manual export.
+
+See `exportValue` for an example of this process.
+
+###### `exportedValue`<sup>Required</sup> <a name="exportedValue" id="neulabs-cdk-constructs.oidc.GithubOIDCStack.exportStringListValue.parameter.exportedValue"></a>
+
+- *Type:* any
+
+---
+
+###### `options`<sup>Optional</sup> <a name="options" id="neulabs-cdk-constructs.oidc.GithubOIDCStack.exportStringListValue.parameter.options"></a>
+
+- *Type:* aws-cdk-lib.ExportValueOptions
+
+---
+
 ##### `exportValue` <a name="exportValue" id="neulabs-cdk-constructs.oidc.GithubOIDCStack.exportValue"></a>
 
 ```typescript
 public exportValue(exportedValue: any, options?: ExportValueOptions): string
 ```
 
-Create a CloudFormation Export for a value.
+Create a CloudFormation Export for a string value.
 
 Returns a string representing the corresponding `Fn.importValue()`
 expression for this Export. You can control the name for the export by
@@ -2579,7 +2687,7 @@ This value is resolved according to the following rules:
 
 Preferably, you should use the return value as an opaque string and not
 attempt to parse it to implement your logic. If you do, you must first
-check that it is a concerete value an not an unresolved token. If this
+check that it is a concrete value an not an unresolved token. If this
 value is an unresolved token (`Token.isUnresolved(stack.account)` returns
 `true`), this implies that the user wishes that this stack will synthesize
 into a **account-agnostic template**. In this case, your code should either
@@ -2720,14 +2828,14 @@ The AWS region into which this stack will be deployed (e.g. `us-west-2`).
 This value is resolved according to the following rules:
 
 1. The value provided to `env.region` when the stack is defined. This can
-    either be a concerete region (e.g. `us-west-2`) or the `Aws.REGION`
+    either be a concrete region (e.g. `us-west-2`) or the `Aws.REGION`
     token.
 3. `Aws.REGION`, which is represents the CloudFormation intrinsic reference
     `{ "Ref": "AWS::Region" }` encoded as a string token.
 
 Preferably, you should use the return value as an opaque string and not
 attempt to parse it to implement your logic. If you do, you must first
-check that it is a concerete value an not an unresolved token. If this
+check that it is a concrete value an not an unresolved token. If this
 value is an unresolved token (`Token.isUnresolved(stack.region)` returns
 `true`), this implies that the user wishes that this stack will synthesize
 into a **region-agnostic template**. In this case, your code should either
@@ -3027,6 +3135,7 @@ new aws_lambda.NewRelicFunction(scope: Construct, id: string, props: FunctionNew
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addAlias">addAlias</a></code> | Defines an alias for this function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addEnvironment">addEnvironment</a></code> | Adds an environment variable to this Lambda function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addLayers">addLayers</a></code> | Adds one or more Lambda Layers to this Lambda function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunction.invalidateVersionBasedOn">invalidateVersionBasedOn</a></code> | Mix additional information into the hash of the Version object. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addBaseEnvironment">addBaseEnvironment</a></code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addBaseTags">addBaseTags</a></code> | *No description.* |
 
@@ -3396,6 +3505,35 @@ Adds one or more Lambda Layers to this Lambda function.
 - *Type:* aws-cdk-lib.aws_lambda.ILayerVersion
 
 the layers to be added.
+
+---
+
+##### `invalidateVersionBasedOn` <a name="invalidateVersionBasedOn" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunction.invalidateVersionBasedOn"></a>
+
+```typescript
+public invalidateVersionBasedOn(x: string): void
+```
+
+Mix additional information into the hash of the Version object.
+
+The Lambda Function construct does its best to automatically create a new
+Version when anything about the Function changes (its code, its layers,
+any of the other properties).
+
+However, you can sometimes source information from places that the CDK cannot
+look into, like the deploy-time values of SSM parameters. In those cases,
+the CDK would not force the creation of a new Version object when it actually
+should.
+
+This method can be used to invalidate the current Version object. Pass in
+any string into this method, and make sure the string changes when you know
+a new Version needs to be created.
+
+This method may be called more than once.
+
+###### `x`<sup>Required</sup> <a name="x" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunction.invalidateVersionBasedOn.parameter.x"></a>
+
+- *Type:* string
 
 ---
 
@@ -4070,7 +4208,8 @@ new newrelic.NewRelicStack(scope: Construct, id: string, props: NewRelicStackPro
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStack.addDependency">addDependency</a></code> | Add a dependency between this stack and another stack. |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStack.addMetadata">addMetadata</a></code> | Adds an arbitary key-value pair, with information you want to record about the stack. |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStack.addTransform">addTransform</a></code> | Add a Transform to this stack. A Transform is a macro that AWS CloudFormation uses to process your template. |
-| <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStack.exportValue">exportValue</a></code> | Create a CloudFormation Export for a value. |
+| <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStack.exportStringListValue">exportStringListValue</a></code> | Create a CloudFormation Export for a string list value. |
+| <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStack.exportValue">exportValue</a></code> | Create a CloudFormation Export for a string value. |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStack.formatArn">formatArn</a></code> | Creates an ARN from components. |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStack.getLogicalId">getLogicalId</a></code> | Allocates a stack-unique CloudFormation-compatible logical identity for a specific resource. |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStack.regionalFact">regionalFact</a></code> | Look up a fact value for the given fact for the region of this stack. |
@@ -4175,13 +4314,51 @@ The transform to add.
 
 ---
 
+##### `exportStringListValue` <a name="exportStringListValue" id="neulabs-cdk-constructs.newrelic.NewRelicStack.exportStringListValue"></a>
+
+```typescript
+public exportStringListValue(exportedValue: any, options?: ExportValueOptions): string[]
+```
+
+Create a CloudFormation Export for a string list value.
+
+Returns a string list representing the corresponding `Fn.importValue()`
+expression for this Export. The export expression is automatically wrapped with an
+`Fn::Join` and the import value with an `Fn::Split`, since CloudFormation can only
+export strings. You can control the name for the export by passing the `name` option.
+
+If you don't supply a value for `name`, the value you're exporting must be
+a Resource attribute (for example: `bucket.bucketName`) and it will be
+given the same name as the automatic cross-stack reference that would be created
+if you used the attribute in another Stack.
+
+One of the uses for this method is to *remove* the relationship between
+two Stacks established by automatic cross-stack references. It will
+temporarily ensure that the CloudFormation Export still exists while you
+remove the reference from the consuming stack. After that, you can remove
+the resource and the manual export.
+
+See `exportValue` for an example of this process.
+
+###### `exportedValue`<sup>Required</sup> <a name="exportedValue" id="neulabs-cdk-constructs.newrelic.NewRelicStack.exportStringListValue.parameter.exportedValue"></a>
+
+- *Type:* any
+
+---
+
+###### `options`<sup>Optional</sup> <a name="options" id="neulabs-cdk-constructs.newrelic.NewRelicStack.exportStringListValue.parameter.options"></a>
+
+- *Type:* aws-cdk-lib.ExportValueOptions
+
+---
+
 ##### `exportValue` <a name="exportValue" id="neulabs-cdk-constructs.newrelic.NewRelicStack.exportValue"></a>
 
 ```typescript
 public exportValue(exportedValue: any, options?: ExportValueOptions): string
 ```
 
-Create a CloudFormation Export for a value.
+Create a CloudFormation Export for a string value.
 
 Returns a string representing the corresponding `Fn.importValue()`
 expression for this Export. You can control the name for the export by
@@ -4717,7 +4894,7 @@ This value is resolved according to the following rules:
 
 Preferably, you should use the return value as an opaque string and not
 attempt to parse it to implement your logic. If you do, you must first
-check that it is a concerete value an not an unresolved token. If this
+check that it is a concrete value an not an unresolved token. If this
 value is an unresolved token (`Token.isUnresolved(stack.account)` returns
 `true`), this implies that the user wishes that this stack will synthesize
 into a **account-agnostic template**. In this case, your code should either
@@ -4858,14 +5035,14 @@ The AWS region into which this stack will be deployed (e.g. `us-west-2`).
 This value is resolved according to the following rules:
 
 1. The value provided to `env.region` when the stack is defined. This can
-    either be a concerete region (e.g. `us-west-2`) or the `Aws.REGION`
+    either be a concrete region (e.g. `us-west-2`) or the `Aws.REGION`
     token.
 3. `Aws.REGION`, which is represents the CloudFormation intrinsic reference
     `{ "Ref": "AWS::Region" }` encoded as a string token.
 
 Preferably, you should use the return value as an opaque string and not
 attempt to parse it to implement your logic. If you do, you must first
-check that it is a concerete value an not an unresolved token. If this
+check that it is a concrete value an not an unresolved token. If this
 value is an unresolved token (`Token.isUnresolved(stack.region)` returns
 `true`), this implies that the user wishes that this stack will synthesize
 into a **region-agnostic template**. In this case, your code should either
@@ -5116,6 +5293,7 @@ const baseStackProps: stack.BaseStackProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.stack.BaseStackProps.property.crossRegionReferences">crossRegionReferences</a></code> | <code>boolean</code> | Enable this flag to allow native cross region stack references. |
 | <code><a href="#neulabs-cdk-constructs.stack.BaseStackProps.property.description">description</a></code> | <code>string</code> | A description of the stack. |
 | <code><a href="#neulabs-cdk-constructs.stack.BaseStackProps.property.env">env</a></code> | <code>aws-cdk-lib.Environment</code> | The AWS environment (account/region) where this stack will be deployed. |
+| <code><a href="#neulabs-cdk-constructs.stack.BaseStackProps.property.permissionsBoundary">permissionsBoundary</a></code> | <code>aws-cdk-lib.PermissionsBoundary</code> | Options for applying a permissions boundary to all IAM Roles and Users created within this Stage. |
 | <code><a href="#neulabs-cdk-constructs.stack.BaseStackProps.property.stackName">stackName</a></code> | <code>string</code> | Name to deploy the stack with. |
 | <code><a href="#neulabs-cdk-constructs.stack.BaseStackProps.property.synthesizer">synthesizer</a></code> | <code>aws-cdk-lib.IStackSynthesizer</code> | Synthesis method to use while deploying this stack. |
 | <code><a href="#neulabs-cdk-constructs.stack.BaseStackProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Stack tags that will be applied to all the taggable resources and the stack itself. |
@@ -5242,6 +5420,19 @@ new MyStack(app, 'Stack1');
 ```
 
 
+##### `permissionsBoundary`<sup>Optional</sup> <a name="permissionsBoundary" id="neulabs-cdk-constructs.stack.BaseStackProps.property.permissionsBoundary"></a>
+
+```typescript
+public readonly permissionsBoundary: PermissionsBoundary;
+```
+
+- *Type:* aws-cdk-lib.PermissionsBoundary
+- *Default:* no permissions boundary is applied
+
+Options for applying a permissions boundary to all IAM Roles and Users created within this Stage.
+
+---
+
 ##### `stackName`<sup>Optional</sup> <a name="stackName" id="neulabs-cdk-constructs.stack.BaseStackProps.property.stackName"></a>
 
 ```typescript
@@ -5262,9 +5453,19 @@ public readonly synthesizer: IStackSynthesizer;
 ```
 
 - *Type:* aws-cdk-lib.IStackSynthesizer
-- *Default:* `DefaultStackSynthesizer` if the `@aws-cdk/core:newStyleStackSynthesis` feature flag is set, `LegacyStackSynthesizer` otherwise.
+- *Default:* The synthesizer specified on `App`, or `DefaultStackSynthesizer` otherwise.
 
 Synthesis method to use while deploying this stack.
+
+The Stack Synthesizer controls aspects of synthesis and deployment,
+like how assets are referenced and what IAM roles to use. For more
+information, see the README of the main CDK package.
+
+If not specified, the `defaultStackSynthesizer` from `App` will be used.
+If that is not specified, `DefaultStackSynthesizer` is used if
+`@aws-cdk/core:newStyleStackSynthesis` is set to `true` or the CDK major
+version is v2. In CDK v1 `LegacyStackSynthesizer` is the default if no
+other synthesizer is specified.
 
 ---
 
@@ -5383,6 +5584,7 @@ const functionNewRelicProps: aws_lambda.FunctionNewRelicProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.onFailure">onFailure</a></code> | <code>aws-cdk-lib.aws_lambda.IDestination</code> | The destination for failed invocations. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.onSuccess">onSuccess</a></code> | <code>aws-cdk-lib.aws_lambda.IDestination</code> | The destination for successful invocations. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.retryAttempts">retryAttempts</a></code> | <code>number</code> | The maximum number of times to retry when the function returns an error. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.adotInstrumentation">adotInstrumentation</a></code> | <code>aws-cdk-lib.aws_lambda.AdotInstrumentationConfig</code> | Specify the configuration of AWS Distro for OpenTelemetry (ADOT) instrumentation. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.allowAllOutbound">allowAllOutbound</a></code> | <code>boolean</code> | Whether to allow the Lambda to send all network traffic. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.allowPublicSubnet">allowPublicSubnet</a></code> | <code>boolean</code> | Lambda Functions in a public subnet can NOT access the internet. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.architecture">architecture</a></code> | <code>aws-cdk-lib.aws_lambda.Architecture</code> | The system architectures compatible with this lambda function. |
@@ -5409,6 +5611,7 @@ const functionNewRelicProps: aws_lambda.FunctionNewRelicProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.profilingGroup">profilingGroup</a></code> | <code>aws-cdk-lib.aws_codeguruprofiler.IProfilingGroup</code> | Profiling Group. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.reservedConcurrentExecutions">reservedConcurrentExecutions</a></code> | <code>number</code> | The maximum of concurrent executions you want to reserve for the function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.role">role</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | Lambda execution role. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.runtimeManagementMode">runtimeManagementMode</a></code> | <code>aws-cdk-lib.aws_lambda.RuntimeManagementMode</code> | Sets the runtime management configuration for a function's version. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.securityGroups">securityGroups</a></code> | <code>aws-cdk-lib.aws_ec2.ISecurityGroup[]</code> | The list of security groups to associate with the Lambda's network interfaces. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.timeout">timeout</a></code> | <code>aws-cdk-lib.Duration</code> | The function execution time (in seconds) after which Lambda terminates the function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.tracing">tracing</a></code> | <code>aws-cdk-lib.aws_lambda.Tracing</code> | Enable AWS X-Ray Tracing for Lambda Function. |
@@ -5482,6 +5685,21 @@ The maximum number of times to retry when the function returns an error.
 
 Minimum: 0
 Maximum: 2
+
+---
+
+##### `adotInstrumentation`<sup>Optional</sup> <a name="adotInstrumentation" id="neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.adotInstrumentation"></a>
+
+```typescript
+public readonly adotInstrumentation: AdotInstrumentationConfig;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.AdotInstrumentationConfig
+- *Default:* No ADOT instrumentation
+
+Specify the configuration of AWS Distro for OpenTelemetry (ADOT) instrumentation.
+
+> [https://aws-otel.github.io/docs/getting-started/lambda](https://aws-otel.github.io/docs/getting-started/lambda)
 
 ---
 
@@ -5878,6 +6096,19 @@ The relevant managed policies are "service-role/AWSLambdaBasicExecutionRole" and
 
 ---
 
+##### `runtimeManagementMode`<sup>Optional</sup> <a name="runtimeManagementMode" id="neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.runtimeManagementMode"></a>
+
+```typescript
+public readonly runtimeManagementMode: RuntimeManagementMode;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.RuntimeManagementMode
+- *Default:* Auto
+
+Sets the runtime management configuration for a function's version.
+
+---
+
 ##### `securityGroups`<sup>Optional</sup> <a name="securityGroups" id="neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.securityGroups"></a>
 
 ```typescript
@@ -6100,6 +6331,7 @@ const functionProps: aws_lambda.FunctionProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.onFailure">onFailure</a></code> | <code>aws-cdk-lib.aws_lambda.IDestination</code> | The destination for failed invocations. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.onSuccess">onSuccess</a></code> | <code>aws-cdk-lib.aws_lambda.IDestination</code> | The destination for successful invocations. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.retryAttempts">retryAttempts</a></code> | <code>number</code> | The maximum number of times to retry when the function returns an error. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.adotInstrumentation">adotInstrumentation</a></code> | <code>aws-cdk-lib.aws_lambda.AdotInstrumentationConfig</code> | Specify the configuration of AWS Distro for OpenTelemetry (ADOT) instrumentation. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.allowAllOutbound">allowAllOutbound</a></code> | <code>boolean</code> | Whether to allow the Lambda to send all network traffic. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.allowPublicSubnet">allowPublicSubnet</a></code> | <code>boolean</code> | Lambda Functions in a public subnet can NOT access the internet. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.architecture">architecture</a></code> | <code>aws-cdk-lib.aws_lambda.Architecture</code> | The system architectures compatible with this lambda function. |
@@ -6126,6 +6358,7 @@ const functionProps: aws_lambda.FunctionProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.profilingGroup">profilingGroup</a></code> | <code>aws-cdk-lib.aws_codeguruprofiler.IProfilingGroup</code> | Profiling Group. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.reservedConcurrentExecutions">reservedConcurrentExecutions</a></code> | <code>number</code> | The maximum of concurrent executions you want to reserve for the function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.role">role</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | Lambda execution role. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.runtimeManagementMode">runtimeManagementMode</a></code> | <code>aws-cdk-lib.aws_lambda.RuntimeManagementMode</code> | Sets the runtime management configuration for a function's version. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.securityGroups">securityGroups</a></code> | <code>aws-cdk-lib.aws_ec2.ISecurityGroup[]</code> | The list of security groups to associate with the Lambda's network interfaces. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.timeout">timeout</a></code> | <code>aws-cdk-lib.Duration</code> | The function execution time (in seconds) after which Lambda terminates the function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.tracing">tracing</a></code> | <code>aws-cdk-lib.aws_lambda.Tracing</code> | Enable AWS X-Ray Tracing for Lambda Function. |
@@ -6195,6 +6428,21 @@ The maximum number of times to retry when the function returns an error.
 
 Minimum: 0
 Maximum: 2
+
+---
+
+##### `adotInstrumentation`<sup>Optional</sup> <a name="adotInstrumentation" id="neulabs-cdk-constructs.aws_lambda.FunctionProps.property.adotInstrumentation"></a>
+
+```typescript
+public readonly adotInstrumentation: AdotInstrumentationConfig;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.AdotInstrumentationConfig
+- *Default:* No ADOT instrumentation
+
+Specify the configuration of AWS Distro for OpenTelemetry (ADOT) instrumentation.
+
+> [https://aws-otel.github.io/docs/getting-started/lambda](https://aws-otel.github.io/docs/getting-started/lambda)
 
 ---
 
@@ -6591,6 +6839,19 @@ The relevant managed policies are "service-role/AWSLambdaBasicExecutionRole" and
 
 ---
 
+##### `runtimeManagementMode`<sup>Optional</sup> <a name="runtimeManagementMode" id="neulabs-cdk-constructs.aws_lambda.FunctionProps.property.runtimeManagementMode"></a>
+
+```typescript
+public readonly runtimeManagementMode: RuntimeManagementMode;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.RuntimeManagementMode
+- *Default:* Auto
+
+Sets the runtime management configuration for a function's version.
+
+---
+
 ##### `securityGroups`<sup>Optional</sup> <a name="securityGroups" id="neulabs-cdk-constructs.aws_lambda.FunctionProps.property.securityGroups"></a>
 
 ```typescript
@@ -6773,6 +7034,7 @@ const githubOIDCStackStackProps: oidc.GithubOIDCStackStackProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.crossRegionReferences">crossRegionReferences</a></code> | <code>boolean</code> | Enable this flag to allow native cross region stack references. |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.description">description</a></code> | <code>string</code> | A description of the stack. |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.env">env</a></code> | <code>aws-cdk-lib.Environment</code> | The AWS environment (account/region) where this stack will be deployed. |
+| <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.permissionsBoundary">permissionsBoundary</a></code> | <code>aws-cdk-lib.PermissionsBoundary</code> | Options for applying a permissions boundary to all IAM Roles and Users created within this Stage. |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.stackName">stackName</a></code> | <code>string</code> | Name to deploy the stack with. |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.synthesizer">synthesizer</a></code> | <code>aws-cdk-lib.IStackSynthesizer</code> | Synthesis method to use while deploying this stack. |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Stack tags that will be applied to all the taggable resources and the stack itself. |
@@ -6905,6 +7167,19 @@ new MyStack(app, 'Stack1');
 ```
 
 
+##### `permissionsBoundary`<sup>Optional</sup> <a name="permissionsBoundary" id="neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.permissionsBoundary"></a>
+
+```typescript
+public readonly permissionsBoundary: PermissionsBoundary;
+```
+
+- *Type:* aws-cdk-lib.PermissionsBoundary
+- *Default:* no permissions boundary is applied
+
+Options for applying a permissions boundary to all IAM Roles and Users created within this Stage.
+
+---
+
 ##### `stackName`<sup>Optional</sup> <a name="stackName" id="neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.stackName"></a>
 
 ```typescript
@@ -6925,9 +7200,19 @@ public readonly synthesizer: IStackSynthesizer;
 ```
 
 - *Type:* aws-cdk-lib.IStackSynthesizer
-- *Default:* `DefaultStackSynthesizer` if the `@aws-cdk/core:newStyleStackSynthesis` feature flag is set, `LegacyStackSynthesizer` otherwise.
+- *Default:* The synthesizer specified on `App`, or `DefaultStackSynthesizer` otherwise.
 
 Synthesis method to use while deploying this stack.
+
+The Stack Synthesizer controls aspects of synthesis and deployment,
+like how assets are referenced and what IAM roles to use. For more
+information, see the README of the main CDK package.
+
+If not specified, the `defaultStackSynthesizer` from `App` will be used.
+If that is not specified, `DefaultStackSynthesizer` is used if
+`@aws-cdk/core:newStyleStackSynthesis` is set to `true` or the CDK major
+version is v2. In CDK v1 `LegacyStackSynthesizer` is the default if no
+other synthesizer is specified.
 
 ---
 
@@ -7117,6 +7402,7 @@ const newRelicStackProps: newrelic.NewRelicStackProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.crossRegionReferences">crossRegionReferences</a></code> | <code>boolean</code> | Enable this flag to allow native cross region stack references. |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.description">description</a></code> | <code>string</code> | A description of the stack. |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.env">env</a></code> | <code>aws-cdk-lib.Environment</code> | The AWS environment (account/region) where this stack will be deployed. |
+| <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.permissionsBoundary">permissionsBoundary</a></code> | <code>aws-cdk-lib.PermissionsBoundary</code> | Options for applying a permissions boundary to all IAM Roles and Users created within this Stage. |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.stackName">stackName</a></code> | <code>string</code> | Name to deploy the stack with. |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.synthesizer">synthesizer</a></code> | <code>aws-cdk-lib.IStackSynthesizer</code> | Synthesis method to use while deploying this stack. |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Stack tags that will be applied to all the taggable resources and the stack itself. |
@@ -7248,6 +7534,19 @@ new MyStack(app, 'Stack1');
 ```
 
 
+##### `permissionsBoundary`<sup>Optional</sup> <a name="permissionsBoundary" id="neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.permissionsBoundary"></a>
+
+```typescript
+public readonly permissionsBoundary: PermissionsBoundary;
+```
+
+- *Type:* aws-cdk-lib.PermissionsBoundary
+- *Default:* no permissions boundary is applied
+
+Options for applying a permissions boundary to all IAM Roles and Users created within this Stage.
+
+---
+
 ##### `stackName`<sup>Optional</sup> <a name="stackName" id="neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.stackName"></a>
 
 ```typescript
@@ -7268,9 +7567,19 @@ public readonly synthesizer: IStackSynthesizer;
 ```
 
 - *Type:* aws-cdk-lib.IStackSynthesizer
-- *Default:* `DefaultStackSynthesizer` if the `@aws-cdk/core:newStyleStackSynthesis` feature flag is set, `LegacyStackSynthesizer` otherwise.
+- *Default:* The synthesizer specified on `App`, or `DefaultStackSynthesizer` otherwise.
 
 Synthesis method to use while deploying this stack.
+
+The Stack Synthesizer controls aspects of synthesis and deployment,
+like how assets are referenced and what IAM roles to use. For more
+information, see the README of the main CDK package.
+
+If not specified, the `defaultStackSynthesizer` from `App` will be used.
+If that is not specified, `DefaultStackSynthesizer` is used if
+`@aws-cdk/core:newStyleStackSynthesis` is set to `true` or the CDK major
+version is v2. In CDK v1 `LegacyStackSynthesizer` is the default if no
+other synthesizer is specified.
 
 ---
 

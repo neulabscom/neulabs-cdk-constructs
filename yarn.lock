@@ -10,30 +10,30 @@
     "@jridgewell/gen-mapping" "^0.1.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@aws-cdk/asset-awscli-v1@^2.2.9":
-  version "2.2.91"
-  resolved "https://registry.yarnpkg.com/@aws-cdk/asset-awscli-v1/-/asset-awscli-v1-2.2.91.tgz#2b2705561f664b24618230f1e4e87ab5e00df8fd"
-  integrity sha512-a66YsYr8csu9LBBpm+kQQlJL7PnC4KcfjSfSWA86VeQZfAkBF/QRlL0XghUO4WUV55UPx93jm86z4eNwthyAsg==
+"@aws-cdk/asset-awscli-v1@^2.2.97":
+  version "2.2.103"
+  resolved "https://registry.yarnpkg.com/@aws-cdk/asset-awscli-v1/-/asset-awscli-v1-2.2.103.tgz#dac64b71465851559ed21de0c94321a0e7cffc16"
+  integrity sha512-WBao2LH0NId5cZpLPkcZxBRHlcDGlM7RR6brzJW807kP2fRG7zqYDSK+AvYuCvqYjyWa+a6S5qaVrAroUXg+uw==
 
 "@aws-cdk/asset-kubectl-v20@^2.1.1":
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@aws-cdk/asset-kubectl-v20/-/asset-kubectl-v20-2.1.1.tgz#d01c1efb867fb7f2cfd8c8b230b8eae16447e156"
   integrity sha512-U1ntiX8XiMRRRH5J1IdC+1t5CE89015cwyt5U63Cpk0GnMlN5+h9WsWMlKlPXZR4rdq/m806JRlBMRpBUB2Dhw==
 
-"@aws-cdk/asset-node-proxy-agent-v5@^2.0.15":
-  version "2.0.73"
-  resolved "https://registry.yarnpkg.com/@aws-cdk/asset-node-proxy-agent-v5/-/asset-node-proxy-agent-v5-2.0.73.tgz#32d061c80d06b2da2fa87a77462f1a70967986df"
-  integrity sha512-6HK9q8TEV0g9WopnKwK62qDBUTVdswfw6K1jXzJrQsDUEB7+OvgQjfR5vrEtc++MEbc625Xc5hzfxv3gGmc6DQ==
+"@aws-cdk/asset-node-proxy-agent-v5@^2.0.77":
+  version "2.0.83"
+  resolved "https://registry.yarnpkg.com/@aws-cdk/asset-node-proxy-agent-v5/-/asset-node-proxy-agent-v5-2.0.83.tgz#d2224c2caa05ea2f2df0eedb8bfd9b6c7c7028c8"
+  integrity sha512-Y3G/gAAUMI4ZPTHmx7T3ope+j0J7Po+jjCE/g4MjESB3jNjUUQ9u6YxcYzxEHdWXE0d9UpBDxlsDdEQDjalZYg==
 
-"@aws-cdk/aws-apigatewayv2-alpha@2.53.0-alpha.0":
-  version "2.53.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/@aws-cdk/aws-apigatewayv2-alpha/-/aws-apigatewayv2-alpha-2.53.0-alpha.0.tgz#c3e123f1e78911cb952bc688ae425498ad186c0c"
-  integrity sha512-54/18zTCAfHr3CpGI0hmzpxRaXZ8SEC1qU6uUi9927TWc6uN68MN7VGD4mkxWqsiBxatVa1aTuvrX/9I0hrwLw==
+"@aws-cdk/aws-apigatewayv2-alpha@2.68.0-alpha.0":
+  version "2.68.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@aws-cdk/aws-apigatewayv2-alpha/-/aws-apigatewayv2-alpha-2.68.0-alpha.0.tgz#f9cfe135eedbd60aacc48735b63323ea7961c5db"
+  integrity sha512-UZ1GBt7DfxKLfs49Fg1Y33/RRVoD1NZDd0V+e9Tj/dkSm9d0JEiuMU8TRtandsd38kl7n1fSLEVsXu3/WAYAPg==
 
-"@aws-cdk/aws-apigatewayv2-integrations-alpha@2.53.0-alpha.0":
-  version "2.53.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/@aws-cdk/aws-apigatewayv2-integrations-alpha/-/aws-apigatewayv2-integrations-alpha-2.53.0-alpha.0.tgz#61bc262d30e97dd58b0ef235df5c22f0ec76b4d3"
-  integrity sha512-lHzRA4PwWu+RpGwlhtb1hdJ83wdN1quthbTvIRGbcLctSQ81GZ50Fo2WkoDPHwJY4DIgmwy8sc/sni747XL1lg==
+"@aws-cdk/aws-apigatewayv2-integrations-alpha@2.68.0-alpha.0":
+  version "2.68.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@aws-cdk/aws-apigatewayv2-integrations-alpha/-/aws-apigatewayv2-integrations-alpha-2.68.0-alpha.0.tgz#f92380320164ff047b1adee8d2077e20e1a6902e"
+  integrity sha512-0+ymy31+SmS7vg8fvIfXHwN9lAe113/xWj7HdkS2T0jvgZzVgeJG5BCkPVrYUojcxKQ69LqwffhsH3YfNbjSGg==
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.12.13", "@babel/code-frame@^7.18.6":
   version "7.18.6"
@@ -1310,21 +1310,21 @@ available-typed-arrays@^1.0.5:
   resolved "https://registry.yarnpkg.com/available-typed-arrays/-/available-typed-arrays-1.0.5.tgz#92f95616501069d07d10edb2fc37d3e1c65123b7"
   integrity sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==
 
-aws-cdk-lib@2.53.0:
-  version "2.53.0"
-  resolved "https://registry.yarnpkg.com/aws-cdk-lib/-/aws-cdk-lib-2.53.0.tgz#c36ecfb87ba4e7d1cdfe0c620161beda0ce4aa67"
-  integrity sha512-ADpJ9luJxzmOrP/GJ37nA1YtdNmsOsjE+NZnQOpB7YL0spUxZJGNVAselaFLSDZmIsC6d9mSnW81fj4SDP1gAw==
+aws-cdk-lib@2.68.0:
+  version "2.68.0"
+  resolved "https://registry.yarnpkg.com/aws-cdk-lib/-/aws-cdk-lib-2.68.0.tgz#5448dfff733a88551e3df61df5c5b646a7b6ee75"
+  integrity sha512-roN3xwzv/GleGG3CaJrf+thdzr9WBzJU4LotumEOs+0cGfeXSta8Pm/cGAeY4kplr5r10QWUovH0fv/bi6Vrbw==
   dependencies:
-    "@aws-cdk/asset-awscli-v1" "^2.2.9"
+    "@aws-cdk/asset-awscli-v1" "^2.2.97"
     "@aws-cdk/asset-kubectl-v20" "^2.1.1"
-    "@aws-cdk/asset-node-proxy-agent-v5" "^2.0.15"
+    "@aws-cdk/asset-node-proxy-agent-v5" "^2.0.77"
     "@balena/dockerignore" "^1.0.2"
     case "1.6.3"
     fs-extra "^9.1.0"
-    ignore "^5.2.0"
+    ignore "^5.2.4"
     jsonschema "^1.4.1"
     minimatch "^3.1.2"
-    punycode "^2.1.1"
+    punycode "^2.3.0"
     semver "^7.3.8"
     yaml "1.10.2"
 
@@ -1785,10 +1785,10 @@ console-control-strings@^1.1.0:
   resolved "https://registry.yarnpkg.com/console-control-strings/-/console-control-strings-1.1.0.tgz#3d7cf4464db6446ea644bf4b39507f9851008e8e"
   integrity sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==
 
-constructs@^10.0.29:
-  version "10.1.249"
-  resolved "https://registry.yarnpkg.com/constructs/-/constructs-10.1.249.tgz#2eef9dc0b22a37e88b8e939fe4da1cde7edd7324"
-  integrity sha512-xttf/MWHfvMyOjg88CYymlC7RZCP7kF6knA1xtJgDfhvel11uYUhomEGxuQiqy6BOvKyKxJUBaGl8jfp8s1MLA==
+constructs@^10.0.0:
+  version "10.1.276"
+  resolved "https://registry.yarnpkg.com/constructs/-/constructs-10.1.276.tgz#538854098f3d33da6734b59725f4140673da2f85"
+  integrity sha512-NMYSBZfI0oe1InCer25WPK8X2z5ZCA2yyBrv0xH5uqs9YftE0TyKXV4pLVFf5SDNBJVXLWhq5rxRfGiGt/lvtg==
 
 conventional-changelog-angular@^5.0.12:
   version "5.0.13"
@@ -3225,7 +3225,7 @@ ignore-walk@^6.0.0:
   dependencies:
     minimatch "^6.1.6"
 
-ignore@^5.2.0:
+ignore@^5.2.0, ignore@^5.2.4:
   version "5.2.4"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.2.4.tgz#a291c0c6178ff1b960befe47fcdec301674a6324"
   integrity sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==
@@ -5290,7 +5290,7 @@ psl@^1.1.33:
   resolved "https://registry.yarnpkg.com/psl/-/psl-1.9.0.tgz#d0df2a137f00794565fcaf3b2c00cd09f8d5a5a7"
   integrity sha512-E/ZsdU4HLs/68gYzgGTkMicWTLPdAftJLfJFlLUAAKZGkStNU72sZjT66SnMDVOfOWY/YAoiD7Jxa9iHvngcag==
 
-punycode@^2.1.0, punycode@^2.1.1:
+punycode@^2.1.0, punycode@^2.1.1, punycode@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.3.0.tgz#f67fa67c94da8f4d0cfff981aee4118064199b8f"
   integrity sha512-rRV+zQD8tVFys26lAGR9WUuS4iUAngJScM+ZRSKtvl5tKeZ2t5bvdNFdNHBW9FWR4guGHlgmsZ1G7BSm2wTbuA==

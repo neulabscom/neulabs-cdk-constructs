@@ -1,6 +1,6 @@
 const { cdk, javascript } = require('projen');
 
-const cdkVersion = '2.53.0';
+const cdkVersion = '2.68.0';
 
 const project = new cdk.JsiiProject({
   author: 'Neulabs',
@@ -20,7 +20,7 @@ const project = new cdk.JsiiProject({
     `@aws-cdk/aws-apigatewayv2-alpha@${cdkVersion}-alpha.0`,
     `@aws-cdk/aws-apigatewayv2-integrations-alpha@${cdkVersion}-alpha.0`,
     `aws-cdk-lib@${cdkVersion}`,
-    'constructs@^10.0.29',
+    'constructs@^10.0.0',
   ],
 
   devDeps: ['ts-node', 'prettier', 'eslint-config-prettier', 'eslint-plugin-prettier', 'standard-version'],
