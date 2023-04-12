@@ -2001,6 +2001,1094 @@ public readonly stage: string;
 ---
 
 
+### FunctionNode <a name="FunctionNode" id="neulabs-cdk-constructs.aws_lambda.FunctionNode"></a>
+
+#### Initializers <a name="Initializers" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.Initializer"></a>
+
+```typescript
+import { aws_lambda } from 'neulabs-cdk-constructs'
+
+new aws_lambda.FunctionNode(scope: Construct, id: string, props: FunctionNodeProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.Initializer.parameter.props">props</a></code> | <code>neulabs-cdk-constructs.aws_lambda.FunctionNodeProps</code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.Initializer.parameter.props"></a>
+
+- *Type:* neulabs-cdk-constructs.aws_lambda.FunctionNodeProps
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.applyRemovalPolicy">applyRemovalPolicy</a></code> | Apply the given removal policy to this resource. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.addEventSource">addEventSource</a></code> | Adds an event source to this function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.addEventSourceMapping">addEventSourceMapping</a></code> | Adds an event source that maps to this AWS Lambda function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.addFunctionUrl">addFunctionUrl</a></code> | Adds a url to this lambda function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.addPermission">addPermission</a></code> | Adds a permission to the Lambda resource policy. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.addToRolePolicy">addToRolePolicy</a></code> | Adds a statement to the IAM role assumed by the instance. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.configureAsyncInvoke">configureAsyncInvoke</a></code> | Configures options for asynchronous invocation. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.considerWarningOnInvokeFunctionPermissions">considerWarningOnInvokeFunctionPermissions</a></code> | A warning will be added to functions under the following conditions: - permissions that include `lambda:InvokeFunction` are added to the unqualified function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.grantInvoke">grantInvoke</a></code> | Grant the given identity permissions to invoke this Lambda. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.grantInvokeUrl">grantInvokeUrl</a></code> | Grant the given identity permissions to invoke this Lambda Function URL. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.metric">metric</a></code> | Return the given named metric for this Function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.metricDuration">metricDuration</a></code> | How long execution of this Lambda takes. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.metricErrors">metricErrors</a></code> | How many invocations of this Lambda fail. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.metricInvocations">metricInvocations</a></code> | How often this Lambda is invoked. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.metricThrottles">metricThrottles</a></code> | How often this Lambda is throttled. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.addAlias">addAlias</a></code> | Defines an alias for this function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.addEnvironment">addEnvironment</a></code> | Adds an environment variable to this Lambda function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.addLayers">addLayers</a></code> | Adds one or more Lambda Layers to this Lambda function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.invalidateVersionBasedOn">invalidateVersionBasedOn</a></code> | Mix additional information into the hash of the Version object. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.addBaseEnvironment">addBaseEnvironment</a></code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.addBaseTags">addBaseTags</a></code> | *No description.* |
+
+---
+
+##### `toString` <a name="toString" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `applyRemovalPolicy` <a name="applyRemovalPolicy" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.applyRemovalPolicy"></a>
+
+```typescript
+public applyRemovalPolicy(policy: RemovalPolicy): void
+```
+
+Apply the given removal policy to this resource.
+
+The Removal Policy controls what happens to this resource when it stops
+being managed by CloudFormation, either because you've removed it from the
+CDK application or because you've made a change that requires the resource
+to be replaced.
+
+The resource can be deleted (`RemovalPolicy.DESTROY`), or left in your AWS
+account for data recovery and cleanup later (`RemovalPolicy.RETAIN`).
+
+###### `policy`<sup>Required</sup> <a name="policy" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.applyRemovalPolicy.parameter.policy"></a>
+
+- *Type:* aws-cdk-lib.RemovalPolicy
+
+---
+
+##### `addEventSource` <a name="addEventSource" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addEventSource"></a>
+
+```typescript
+public addEventSource(source: IEventSource): void
+```
+
+Adds an event source to this function.
+
+Event sources are implemented in the @aws-cdk/aws-lambda-event-sources module.
+
+The following example adds an SQS Queue as an event source:
+```
+import { SqsEventSource } from '@aws-cdk/aws-lambda-event-sources';
+myFunction.addEventSource(new SqsEventSource(myQueue));
+```
+
+###### `source`<sup>Required</sup> <a name="source" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addEventSource.parameter.source"></a>
+
+- *Type:* aws-cdk-lib.aws_lambda.IEventSource
+
+---
+
+##### `addEventSourceMapping` <a name="addEventSourceMapping" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addEventSourceMapping"></a>
+
+```typescript
+public addEventSourceMapping(id: string, options: EventSourceMappingOptions): EventSourceMapping
+```
+
+Adds an event source that maps to this AWS Lambda function.
+
+###### `id`<sup>Required</sup> <a name="id" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addEventSourceMapping.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+###### `options`<sup>Required</sup> <a name="options" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addEventSourceMapping.parameter.options"></a>
+
+- *Type:* aws-cdk-lib.aws_lambda.EventSourceMappingOptions
+
+---
+
+##### `addFunctionUrl` <a name="addFunctionUrl" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addFunctionUrl"></a>
+
+```typescript
+public addFunctionUrl(options?: FunctionUrlOptions): FunctionUrl
+```
+
+Adds a url to this lambda function.
+
+###### `options`<sup>Optional</sup> <a name="options" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addFunctionUrl.parameter.options"></a>
+
+- *Type:* aws-cdk-lib.aws_lambda.FunctionUrlOptions
+
+---
+
+##### `addPermission` <a name="addPermission" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addPermission"></a>
+
+```typescript
+public addPermission(id: string, permission: Permission): void
+```
+
+Adds a permission to the Lambda resource policy.
+
+> [Permission for details.](Permission for details.)
+
+###### `id`<sup>Required</sup> <a name="id" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addPermission.parameter.id"></a>
+
+- *Type:* string
+
+The id for the permission construct.
+
+---
+
+###### `permission`<sup>Required</sup> <a name="permission" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addPermission.parameter.permission"></a>
+
+- *Type:* aws-cdk-lib.aws_lambda.Permission
+
+The permission to grant to this Lambda function.
+
+---
+
+##### `addToRolePolicy` <a name="addToRolePolicy" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addToRolePolicy"></a>
+
+```typescript
+public addToRolePolicy(statement: PolicyStatement): void
+```
+
+Adds a statement to the IAM role assumed by the instance.
+
+###### `statement`<sup>Required</sup> <a name="statement" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addToRolePolicy.parameter.statement"></a>
+
+- *Type:* aws-cdk-lib.aws_iam.PolicyStatement
+
+---
+
+##### `configureAsyncInvoke` <a name="configureAsyncInvoke" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.configureAsyncInvoke"></a>
+
+```typescript
+public configureAsyncInvoke(options: EventInvokeConfigOptions): void
+```
+
+Configures options for asynchronous invocation.
+
+###### `options`<sup>Required</sup> <a name="options" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.configureAsyncInvoke.parameter.options"></a>
+
+- *Type:* aws-cdk-lib.aws_lambda.EventInvokeConfigOptions
+
+---
+
+##### `considerWarningOnInvokeFunctionPermissions` <a name="considerWarningOnInvokeFunctionPermissions" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.considerWarningOnInvokeFunctionPermissions"></a>
+
+```typescript
+public considerWarningOnInvokeFunctionPermissions(scope: Construct, action: string): void
+```
+
+A warning will be added to functions under the following conditions: - permissions that include `lambda:InvokeFunction` are added to the unqualified function.
+
+function.currentVersion is invoked before or after the permission is created.
+
+This applies only to permissions on Lambda functions, not versions or aliases.
+This function is overridden as a noOp for QualifiedFunctionBase.
+
+###### `scope`<sup>Required</sup> <a name="scope" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.considerWarningOnInvokeFunctionPermissions.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+###### `action`<sup>Required</sup> <a name="action" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.considerWarningOnInvokeFunctionPermissions.parameter.action"></a>
+
+- *Type:* string
+
+---
+
+##### `grantInvoke` <a name="grantInvoke" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.grantInvoke"></a>
+
+```typescript
+public grantInvoke(grantee: IGrantable): Grant
+```
+
+Grant the given identity permissions to invoke this Lambda.
+
+###### `grantee`<sup>Required</sup> <a name="grantee" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.grantInvoke.parameter.grantee"></a>
+
+- *Type:* aws-cdk-lib.aws_iam.IGrantable
+
+---
+
+##### `grantInvokeUrl` <a name="grantInvokeUrl" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.grantInvokeUrl"></a>
+
+```typescript
+public grantInvokeUrl(grantee: IGrantable): Grant
+```
+
+Grant the given identity permissions to invoke this Lambda Function URL.
+
+###### `grantee`<sup>Required</sup> <a name="grantee" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.grantInvokeUrl.parameter.grantee"></a>
+
+- *Type:* aws-cdk-lib.aws_iam.IGrantable
+
+---
+
+##### `metric` <a name="metric" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.metric"></a>
+
+```typescript
+public metric(metricName: string, props?: MetricOptions): Metric
+```
+
+Return the given named metric for this Function.
+
+###### `metricName`<sup>Required</sup> <a name="metricName" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.metric.parameter.metricName"></a>
+
+- *Type:* string
+
+---
+
+###### `props`<sup>Optional</sup> <a name="props" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.metric.parameter.props"></a>
+
+- *Type:* aws-cdk-lib.aws_cloudwatch.MetricOptions
+
+---
+
+##### `metricDuration` <a name="metricDuration" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.metricDuration"></a>
+
+```typescript
+public metricDuration(props?: MetricOptions): Metric
+```
+
+How long execution of this Lambda takes.
+
+Average over 5 minutes
+
+###### `props`<sup>Optional</sup> <a name="props" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.metricDuration.parameter.props"></a>
+
+- *Type:* aws-cdk-lib.aws_cloudwatch.MetricOptions
+
+---
+
+##### `metricErrors` <a name="metricErrors" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.metricErrors"></a>
+
+```typescript
+public metricErrors(props?: MetricOptions): Metric
+```
+
+How many invocations of this Lambda fail.
+
+Sum over 5 minutes
+
+###### `props`<sup>Optional</sup> <a name="props" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.metricErrors.parameter.props"></a>
+
+- *Type:* aws-cdk-lib.aws_cloudwatch.MetricOptions
+
+---
+
+##### `metricInvocations` <a name="metricInvocations" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.metricInvocations"></a>
+
+```typescript
+public metricInvocations(props?: MetricOptions): Metric
+```
+
+How often this Lambda is invoked.
+
+Sum over 5 minutes
+
+###### `props`<sup>Optional</sup> <a name="props" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.metricInvocations.parameter.props"></a>
+
+- *Type:* aws-cdk-lib.aws_cloudwatch.MetricOptions
+
+---
+
+##### `metricThrottles` <a name="metricThrottles" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.metricThrottles"></a>
+
+```typescript
+public metricThrottles(props?: MetricOptions): Metric
+```
+
+How often this Lambda is throttled.
+
+Sum over 5 minutes
+
+###### `props`<sup>Optional</sup> <a name="props" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.metricThrottles.parameter.props"></a>
+
+- *Type:* aws-cdk-lib.aws_cloudwatch.MetricOptions
+
+---
+
+##### `addAlias` <a name="addAlias" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addAlias"></a>
+
+```typescript
+public addAlias(aliasName: string, options?: AliasOptions): Alias
+```
+
+Defines an alias for this function.
+
+The alias will automatically be updated to point to the latest version of
+the function as it is being updated during a deployment.
+
+```ts
+declare const fn: lambda.Function;
+
+fn.addAlias('Live');
+
+// Is equivalent to
+
+new lambda.Alias(this, 'AliasLive', {
+   aliasName: 'Live',
+   version: fn.currentVersion,
+});
+```
+
+###### `aliasName`<sup>Required</sup> <a name="aliasName" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addAlias.parameter.aliasName"></a>
+
+- *Type:* string
+
+The name of the alias.
+
+---
+
+###### `options`<sup>Optional</sup> <a name="options" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addAlias.parameter.options"></a>
+
+- *Type:* aws-cdk-lib.aws_lambda.AliasOptions
+
+Alias options.
+
+---
+
+##### `addEnvironment` <a name="addEnvironment" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addEnvironment"></a>
+
+```typescript
+public addEnvironment(key: string, value: string, options?: EnvironmentOptions): Function
+```
+
+Adds an environment variable to this Lambda function.
+
+If this is a ref to a Lambda function, this operation results in a no-op.
+
+###### `key`<sup>Required</sup> <a name="key" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addEnvironment.parameter.key"></a>
+
+- *Type:* string
+
+The environment variable key.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addEnvironment.parameter.value"></a>
+
+- *Type:* string
+
+The environment variable's value.
+
+---
+
+###### `options`<sup>Optional</sup> <a name="options" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addEnvironment.parameter.options"></a>
+
+- *Type:* aws-cdk-lib.aws_lambda.EnvironmentOptions
+
+Environment variable options.
+
+---
+
+##### `addLayers` <a name="addLayers" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addLayers"></a>
+
+```typescript
+public addLayers(layers: ILayerVersion): void
+```
+
+Adds one or more Lambda Layers to this Lambda function.
+
+###### `layers`<sup>Required</sup> <a name="layers" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addLayers.parameter.layers"></a>
+
+- *Type:* aws-cdk-lib.aws_lambda.ILayerVersion
+
+the layers to be added.
+
+---
+
+##### `invalidateVersionBasedOn` <a name="invalidateVersionBasedOn" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.invalidateVersionBasedOn"></a>
+
+```typescript
+public invalidateVersionBasedOn(x: string): void
+```
+
+Mix additional information into the hash of the Version object.
+
+The Lambda Function construct does its best to automatically create a new
+Version when anything about the Function changes (its code, its layers,
+any of the other properties).
+
+However, you can sometimes source information from places that the CDK cannot
+look into, like the deploy-time values of SSM parameters. In those cases,
+the CDK would not force the creation of a new Version object when it actually
+should.
+
+This method can be used to invalidate the current Version object. Pass in
+any string into this method, and make sure the string changes when you know
+a new Version needs to be created.
+
+This method may be called more than once.
+
+###### `x`<sup>Required</sup> <a name="x" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.invalidateVersionBasedOn.parameter.x"></a>
+
+- *Type:* string
+
+---
+
+##### `addBaseEnvironment` <a name="addBaseEnvironment" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addBaseEnvironment"></a>
+
+```typescript
+public addBaseEnvironment(): void
+```
+
+##### `addBaseTags` <a name="addBaseTags" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addBaseTags"></a>
+
+```typescript
+public addBaseTags(): void
+```
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.isOwnedResource">isOwnedResource</a></code> | Returns true if the construct was created by CDK, and false otherwise. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.isResource">isResource</a></code> | Check whether the given construct is a Resource. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.classifyVersionProperty">classifyVersionProperty</a></code> | Record whether specific properties in the `AWS::Lambda::Function` resource should also be associated to the Version resource. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.fromFunctionArn">fromFunctionArn</a></code> | Import a lambda function into the CDK using its ARN. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.fromFunctionAttributes">fromFunctionAttributes</a></code> | Creates a Lambda function object which represents a function not defined within this stack. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.fromFunctionName">fromFunctionName</a></code> | Import a lambda function into the CDK using its name. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.metricAll">metricAll</a></code> | Return the given named metric for this Lambda. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.metricAllConcurrentExecutions">metricAllConcurrentExecutions</a></code> | Metric for the number of concurrent executions across all Lambdas. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.metricAllDuration">metricAllDuration</a></code> | Metric for the Duration executing all Lambdas. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.metricAllErrors">metricAllErrors</a></code> | Metric for the number of Errors executing all Lambdas. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.metricAllInvocations">metricAllInvocations</a></code> | Metric for the number of invocations of all Lambdas. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.metricAllThrottles">metricAllThrottles</a></code> | Metric for the number of throttled invocations of all Lambdas. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.metricAllUnreservedConcurrentExecutions">metricAllUnreservedConcurrentExecutions</a></code> | Metric for the number of unreserved concurrent executions across all Lambdas. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.isConstruct"></a>
+
+```typescript
+import { aws_lambda } from 'neulabs-cdk-constructs'
+
+aws_lambda.FunctionNode.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+##### `isOwnedResource` <a name="isOwnedResource" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.isOwnedResource"></a>
+
+```typescript
+import { aws_lambda } from 'neulabs-cdk-constructs'
+
+aws_lambda.FunctionNode.isOwnedResource(construct: IConstruct)
+```
+
+Returns true if the construct was created by CDK, and false otherwise.
+
+###### `construct`<sup>Required</sup> <a name="construct" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.isOwnedResource.parameter.construct"></a>
+
+- *Type:* constructs.IConstruct
+
+---
+
+##### `isResource` <a name="isResource" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.isResource"></a>
+
+```typescript
+import { aws_lambda } from 'neulabs-cdk-constructs'
+
+aws_lambda.FunctionNode.isResource(construct: IConstruct)
+```
+
+Check whether the given construct is a Resource.
+
+###### `construct`<sup>Required</sup> <a name="construct" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.isResource.parameter.construct"></a>
+
+- *Type:* constructs.IConstruct
+
+---
+
+##### `classifyVersionProperty` <a name="classifyVersionProperty" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.classifyVersionProperty"></a>
+
+```typescript
+import { aws_lambda } from 'neulabs-cdk-constructs'
+
+aws_lambda.FunctionNode.classifyVersionProperty(propertyName: string, locked: boolean)
+```
+
+Record whether specific properties in the `AWS::Lambda::Function` resource should also be associated to the Version resource.
+
+See 'currentVersion' section in the module README for more details.
+
+###### `propertyName`<sup>Required</sup> <a name="propertyName" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.classifyVersionProperty.parameter.propertyName"></a>
+
+- *Type:* string
+
+The property to classify.
+
+---
+
+###### `locked`<sup>Required</sup> <a name="locked" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.classifyVersionProperty.parameter.locked"></a>
+
+- *Type:* boolean
+
+whether the property should be associated to the version or not.
+
+---
+
+##### `fromFunctionArn` <a name="fromFunctionArn" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.fromFunctionArn"></a>
+
+```typescript
+import { aws_lambda } from 'neulabs-cdk-constructs'
+
+aws_lambda.FunctionNode.fromFunctionArn(scope: Construct, id: string, functionArn: string)
+```
+
+Import a lambda function into the CDK using its ARN.
+
+###### `scope`<sup>Required</sup> <a name="scope" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.fromFunctionArn.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+###### `id`<sup>Required</sup> <a name="id" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.fromFunctionArn.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+###### `functionArn`<sup>Required</sup> <a name="functionArn" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.fromFunctionArn.parameter.functionArn"></a>
+
+- *Type:* string
+
+---
+
+##### `fromFunctionAttributes` <a name="fromFunctionAttributes" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.fromFunctionAttributes"></a>
+
+```typescript
+import { aws_lambda } from 'neulabs-cdk-constructs'
+
+aws_lambda.FunctionNode.fromFunctionAttributes(scope: Construct, id: string, attrs: FunctionAttributes)
+```
+
+Creates a Lambda function object which represents a function not defined within this stack.
+
+###### `scope`<sup>Required</sup> <a name="scope" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.fromFunctionAttributes.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The parent construct.
+
+---
+
+###### `id`<sup>Required</sup> <a name="id" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.fromFunctionAttributes.parameter.id"></a>
+
+- *Type:* string
+
+The name of the lambda construct.
+
+---
+
+###### `attrs`<sup>Required</sup> <a name="attrs" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.fromFunctionAttributes.parameter.attrs"></a>
+
+- *Type:* aws-cdk-lib.aws_lambda.FunctionAttributes
+
+the attributes of the function to import.
+
+---
+
+##### `fromFunctionName` <a name="fromFunctionName" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.fromFunctionName"></a>
+
+```typescript
+import { aws_lambda } from 'neulabs-cdk-constructs'
+
+aws_lambda.FunctionNode.fromFunctionName(scope: Construct, id: string, functionName: string)
+```
+
+Import a lambda function into the CDK using its name.
+
+###### `scope`<sup>Required</sup> <a name="scope" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.fromFunctionName.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+###### `id`<sup>Required</sup> <a name="id" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.fromFunctionName.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+###### `functionName`<sup>Required</sup> <a name="functionName" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.fromFunctionName.parameter.functionName"></a>
+
+- *Type:* string
+
+---
+
+##### `metricAll` <a name="metricAll" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.metricAll"></a>
+
+```typescript
+import { aws_lambda } from 'neulabs-cdk-constructs'
+
+aws_lambda.FunctionNode.metricAll(metricName: string, props?: MetricOptions)
+```
+
+Return the given named metric for this Lambda.
+
+###### `metricName`<sup>Required</sup> <a name="metricName" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.metricAll.parameter.metricName"></a>
+
+- *Type:* string
+
+---
+
+###### `props`<sup>Optional</sup> <a name="props" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.metricAll.parameter.props"></a>
+
+- *Type:* aws-cdk-lib.aws_cloudwatch.MetricOptions
+
+---
+
+##### `metricAllConcurrentExecutions` <a name="metricAllConcurrentExecutions" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.metricAllConcurrentExecutions"></a>
+
+```typescript
+import { aws_lambda } from 'neulabs-cdk-constructs'
+
+aws_lambda.FunctionNode.metricAllConcurrentExecutions(props?: MetricOptions)
+```
+
+Metric for the number of concurrent executions across all Lambdas.
+
+###### `props`<sup>Optional</sup> <a name="props" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.metricAllConcurrentExecutions.parameter.props"></a>
+
+- *Type:* aws-cdk-lib.aws_cloudwatch.MetricOptions
+
+---
+
+##### `metricAllDuration` <a name="metricAllDuration" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.metricAllDuration"></a>
+
+```typescript
+import { aws_lambda } from 'neulabs-cdk-constructs'
+
+aws_lambda.FunctionNode.metricAllDuration(props?: MetricOptions)
+```
+
+Metric for the Duration executing all Lambdas.
+
+###### `props`<sup>Optional</sup> <a name="props" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.metricAllDuration.parameter.props"></a>
+
+- *Type:* aws-cdk-lib.aws_cloudwatch.MetricOptions
+
+---
+
+##### `metricAllErrors` <a name="metricAllErrors" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.metricAllErrors"></a>
+
+```typescript
+import { aws_lambda } from 'neulabs-cdk-constructs'
+
+aws_lambda.FunctionNode.metricAllErrors(props?: MetricOptions)
+```
+
+Metric for the number of Errors executing all Lambdas.
+
+###### `props`<sup>Optional</sup> <a name="props" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.metricAllErrors.parameter.props"></a>
+
+- *Type:* aws-cdk-lib.aws_cloudwatch.MetricOptions
+
+---
+
+##### `metricAllInvocations` <a name="metricAllInvocations" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.metricAllInvocations"></a>
+
+```typescript
+import { aws_lambda } from 'neulabs-cdk-constructs'
+
+aws_lambda.FunctionNode.metricAllInvocations(props?: MetricOptions)
+```
+
+Metric for the number of invocations of all Lambdas.
+
+###### `props`<sup>Optional</sup> <a name="props" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.metricAllInvocations.parameter.props"></a>
+
+- *Type:* aws-cdk-lib.aws_cloudwatch.MetricOptions
+
+---
+
+##### `metricAllThrottles` <a name="metricAllThrottles" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.metricAllThrottles"></a>
+
+```typescript
+import { aws_lambda } from 'neulabs-cdk-constructs'
+
+aws_lambda.FunctionNode.metricAllThrottles(props?: MetricOptions)
+```
+
+Metric for the number of throttled invocations of all Lambdas.
+
+###### `props`<sup>Optional</sup> <a name="props" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.metricAllThrottles.parameter.props"></a>
+
+- *Type:* aws-cdk-lib.aws_cloudwatch.MetricOptions
+
+---
+
+##### `metricAllUnreservedConcurrentExecutions` <a name="metricAllUnreservedConcurrentExecutions" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.metricAllUnreservedConcurrentExecutions"></a>
+
+```typescript
+import { aws_lambda } from 'neulabs-cdk-constructs'
+
+aws_lambda.FunctionNode.metricAllUnreservedConcurrentExecutions(props?: MetricOptions)
+```
+
+Metric for the number of unreserved concurrent executions across all Lambdas.
+
+###### `props`<sup>Optional</sup> <a name="props" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.metricAllUnreservedConcurrentExecutions.parameter.props"></a>
+
+- *Type:* aws-cdk-lib.aws_cloudwatch.MetricOptions
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.property.env">env</a></code> | <code>aws-cdk-lib.ResourceEnvironment</code> | The environment this resource belongs to. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.property.stack">stack</a></code> | <code>aws-cdk-lib.Stack</code> | The stack in which this resource is defined. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.property.architecture">architecture</a></code> | <code>aws-cdk-lib.aws_lambda.Architecture</code> | The architecture of this Lambda Function (this is an optional attribute and defaults to X86_64). |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.property.connections">connections</a></code> | <code>aws-cdk-lib.aws_ec2.Connections</code> | Access the Connections object. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.property.functionArn">functionArn</a></code> | <code>string</code> | ARN of this function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.property.functionName">functionName</a></code> | <code>string</code> | Name of this function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.property.grantPrincipal">grantPrincipal</a></code> | <code>aws-cdk-lib.aws_iam.IPrincipal</code> | The principal this Lambda Function is running as. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.property.isBoundToVpc">isBoundToVpc</a></code> | <code>boolean</code> | Whether or not this Lambda function was bound to a VPC. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.property.latestVersion">latestVersion</a></code> | <code>aws-cdk-lib.aws_lambda.IVersion</code> | The `$LATEST` version of this function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.property.permissionsNode">permissionsNode</a></code> | <code>constructs.Node</code> | The construct node where permissions are attached. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.property.resourceArnsForGrantInvoke">resourceArnsForGrantInvoke</a></code> | <code>string[]</code> | The ARN(s) to put into the resource field of the generated IAM policy for grantInvoke(). |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.property.role">role</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | Execution role associated with this function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.property.currentVersion">currentVersion</a></code> | <code>aws-cdk-lib.aws_lambda.Version</code> | Returns a `lambda.Version` which represents the current version of this Lambda function. A new version will be created every time the function's configuration changes. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.property.logGroup">logGroup</a></code> | <code>aws-cdk-lib.aws_logs.ILogGroup</code> | The LogGroup where the Lambda function's logs are made available. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.property.runtime">runtime</a></code> | <code>aws-cdk-lib.aws_lambda.Runtime</code> | The runtime configured for this lambda. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.property.deadLetterQueue">deadLetterQueue</a></code> | <code>aws-cdk-lib.aws_sqs.IQueue</code> | The DLQ (as queue) associated with this Lambda Function (this is an optional attribute). |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.property.deadLetterTopic">deadLetterTopic</a></code> | <code>aws-cdk-lib.aws_sns.ITopic</code> | The DLQ (as topic) associated with this Lambda Function (this is an optional attribute). |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.property.timeout">timeout</a></code> | <code>aws-cdk-lib.Duration</code> | The timeout configured for this lambda. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.property.stage">stage</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `env`<sup>Required</sup> <a name="env" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.property.env"></a>
+
+```typescript
+public readonly env: ResourceEnvironment;
+```
+
+- *Type:* aws-cdk-lib.ResourceEnvironment
+
+The environment this resource belongs to.
+
+For resources that are created and managed by the CDK
+(generally, those created by creating new class instances like Role, Bucket, etc.),
+this is always the same as the environment of the stack they belong to;
+however, for imported resources
+(those obtained from static methods like fromRoleArn, fromBucketName, etc.),
+that might be different than the stack they were imported into.
+
+---
+
+##### `stack`<sup>Required</sup> <a name="stack" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.property.stack"></a>
+
+```typescript
+public readonly stack: Stack;
+```
+
+- *Type:* aws-cdk-lib.Stack
+
+The stack in which this resource is defined.
+
+---
+
+##### `architecture`<sup>Required</sup> <a name="architecture" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.property.architecture"></a>
+
+```typescript
+public readonly architecture: Architecture;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.Architecture
+
+The architecture of this Lambda Function (this is an optional attribute and defaults to X86_64).
+
+---
+
+##### `connections`<sup>Required</sup> <a name="connections" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.property.connections"></a>
+
+```typescript
+public readonly connections: Connections;
+```
+
+- *Type:* aws-cdk-lib.aws_ec2.Connections
+
+Access the Connections object.
+
+Will fail if not a VPC-enabled Lambda Function
+
+---
+
+##### `functionArn`<sup>Required</sup> <a name="functionArn" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.property.functionArn"></a>
+
+```typescript
+public readonly functionArn: string;
+```
+
+- *Type:* string
+
+ARN of this function.
+
+---
+
+##### `functionName`<sup>Required</sup> <a name="functionName" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.property.functionName"></a>
+
+```typescript
+public readonly functionName: string;
+```
+
+- *Type:* string
+
+Name of this function.
+
+---
+
+##### `grantPrincipal`<sup>Required</sup> <a name="grantPrincipal" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.property.grantPrincipal"></a>
+
+```typescript
+public readonly grantPrincipal: IPrincipal;
+```
+
+- *Type:* aws-cdk-lib.aws_iam.IPrincipal
+
+The principal this Lambda Function is running as.
+
+---
+
+##### `isBoundToVpc`<sup>Required</sup> <a name="isBoundToVpc" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.property.isBoundToVpc"></a>
+
+```typescript
+public readonly isBoundToVpc: boolean;
+```
+
+- *Type:* boolean
+
+Whether or not this Lambda function was bound to a VPC.
+
+If this is is `false`, trying to access the `connections` object will fail.
+
+---
+
+##### `latestVersion`<sup>Required</sup> <a name="latestVersion" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.property.latestVersion"></a>
+
+```typescript
+public readonly latestVersion: IVersion;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.IVersion
+
+The `$LATEST` version of this function.
+
+Note that this is reference to a non-specific AWS Lambda version, which
+means the function this version refers to can return different results in
+different invocations.
+
+To obtain a reference to an explicit version which references the current
+function configuration, use `lambdaFunction.currentVersion` instead.
+
+---
+
+##### `permissionsNode`<sup>Required</sup> <a name="permissionsNode" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.property.permissionsNode"></a>
+
+```typescript
+public readonly permissionsNode: Node;
+```
+
+- *Type:* constructs.Node
+
+The construct node where permissions are attached.
+
+---
+
+##### `resourceArnsForGrantInvoke`<sup>Required</sup> <a name="resourceArnsForGrantInvoke" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.property.resourceArnsForGrantInvoke"></a>
+
+```typescript
+public readonly resourceArnsForGrantInvoke: string[];
+```
+
+- *Type:* string[]
+
+The ARN(s) to put into the resource field of the generated IAM policy for grantInvoke().
+
+---
+
+##### `role`<sup>Optional</sup> <a name="role" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.property.role"></a>
+
+```typescript
+public readonly role: IRole;
+```
+
+- *Type:* aws-cdk-lib.aws_iam.IRole
+
+Execution role associated with this function.
+
+---
+
+##### `currentVersion`<sup>Required</sup> <a name="currentVersion" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.property.currentVersion"></a>
+
+```typescript
+public readonly currentVersion: Version;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.Version
+
+Returns a `lambda.Version` which represents the current version of this Lambda function. A new version will be created every time the function's configuration changes.
+
+You can specify options for this version using the `currentVersionOptions`
+prop when initializing the `lambda.Function`.
+
+---
+
+##### `logGroup`<sup>Required</sup> <a name="logGroup" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.property.logGroup"></a>
+
+```typescript
+public readonly logGroup: ILogGroup;
+```
+
+- *Type:* aws-cdk-lib.aws_logs.ILogGroup
+
+The LogGroup where the Lambda function's logs are made available.
+
+If either `logRetention` is set or this property is called, a CloudFormation custom resource is added to the stack that
+pre-creates the log group as part of the stack deployment, if it already doesn't exist, and sets the correct log retention
+period (never expire, by default).
+
+Further, if the log group already exists and the `logRetention` is not set, the custom resource will reset the log retention
+to never expire even if it was configured with a different value.
+
+---
+
+##### `runtime`<sup>Required</sup> <a name="runtime" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.property.runtime"></a>
+
+```typescript
+public readonly runtime: Runtime;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.Runtime
+
+The runtime configured for this lambda.
+
+---
+
+##### `deadLetterQueue`<sup>Optional</sup> <a name="deadLetterQueue" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.property.deadLetterQueue"></a>
+
+```typescript
+public readonly deadLetterQueue: IQueue;
+```
+
+- *Type:* aws-cdk-lib.aws_sqs.IQueue
+
+The DLQ (as queue) associated with this Lambda Function (this is an optional attribute).
+
+---
+
+##### `deadLetterTopic`<sup>Optional</sup> <a name="deadLetterTopic" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.property.deadLetterTopic"></a>
+
+```typescript
+public readonly deadLetterTopic: ITopic;
+```
+
+- *Type:* aws-cdk-lib.aws_sns.ITopic
+
+The DLQ (as topic) associated with this Lambda Function (this is an optional attribute).
+
+---
+
+##### `timeout`<sup>Optional</sup> <a name="timeout" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.property.timeout"></a>
+
+```typescript
+public readonly timeout: Duration;
+```
+
+- *Type:* aws-cdk-lib.Duration
+
+The timeout configured for this lambda.
+
+---
+
+##### `stage`<sup>Required</sup> <a name="stage" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.property.stage"></a>
+
+```typescript
+public readonly stage: string;
+```
+
+- *Type:* string
+
+---
+
+
 ### GithubOIDCStack <a name="GithubOIDCStack" id="neulabs-cdk-constructs.oidc.GithubOIDCStack"></a>
 
 #### Initializers <a name="Initializers" id="neulabs-cdk-constructs.oidc.GithubOIDCStack.Initializer"></a>
@@ -6307,6 +7395,766 @@ public readonly newRelicLayerVersion: number;
 
 ```typescript
 public readonly newRelicwithExtensionSendLogs: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### FunctionNodeProps <a name="FunctionNodeProps" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps"></a>
+
+#### Initializer <a name="Initializer" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.Initializer"></a>
+
+```typescript
+import { aws_lambda } from 'neulabs-cdk-constructs'
+
+const functionNodeProps: aws_lambda.FunctionNodeProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.maxEventAge">maxEventAge</a></code> | <code>aws-cdk-lib.Duration</code> | The maximum age of a request that Lambda sends to a function for processing. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.onFailure">onFailure</a></code> | <code>aws-cdk-lib.aws_lambda.IDestination</code> | The destination for failed invocations. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.onSuccess">onSuccess</a></code> | <code>aws-cdk-lib.aws_lambda.IDestination</code> | The destination for successful invocations. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.retryAttempts">retryAttempts</a></code> | <code>number</code> | The maximum number of times to retry when the function returns an error. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.adotInstrumentation">adotInstrumentation</a></code> | <code>aws-cdk-lib.aws_lambda.AdotInstrumentationConfig</code> | Specify the configuration of AWS Distro for OpenTelemetry (ADOT) instrumentation. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.allowAllOutbound">allowAllOutbound</a></code> | <code>boolean</code> | Whether to allow the Lambda to send all network traffic. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.allowPublicSubnet">allowPublicSubnet</a></code> | <code>boolean</code> | Lambda Functions in a public subnet can NOT access the internet. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.architecture">architecture</a></code> | <code>aws-cdk-lib.aws_lambda.Architecture</code> | The system architectures compatible with this lambda function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.codeSigningConfig">codeSigningConfig</a></code> | <code>aws-cdk-lib.aws_lambda.ICodeSigningConfig</code> | Code signing config associated with this function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.currentVersionOptions">currentVersionOptions</a></code> | <code>aws-cdk-lib.aws_lambda.VersionOptions</code> | Options for the `lambda.Version` resource automatically created by the `fn.currentVersion` method. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.deadLetterQueue">deadLetterQueue</a></code> | <code>aws-cdk-lib.aws_sqs.IQueue</code> | The SQS queue to use if DLQ is enabled. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.deadLetterQueueEnabled">deadLetterQueueEnabled</a></code> | <code>boolean</code> | Enabled DLQ. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.deadLetterTopic">deadLetterTopic</a></code> | <code>aws-cdk-lib.aws_sns.ITopic</code> | The SNS topic to use as a DLQ. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.description">description</a></code> | <code>string</code> | A description of the function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.environment">environment</a></code> | <code>{[ key: string ]: string}</code> | Key-value pairs that Lambda caches and makes available for your Lambda functions. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.environmentEncryption">environmentEncryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | The AWS KMS key that's used to encrypt your function's environment variables. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.ephemeralStorageSize">ephemeralStorageSize</a></code> | <code>aws-cdk-lib.Size</code> | The size of the function’s /tmp directory in MiB. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.events">events</a></code> | <code>aws-cdk-lib.aws_lambda.IEventSource[]</code> | Event sources for this function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.filesystem">filesystem</a></code> | <code>aws-cdk-lib.aws_lambda.FileSystem</code> | The filesystem configuration for the lambda function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.functionName">functionName</a></code> | <code>string</code> | A name for the function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.initialPolicy">initialPolicy</a></code> | <code>aws-cdk-lib.aws_iam.PolicyStatement[]</code> | Initial policy statements to add to the created Lambda Role. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.insightsVersion">insightsVersion</a></code> | <code>aws-cdk-lib.aws_lambda.LambdaInsightsVersion</code> | Specify the version of CloudWatch Lambda insights to use for monitoring. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.layers">layers</a></code> | <code>aws-cdk-lib.aws_lambda.ILayerVersion[]</code> | A list of layers to add to the function's execution environment. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.logRetention">logRetention</a></code> | <code>aws-cdk-lib.aws_logs.RetentionDays</code> | The number of days log events are kept in CloudWatch Logs. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.logRetentionRetryOptions">logRetentionRetryOptions</a></code> | <code>aws-cdk-lib.aws_lambda.LogRetentionRetryOptions</code> | When log retention is specified, a custom resource attempts to create the CloudWatch log group. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.logRetentionRole">logRetentionRole</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | The IAM role for the Lambda function associated with the custom resource that sets the retention policy. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.memorySize">memorySize</a></code> | <code>number</code> | The amount of memory, in MB, that is allocated to your Lambda function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.profiling">profiling</a></code> | <code>boolean</code> | Enable profiling. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.profilingGroup">profilingGroup</a></code> | <code>aws-cdk-lib.aws_codeguruprofiler.IProfilingGroup</code> | Profiling Group. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.reservedConcurrentExecutions">reservedConcurrentExecutions</a></code> | <code>number</code> | The maximum of concurrent executions you want to reserve for the function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.role">role</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | Lambda execution role. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.runtimeManagementMode">runtimeManagementMode</a></code> | <code>aws-cdk-lib.aws_lambda.RuntimeManagementMode</code> | Sets the runtime management configuration for a function's version. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.securityGroups">securityGroups</a></code> | <code>aws-cdk-lib.aws_ec2.ISecurityGroup[]</code> | The list of security groups to associate with the Lambda's network interfaces. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.timeout">timeout</a></code> | <code>aws-cdk-lib.Duration</code> | The function execution time (in seconds) after which Lambda terminates the function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.tracing">tracing</a></code> | <code>aws-cdk-lib.aws_lambda.Tracing</code> | Enable AWS X-Ray Tracing for Lambda Function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.vpc">vpc</a></code> | <code>aws-cdk-lib.aws_ec2.IVpc</code> | VPC network to place Lambda network interfaces. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.vpcSubnets">vpcSubnets</a></code> | <code>aws-cdk-lib.aws_ec2.SubnetSelection</code> | Where to place the network interfaces within the VPC. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.awsSdkConnectionReuse">awsSdkConnectionReuse</a></code> | <code>boolean</code> | Whether to automatically reuse TCP connections when working with the AWS SDK for JavaScript. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.bundling">bundling</a></code> | <code>aws-cdk-lib.aws_lambda_nodejs.BundlingOptions</code> | Bundling options. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.depsLockFilePath">depsLockFilePath</a></code> | <code>string</code> | The path to the dependencies lock file (`yarn.lock`, `pnpm-lock.yaml` or `package-lock.json`). |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.entry">entry</a></code> | <code>string</code> | Path to the entry file (JavaScript or TypeScript). |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.handler">handler</a></code> | <code>string</code> | The name of the exported handler in the entry file. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.projectRoot">projectRoot</a></code> | <code>string</code> | The path to the directory containing project config files (`package.json` or `tsconfig.json`). |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.runtime">runtime</a></code> | <code>aws-cdk-lib.aws_lambda.Runtime</code> | The runtime environment. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.stage">stage</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.withBaseEnvironment">withBaseEnvironment</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.withBaseTags">withBaseTags</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `maxEventAge`<sup>Optional</sup> <a name="maxEventAge" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.maxEventAge"></a>
+
+```typescript
+public readonly maxEventAge: Duration;
+```
+
+- *Type:* aws-cdk-lib.Duration
+- *Default:* Duration.hours(6)
+
+The maximum age of a request that Lambda sends to a function for processing.
+
+Minimum: 60 seconds
+Maximum: 6 hours
+
+---
+
+##### `onFailure`<sup>Optional</sup> <a name="onFailure" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.onFailure"></a>
+
+```typescript
+public readonly onFailure: IDestination;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.IDestination
+- *Default:* no destination
+
+The destination for failed invocations.
+
+---
+
+##### `onSuccess`<sup>Optional</sup> <a name="onSuccess" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.onSuccess"></a>
+
+```typescript
+public readonly onSuccess: IDestination;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.IDestination
+- *Default:* no destination
+
+The destination for successful invocations.
+
+---
+
+##### `retryAttempts`<sup>Optional</sup> <a name="retryAttempts" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.retryAttempts"></a>
+
+```typescript
+public readonly retryAttempts: number;
+```
+
+- *Type:* number
+- *Default:* 2
+
+The maximum number of times to retry when the function returns an error.
+
+Minimum: 0
+Maximum: 2
+
+---
+
+##### `adotInstrumentation`<sup>Optional</sup> <a name="adotInstrumentation" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.adotInstrumentation"></a>
+
+```typescript
+public readonly adotInstrumentation: AdotInstrumentationConfig;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.AdotInstrumentationConfig
+- *Default:* No ADOT instrumentation
+
+Specify the configuration of AWS Distro for OpenTelemetry (ADOT) instrumentation.
+
+> [https://aws-otel.github.io/docs/getting-started/lambda](https://aws-otel.github.io/docs/getting-started/lambda)
+
+---
+
+##### `allowAllOutbound`<sup>Optional</sup> <a name="allowAllOutbound" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.allowAllOutbound"></a>
+
+```typescript
+public readonly allowAllOutbound: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to allow the Lambda to send all network traffic.
+
+If set to false, you must individually add traffic rules to allow the
+Lambda to connect to network targets.
+
+---
+
+##### `allowPublicSubnet`<sup>Optional</sup> <a name="allowPublicSubnet" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.allowPublicSubnet"></a>
+
+```typescript
+public readonly allowPublicSubnet: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Lambda Functions in a public subnet can NOT access the internet.
+
+Use this property to acknowledge this limitation and still place the function in a public subnet.
+
+> [https://stackoverflow.com/questions/52992085/why-cant-an-aws-lambda-function-inside-a-public-subnet-in-a-vpc-connect-to-the/52994841#52994841](https://stackoverflow.com/questions/52992085/why-cant-an-aws-lambda-function-inside-a-public-subnet-in-a-vpc-connect-to-the/52994841#52994841)
+
+---
+
+##### `architecture`<sup>Optional</sup> <a name="architecture" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.architecture"></a>
+
+```typescript
+public readonly architecture: Architecture;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.Architecture
+- *Default:* Architecture.X86_64
+
+The system architectures compatible with this lambda function.
+
+---
+
+##### `codeSigningConfig`<sup>Optional</sup> <a name="codeSigningConfig" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.codeSigningConfig"></a>
+
+```typescript
+public readonly codeSigningConfig: ICodeSigningConfig;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.ICodeSigningConfig
+- *Default:* Not Sign the Code
+
+Code signing config associated with this function.
+
+---
+
+##### `currentVersionOptions`<sup>Optional</sup> <a name="currentVersionOptions" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.currentVersionOptions"></a>
+
+```typescript
+public readonly currentVersionOptions: VersionOptions;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.VersionOptions
+- *Default:* default options as described in `VersionOptions`
+
+Options for the `lambda.Version` resource automatically created by the `fn.currentVersion` method.
+
+---
+
+##### `deadLetterQueue`<sup>Optional</sup> <a name="deadLetterQueue" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.deadLetterQueue"></a>
+
+```typescript
+public readonly deadLetterQueue: IQueue;
+```
+
+- *Type:* aws-cdk-lib.aws_sqs.IQueue
+- *Default:* SQS queue with 14 day retention period if `deadLetterQueueEnabled` is `true`
+
+The SQS queue to use if DLQ is enabled.
+
+If SNS topic is desired, specify `deadLetterTopic` property instead.
+
+---
+
+##### `deadLetterQueueEnabled`<sup>Optional</sup> <a name="deadLetterQueueEnabled" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.deadLetterQueueEnabled"></a>
+
+```typescript
+public readonly deadLetterQueueEnabled: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false unless `deadLetterQueue` is set, which implies DLQ is enabled.
+
+Enabled DLQ.
+
+If `deadLetterQueue` is undefined,
+an SQS queue with default options will be defined for your Function.
+
+---
+
+##### `deadLetterTopic`<sup>Optional</sup> <a name="deadLetterTopic" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.deadLetterTopic"></a>
+
+```typescript
+public readonly deadLetterTopic: ITopic;
+```
+
+- *Type:* aws-cdk-lib.aws_sns.ITopic
+- *Default:* no SNS topic
+
+The SNS topic to use as a DLQ.
+
+Note that if `deadLetterQueueEnabled` is set to `true`, an SQS queue will be created
+rather than an SNS topic. Using an SNS topic as a DLQ requires this property to be set explicitly.
+
+---
+
+##### `description`<sup>Optional</sup> <a name="description" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.description"></a>
+
+```typescript
+public readonly description: string;
+```
+
+- *Type:* string
+- *Default:* No description.
+
+A description of the function.
+
+---
+
+##### `environment`<sup>Optional</sup> <a name="environment" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.environment"></a>
+
+```typescript
+public readonly environment: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+- *Default:* No environment variables.
+
+Key-value pairs that Lambda caches and makes available for your Lambda functions.
+
+Use environment variables to apply configuration changes, such
+as test and production environment configurations, without changing your
+Lambda function source code.
+
+---
+
+##### `environmentEncryption`<sup>Optional</sup> <a name="environmentEncryption" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.environmentEncryption"></a>
+
+```typescript
+public readonly environmentEncryption: IKey;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.IKey
+- *Default:* AWS Lambda creates and uses an AWS managed customer master key (CMK).
+
+The AWS KMS key that's used to encrypt your function's environment variables.
+
+---
+
+##### `ephemeralStorageSize`<sup>Optional</sup> <a name="ephemeralStorageSize" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.ephemeralStorageSize"></a>
+
+```typescript
+public readonly ephemeralStorageSize: Size;
+```
+
+- *Type:* aws-cdk-lib.Size
+- *Default:* 512 MiB
+
+The size of the function’s /tmp directory in MiB.
+
+---
+
+##### `events`<sup>Optional</sup> <a name="events" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.events"></a>
+
+```typescript
+public readonly events: IEventSource[];
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.IEventSource[]
+- *Default:* No event sources.
+
+Event sources for this function.
+
+You can also add event sources using `addEventSource`.
+
+---
+
+##### `filesystem`<sup>Optional</sup> <a name="filesystem" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.filesystem"></a>
+
+```typescript
+public readonly filesystem: FileSystem;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.FileSystem
+- *Default:* will not mount any filesystem
+
+The filesystem configuration for the lambda function.
+
+---
+
+##### `functionName`<sup>Optional</sup> <a name="functionName" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.functionName"></a>
+
+```typescript
+public readonly functionName: string;
+```
+
+- *Type:* string
+- *Default:* AWS CloudFormation generates a unique physical ID and uses that ID for the function's name. For more information, see Name Type.
+
+A name for the function.
+
+---
+
+##### `initialPolicy`<sup>Optional</sup> <a name="initialPolicy" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.initialPolicy"></a>
+
+```typescript
+public readonly initialPolicy: PolicyStatement[];
+```
+
+- *Type:* aws-cdk-lib.aws_iam.PolicyStatement[]
+- *Default:* No policy statements are added to the created Lambda role.
+
+Initial policy statements to add to the created Lambda Role.
+
+You can call `addToRolePolicy` to the created lambda to add statements post creation.
+
+---
+
+##### `insightsVersion`<sup>Optional</sup> <a name="insightsVersion" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.insightsVersion"></a>
+
+```typescript
+public readonly insightsVersion: LambdaInsightsVersion;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.LambdaInsightsVersion
+- *Default:* No Lambda Insights
+
+Specify the version of CloudWatch Lambda insights to use for monitoring.
+
+> [https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Lambda-Insights-Getting-Started-docker.html](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Lambda-Insights-Getting-Started-docker.html)
+
+---
+
+##### `layers`<sup>Optional</sup> <a name="layers" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.layers"></a>
+
+```typescript
+public readonly layers: ILayerVersion[];
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.ILayerVersion[]
+- *Default:* No layers.
+
+A list of layers to add to the function's execution environment.
+
+You can configure your Lambda function to pull in
+additional code during initialization in the form of layers. Layers are packages of libraries or other dependencies
+that can be used by multiple functions.
+
+---
+
+##### `logRetention`<sup>Optional</sup> <a name="logRetention" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.logRetention"></a>
+
+```typescript
+public readonly logRetention: RetentionDays;
+```
+
+- *Type:* aws-cdk-lib.aws_logs.RetentionDays
+- *Default:* logs.RetentionDays.INFINITE
+
+The number of days log events are kept in CloudWatch Logs.
+
+When updating
+this property, unsetting it doesn't remove the log retention policy. To
+remove the retention policy, set the value to `INFINITE`.
+
+---
+
+##### `logRetentionRetryOptions`<sup>Optional</sup> <a name="logRetentionRetryOptions" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.logRetentionRetryOptions"></a>
+
+```typescript
+public readonly logRetentionRetryOptions: LogRetentionRetryOptions;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.LogRetentionRetryOptions
+- *Default:* Default AWS SDK retry options.
+
+When log retention is specified, a custom resource attempts to create the CloudWatch log group.
+
+These options control the retry policy when interacting with CloudWatch APIs.
+
+---
+
+##### `logRetentionRole`<sup>Optional</sup> <a name="logRetentionRole" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.logRetentionRole"></a>
+
+```typescript
+public readonly logRetentionRole: IRole;
+```
+
+- *Type:* aws-cdk-lib.aws_iam.IRole
+- *Default:* A new role is created.
+
+The IAM role for the Lambda function associated with the custom resource that sets the retention policy.
+
+---
+
+##### `memorySize`<sup>Optional</sup> <a name="memorySize" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.memorySize"></a>
+
+```typescript
+public readonly memorySize: number;
+```
+
+- *Type:* number
+- *Default:* 128
+
+The amount of memory, in MB, that is allocated to your Lambda function.
+
+Lambda uses this value to proportionally allocate the amount of CPU
+power. For more information, see Resource Model in the AWS Lambda
+Developer Guide.
+
+---
+
+##### `profiling`<sup>Optional</sup> <a name="profiling" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.profiling"></a>
+
+```typescript
+public readonly profiling: boolean;
+```
+
+- *Type:* boolean
+- *Default:* No profiling.
+
+Enable profiling.
+
+> [https://docs.aws.amazon.com/codeguru/latest/profiler-ug/setting-up-lambda.html](https://docs.aws.amazon.com/codeguru/latest/profiler-ug/setting-up-lambda.html)
+
+---
+
+##### `profilingGroup`<sup>Optional</sup> <a name="profilingGroup" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.profilingGroup"></a>
+
+```typescript
+public readonly profilingGroup: IProfilingGroup;
+```
+
+- *Type:* aws-cdk-lib.aws_codeguruprofiler.IProfilingGroup
+- *Default:* A new profiling group will be created if `profiling` is set.
+
+Profiling Group.
+
+> [https://docs.aws.amazon.com/codeguru/latest/profiler-ug/setting-up-lambda.html](https://docs.aws.amazon.com/codeguru/latest/profiler-ug/setting-up-lambda.html)
+
+---
+
+##### `reservedConcurrentExecutions`<sup>Optional</sup> <a name="reservedConcurrentExecutions" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.reservedConcurrentExecutions"></a>
+
+```typescript
+public readonly reservedConcurrentExecutions: number;
+```
+
+- *Type:* number
+- *Default:* No specific limit - account limit.
+
+The maximum of concurrent executions you want to reserve for the function.
+
+> [https://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html](https://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html)
+
+---
+
+##### `role`<sup>Optional</sup> <a name="role" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.role"></a>
+
+```typescript
+public readonly role: IRole;
+```
+
+- *Type:* aws-cdk-lib.aws_iam.IRole
+- *Default:* A unique role will be generated for this lambda function. Both supplied and generated roles can always be changed by calling `addToRolePolicy`.
+
+Lambda execution role.
+
+This is the role that will be assumed by the function upon execution.
+It controls the permissions that the function will have. The Role must
+be assumable by the 'lambda.amazonaws.com' service principal.
+
+The default Role automatically has permissions granted for Lambda execution. If you
+provide a Role, you must add the relevant AWS managed policies yourself.
+
+The relevant managed policies are "service-role/AWSLambdaBasicExecutionRole" and
+"service-role/AWSLambdaVPCAccessExecutionRole".
+
+---
+
+##### `runtimeManagementMode`<sup>Optional</sup> <a name="runtimeManagementMode" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.runtimeManagementMode"></a>
+
+```typescript
+public readonly runtimeManagementMode: RuntimeManagementMode;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.RuntimeManagementMode
+- *Default:* Auto
+
+Sets the runtime management configuration for a function's version.
+
+---
+
+##### `securityGroups`<sup>Optional</sup> <a name="securityGroups" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.securityGroups"></a>
+
+```typescript
+public readonly securityGroups: ISecurityGroup[];
+```
+
+- *Type:* aws-cdk-lib.aws_ec2.ISecurityGroup[]
+- *Default:* If the function is placed within a VPC and a security group is not specified, either by this or securityGroup prop, a dedicated security group will be created for this function.
+
+The list of security groups to associate with the Lambda's network interfaces.
+
+Only used if 'vpc' is supplied.
+
+---
+
+##### `timeout`<sup>Optional</sup> <a name="timeout" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.timeout"></a>
+
+```typescript
+public readonly timeout: Duration;
+```
+
+- *Type:* aws-cdk-lib.Duration
+- *Default:* Duration.seconds(3)
+
+The function execution time (in seconds) after which Lambda terminates the function.
+
+Because the execution time affects cost, set this value
+based on the function's expected execution time.
+
+---
+
+##### `tracing`<sup>Optional</sup> <a name="tracing" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.tracing"></a>
+
+```typescript
+public readonly tracing: Tracing;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.Tracing
+- *Default:* Tracing.Disabled
+
+Enable AWS X-Ray Tracing for Lambda Function.
+
+---
+
+##### `vpc`<sup>Optional</sup> <a name="vpc" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.vpc"></a>
+
+```typescript
+public readonly vpc: IVpc;
+```
+
+- *Type:* aws-cdk-lib.aws_ec2.IVpc
+- *Default:* Function is not placed within a VPC.
+
+VPC network to place Lambda network interfaces.
+
+Specify this if the Lambda function needs to access resources in a VPC.
+This is required when `vpcSubnets` is specified.
+
+---
+
+##### `vpcSubnets`<sup>Optional</sup> <a name="vpcSubnets" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.vpcSubnets"></a>
+
+```typescript
+public readonly vpcSubnets: SubnetSelection;
+```
+
+- *Type:* aws-cdk-lib.aws_ec2.SubnetSelection
+- *Default:* the Vpc default strategy if not specified
+
+Where to place the network interfaces within the VPC.
+
+This requires `vpc` to be specified in order for interfaces to actually be
+placed in the subnets. If `vpc` is not specify, this will raise an error.
+
+Note: Internet access for Lambda Functions requires a NAT Gateway, so picking
+public subnets is not allowed (unless `allowPublicSubnet` is set to `true`).
+
+---
+
+##### `awsSdkConnectionReuse`<sup>Optional</sup> <a name="awsSdkConnectionReuse" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.awsSdkConnectionReuse"></a>
+
+```typescript
+public readonly awsSdkConnectionReuse: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to automatically reuse TCP connections when working with the AWS SDK for JavaScript.
+
+This sets the `AWS_NODEJS_CONNECTION_REUSE_ENABLED` environment variable
+to `1`.
+
+> [https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/node-reusing-connections.html](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/node-reusing-connections.html)
+
+---
+
+##### `bundling`<sup>Optional</sup> <a name="bundling" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.bundling"></a>
+
+```typescript
+public readonly bundling: BundlingOptions;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda_nodejs.BundlingOptions
+- *Default:* use default bundling options: no minify, no sourcemap, all modules are bundled.
+
+Bundling options.
+
+---
+
+##### `depsLockFilePath`<sup>Optional</sup> <a name="depsLockFilePath" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.depsLockFilePath"></a>
+
+```typescript
+public readonly depsLockFilePath: string;
+```
+
+- *Type:* string
+- *Default:* the path is found by walking up parent directories searching for a `yarn.lock`, `pnpm-lock.yaml` or `package-lock.json` file
+
+The path to the dependencies lock file (`yarn.lock`, `pnpm-lock.yaml` or `package-lock.json`).
+
+This will be used as the source for the volume mounted in the Docker
+container.
+
+Modules specified in `nodeModules` will be installed using the right
+installer (`yarn`, `pnpm` or `npm`) along with this lock file.
+
+---
+
+##### `entry`<sup>Optional</sup> <a name="entry" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.entry"></a>
+
+```typescript
+public readonly entry: string;
+```
+
+- *Type:* string
+- *Default:* Derived from the name of the defining file and the construct's id. If the `NodejsFunction` is defined in `stack.ts` with `my-handler` as id (`new NodejsFunction(this, 'my-handler')`), the construct will look at `stack.my-handler.ts` and `stack.my-handler.js`.
+
+Path to the entry file (JavaScript or TypeScript).
+
+---
+
+##### `handler`<sup>Optional</sup> <a name="handler" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.handler"></a>
+
+```typescript
+public readonly handler: string;
+```
+
+- *Type:* string
+- *Default:* handler
+
+The name of the exported handler in the entry file.
+
+The handler is prefixed with `index.` unless the specified handler value contains a `.`,
+in which case it is used as-is.
+
+---
+
+##### `projectRoot`<sup>Optional</sup> <a name="projectRoot" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.projectRoot"></a>
+
+```typescript
+public readonly projectRoot: string;
+```
+
+- *Type:* string
+- *Default:* the directory containing the `depsLockFilePath`
+
+The path to the directory containing project config files (`package.json` or `tsconfig.json`).
+
+---
+
+##### `runtime`<sup>Optional</sup> <a name="runtime" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.runtime"></a>
+
+```typescript
+public readonly runtime: Runtime;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.Runtime
+- *Default:* Runtime.NODEJS_14_X
+
+The runtime environment.
+
+Only runtimes of the Node.js family are
+supported.
+
+---
+
+##### `stage`<sup>Required</sup> <a name="stage" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.stage"></a>
+
+```typescript
+public readonly stage: string;
+```
+
+- *Type:* string
+
+---
+
+##### `withBaseEnvironment`<sup>Optional</sup> <a name="withBaseEnvironment" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.withBaseEnvironment"></a>
+
+```typescript
+public readonly withBaseEnvironment: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `withBaseTags`<sup>Optional</sup> <a name="withBaseTags" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.withBaseTags"></a>
+
+```typescript
+public readonly withBaseTags: boolean;
 ```
 
 - *Type:* boolean

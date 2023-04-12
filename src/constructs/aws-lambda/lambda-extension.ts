@@ -1,5 +1,6 @@
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
+import * as lambdaNode from 'aws-cdk-lib/aws-lambda-nodejs';
 import { Construct } from 'constructs';
 import { CDK_ACCOUNT_ID, CDK_REGION } from '../../common/env';
 import * as env from '../../common/env';
@@ -8,6 +9,12 @@ import { addBaseTags } from '../../common/utils';
 export const NEW_RELIC_LAYERS_ACCOUNT_ID = '451483290750'; // AWS account id of NewRelic where exposed layers https://layers.newrelic-external.com/
 
 export interface FunctionProps extends lambda.FunctionProps {
+  readonly stage: string;
+  readonly withBaseEnvironment?: boolean;
+  readonly withBaseTags?: boolean;
+}
+
+export interface FunctionNodeProps extends lambdaNode.NodejsFunctionProps {
   readonly stage: string;
   readonly withBaseEnvironment?: boolean;
   readonly withBaseTags?: boolean;
@@ -26,6 +33,24 @@ export interface NewRelicProps {
   readonly newRelicLayerVersion: number;
   readonly newRelicAccountId: string;
   readonly newRelicwithExtensionSendLogs?: boolean;
+}
+
+export function addBaseEnvironment(func_lambda: lambda.Function, stage: string) {
+  func_lambda.addEnvironment('ENVIRONMENT', stage);
+  func_lambda.addEnvironment('TIMESTAMP_DEPLOY_CDK', env.TIMESTAMP_DEPLOY_CDK);
+
+  if (env.BUSINESS_UNIT) {
+    func_lambda.addEnvironment('BUSINESS_UNIT', env.BUSINESS_UNIT);
+  }
+  if (env.DOMAIN) {
+    func_lambda.addEnvironment('DOMAIN', env.DOMAIN);
+  }
+  if (env.REPOSITORY_NAME) {
+    func_lambda.addEnvironment('REPOSITORY_NAME', env.REPOSITORY_NAME);
+  }
+  if (env.REPOSITORY_VERSION) {
+    func_lambda.addEnvironment('REPOSITORY_VERSION', env.REPOSITORY_VERSION);
+  }
 }
 
 export function getNewRelicLayer(scope: Construct, functionName:string, layerName: string, layerVersion: number, region: string) {
@@ -83,21 +108,32 @@ export class Function extends lambda.Function {
   }
 
   addBaseEnvironment() {
-    this.addEnvironment('ENVIRONMENT', this.stage);
-    this.addEnvironment('TIMESTAMP_DEPLOY_CDK', env.TIMESTAMP_DEPLOY_CDK);
+    addBaseEnvironment(this, this.stage);
+  }
+}
 
-    if (env.BUSINESS_UNIT) {
-      this.addEnvironment('BUSINESS_UNIT', env.BUSINESS_UNIT);
+export class FunctionNode extends lambdaNode.NodejsFunction {
+  public readonly stage: string;
+
+  constructor(scope: Construct, id: string, props: FunctionNodeProps) {
+    super(scope, id, props);
+    this.stage = props.stage;
+
+    if (props.withBaseEnvironment) {
+      this.addBaseEnvironment();
     }
-    if (env.DOMAIN) {
-      this.addEnvironment('DOMAIN', env.DOMAIN);
+
+    if (props.withBaseTags) {
+      this.addBaseTags();
     }
-    if (env.REPOSITORY_NAME) {
-      this.addEnvironment('REPOSITORY_NAME', env.REPOSITORY_NAME);
-    }
-    if (env.REPOSITORY_VERSION) {
-      this.addEnvironment('REPOSITORY_VERSION', env.REPOSITORY_VERSION);
-    }
+  }
+
+  addBaseTags() {
+    addBaseTags(this);
+  }
+
+  addBaseEnvironment() {
+    addBaseEnvironment(this, this.stage);
   }
 }
 
