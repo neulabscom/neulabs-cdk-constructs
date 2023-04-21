@@ -2008,14 +2008,14 @@ public readonly stage: string;
 ```typescript
 import { aws_lambda } from 'neulabs-cdk-constructs'
 
-new aws_lambda.FunctionNode(scope: Construct, id: string, props: FunctionNodeProps)
+new aws_lambda.FunctionNode(scope: Construct, id: string, __2: FunctionNodeProps)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.Initializer.parameter.props">props</a></code> | <code>neulabs-cdk-constructs.aws_lambda.FunctionNodeProps</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.Initializer.parameter.__2">__2</a></code> | <code>neulabs-cdk-constructs.aws_lambda.FunctionNodeProps</code> | *No description.* |
 
 ---
 
@@ -2031,7 +2031,7 @@ new aws_lambda.FunctionNode(scope: Construct, id: string, props: FunctionNodePro
 
 ---
 
-##### `props`<sup>Required</sup> <a name="props" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.Initializer.parameter.props"></a>
+##### `__2`<sup>Required</sup> <a name="__2" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.Initializer.parameter.__2"></a>
 
 - *Type:* neulabs-cdk-constructs.aws_lambda.FunctionNodeProps
 

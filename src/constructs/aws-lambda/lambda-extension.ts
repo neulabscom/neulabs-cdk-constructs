@@ -115,8 +115,13 @@ export class Function extends lambda.Function {
 export class FunctionNode extends lambdaNode.NodejsFunction {
   public readonly stage: string;
 
-  constructor(scope: Construct, id: string, props: FunctionNodeProps) {
-    super(scope, id, props);
+  constructor(scope: Construct, id: string, { runtime, architecture, ...props }: FunctionNodeProps) {
+    super(scope, id, {
+      ...props,
+      runtime: runtime ?? lambda.Runtime.NODEJS_18_X,
+      architecture: architecture ?? lambda.Architecture.ARM_64,
+    });
+
     this.stage = props.stage;
 
     if (props.withBaseEnvironment) {
