@@ -23,7 +23,7 @@ const project = new cdk.JsiiProject({
     'constructs@^10.0.0',
   ],
 
-  devDeps: ['ts-node', 'prettier', 'eslint-config-prettier', 'eslint-plugin-prettier', 'standard-version'],
+  devDeps: ['ts-node', 'prettier', 'eslint-config-prettier', 'eslint-plugin-prettier', 'standard-version', 'husky'],
 
   publishToPypi: {
     distName: 'neulabs-cdk-constructs',
@@ -31,6 +31,9 @@ const project = new cdk.JsiiProject({
   },
   docgen: true,
   docgenFilePath: './docs/docs/api.md',
+  scripts: {
+    prepare: 'husky install',
+  },
 });
 
 project.synth();

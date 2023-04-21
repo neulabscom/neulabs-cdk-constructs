@@ -65,6 +65,13 @@ new_relic_stack = NewRelicStack(
 )
 ```
 
+### Dev mode
+
+Run in shell
+
+```
+npx projen default
+```
 
 ### Contributors
 
