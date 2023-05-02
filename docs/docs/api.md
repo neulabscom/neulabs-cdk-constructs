@@ -1,3 +1,85 @@
+# Neulabs CDK Constructs
+
+
+[![NPM](https://img.shields.io/npm/v/neulabs-cdk-constructs?color=blue&label=npm+cdk)](https://www.npmjs.com/package/neulabs-cdk-constructs)
+[![PyPI](https://img.shields.io/pypi/v/neulabs-cdk-constructs?color=blue&label=pypi+cdk)](https://pypi.org/project/neulabs-cdk-constructs/)
+[![PyPI](https://img.shields.io/github/last-commit/neulabscom/neulabs-cdk-constructs/main)](https://github.com/neulabscom/neulabs-cdk-constructs/commits/main)
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue)](https://github.com/neulabscom/neulabs-cdk-constructs/blob/main/LICENSE)
+
+The neulabs-cdk-constructs library contains CDK-based constructs and stacks to allow the creation of cloud infrastructure on AWS.
+
+The purpose of the library is to expose modules that can facilitate the creation and maintenance of the infrastructure as code.
+
+Inside you will find generic stacks that allow the creation of services by simply instantiating a class, or constructs that implement logic to facilitate the developer and many other aspects.
+
+We decided to develop it in Typescript, using projen for repository management, and the JSII library to be able to compile the neulabs-cdk-constructs package into multiple languages.
+## Usage
+
+**Package Installation (npm)**:
+
+```
+yarn add neulabs-cdk-constructs
+# or
+npm install neulabs-cdk-constructs
+```
+
+**Package Installation (python)**:
+```
+pip install neulabs-cdk-constructs
+```
+
+**Examples**
+
+Stack for integration between AWS and New Relic.
+
+File `app.py`
+
+```
+import aws_cdk as cdk
+
+from neulabs_cdk_constructs.stacks.monitoring.newrelic import EndpointUrlLogs
+from neulabs_cdk_constructs.stacks.monitoring.newrelic import EndpointUrlMetrics
+from neulabs_cdk_constructs.stacks.monitoring.newrelic import NewRelicStack
+
+app = cdk.App()
+
+environment = cdk.Environment(
+    account=os.getenv('CDK_DEFAULT_ACCOUNT'),
+    region=os.getenv('CDK_DEFAULT_REGION'),
+)
+
+stage = os.getenv('ENVIRONMENT', 'develop')
+new_relic_account_id = os.getenv('NEW_RELIC_ACCOUNT_ID')
+new_relic_license_key = os.getenv('NEW_RELIC_LICENSE_KEY')
+
+new_relic_stack = NewRelicStack(
+    app,
+    'NewRelicStack',
+    env=environment,
+    stage=stage,
+    new_relic_bucket_name=f'neulabs-newrelic-{stage}',
+    new_relic_account_id=new_relic_account_id,
+    new_relic_license_key=new_relic_license_key,
+    new_relic_api_url_metrics=EndpointUrlMetrics.EU_METRICS,
+    new_relic_api_url_logs=EndpointUrlLogs.EU_LOGS,
+)
+```
+
+### Dev mode
+
+Run in shell
+
+```
+npx projen default
+```
+
+### Contributors
+
+<a href="https://github.com/neulabscom/neulabs-cdk-constructs/graphs/contributors"> <img src="https://contrib.rocks/image?repo=neulabscom/neulabs-cdk-constructs" /> </a>
+
+### License
+
+See the `LICENSE` file for more information.
 # API Reference <a name="API Reference" id="api-reference"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>
@@ -56,6 +138,7 @@ new stack.BaseStack(scope: Construct, id: string, props: BaseStackProps)
 | <code><a href="#neulabs-cdk-constructs.stack.BaseStack.resolve">resolve</a></code> | Resolve a tokenized value in the context of the current stack. |
 | <code><a href="#neulabs-cdk-constructs.stack.BaseStack.splitArn">splitArn</a></code> | Splits the provided ARN into its components. |
 | <code><a href="#neulabs-cdk-constructs.stack.BaseStack.toJsonString">toJsonString</a></code> | Convert an object, potentially containing tokens, to a JSON string. |
+| <code><a href="#neulabs-cdk-constructs.stack.BaseStack.toYamlString">toYamlString</a></code> | Convert an object, potentially containing tokens, to a YAML string. |
 | <code><a href="#neulabs-cdk-constructs.stack.BaseStack.addBaseTags">addBaseTags</a></code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.stack.BaseStack.createResourcesGroup">createResourcesGroup</a></code> | *No description.* |
 
@@ -221,11 +304,11 @@ Instead, the process takes two deployments:
 ### Deployment 1: break the relationship
 
 - Make sure `consumerStack` no longer references `bucket.bucketName` (maybe the consumer
-   stack now uses its own bucket, or it writes to an AWS DynamoDB table, or maybe you just
-   remove the Lambda Function altogether).
+  stack now uses its own bucket, or it writes to an AWS DynamoDB table, or maybe you just
+  remove the Lambda Function altogether).
 - In the `ProducerStack` class, call `this.exportValue(this.bucket.bucketName)`. This
-   will make sure the CloudFormation Export continues to exist while the relationship
-   between the two stacks is being broken.
+  will make sure the CloudFormation Export continues to exist while the relationship
+  between the two stacks is being broken.
 - Deploy (this will effectively only change the `consumerStack`, but it's safe to deploy both).
 
 ### Deployment 2: remove the bucket resource
@@ -262,7 +345,7 @@ into the generated ARN at the location that component corresponds to.
 
 The ARN will be formatted as follows:
 
-   arn:{partition}:{service}:{region}:{account}:{resource}{sep}{resource-name}
+  arn:{partition}:{service}:{region}:{account}:{resource}{sep}{resource-name}
 
 The required ARN pieces that are omitted will be taken from the stack that
 the 'scope' is attached to. If all ARN pieces are supplied, the supplied scope
@@ -439,6 +522,20 @@ Convert an object, potentially containing tokens, to a JSON string.
 
 ---
 
+##### `toYamlString` <a name="toYamlString" id="neulabs-cdk-constructs.stack.BaseStack.toYamlString"></a>
+
+```typescript
+public toYamlString(obj: any): string
+```
+
+Convert an object, potentially containing tokens, to a YAML string.
+
+###### `obj`<sup>Required</sup> <a name="obj" id="neulabs-cdk-constructs.stack.BaseStack.toYamlString.parameter.obj"></a>
+
+- *Type:* any
+
+---
+
 ##### `addBaseTags` <a name="addBaseTags" id="neulabs-cdk-constructs.stack.BaseStack.addBaseTags"></a>
 
 ```typescript
@@ -597,10 +694,10 @@ The AWS account into which this stack will be deployed.
 This value is resolved according to the following rules:
 
 1. The value provided to `env.account` when the stack is defined. This can
-    either be a concrete account (e.g. `585695031111`) or the
-    `Aws.ACCOUNT_ID` token.
+   either be a concrete account (e.g. `585695031111`) or the
+   `Aws.ACCOUNT_ID` token.
 3. `Aws.ACCOUNT_ID`, which represents the CloudFormation intrinsic reference
-    `{ "Ref": "AWS::AccountId" }` encoded as a string token.
+   `{ "Ref": "AWS::AccountId" }` encoded as a string token.
 
 Preferably, you should use the return value as an opaque string and not
 attempt to parse it to implement your logic. If you do, you must first
@@ -745,10 +842,10 @@ The AWS region into which this stack will be deployed (e.g. `us-west-2`).
 This value is resolved according to the following rules:
 
 1. The value provided to `env.region` when the stack is defined. This can
-    either be a concrete region (e.g. `us-west-2`) or the `Aws.REGION`
-    token.
+   either be a concrete region (e.g. `us-west-2`) or the `Aws.REGION`
+   token.
 3. `Aws.REGION`, which is represents the CloudFormation intrinsic reference
-    `{ "Ref": "AWS::Region" }` encoded as a string token.
+   `{ "Ref": "AWS::Region" }` encoded as a string token.
 
 Preferably, you should use the return value as an opaque string and not
 attempt to parse it to implement your logic. If you do, you must first
@@ -1274,8 +1371,8 @@ fn.addAlias('Live');
 // Is equivalent to
 
 new lambda.Alias(this, 'AliasLive', {
-   aliasName: 'Live',
-   version: fn.currentVersion,
+  aliasName: 'Live',
+  version: fn.currentVersion,
 });
 ```
 
@@ -2362,8 +2459,8 @@ fn.addAlias('Live');
 // Is equivalent to
 
 new lambda.Alias(this, 'AliasLive', {
-   aliasName: 'Live',
-   version: fn.currentVersion,
+  aliasName: 'Live',
+  version: fn.currentVersion,
 });
 ```
 
@@ -3143,6 +3240,7 @@ new oidc.GithubOIDCStack(scope: Construct, id: string, props: GithubOIDCStackSta
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStack.resolve">resolve</a></code> | Resolve a tokenized value in the context of the current stack. |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStack.splitArn">splitArn</a></code> | Splits the provided ARN into its components. |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStack.toJsonString">toJsonString</a></code> | Convert an object, potentially containing tokens, to a JSON string. |
+| <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStack.toYamlString">toYamlString</a></code> | Convert an object, potentially containing tokens, to a YAML string. |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStack.addBaseTags">addBaseTags</a></code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStack.createResourcesGroup">createResourcesGroup</a></code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStack.createCdkBootstrapRole">createCdkBootstrapRole</a></code> | *No description.* |
@@ -3312,11 +3410,11 @@ Instead, the process takes two deployments:
 ### Deployment 1: break the relationship
 
 - Make sure `consumerStack` no longer references `bucket.bucketName` (maybe the consumer
-   stack now uses its own bucket, or it writes to an AWS DynamoDB table, or maybe you just
-   remove the Lambda Function altogether).
+  stack now uses its own bucket, or it writes to an AWS DynamoDB table, or maybe you just
+  remove the Lambda Function altogether).
 - In the `ProducerStack` class, call `this.exportValue(this.bucket.bucketName)`. This
-   will make sure the CloudFormation Export continues to exist while the relationship
-   between the two stacks is being broken.
+  will make sure the CloudFormation Export continues to exist while the relationship
+  between the two stacks is being broken.
 - Deploy (this will effectively only change the `consumerStack`, but it's safe to deploy both).
 
 ### Deployment 2: remove the bucket resource
@@ -3353,7 +3451,7 @@ into the generated ARN at the location that component corresponds to.
 
 The ARN will be formatted as follows:
 
-   arn:{partition}:{service}:{region}:{account}:{resource}{sep}{resource-name}
+  arn:{partition}:{service}:{region}:{account}:{resource}{sep}{resource-name}
 
 The required ARN pieces that are omitted will be taken from the stack that
 the 'scope' is attached to. If all ARN pieces are supplied, the supplied scope
@@ -3527,6 +3625,20 @@ Convert an object, potentially containing tokens, to a JSON string.
 ###### `space`<sup>Optional</sup> <a name="space" id="neulabs-cdk-constructs.oidc.GithubOIDCStack.toJsonString.parameter.space"></a>
 
 - *Type:* number
+
+---
+
+##### `toYamlString` <a name="toYamlString" id="neulabs-cdk-constructs.oidc.GithubOIDCStack.toYamlString"></a>
+
+```typescript
+public toYamlString(obj: any): string
+```
+
+Convert an object, potentially containing tokens, to a YAML string.
+
+###### `obj`<sup>Required</sup> <a name="obj" id="neulabs-cdk-constructs.oidc.GithubOIDCStack.toYamlString.parameter.obj"></a>
+
+- *Type:* any
 
 ---
 
@@ -3768,10 +3880,10 @@ The AWS account into which this stack will be deployed.
 This value is resolved according to the following rules:
 
 1. The value provided to `env.account` when the stack is defined. This can
-    either be a concrete account (e.g. `585695031111`) or the
-    `Aws.ACCOUNT_ID` token.
+   either be a concrete account (e.g. `585695031111`) or the
+   `Aws.ACCOUNT_ID` token.
 3. `Aws.ACCOUNT_ID`, which represents the CloudFormation intrinsic reference
-    `{ "Ref": "AWS::AccountId" }` encoded as a string token.
+   `{ "Ref": "AWS::AccountId" }` encoded as a string token.
 
 Preferably, you should use the return value as an opaque string and not
 attempt to parse it to implement your logic. If you do, you must first
@@ -3916,10 +4028,10 @@ The AWS region into which this stack will be deployed (e.g. `us-west-2`).
 This value is resolved according to the following rules:
 
 1. The value provided to `env.region` when the stack is defined. This can
-    either be a concrete region (e.g. `us-west-2`) or the `Aws.REGION`
-    token.
+   either be a concrete region (e.g. `us-west-2`) or the `Aws.REGION`
+   token.
 3. `Aws.REGION`, which is represents the CloudFormation intrinsic reference
-    `{ "Ref": "AWS::Region" }` encoded as a string token.
+   `{ "Ref": "AWS::Region" }` encoded as a string token.
 
 Preferably, you should use the return value as an opaque string and not
 attempt to parse it to implement your logic. If you do, you must first
@@ -4525,8 +4637,8 @@ fn.addAlias('Live');
 // Is equivalent to
 
 new lambda.Alias(this, 'AliasLive', {
-   aliasName: 'Live',
-   version: fn.currentVersion,
+  aliasName: 'Live',
+  version: fn.currentVersion,
 });
 ```
 
@@ -5306,6 +5418,7 @@ new newrelic.NewRelicStack(scope: Construct, id: string, props: NewRelicStackPro
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStack.resolve">resolve</a></code> | Resolve a tokenized value in the context of the current stack. |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStack.splitArn">splitArn</a></code> | Splits the provided ARN into its components. |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStack.toJsonString">toJsonString</a></code> | Convert an object, potentially containing tokens, to a JSON string. |
+| <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStack.toYamlString">toYamlString</a></code> | Convert an object, potentially containing tokens, to a YAML string. |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStack.addBaseTags">addBaseTags</a></code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStack.createResourcesGroup">createResourcesGroup</a></code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStack.createCloudwatchLogsStreamRole">createCloudwatchLogsStreamRole</a></code> | *No description.* |
@@ -5478,11 +5591,11 @@ Instead, the process takes two deployments:
 ### Deployment 1: break the relationship
 
 - Make sure `consumerStack` no longer references `bucket.bucketName` (maybe the consumer
-   stack now uses its own bucket, or it writes to an AWS DynamoDB table, or maybe you just
-   remove the Lambda Function altogether).
+  stack now uses its own bucket, or it writes to an AWS DynamoDB table, or maybe you just
+  remove the Lambda Function altogether).
 - In the `ProducerStack` class, call `this.exportValue(this.bucket.bucketName)`. This
-   will make sure the CloudFormation Export continues to exist while the relationship
-   between the two stacks is being broken.
+  will make sure the CloudFormation Export continues to exist while the relationship
+  between the two stacks is being broken.
 - Deploy (this will effectively only change the `consumerStack`, but it's safe to deploy both).
 
 ### Deployment 2: remove the bucket resource
@@ -5519,7 +5632,7 @@ into the generated ARN at the location that component corresponds to.
 
 The ARN will be formatted as follows:
 
-   arn:{partition}:{service}:{region}:{account}:{resource}{sep}{resource-name}
+  arn:{partition}:{service}:{region}:{account}:{resource}{sep}{resource-name}
 
 The required ARN pieces that are omitted will be taken from the stack that
 the 'scope' is attached to. If all ARN pieces are supplied, the supplied scope
@@ -5693,6 +5806,20 @@ Convert an object, potentially containing tokens, to a JSON string.
 ###### `space`<sup>Optional</sup> <a name="space" id="neulabs-cdk-constructs.newrelic.NewRelicStack.toJsonString.parameter.space"></a>
 
 - *Type:* number
+
+---
+
+##### `toYamlString` <a name="toYamlString" id="neulabs-cdk-constructs.newrelic.NewRelicStack.toYamlString"></a>
+
+```typescript
+public toYamlString(obj: any): string
+```
+
+Convert an object, potentially containing tokens, to a YAML string.
+
+###### `obj`<sup>Required</sup> <a name="obj" id="neulabs-cdk-constructs.newrelic.NewRelicStack.toYamlString.parameter.obj"></a>
+
+- *Type:* any
 
 ---
 
@@ -5975,10 +6102,10 @@ The AWS account into which this stack will be deployed.
 This value is resolved according to the following rules:
 
 1. The value provided to `env.account` when the stack is defined. This can
-    either be a concrete account (e.g. `585695031111`) or the
-    `Aws.ACCOUNT_ID` token.
+   either be a concrete account (e.g. `585695031111`) or the
+   `Aws.ACCOUNT_ID` token.
 3. `Aws.ACCOUNT_ID`, which represents the CloudFormation intrinsic reference
-    `{ "Ref": "AWS::AccountId" }` encoded as a string token.
+   `{ "Ref": "AWS::AccountId" }` encoded as a string token.
 
 Preferably, you should use the return value as an opaque string and not
 attempt to parse it to implement your logic. If you do, you must first
@@ -6123,10 +6250,10 @@ The AWS region into which this stack will be deployed (e.g. `us-west-2`).
 This value is resolved according to the following rules:
 
 1. The value provided to `env.region` when the stack is defined. This can
-    either be a concrete region (e.g. `us-west-2`) or the `Aws.REGION`
-    token.
+   either be a concrete region (e.g. `us-west-2`) or the `Aws.REGION`
+   token.
 3. `Aws.REGION`, which is represents the CloudFormation intrinsic reference
-    `{ "Ref": "AWS::Region" }` encoded as a string token.
+   `{ "Ref": "AWS::Region" }` encoded as a string token.
 
 Preferably, you should use the return value as an opaque string and not
 attempt to parse it to implement your logic. If you do, you must first

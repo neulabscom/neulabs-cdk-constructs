@@ -7,7 +7,7 @@
     },
     {
       "name": "@types/node",
-      "version": "^14",
+      "version": "^16",
       "type": "build"
     },
     {
@@ -51,16 +51,12 @@
     },
     {
       "name": "jest-junit",
-      "version": "^13",
+      "version": "^15",
       "type": "build"
     },
     {
       "name": "jest",
       "version": "^27",
-      "type": "build"
-    },
-    {
-      "name": "jsii",
       "type": "build"
     },
     {
@@ -76,7 +72,8 @@
       "type": "build"
     },
     {
-      "name": "json-schema",
+      "name": "jsii",
+      "version": "1.x",
       "type": "build"
     },
     {
@@ -122,22 +119,22 @@
     },
     {
       "name": "aws-cdk-lib",
-      "version": "2.68.0",
+      "version": "2.77.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-apigatewayv2-alpha",
-      "version": "2.68.0-alpha.0",
+      "version": "2.77.0-alpha.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-apigatewayv2-integrations-alpha",
-      "version": "2.68.0-alpha.0",
+      "version": "2.77.0-alpha.0",
       "type": "runtime"
     },
     {
       "name": "aws-cdk-lib",
-      "version": "2.68.0",
+      "version": "2.77.0",
       "type": "runtime"
     },
     {
