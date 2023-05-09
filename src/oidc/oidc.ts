@@ -20,6 +20,7 @@ export interface GithubOIDCStackStackProps extends BaseStackProps {
   readonly githubRepository: string;
   readonly tokenAction: TokenActions;
   readonly cdkDeployRoleManagedPolicies?: string[];
+  readonly cdkDeployRoleAwsManagedPolicies?: string[];
   readonly cdkDeployRolePolicyStatements?: iam.PolicyStatement[];
   readonly tokenActionCustom?: string;
 }
@@ -32,6 +33,7 @@ export class GithubOIDCStack extends BaseStack {
   cdkBootstrapRole: iam.IRole;
   cdkDeployRole: iam.IRole;
   cdkDeployRoleManagedPolicies?: string[];
+  cdkDeployRoleAwsManagedPolicies?: string[];
   cdkDeployRolePolicyStatements?: iam.PolicyStatement[];
 
   constructor(scope: Construct, id: string, props: GithubOIDCStackStackProps) {
@@ -47,8 +49,13 @@ export class GithubOIDCStack extends BaseStack {
     this.cdkBootstrapRole = this.createCdkBootstrapRole();
 
     this.cdkDeployRoleManagedPolicies = props.cdkDeployRoleManagedPolicies;
+    this.cdkDeployRoleAwsManagedPolicies = props.cdkDeployRoleAwsManagedPolicies;
     this.cdkDeployRolePolicyStatements = props.cdkDeployRolePolicyStatements;
-    this.cdkDeployRole = this.createCdkDeployRole(this.cdkDeployRoleManagedPolicies, this.cdkDeployRolePolicyStatements);
+    this.cdkDeployRole = this.createCdkDeployRole(
+      this.cdkDeployRoleManagedPolicies,
+      this.cdkDeployRoleAwsManagedPolicies,
+      this.cdkDeployRolePolicyStatements,
+    );
   }
 
   createTokenAction(tokenAction: TokenActions, githubUser: string, githubRepository: string, tokenActionCustom?: string): string {
@@ -72,7 +79,7 @@ export class GithubOIDCStack extends BaseStack {
   }
 
 
-  createCdkDeployRole(managed_policies?: string[], policy_statements?: iam.PolicyStatement[]): iam.IRole {
+  createCdkDeployRole(managed_policies?: string[], aws_managed_policy?: string[], policy_statements?: iam.PolicyStatement[]): iam.IRole {
     let basePolicy = new iam.PolicyDocument(
       {
         statements: [
@@ -117,7 +124,13 @@ export class GithubOIDCStack extends BaseStack {
 
     if (managed_policies) {
       for (let index = 0; index < managed_policies.length; index++) {
-        role.addManagedPolicy(iam.ManagedPolicy.fromAwsManagedPolicyName(managed_policies[index]));
+        role.addManagedPolicy(iam.ManagedPolicy.fromManagedPolicyName(this, `${managed_policies[index]}`, managed_policies[index]));
+      }
+    }
+
+    if (aws_managed_policy) {
+      for (let index = 0; index < aws_managed_policy.length; index++) {
+        role.addManagedPolicy(iam.ManagedPolicy.fromAwsManagedPolicyName(aws_managed_policy[index]));
       }
     }
 
