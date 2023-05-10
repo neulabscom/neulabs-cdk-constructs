@@ -23,6 +23,9 @@ export interface GithubOIDCStackStackProps extends BaseStackProps {
   readonly cdkDeployRoleAwsManagedPolicies?: string[];
   readonly cdkDeployRolePolicyStatements?: iam.PolicyStatement[];
   readonly tokenActionCustom?: string;
+  readonly oidcRoleName?: string;
+  readonly cdkBootstrapRoleName?: string;
+  readonly cdkDeployRoleName?: string;
 }
 
 export class GithubOIDCStack extends BaseStack {
@@ -45,13 +48,14 @@ export class GithubOIDCStack extends BaseStack {
 
     let token = this.createTokenAction(props.tokenAction, props.githubUser, props.githubRepository, props.tokenActionCustom);
 
-    this.oidcRole = this.createOidcRole(ProviderUrl.GITHUB, token);
-    this.cdkBootstrapRole = this.createCdkBootstrapRole();
+    this.oidcRole = this.createOidcRole(ProviderUrl.GITHUB, token, props.oidcRoleName);
+    this.cdkBootstrapRole = this.createCdkBootstrapRole(props.cdkBootstrapRoleName);
 
     this.cdkDeployRoleManagedPolicies = props.cdkDeployRoleManagedPolicies;
     this.cdkDeployRoleAwsManagedPolicies = props.cdkDeployRoleAwsManagedPolicies;
     this.cdkDeployRolePolicyStatements = props.cdkDeployRolePolicyStatements;
     this.cdkDeployRole = this.createCdkDeployRole(
+      props.cdkDeployRoleName,
       this.cdkDeployRoleManagedPolicies,
       this.cdkDeployRoleAwsManagedPolicies,
       this.cdkDeployRolePolicyStatements,
@@ -79,7 +83,12 @@ export class GithubOIDCStack extends BaseStack {
   }
 
 
-  createCdkDeployRole(managed_policies?: string[], aws_managed_policy?: string[], policy_statements?: iam.PolicyStatement[]): iam.IRole {
+  createCdkDeployRole(
+    roleName?: string,
+    managed_policies?: string[],
+    aws_managed_policy?: string[],
+    policy_statements?: iam.PolicyStatement[],
+  ): iam.IRole {
     let basePolicy = new iam.PolicyDocument(
       {
         statements: [
@@ -108,7 +117,7 @@ export class GithubOIDCStack extends BaseStack {
     let role = new iam.Role(
       this,
       'cdk-oidc-deploy-role', {
-        roleName: 'cdk-oidc-deploy-role',
+        roleName: roleName ?? 'cdk-oidc-deploy-role',
         assumedBy: new iam.ServicePrincipal('cloudformation.amazonaws.com'),
         inlinePolicies: {
           CDKDeployBasePolicy: basePolicy,
@@ -146,7 +155,7 @@ export class GithubOIDCStack extends BaseStack {
     return role;
   }
 
-  createCdkBootstrapRole(): iam.IRole {
+  createCdkBootstrapRole(roleName?: string): iam.IRole {
     let policy = new iam.PolicyDocument(
       {
         statements: [
@@ -200,7 +209,7 @@ export class GithubOIDCStack extends BaseStack {
     let role = new iam.Role(
       this,
       'cdk-oidc-bootstrap-role', {
-        roleName: 'cdk-oidc-bootstrap-role',
+        roleName: roleName ?? 'cdk-oidc-bootstrap-role',
         assumedBy: new iam.ServicePrincipal('cloudformation.amazonaws.com'),
         inlinePolicies: {
           CDKBootstrapPolicy: policy,
@@ -219,7 +228,7 @@ export class GithubOIDCStack extends BaseStack {
     return role;
   }
 
-  createOidcRole(providerUrl: string, token: string): iam.IRole {
+  createOidcRole(providerUrl: string, token: string, roleName?: string): iam.IRole {
     const oidcProvider = new iam.OpenIdConnectProvider(this, 'OIDCProvider', {
       url: providerUrl,
       clientIds: ['sts.amazonaws.com'],
@@ -229,7 +238,7 @@ export class GithubOIDCStack extends BaseStack {
     let role = new iam.Role(
       this,
       'oidc-role', {
-        roleName: 'github-oidc-workflow-role',
+        roleName: roleName ?? 'github-oidc-workflow-role',
         assumedBy: new iam.WebIdentityPrincipal(oidcProvider.openIdConnectProviderArn, {
           StringLike: {
             'token.actions.githubusercontent.com:sub': token,

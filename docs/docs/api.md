@@ -3669,14 +3669,26 @@ public createResourcesGroup(): CfnGroup
 ##### `createCdkBootstrapRole` <a name="createCdkBootstrapRole" id="neulabs-cdk-constructs.oidc.GithubOIDCStack.createCdkBootstrapRole"></a>
 
 ```typescript
-public createCdkBootstrapRole(): IRole
+public createCdkBootstrapRole(roleName?: string): IRole
 ```
+
+###### `roleName`<sup>Optional</sup> <a name="roleName" id="neulabs-cdk-constructs.oidc.GithubOIDCStack.createCdkBootstrapRole.parameter.roleName"></a>
+
+- *Type:* string
+
+---
 
 ##### `createCdkDeployRole` <a name="createCdkDeployRole" id="neulabs-cdk-constructs.oidc.GithubOIDCStack.createCdkDeployRole"></a>
 
 ```typescript
-public createCdkDeployRole(managed_policies?: string[], aws_managed_policy?: string[], policy_statements?: PolicyStatement[]): IRole
+public createCdkDeployRole(roleName?: string, managed_policies?: string[], aws_managed_policy?: string[], policy_statements?: PolicyStatement[]): IRole
 ```
+
+###### `roleName`<sup>Optional</sup> <a name="roleName" id="neulabs-cdk-constructs.oidc.GithubOIDCStack.createCdkDeployRole.parameter.roleName"></a>
+
+- *Type:* string
+
+---
 
 ###### `managed_policies`<sup>Optional</sup> <a name="managed_policies" id="neulabs-cdk-constructs.oidc.GithubOIDCStack.createCdkDeployRole.parameter.managed_policies"></a>
 
@@ -3699,7 +3711,7 @@ public createCdkDeployRole(managed_policies?: string[], aws_managed_policy?: str
 ##### `createOidcRole` <a name="createOidcRole" id="neulabs-cdk-constructs.oidc.GithubOIDCStack.createOidcRole"></a>
 
 ```typescript
-public createOidcRole(providerUrl: string, token: string): IRole
+public createOidcRole(providerUrl: string, token: string, roleName?: string): IRole
 ```
 
 ###### `providerUrl`<sup>Required</sup> <a name="providerUrl" id="neulabs-cdk-constructs.oidc.GithubOIDCStack.createOidcRole.parameter.providerUrl"></a>
@@ -3709,6 +3721,12 @@ public createOidcRole(providerUrl: string, token: string): IRole
 ---
 
 ###### `token`<sup>Required</sup> <a name="token" id="neulabs-cdk-constructs.oidc.GithubOIDCStack.createOidcRole.parameter.token"></a>
+
+- *Type:* string
+
+---
+
+###### `roleName`<sup>Optional</sup> <a name="roleName" id="neulabs-cdk-constructs.oidc.GithubOIDCStack.createOidcRole.parameter.roleName"></a>
 
 - *Type:* string
 
@@ -9035,9 +9053,12 @@ const githubOIDCStackStackProps: oidc.GithubOIDCStackStackProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.githubRepository">githubRepository</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.githubUser">githubUser</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.tokenAction">tokenAction</a></code> | <code>neulabs-cdk-constructs.oidc.TokenActions</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.cdkBootstrapRoleName">cdkBootstrapRoleName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.cdkDeployRoleAwsManagedPolicies">cdkDeployRoleAwsManagedPolicies</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.cdkDeployRoleManagedPolicies">cdkDeployRoleManagedPolicies</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.cdkDeployRoleName">cdkDeployRoleName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.cdkDeployRolePolicyStatements">cdkDeployRolePolicyStatements</a></code> | <code>aws-cdk-lib.aws_iam.PolicyStatement[]</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.oidcRoleName">oidcRoleName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.tokenActionCustom">tokenActionCustom</a></code> | <code>string</code> | *No description.* |
 
 ---
@@ -9275,6 +9296,16 @@ public readonly tokenAction: TokenActions;
 
 ---
 
+##### `cdkBootstrapRoleName`<sup>Optional</sup> <a name="cdkBootstrapRoleName" id="neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.cdkBootstrapRoleName"></a>
+
+```typescript
+public readonly cdkBootstrapRoleName: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `cdkDeployRoleAwsManagedPolicies`<sup>Optional</sup> <a name="cdkDeployRoleAwsManagedPolicies" id="neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.cdkDeployRoleAwsManagedPolicies"></a>
 
 ```typescript
@@ -9295,6 +9326,16 @@ public readonly cdkDeployRoleManagedPolicies: string[];
 
 ---
 
+##### `cdkDeployRoleName`<sup>Optional</sup> <a name="cdkDeployRoleName" id="neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.cdkDeployRoleName"></a>
+
+```typescript
+public readonly cdkDeployRoleName: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `cdkDeployRolePolicyStatements`<sup>Optional</sup> <a name="cdkDeployRolePolicyStatements" id="neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.cdkDeployRolePolicyStatements"></a>
 
 ```typescript
@@ -9302,6 +9343,16 @@ public readonly cdkDeployRolePolicyStatements: PolicyStatement[];
 ```
 
 - *Type:* aws-cdk-lib.aws_iam.PolicyStatement[]
+
+---
+
+##### `oidcRoleName`<sup>Optional</sup> <a name="oidcRoleName" id="neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.oidcRoleName"></a>
+
+```typescript
+public readonly oidcRoleName: string;
+```
+
+- *Type:* string
 
 ---
 
