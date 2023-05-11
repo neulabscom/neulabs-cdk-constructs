@@ -111,6 +111,21 @@ export class GithubOIDCStack extends BaseStack {
             ],
             effect: iam.Effect.ALLOW,
           }),
+          new iam.PolicyStatement({
+            resources: ['*'],
+            actions: [
+              'cloudformation:DescribeStacks',
+              'cloudformation:ListStackResources',
+              'resource-groups:*',
+              'tag:GetResources',
+              'tag:TagResources',
+              'tag:UntagResources',
+              'tag:getTagKeys',
+              'tag:getTagValues',
+              'resource-explorer:*',
+            ],
+            effect: iam.Effect.ALLOW,
+          }),
         ],
       },
     );
