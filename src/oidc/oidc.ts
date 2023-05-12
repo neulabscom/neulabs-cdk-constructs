@@ -12,6 +12,7 @@ export enum TokenActions {
   ALL,
   ALL_BRANCH,
   ALL_TAGS,
+  ONLY_MAIN,
   CUSTOM,
 }
 
@@ -73,6 +74,10 @@ export class GithubOIDCStack extends BaseStack {
 
     if (tokenAction === TokenActions.ALL_TAGS) {
       return `repo:${githubUser}/${githubRepository}:ref:refs/tags/*`;
+    }
+
+    if (tokenAction === TokenActions.ONLY_MAIN) {
+      return `repo:${githubUser}/${githubRepository}:ref:refs/heads/main`;
     }
 
     if (tokenAction === TokenActions.CUSTOM) {
