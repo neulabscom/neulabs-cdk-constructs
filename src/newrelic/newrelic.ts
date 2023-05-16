@@ -79,7 +79,7 @@ export class NewRelicStack extends BaseStack {
     let role = new iam.Role(
       this,
       'newrelic-cloudwatch-stream-role', {
-        roleName: 'NewRelicInfrastructure-CloudwatchStream',
+        roleName: 'NewRelicInfrastructure-CloudwatchMetricsStream',
         assumedBy: new iam.ServicePrincipal('streams.metrics.cloudwatch.amazonaws.com'),
       },
     );
@@ -107,7 +107,7 @@ export class NewRelicStack extends BaseStack {
     let role = new iam.Role(
       this,
       'newrelic-logstream-role', {
-        roleName: 'NewRelicInfrastructure-CloudwatchStream',
+        roleName: 'NewRelicInfrastructure-CloudwatchLogsStream',
         assumedBy: new iam.ServicePrincipal('logs.amazonaws.com'),
       },
     );
