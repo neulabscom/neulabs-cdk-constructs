@@ -5891,14 +5891,8 @@ public createCloudwatchLogsStreamRole(): IRole
 ##### `createCloudwatchMetricStream` <a name="createCloudwatchMetricStream" id="neulabs-cdk-constructs.newrelic.NewRelicStack.createCloudwatchMetricStream"></a>
 
 ```typescript
-public createCloudwatchMetricStream(roleArn: string, firehoseArn: string): CfnMetricStream
+public createCloudwatchMetricStream(firehoseArn: string): CfnMetricStream
 ```
-
-###### `roleArn`<sup>Required</sup> <a name="roleArn" id="neulabs-cdk-constructs.newrelic.NewRelicStack.createCloudwatchMetricStream.parameter.roleArn"></a>
-
-- *Type:* string
-
----
 
 ###### `firehoseArn`<sup>Required</sup> <a name="firehoseArn" id="neulabs-cdk-constructs.newrelic.NewRelicStack.createCloudwatchMetricStream.parameter.firehoseArn"></a>
 
@@ -9859,6 +9853,7 @@ public readonly newRelicLicenseKey: string;
 | <code><a href="#neulabs-cdk-constructs.oidc.TokenActions.ALL">ALL</a></code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.oidc.TokenActions.ALL_BRANCH">ALL_BRANCH</a></code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.oidc.TokenActions.ALL_TAGS">ALL_TAGS</a></code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.oidc.TokenActions.ONLY_MAIN">ONLY_MAIN</a></code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.oidc.TokenActions.CUSTOM">CUSTOM</a></code> | *No description.* |
 
 ---
@@ -9874,6 +9869,11 @@ public readonly newRelicLicenseKey: string;
 
 
 ##### `ALL_TAGS` <a name="ALL_TAGS" id="neulabs-cdk-constructs.oidc.TokenActions.ALL_TAGS"></a>
+
+---
+
+
+##### `ONLY_MAIN` <a name="ONLY_MAIN" id="neulabs-cdk-constructs.oidc.TokenActions.ONLY_MAIN"></a>
 
 ---
 
