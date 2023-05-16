@@ -107,11 +107,7 @@ export class GithubOIDCStack extends BaseStack {
           new iam.PolicyStatement({
             resources: ['*'],
             actions: [
-              'iam:PassRole',
-              'iam:CreateRole',
-              'iam:DeleteRole',
-              'iam:UpdateRole',
-              'iam:*RolePolicy*',
+              'iam:*Role*',
               'ssm:GetParameters',
             ],
             effect: iam.Effect.ALLOW,
