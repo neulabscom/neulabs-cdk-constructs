@@ -28,41 +28,72 @@ npm install neulabs-cdk-constructs
 pip install neulabs-cdk-constructs
 ```
 
-**Examples**
+**Create Github OIDC**
 
-Stack for integration between AWS and New Relic.
-
-File `app.py`
+The creation of Github OIDC allows a role within workflows to be used to log in to aws.
+In this stack, the:
+- github-oidc-workflow-role user used for authentication
+- cdk-oidc-deploy-role role used for deploying
+- cdk-oidc-bootsrap-role role used for bootstrap
 
 ```
-import aws_cdk as cdk
+environment = process.env.ENVIRONMENT! || 'staging';
 
-from neulabs_cdk_constructs.stacks.monitoring.newrelic import EndpointUrlLogs
-from neulabs_cdk_constructs.stacks.monitoring.newrelic import EndpointUrlMetrics
-from neulabs_cdk_constructs.stacks.monitoring.newrelic import NewRelicStack
+new GithubOIDCStack(app, 'OidcStack', {
+  env: {
+    account: process.env.CDK_DEFAULT_ACCOUNT,
+    region: process.env.CDK_DEFAULT_REGION,
+  },
+  stage: environment,
+  githubUser: 'username',
+  githubRepository: 'repositoryName', # You can also use '*'
+  tokenAction: TokenActions.ALL,
+  cdkDeployRoleManagedPolicies: ['AdministratorAccess'],
+});
+```
 
-app = cdk.App()
+Github workflow
 
-environment = cdk.Environment(
-    account=os.getenv('CDK_DEFAULT_ACCOUNT'),
-    region=os.getenv('CDK_DEFAULT_REGION'),
-)
+```
+...
 
-stage = os.getenv('ENVIRONMENT', 'develop')
-new_relic_account_id = os.getenv('NEW_RELIC_ACCOUNT_ID')
-new_relic_license_key = os.getenv('NEW_RELIC_LICENSE_KEY')
+# permission can be added at job level or workflow level
+permissions:
+  id-token: write
+  contents: read    # This is required for actions/checkout
 
-new_relic_stack = NewRelicStack(
-    app,
-    'NewRelicStack',
-    env=environment,
-    stage=stage,
-    new_relic_bucket_name=f'neulabs-newrelic-{stage}',
-    new_relic_account_id=new_relic_account_id,
-    new_relic_license_key=new_relic_license_key,
-    new_relic_api_url_metrics=EndpointUrlMetrics.EU_METRICS,
-    new_relic_api_url_logs=EndpointUrlLogs.EU_LOGS,
-)
+jobs:
+  ...
+
+  oidc:
+    name: Auth
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::{ACCOUNT ID}:role/github-oidc-workflow-role
+          aws-region: {REGION}
+          mask-aws-account-id: no
+
+  ...
+```
+
+**Create NewRelic Connection**
+
+The NewRelicStack implements the infrastructure to send metrics and logs to Newrelic through Kinesis and Cloudwatch Stream.
+Once deployed you can copy the ARN of the 'NewRelicInfrastructure-Integrations' role and use it to configure Newrelic.
+
+```
+  new NewRelicStack(app, 'NewrelicStack', {
+    env: constants.env,
+    stage: constants.environment,
+    newRelicBucketName: `newrelic-${constants.awsAccountId}-${constants.environment}`,
+    newRelicAccountId: newRelicAccountId,
+    newRelicLicenseKey: newRelicLicenseKey,
+    newRelicApiUrlMetrics: EndpointUrlMetrics.EU_METRICS,
+    newRelicApiUrlLogs: EndpointUrlLogs.EU_LOGS,
+  });
 ```
 
 ### Dev mode

@@ -30,7 +30,7 @@ const project = new cdk.JsiiProject({
     module: 'neulabs_cdk_constructs',
   },
   docgen: true,
-  docgenFilePath: './docs/docs/api.md',
+  docgenFilePath: 'API.md',
   scripts: {
     prepare: 'husky install',
   },

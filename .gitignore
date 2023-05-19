@@ -50,4 +50,4 @@ junit.xml
 !/.eslintrc.json
 .jsii
 tsconfig.json
-!/./docs/docs/api.md
+!/API.md
