@@ -9,8 +9,6 @@ const project = new cdk.JsiiProject({
   name: 'neulabs-cdk-constructs',
   repositoryUrl: 'https://github.com/neulabscom/neulabs-cdk-constructs.git',
   authorOrganization: true,
-  entrypoint: 'lib/index.js',
-
   packageManager: javascript.NodePackageManager.YARN,
 
   peerDeps: [
