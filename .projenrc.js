@@ -10,7 +10,7 @@ const project = new cdk.JsiiProject({
   repositoryUrl: 'https://github.com/neulabscom/neulabs-cdk-constructs.git',
   authorOrganization: true,
   packageManager: javascript.NodePackageManager.YARN,
-
+  minNodeVersion: '16.14.0',
   peerDeps: [
     `aws-cdk-lib@${cdkVersion}`,
   ],
@@ -20,18 +20,15 @@ const project = new cdk.JsiiProject({
     `aws-cdk-lib@${cdkVersion}`,
     'constructs@^10.0.0',
   ],
-
   devDeps: ['ts-node', 'prettier', 'eslint-config-prettier', 'eslint-plugin-prettier', 'standard-version', 'husky'],
-
   publishToPypi: {
     distName: 'neulabs-cdk-constructs',
     module: 'neulabs_cdk_constructs',
   },
-  docgen: true,
-  docgenFilePath: 'API.md',
   scripts: {
     prepare: 'husky install',
   },
+  jsiiVersion: '~5.0.7',
 });
 
 project.synth();
