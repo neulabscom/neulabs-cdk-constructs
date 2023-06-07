@@ -27,6 +27,13 @@ export interface FunctionNewRelicProps extends FunctionProps {
   readonly newRelicwithExtensionSendLogs?: boolean;
 }
 
+export interface FunctionNodeNewRelicProps extends FunctionNodeProps {
+  readonly newRelicLayerName: string;
+  readonly newRelicLayerVersion: number;
+  readonly newRelicAccountId: string;
+  readonly newRelicwithExtensionSendLogs?: boolean;
+}
+
 export interface NewRelicProps {
   readonly handler: string;
   readonly newRelicLayerName: string;
@@ -35,21 +42,21 @@ export interface NewRelicProps {
   readonly newRelicwithExtensionSendLogs?: boolean;
 }
 
-export function addBaseEnvironment(func_lambda: lambda.Function, stage: string) {
-  func_lambda.addEnvironment('ENVIRONMENT', stage);
-  func_lambda.addEnvironment('TIMESTAMP_DEPLOY_CDK', env.TIMESTAMP_DEPLOY_CDK);
+export function addBaseEnvironment(lambdaFunction: lambda.Function, stage: string) {
+  lambdaFunction.addEnvironment('ENVIRONMENT', stage);
+  lambdaFunction.addEnvironment('TIMESTAMP_DEPLOY_CDK', env.TIMESTAMP_DEPLOY_CDK);
 
   if (env.BUSINESS_UNIT) {
-    func_lambda.addEnvironment('BUSINESS_UNIT', env.BUSINESS_UNIT);
+    lambdaFunction.addEnvironment('BUSINESS_UNIT', env.BUSINESS_UNIT);
   }
   if (env.DOMAIN) {
-    func_lambda.addEnvironment('DOMAIN', env.DOMAIN);
+    lambdaFunction.addEnvironment('DOMAIN', env.DOMAIN);
   }
   if (env.REPOSITORY_NAME) {
-    func_lambda.addEnvironment('REPOSITORY_NAME', env.REPOSITORY_NAME);
+    lambdaFunction.addEnvironment('REPOSITORY_NAME', env.REPOSITORY_NAME);
   }
   if (env.REPOSITORY_VERSION) {
-    func_lambda.addEnvironment('REPOSITORY_VERSION', env.REPOSITORY_VERSION);
+    lambdaFunction.addEnvironment('REPOSITORY_VERSION', env.REPOSITORY_VERSION);
   }
 }
 
@@ -145,6 +152,23 @@ export class FunctionNode extends lambdaNode.NodejsFunction {
 export class NewRelicFunction extends Function {
   constructor(scope: Construct, id: string, props: FunctionNewRelicProps) {
     const app_handler = props.handler;
+    const handler = 'newrelic_lambda_wrapper.handler';
+
+    super(scope, id, { ...props, handler });
+
+    addNewRelicLayer(scope, this, {
+      handler: app_handler,
+      newRelicLayerName: props.newRelicLayerName,
+      newRelicLayerVersion: props.newRelicLayerVersion,
+      newRelicAccountId: props.newRelicAccountId,
+      newRelicwithExtensionSendLogs: props.newRelicwithExtensionSendLogs,
+    });
+  }
+}
+
+export class NewRelicFunctionNode extends FunctionNode {
+  constructor(scope: Construct, id: string, props: FunctionNodeNewRelicProps) {
+    const app_handler = props.handler ?? 'index.handler';
     const handler = 'newrelic_lambda_wrapper.handler';
 
     super(scope, id, { ...props, handler });

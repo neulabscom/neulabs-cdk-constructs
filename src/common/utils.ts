@@ -41,3 +41,23 @@ export function addBaseTags(module: any, props?: BaseTagProps) {
     Tags.of(module).add(TagsKey.REPOSITORY_VERSION, repositoryVersion);
   }
 }
+
+export const deprecated = (deprecationReason: string) => {
+  return (_target: any, memberName: string, propertyDescriptor: PropertyDescriptor) => {
+    return {
+      get() {
+        const wrapperFn = (...args: any[]) => {
+          console.warn(`Method ${memberName} is deprecated with reason: ${deprecationReason}`);
+          propertyDescriptor.value.apply(this, args);
+        };
+
+        Object.defineProperty(this, memberName, {
+          value: wrapperFn,
+          configurable: true,
+          writable: true,
+        });
+        return wrapperFn;
+      },
+    };
+  };
+};
