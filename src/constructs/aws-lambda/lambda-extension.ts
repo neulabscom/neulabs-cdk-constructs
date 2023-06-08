@@ -169,7 +169,7 @@ export class NewRelicFunction extends Function {
 export class NewRelicFunctionNode extends FunctionNode {
   constructor(scope: Construct, id: string, props: FunctionNodeNewRelicProps) {
     const app_handler = props.handler ?? 'index.handler';
-    const handler = 'newrelic_lambda_wrapper.handler';
+    const handler = 'newrelic-lambda-wrapper.handler';
 
     super(scope, id, { ...props, handler });
 
