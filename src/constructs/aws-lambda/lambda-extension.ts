@@ -161,7 +161,7 @@ export class NewRelicFunction extends Function {
       newRelicLayerName: props.newRelicLayerName,
       newRelicLayerVersion: props.newRelicLayerVersion,
       newRelicAccountId: props.newRelicAccountId,
-      newRelicwithExtensionSendLogs: props.newRelicwithExtensionSendLogs,
+      newRelicwithExtensionSendLogs: props.newRelicwithExtensionSendLogs ?? true,
     });
   }
 }
@@ -178,7 +178,7 @@ export class NewRelicFunctionNode extends FunctionNode {
       newRelicLayerName: props.newRelicLayerName,
       newRelicLayerVersion: props.newRelicLayerVersion,
       newRelicAccountId: props.newRelicAccountId,
-      newRelicwithExtensionSendLogs: props.newRelicwithExtensionSendLogs,
+      newRelicwithExtensionSendLogs: props.newRelicwithExtensionSendLogs ?? true,
     });
   }
 }
