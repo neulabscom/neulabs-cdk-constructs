@@ -7659,6 +7659,7 @@ const baseStackProps: stack.BaseStackProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.stack.BaseStackProps.property.env">env</a></code> | <code>aws-cdk-lib.Environment</code> | The AWS environment (account/region) where this stack will be deployed. |
 | <code><a href="#neulabs-cdk-constructs.stack.BaseStackProps.property.permissionsBoundary">permissionsBoundary</a></code> | <code>aws-cdk-lib.PermissionsBoundary</code> | Options for applying a permissions boundary to all IAM Roles and Users created within this Stage. |
 | <code><a href="#neulabs-cdk-constructs.stack.BaseStackProps.property.stackName">stackName</a></code> | <code>string</code> | Name to deploy the stack with. |
+| <code><a href="#neulabs-cdk-constructs.stack.BaseStackProps.property.suppressTemplateIndentation">suppressTemplateIndentation</a></code> | <code>boolean</code> | Enable this flag to suppress indentation in generated CloudFormation templates. |
 | <code><a href="#neulabs-cdk-constructs.stack.BaseStackProps.property.synthesizer">synthesizer</a></code> | <code>aws-cdk-lib.IStackSynthesizer</code> | Synthesis method to use while deploying this stack. |
 | <code><a href="#neulabs-cdk-constructs.stack.BaseStackProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Stack tags that will be applied to all the taggable resources and the stack itself. |
 | <code><a href="#neulabs-cdk-constructs.stack.BaseStackProps.property.terminationProtection">terminationProtection</a></code> | <code>boolean</code> | Whether to enable termination protection for this stack. |
@@ -7807,6 +7808,23 @@ public readonly stackName: string;
 - *Default:* Derived from construct path.
 
 Name to deploy the stack with.
+
+---
+
+##### `suppressTemplateIndentation`<sup>Optional</sup> <a name="suppressTemplateIndentation" id="neulabs-cdk-constructs.stack.BaseStackProps.property.suppressTemplateIndentation"></a>
+
+```typescript
+public readonly suppressTemplateIndentation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* the value of `@aws-cdk/core:suppressTemplateIndentation`, or `false` if that is not set.
+
+Enable this flag to suppress indentation in generated CloudFormation templates.
+
+If not specified, the value of the `@aws-cdk/core:suppressTemplateIndentation`
+context key will be used. If that is not specified, then the
+default value `false` will be used.
 
 ---
 
@@ -7971,6 +7989,7 @@ const functionNewRelicProps: aws_lambda.FunctionNewRelicProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.logRetentionRetryOptions">logRetentionRetryOptions</a></code> | <code>aws-cdk-lib.aws_lambda.LogRetentionRetryOptions</code> | When log retention is specified, a custom resource attempts to create the CloudWatch log group. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.logRetentionRole">logRetentionRole</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | The IAM role for the Lambda function associated with the custom resource that sets the retention policy. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.memorySize">memorySize</a></code> | <code>number</code> | The amount of memory, in MB, that is allocated to your Lambda function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.paramsAndSecrets">paramsAndSecrets</a></code> | <code>aws-cdk-lib.aws_lambda.ParamsAndSecretsLayerVersion</code> | Specify the configuration of Parameters and Secrets Extension. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.profiling">profiling</a></code> | <code>boolean</code> | Enable profiling. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.profilingGroup">profilingGroup</a></code> | <code>aws-cdk-lib.aws_codeguruprofiler.IProfilingGroup</code> | Profiling Group. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.reservedConcurrentExecutions">reservedConcurrentExecutions</a></code> | <code>number</code> | The maximum of concurrent executions you want to reserve for the function. |
@@ -8392,6 +8411,21 @@ Developer Guide.
 
 ---
 
+##### `paramsAndSecrets`<sup>Optional</sup> <a name="paramsAndSecrets" id="neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.paramsAndSecrets"></a>
+
+```typescript
+public readonly paramsAndSecrets: ParamsAndSecretsLayerVersion;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.ParamsAndSecretsLayerVersion
+- *Default:* No Parameters and Secrets Extension
+
+Specify the configuration of Parameters and Secrets Extension.
+
+> [https://docs.aws.amazon.com/systems-manager/latest/userguide/ps-integration-lambda-extensions.html](https://docs.aws.amazon.com/systems-manager/latest/userguide/ps-integration-lambda-extensions.html)
+
+---
+
 ##### `profiling`<sup>Optional</sup> <a name="profiling" id="neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.profiling"></a>
 
 ```typescript
@@ -8718,6 +8752,7 @@ const functionNodeNewRelicProps: aws_lambda.FunctionNodeNewRelicProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.logRetentionRetryOptions">logRetentionRetryOptions</a></code> | <code>aws-cdk-lib.aws_lambda.LogRetentionRetryOptions</code> | When log retention is specified, a custom resource attempts to create the CloudWatch log group. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.logRetentionRole">logRetentionRole</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | The IAM role for the Lambda function associated with the custom resource that sets the retention policy. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.memorySize">memorySize</a></code> | <code>number</code> | The amount of memory, in MB, that is allocated to your Lambda function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.paramsAndSecrets">paramsAndSecrets</a></code> | <code>aws-cdk-lib.aws_lambda.ParamsAndSecretsLayerVersion</code> | Specify the configuration of Parameters and Secrets Extension. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.profiling">profiling</a></code> | <code>boolean</code> | Enable profiling. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.profilingGroup">profilingGroup</a></code> | <code>aws-cdk-lib.aws_codeguruprofiler.IProfilingGroup</code> | Profiling Group. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.reservedConcurrentExecutions">reservedConcurrentExecutions</a></code> | <code>number</code> | The maximum of concurrent executions you want to reserve for the function. |
@@ -9143,6 +9178,21 @@ Developer Guide.
 
 ---
 
+##### `paramsAndSecrets`<sup>Optional</sup> <a name="paramsAndSecrets" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.paramsAndSecrets"></a>
+
+```typescript
+public readonly paramsAndSecrets: ParamsAndSecretsLayerVersion;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.ParamsAndSecretsLayerVersion
+- *Default:* No Parameters and Secrets Extension
+
+Specify the configuration of Parameters and Secrets Extension.
+
+> [https://docs.aws.amazon.com/systems-manager/latest/userguide/ps-integration-lambda-extensions.html](https://docs.aws.amazon.com/systems-manager/latest/userguide/ps-integration-lambda-extensions.html)
+
+---
+
 ##### `profiling`<sup>Optional</sup> <a name="profiling" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.profiling"></a>
 
 ```typescript
@@ -9522,6 +9572,7 @@ const functionNodeProps: aws_lambda.FunctionNodeProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.logRetentionRetryOptions">logRetentionRetryOptions</a></code> | <code>aws-cdk-lib.aws_lambda.LogRetentionRetryOptions</code> | When log retention is specified, a custom resource attempts to create the CloudWatch log group. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.logRetentionRole">logRetentionRole</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | The IAM role for the Lambda function associated with the custom resource that sets the retention policy. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.memorySize">memorySize</a></code> | <code>number</code> | The amount of memory, in MB, that is allocated to your Lambda function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.paramsAndSecrets">paramsAndSecrets</a></code> | <code>aws-cdk-lib.aws_lambda.ParamsAndSecretsLayerVersion</code> | Specify the configuration of Parameters and Secrets Extension. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.profiling">profiling</a></code> | <code>boolean</code> | Enable profiling. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.profilingGroup">profilingGroup</a></code> | <code>aws-cdk-lib.aws_codeguruprofiler.IProfilingGroup</code> | Profiling Group. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.reservedConcurrentExecutions">reservedConcurrentExecutions</a></code> | <code>number</code> | The maximum of concurrent executions you want to reserve for the function. |
@@ -9943,6 +9994,21 @@ Developer Guide.
 
 ---
 
+##### `paramsAndSecrets`<sup>Optional</sup> <a name="paramsAndSecrets" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.paramsAndSecrets"></a>
+
+```typescript
+public readonly paramsAndSecrets: ParamsAndSecretsLayerVersion;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.ParamsAndSecretsLayerVersion
+- *Default:* No Parameters and Secrets Extension
+
+Specify the configuration of Parameters and Secrets Extension.
+
+> [https://docs.aws.amazon.com/systems-manager/latest/userguide/ps-integration-lambda-extensions.html](https://docs.aws.amazon.com/systems-manager/latest/userguide/ps-integration-lambda-extensions.html)
+
+---
+
 ##### `profiling`<sup>Optional</sup> <a name="profiling" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.profiling"></a>
 
 ```typescript
@@ -10282,6 +10348,7 @@ const functionProps: aws_lambda.FunctionProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.logRetentionRetryOptions">logRetentionRetryOptions</a></code> | <code>aws-cdk-lib.aws_lambda.LogRetentionRetryOptions</code> | When log retention is specified, a custom resource attempts to create the CloudWatch log group. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.logRetentionRole">logRetentionRole</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | The IAM role for the Lambda function associated with the custom resource that sets the retention policy. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.memorySize">memorySize</a></code> | <code>number</code> | The amount of memory, in MB, that is allocated to your Lambda function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.paramsAndSecrets">paramsAndSecrets</a></code> | <code>aws-cdk-lib.aws_lambda.ParamsAndSecretsLayerVersion</code> | Specify the configuration of Parameters and Secrets Extension. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.profiling">profiling</a></code> | <code>boolean</code> | Enable profiling. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.profilingGroup">profilingGroup</a></code> | <code>aws-cdk-lib.aws_codeguruprofiler.IProfilingGroup</code> | Profiling Group. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.reservedConcurrentExecutions">reservedConcurrentExecutions</a></code> | <code>number</code> | The maximum of concurrent executions you want to reserve for the function. |
@@ -10699,6 +10766,21 @@ Developer Guide.
 
 ---
 
+##### `paramsAndSecrets`<sup>Optional</sup> <a name="paramsAndSecrets" id="neulabs-cdk-constructs.aws_lambda.FunctionProps.property.paramsAndSecrets"></a>
+
+```typescript
+public readonly paramsAndSecrets: ParamsAndSecretsLayerVersion;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.ParamsAndSecretsLayerVersion
+- *Default:* No Parameters and Secrets Extension
+
+Specify the configuration of Parameters and Secrets Extension.
+
+> [https://docs.aws.amazon.com/systems-manager/latest/userguide/ps-integration-lambda-extensions.html](https://docs.aws.amazon.com/systems-manager/latest/userguide/ps-integration-lambda-extensions.html)
+
+---
+
 ##### `profiling`<sup>Optional</sup> <a name="profiling" id="neulabs-cdk-constructs.aws_lambda.FunctionProps.property.profiling"></a>
 
 ```typescript
@@ -10964,6 +11046,7 @@ const githubOIDCStackStackProps: oidc.GithubOIDCStackStackProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.env">env</a></code> | <code>aws-cdk-lib.Environment</code> | The AWS environment (account/region) where this stack will be deployed. |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.permissionsBoundary">permissionsBoundary</a></code> | <code>aws-cdk-lib.PermissionsBoundary</code> | Options for applying a permissions boundary to all IAM Roles and Users created within this Stage. |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.stackName">stackName</a></code> | <code>string</code> | Name to deploy the stack with. |
+| <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.suppressTemplateIndentation">suppressTemplateIndentation</a></code> | <code>boolean</code> | Enable this flag to suppress indentation in generated CloudFormation templates. |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.synthesizer">synthesizer</a></code> | <code>aws-cdk-lib.IStackSynthesizer</code> | Synthesis method to use while deploying this stack. |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Stack tags that will be applied to all the taggable resources and the stack itself. |
 | <code><a href="#neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.terminationProtection">terminationProtection</a></code> | <code>boolean</code> | Whether to enable termination protection for this stack. |
@@ -11122,6 +11205,23 @@ public readonly stackName: string;
 - *Default:* Derived from construct path.
 
 Name to deploy the stack with.
+
+---
+
+##### `suppressTemplateIndentation`<sup>Optional</sup> <a name="suppressTemplateIndentation" id="neulabs-cdk-constructs.oidc.GithubOIDCStackStackProps.property.suppressTemplateIndentation"></a>
+
+```typescript
+public readonly suppressTemplateIndentation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* the value of `@aws-cdk/core:suppressTemplateIndentation`, or `false` if that is not set.
+
+Enable this flag to suppress indentation in generated CloudFormation templates.
+
+If not specified, the value of the `@aws-cdk/core:suppressTemplateIndentation`
+context key will be used. If that is not specified, then the
+default value `false` will be used.
 
 ---
 
@@ -11376,6 +11476,7 @@ const newRelicStackProps: newrelic.NewRelicStackProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.env">env</a></code> | <code>aws-cdk-lib.Environment</code> | The AWS environment (account/region) where this stack will be deployed. |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.permissionsBoundary">permissionsBoundary</a></code> | <code>aws-cdk-lib.PermissionsBoundary</code> | Options for applying a permissions boundary to all IAM Roles and Users created within this Stage. |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.stackName">stackName</a></code> | <code>string</code> | Name to deploy the stack with. |
+| <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.suppressTemplateIndentation">suppressTemplateIndentation</a></code> | <code>boolean</code> | Enable this flag to suppress indentation in generated CloudFormation templates. |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.synthesizer">synthesizer</a></code> | <code>aws-cdk-lib.IStackSynthesizer</code> | Synthesis method to use while deploying this stack. |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Stack tags that will be applied to all the taggable resources and the stack itself. |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.terminationProtection">terminationProtection</a></code> | <code>boolean</code> | Whether to enable termination protection for this stack. |
@@ -11529,6 +11630,23 @@ public readonly stackName: string;
 - *Default:* Derived from construct path.
 
 Name to deploy the stack with.
+
+---
+
+##### `suppressTemplateIndentation`<sup>Optional</sup> <a name="suppressTemplateIndentation" id="neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.suppressTemplateIndentation"></a>
+
+```typescript
+public readonly suppressTemplateIndentation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* the value of `@aws-cdk/core:suppressTemplateIndentation`, or `false` if that is not set.
+
+Enable this flag to suppress indentation in generated CloudFormation templates.
+
+If not specified, the value of the `@aws-cdk/core:suppressTemplateIndentation`
+context key will be used. If that is not specified, then the
+default value `false` will be used.
 
 ---
 
