@@ -1,4 +1,4 @@
-import { Duration, SecretValue, RemovalPolicy, CfnOutput } from 'aws-cdk-lib';
+import { Duration, SecretValue, RemovalPolicy, CfnOutput, IResolvable } from 'aws-cdk-lib';
 import * as cloudwatch from 'aws-cdk-lib/aws-cloudwatch';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as firehose from 'aws-cdk-lib/aws-kinesisfirehose';
@@ -26,12 +26,18 @@ export enum EndpointUrlMetrics {
   US_METRICS = 'https://aws-api.newrelic.com/cloudwatch-metrics/v1',
 }
 
+export interface CfnMetricStreamProps {
+  readonly includeFilters?: Array<IResolvable | cloudwatch.CfnMetricStream.MetricStreamFilterProperty> | IResolvable;
+  readonly excludeFilters?: Array<IResolvable | cloudwatch.CfnMetricStream.MetricStreamFilterProperty> | IResolvable;
+}
+
 export interface NewRelicStackProps extends BaseStackProps {
   readonly newRelicLicenseKey: string;
   readonly newRelicAccountId: string;
   readonly newRelicBucketName: string;
   readonly newRelicApiUrlMetrics: EndpointUrlMetrics;
   readonly newRelicApiUrlLogs: EndpointUrlLogs;
+  readonly cloudwatchMetricStreamProps?: CfnMetricStreamProps;
 }
 
 export class NewRelicStack extends BaseStack {
@@ -71,11 +77,14 @@ export class NewRelicStack extends BaseStack {
         props.newRelicApiUrlMetrics,
         props.newRelicLicenseKey,
       );
-      this.createCloudwatchMetricStream(this.newRelicFirehoseMetrics.attrArn);
+      this.createCloudwatchMetricStream(
+        this.newRelicFirehoseMetrics.attrArn,
+        { ...props.cloudwatchMetricStreamProps },
+      );
     }
   }
 
-  createCloudwatchMetricStream(firehoseArn: string) {
+  createCloudwatchMetricStream(firehoseArn: string, props: CfnMetricStreamProps) {
     let role = new iam.Role(
       this,
       'newrelic-cloudwatch-stream-role', {
@@ -96,9 +105,10 @@ export class NewRelicStack extends BaseStack {
     );
 
     return new cloudwatch.CfnMetricStream(this, 'newrelic-cloudwatch-stream-metrics', {
+      ...props,
       firehoseArn: firehoseArn,
-      outputFormat: 'opentelemetry0.7',
       roleArn: role.roleArn,
+      outputFormat: 'opentelemetry0.7',
       name: 'newelic-stream-metrics',
     });
   }

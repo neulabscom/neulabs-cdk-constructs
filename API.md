@@ -6987,12 +6987,18 @@ public createCloudwatchLogsStreamRole(): IRole
 ##### `createCloudwatchMetricStream` <a name="createCloudwatchMetricStream" id="neulabs-cdk-constructs.newrelic.NewRelicStack.createCloudwatchMetricStream"></a>
 
 ```typescript
-public createCloudwatchMetricStream(firehoseArn: string): CfnMetricStream
+public createCloudwatchMetricStream(firehoseArn: string, props?: CfnMetricStreamProps): CfnMetricStream
 ```
 
 ###### `firehoseArn`<sup>Required</sup> <a name="firehoseArn" id="neulabs-cdk-constructs.newrelic.NewRelicStack.createCloudwatchMetricStream.parameter.firehoseArn"></a>
 
 - *Type:* string
+
+---
+
+###### `props`<sup>Optional</sup> <a name="props" id="neulabs-cdk-constructs.newrelic.NewRelicStack.createCloudwatchMetricStream.parameter.props"></a>
+
+- *Type:* neulabs-cdk-constructs.newrelic.CfnMetricStreamProps
 
 ---
 
@@ -7921,6 +7927,45 @@ public readonly repositoryVersion: string;
 ```
 
 - *Type:* string
+
+---
+
+### CfnMetricStreamProps <a name="CfnMetricStreamProps" id="neulabs-cdk-constructs.newrelic.CfnMetricStreamProps"></a>
+
+#### Initializer <a name="Initializer" id="neulabs-cdk-constructs.newrelic.CfnMetricStreamProps.Initializer"></a>
+
+```typescript
+import { newrelic } from 'neulabs-cdk-constructs'
+
+const cfnMetricStreamProps: newrelic.CfnMetricStreamProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#neulabs-cdk-constructs.newrelic.CfnMetricStreamProps.property.excludeFilters">excludeFilters</a></code> | <code>aws-cdk-lib.IResolvable \| aws-cdk-lib.IResolvable \| aws-cdk-lib.aws_cloudwatch.CfnMetricStream.MetricStreamFilterProperty[]</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.newrelic.CfnMetricStreamProps.property.includeFilters">includeFilters</a></code> | <code>aws-cdk-lib.IResolvable \| aws-cdk-lib.IResolvable \| aws-cdk-lib.aws_cloudwatch.CfnMetricStream.MetricStreamFilterProperty[]</code> | *No description.* |
+
+---
+
+##### `excludeFilters`<sup>Optional</sup> <a name="excludeFilters" id="neulabs-cdk-constructs.newrelic.CfnMetricStreamProps.property.excludeFilters"></a>
+
+```typescript
+public readonly excludeFilters: IResolvable | IResolvable | MetricStreamFilterProperty[];
+```
+
+- *Type:* aws-cdk-lib.IResolvable | aws-cdk-lib.IResolvable | aws-cdk-lib.aws_cloudwatch.CfnMetricStream.MetricStreamFilterProperty[]
+
+---
+
+##### `includeFilters`<sup>Optional</sup> <a name="includeFilters" id="neulabs-cdk-constructs.newrelic.CfnMetricStreamProps.property.includeFilters"></a>
+
+```typescript
+public readonly includeFilters: IResolvable | IResolvable | MetricStreamFilterProperty[];
+```
+
+- *Type:* aws-cdk-lib.IResolvable | aws-cdk-lib.IResolvable | aws-cdk-lib.aws_cloudwatch.CfnMetricStream.MetricStreamFilterProperty[]
 
 ---
 
@@ -11462,6 +11507,7 @@ const newRelicStackProps: newrelic.NewRelicStackProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.newRelicApiUrlMetrics">newRelicApiUrlMetrics</a></code> | <code>neulabs-cdk-constructs.newrelic.EndpointUrlMetrics</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.newRelicBucketName">newRelicBucketName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.newRelicLicenseKey">newRelicLicenseKey</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.cloudwatchMetricStreamProps">cloudwatchMetricStreamProps</a></code> | <code>neulabs-cdk-constructs.newrelic.CfnMetricStreamProps</code> | *No description.* |
 
 ---
 
@@ -11732,6 +11778,16 @@ public readonly newRelicLicenseKey: string;
 ```
 
 - *Type:* string
+
+---
+
+##### `cloudwatchMetricStreamProps`<sup>Optional</sup> <a name="cloudwatchMetricStreamProps" id="neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.cloudwatchMetricStreamProps"></a>
+
+```typescript
+public readonly cloudwatchMetricStreamProps: CfnMetricStreamProps;
+```
+
+- *Type:* neulabs-cdk-constructs.newrelic.CfnMetricStreamProps
 
 ---
 
