@@ -1145,13 +1145,7 @@ public addEventSource(source: IEventSource): void
 
 Adds an event source to this function.
 
-Event sources are implemented in the @aws-cdk/aws-lambda-event-sources module.
-
-The following example adds an SQS Queue as an event source:
-```
-import { SqsEventSource } from '@aws-cdk/aws-lambda-event-sources';
-myFunction.addEventSource(new SqsEventSource(myQueue));
-```
+Event sources are implemented in the
 
 ###### `source`<sup>Required</sup> <a name="source" id="neulabs-cdk-constructs.aws_lambda.Function.addEventSource.parameter.source"></a>
 
@@ -2233,13 +2227,7 @@ public addEventSource(source: IEventSource): void
 
 Adds an event source to this function.
 
-Event sources are implemented in the @aws-cdk/aws-lambda-event-sources module.
-
-The following example adds an SQS Queue as an event source:
-```
-import { SqsEventSource } from '@aws-cdk/aws-lambda-event-sources';
-myFunction.addEventSource(new SqsEventSource(myQueue));
-```
+Event sources are implemented in the
 
 ###### `source`<sup>Required</sup> <a name="source" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addEventSource.parameter.source"></a>
 
@@ -4446,13 +4434,7 @@ public addEventSource(source: IEventSource): void
 
 Adds an event source to this function.
 
-Event sources are implemented in the @aws-cdk/aws-lambda-event-sources module.
-
-The following example adds an SQS Queue as an event source:
-```
-import { SqsEventSource } from '@aws-cdk/aws-lambda-event-sources';
-myFunction.addEventSource(new SqsEventSource(myQueue));
-```
+Event sources are implemented in the
 
 ###### `source`<sup>Required</sup> <a name="source" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addEventSource.parameter.source"></a>
 
@@ -5534,13 +5516,7 @@ public addEventSource(source: IEventSource): void
 
 Adds an event source to this function.
 
-Event sources are implemented in the @aws-cdk/aws-lambda-event-sources module.
-
-The following example adds an SQS Queue as an event source:
-```
-import { SqsEventSource } from '@aws-cdk/aws-lambda-event-sources';
-myFunction.addEventSource(new SqsEventSource(myQueue));
-```
+Event sources are implemented in the
 
 ###### `source`<sup>Required</sup> <a name="source" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.addEventSource.parameter.source"></a>
 

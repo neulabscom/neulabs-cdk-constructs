@@ -70,6 +70,11 @@
       "type": "build"
     },
     {
+      "name": "jsii-rosetta",
+      "version": "~5.0.7",
+      "type": "build"
+    },
+    {
       "name": "jsii",
       "version": "~5.0.7",
       "type": "build"
@@ -106,22 +111,22 @@
     },
     {
       "name": "aws-cdk-lib",
-      "version": "2.85.0",
+      "version": "2.89.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-apigatewayv2-alpha",
-      "version": "2.85.0-alpha.0",
+      "version": "2.89.0-alpha.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-apigatewayv2-integrations-alpha",
-      "version": "2.85.0-alpha.0",
+      "version": "2.89.0-alpha.0",
       "type": "runtime"
     },
     {
       "name": "aws-cdk-lib",
-      "version": "2.85.0",
+      "version": "2.89.0",
       "type": "runtime"
     },
     {
