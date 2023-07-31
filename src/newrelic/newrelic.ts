@@ -79,12 +79,12 @@ export class NewRelicStack extends BaseStack {
       );
       this.createCloudwatchMetricStream(
         this.newRelicFirehoseMetrics.attrArn,
-        { ...props.cloudwatchMetricStreamProps },
+        props.cloudwatchMetricStreamProps,
       );
     }
   }
 
-  createCloudwatchMetricStream(firehoseArn: string, props: CfnMetricStreamProps) {
+  createCloudwatchMetricStream(firehoseArn: string, props?: CfnMetricStreamProps) {
     let role = new iam.Role(
       this,
       'newrelic-cloudwatch-stream-role', {
@@ -105,11 +105,11 @@ export class NewRelicStack extends BaseStack {
     );
 
     return new cloudwatch.CfnMetricStream(this, 'newrelic-cloudwatch-stream-metrics', {
-      ...props,
       firehoseArn: firehoseArn,
       roleArn: role.roleArn,
       outputFormat: 'opentelemetry0.7',
       name: 'newelic-stream-metrics',
+      ...props,
     });
   }
 
