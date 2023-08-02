@@ -11503,11 +11503,11 @@ const newRelicStackProps: newrelic.NewRelicStackProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.terminationProtection">terminationProtection</a></code> | <code>boolean</code> | Whether to enable termination protection for this stack. |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.stage">stage</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.newRelicAccountId">newRelicAccountId</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.newRelicApiUrlLogs">newRelicApiUrlLogs</a></code> | <code>neulabs-cdk-constructs.newrelic.EndpointUrlLogs</code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.newRelicApiUrlMetrics">newRelicApiUrlMetrics</a></code> | <code>neulabs-cdk-constructs.newrelic.EndpointUrlMetrics</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.newRelicBucketName">newRelicBucketName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.newRelicLicenseKey">newRelicLicenseKey</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.cloudwatchMetricStreamProps">cloudwatchMetricStreamProps</a></code> | <code>neulabs-cdk-constructs.newrelic.CfnMetricStreamProps</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.newRelicApiUrlLogs">newRelicApiUrlLogs</a></code> | <code>neulabs-cdk-constructs.newrelic.EndpointUrlLogs</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.newRelicApiUrlMetrics">newRelicApiUrlMetrics</a></code> | <code>neulabs-cdk-constructs.newrelic.EndpointUrlMetrics</code> | *No description.* |
 
 ---
 
@@ -11741,26 +11741,6 @@ public readonly newRelicAccountId: string;
 
 ---
 
-##### `newRelicApiUrlLogs`<sup>Required</sup> <a name="newRelicApiUrlLogs" id="neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.newRelicApiUrlLogs"></a>
-
-```typescript
-public readonly newRelicApiUrlLogs: EndpointUrlLogs;
-```
-
-- *Type:* neulabs-cdk-constructs.newrelic.EndpointUrlLogs
-
----
-
-##### `newRelicApiUrlMetrics`<sup>Required</sup> <a name="newRelicApiUrlMetrics" id="neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.newRelicApiUrlMetrics"></a>
-
-```typescript
-public readonly newRelicApiUrlMetrics: EndpointUrlMetrics;
-```
-
-- *Type:* neulabs-cdk-constructs.newrelic.EndpointUrlMetrics
-
----
-
 ##### `newRelicBucketName`<sup>Required</sup> <a name="newRelicBucketName" id="neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.newRelicBucketName"></a>
 
 ```typescript
@@ -11788,6 +11768,26 @@ public readonly cloudwatchMetricStreamProps: CfnMetricStreamProps;
 ```
 
 - *Type:* neulabs-cdk-constructs.newrelic.CfnMetricStreamProps
+
+---
+
+##### `newRelicApiUrlLogs`<sup>Optional</sup> <a name="newRelicApiUrlLogs" id="neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.newRelicApiUrlLogs"></a>
+
+```typescript
+public readonly newRelicApiUrlLogs: EndpointUrlLogs;
+```
+
+- *Type:* neulabs-cdk-constructs.newrelic.EndpointUrlLogs
+
+---
+
+##### `newRelicApiUrlMetrics`<sup>Optional</sup> <a name="newRelicApiUrlMetrics" id="neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.newRelicApiUrlMetrics"></a>
+
+```typescript
+public readonly newRelicApiUrlMetrics: EndpointUrlMetrics;
+```
+
+- *Type:* neulabs-cdk-constructs.newrelic.EndpointUrlMetrics
 
 ---
 

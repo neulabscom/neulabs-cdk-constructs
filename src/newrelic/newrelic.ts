@@ -35,8 +35,8 @@ export interface NewRelicStackProps extends BaseStackProps {
   readonly newRelicLicenseKey: string;
   readonly newRelicAccountId: string;
   readonly newRelicBucketName: string;
-  readonly newRelicApiUrlMetrics: EndpointUrlMetrics;
-  readonly newRelicApiUrlLogs: EndpointUrlLogs;
+  readonly newRelicApiUrlMetrics?: EndpointUrlMetrics;
+  readonly newRelicApiUrlLogs?: EndpointUrlLogs;
   readonly cloudwatchMetricStreamProps?: CfnMetricStreamProps;
 }
 
@@ -184,18 +184,17 @@ export class NewRelicStack extends BaseStack {
   ):firehose.CfnDeliveryStream {
     if (this.stage == 'production') {
       // Minute in one day: 1440
-      // Interval: 5min
-      // Sends per day: 1440/5 = 288
-      // Usage per day: 288*5mb = 1.5gb
-      var bufferingHints: firehose.CfnDeliveryStream.BufferingHintsProperty = {
-        intervalInSeconds: 300, // 5 minute
-        sizeInMBs: 5,
-      };
-    } else {
-      // Usage per day: 144*3mb = 0.432gb
+      // Interval: 10min
+      // Sends per day: 1440/10 = 144
+      // Usage per day: 144*10mb = 1.5gb
       var bufferingHints: firehose.CfnDeliveryStream.BufferingHintsProperty = {
         intervalInSeconds: 600, // 10 minute
-        sizeInMBs: 3,
+        sizeInMBs: 10,
+      };
+    } else {
+      var bufferingHints: firehose.CfnDeliveryStream.BufferingHintsProperty = {
+        intervalInSeconds: 900, // 15 minute
+        sizeInMBs: 10,
       };
     }
 
