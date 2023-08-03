@@ -7029,7 +7029,7 @@ public createFirehoseRole(newRelicFirehoseBucket: IBucket): IRole
 ##### `createFirehoseStream` <a name="createFirehoseStream" id="neulabs-cdk-constructs.newrelic.NewRelicStack.createFirehoseStream"></a>
 
 ```typescript
-public createFirehoseStream(newRelicBucket: IBucket, role: IRole, endpointType: EndpointType, endpointUrl: string, newRelicLicenseLey: string): CfnDeliveryStream
+public createFirehoseStream(newRelicBucket: IBucket, role: IRole, endpointType: EndpointType, endpointUrl: string, newRelicLicenseLey: string, bufferingHints?: BufferingHintsProperty): CfnDeliveryStream
 ```
 
 ###### `newRelicBucket`<sup>Required</sup> <a name="newRelicBucket" id="neulabs-cdk-constructs.newrelic.NewRelicStack.createFirehoseStream.parameter.newRelicBucket"></a>
@@ -7059,6 +7059,12 @@ public createFirehoseStream(newRelicBucket: IBucket, role: IRole, endpointType: 
 ###### `newRelicLicenseLey`<sup>Required</sup> <a name="newRelicLicenseLey" id="neulabs-cdk-constructs.newrelic.NewRelicStack.createFirehoseStream.parameter.newRelicLicenseLey"></a>
 
 - *Type:* string
+
+---
+
+###### `bufferingHints`<sup>Optional</sup> <a name="bufferingHints" id="neulabs-cdk-constructs.newrelic.NewRelicStack.createFirehoseStream.parameter.bufferingHints"></a>
+
+- *Type:* aws-cdk-lib.aws_kinesisfirehose.CfnDeliveryStream.BufferingHintsProperty
 
 ---
 
@@ -11505,6 +11511,7 @@ const newRelicStackProps: newrelic.NewRelicStackProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.newRelicAccountId">newRelicAccountId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.newRelicBucketName">newRelicBucketName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.newRelicLicenseKey">newRelicLicenseKey</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.bufferyHints">bufferyHints</a></code> | <code>aws-cdk-lib.aws_kinesisfirehose.CfnDeliveryStream.BufferingHintsProperty</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.cloudwatchMetricStreamProps">cloudwatchMetricStreamProps</a></code> | <code>neulabs-cdk-constructs.newrelic.CfnMetricStreamProps</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.newRelicApiUrlLogs">newRelicApiUrlLogs</a></code> | <code>neulabs-cdk-constructs.newrelic.EndpointUrlLogs</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.newRelicApiUrlMetrics">newRelicApiUrlMetrics</a></code> | <code>neulabs-cdk-constructs.newrelic.EndpointUrlMetrics</code> | *No description.* |
@@ -11758,6 +11765,16 @@ public readonly newRelicLicenseKey: string;
 ```
 
 - *Type:* string
+
+---
+
+##### `bufferyHints`<sup>Optional</sup> <a name="bufferyHints" id="neulabs-cdk-constructs.newrelic.NewRelicStackProps.property.bufferyHints"></a>
+
+```typescript
+public readonly bufferyHints: BufferingHintsProperty;
+```
+
+- *Type:* aws-cdk-lib.aws_kinesisfirehose.CfnDeliveryStream.BufferingHintsProperty
 
 ---
 

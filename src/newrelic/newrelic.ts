@@ -38,6 +38,7 @@ export interface NewRelicStackProps extends BaseStackProps {
   readonly newRelicApiUrlMetrics?: EndpointUrlMetrics;
   readonly newRelicApiUrlLogs?: EndpointUrlLogs;
   readonly cloudwatchMetricStreamProps?: CfnMetricStreamProps;
+  readonly bufferyHints?: firehose.CfnDeliveryStream.BufferingHintsProperty;
 }
 
 export class NewRelicStack extends BaseStack {
@@ -76,6 +77,7 @@ export class NewRelicStack extends BaseStack {
         EndpointType.METRICS,
         props.newRelicApiUrlMetrics,
         props.newRelicLicenseKey,
+        props.bufferyHints,
       );
       this.createCloudwatchMetricStream(
         this.newRelicFirehoseMetrics.attrArn,
@@ -181,25 +183,19 @@ export class NewRelicStack extends BaseStack {
     endpointType: EndpointType,
     endpointUrl: string,
     newRelicLicenseLey: string,
+    bufferingHints?: firehose.CfnDeliveryStream.BufferingHintsProperty,
   ):firehose.CfnDeliveryStream {
-    if (this.stage == 'production') {
-      // Minute in one day: 1440
-      // Interval: 10min
-      // Sends per day: 1440/10 = 144
-      // Usage per day: 144*10mb = 1.5gb
-      var bufferingHints: firehose.CfnDeliveryStream.BufferingHintsProperty = {
-        intervalInSeconds: 600, // 10 minute
-        sizeInMBs: 10,
-      };
-    } else {
-      var bufferingHints: firehose.CfnDeliveryStream.BufferingHintsProperty = {
-        intervalInSeconds: 900, // 15 minute
-        sizeInMBs: 10,
-      };
-    }
+    // Minute in one day: 1440
+    // Interval: 15min
+    // Sends per day: 1440/15 = 96
+    // Max usage per day: 96*15mb = 1.5gb
+    var bufferingHintsDefault: firehose.CfnDeliveryStream.BufferingHintsProperty = {
+      intervalInSeconds: 900,
+      sizeInMBs: 15,
+    };
 
     let httpEndpointMetrics: firehose.CfnDeliveryStream.HttpEndpointDestinationConfigurationProperty = {
-      bufferingHints: bufferingHints,
+      bufferingHints: bufferingHints ?? bufferingHintsDefault,
       endpointConfiguration: {
         url: endpointUrl,
         accessKey: newRelicLicenseLey,
