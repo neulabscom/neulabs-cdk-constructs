@@ -1,6 +1,6 @@
 const { cdk, javascript } = require('projen');
 
-const cdkVersion = '2.89.0';
+const cdkVersion = '2.96.2';
 
 const project = new cdk.JsiiProject({
   author: 'Neulabs',

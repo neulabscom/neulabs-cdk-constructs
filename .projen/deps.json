@@ -11,12 +11,12 @@
     },
     {
       "name": "@typescript-eslint/eslint-plugin",
-      "version": "^5",
+      "version": "^6",
       "type": "build"
     },
     {
       "name": "@typescript-eslint/parser",
-      "version": "^5",
+      "version": "^6",
       "type": "build"
     },
     {
@@ -111,22 +111,22 @@
     },
     {
       "name": "aws-cdk-lib",
-      "version": "2.89.0",
+      "version": "2.96.2",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-apigatewayv2-alpha",
-      "version": "2.89.0-alpha.0",
+      "version": "2.96.2-alpha.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-apigatewayv2-integrations-alpha",
-      "version": "2.89.0-alpha.0",
+      "version": "2.96.2-alpha.0",
       "type": "runtime"
     },
     {
       "name": "aws-cdk-lib",
-      "version": "2.89.0",
+      "version": "2.96.2",
       "type": "runtime"
     },
     {
