@@ -1145,7 +1145,13 @@ public addEventSource(source: IEventSource): void
 
 Adds an event source to this function.
 
-Event sources are implemented in the
+Event sources are implemented in the aws-cdk-lib/aws-lambda-event-sources module.
+
+The following example adds an SQS Queue as an event source:
+```
+import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
+myFunction.addEventSource(new SqsEventSource(myQueue));
+```
 
 ###### `source`<sup>Required</sup> <a name="source" id="neulabs-cdk-constructs.aws_lambda.Function.addEventSource.parameter.source"></a>
 
@@ -2227,7 +2233,13 @@ public addEventSource(source: IEventSource): void
 
 Adds an event source to this function.
 
-Event sources are implemented in the
+Event sources are implemented in the aws-cdk-lib/aws-lambda-event-sources module.
+
+The following example adds an SQS Queue as an event source:
+```
+import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
+myFunction.addEventSource(new SqsEventSource(myQueue));
+```
 
 ###### `source`<sup>Required</sup> <a name="source" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addEventSource.parameter.source"></a>
 
@@ -4434,7 +4446,13 @@ public addEventSource(source: IEventSource): void
 
 Adds an event source to this function.
 
-Event sources are implemented in the
+Event sources are implemented in the aws-cdk-lib/aws-lambda-event-sources module.
+
+The following example adds an SQS Queue as an event source:
+```
+import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
+myFunction.addEventSource(new SqsEventSource(myQueue));
+```
 
 ###### `source`<sup>Required</sup> <a name="source" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addEventSource.parameter.source"></a>
 
@@ -5516,7 +5534,13 @@ public addEventSource(source: IEventSource): void
 
 Adds an event source to this function.
 
-Event sources are implemented in the
+Event sources are implemented in the aws-cdk-lib/aws-lambda-event-sources module.
+
+The following example adds an SQS Queue as an event source:
+```
+import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
+myFunction.addEventSource(new SqsEventSource(myQueue));
+```
 
 ###### `source`<sup>Required</sup> <a name="source" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.addEventSource.parameter.source"></a>
 
@@ -8023,6 +8047,7 @@ const functionNewRelicProps: aws_lambda.FunctionNewRelicProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.role">role</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | Lambda execution role. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.runtimeManagementMode">runtimeManagementMode</a></code> | <code>aws-cdk-lib.aws_lambda.RuntimeManagementMode</code> | Sets the runtime management configuration for a function's version. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.securityGroups">securityGroups</a></code> | <code>aws-cdk-lib.aws_ec2.ISecurityGroup[]</code> | The list of security groups to associate with the Lambda's network interfaces. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.snapStart">snapStart</a></code> | <code>aws-cdk-lib.aws_lambda.SnapStartConf</code> | Enable SnapStart for Lambda Function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.timeout">timeout</a></code> | <code>aws-cdk-lib.Duration</code> | The function execution time (in seconds) after which Lambda terminates the function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.tracing">tracing</a></code> | <code>aws-cdk-lib.aws_lambda.Tracing</code> | Enable AWS X-Ray Tracing for Lambda Function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.vpc">vpc</a></code> | <code>aws-cdk-lib.aws_ec2.IVpc</code> | VPC network to place Lambda network interfaces. |
@@ -8549,6 +8574,21 @@ Only used if 'vpc' is supplied.
 
 ---
 
+##### `snapStart`<sup>Optional</sup> <a name="snapStart" id="neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.snapStart"></a>
+
+```typescript
+public readonly snapStart: SnapStartConf;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.SnapStartConf
+- *Default:* No snapstart
+
+Enable SnapStart for Lambda Function.
+
+SnapStart is currently supported only for Java 11, 17 runtime
+
+---
+
 ##### `timeout`<sup>Optional</sup> <a name="timeout" id="neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.timeout"></a>
 
 ```typescript
@@ -8786,6 +8826,7 @@ const functionNodeNewRelicProps: aws_lambda.FunctionNodeNewRelicProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.role">role</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | Lambda execution role. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.runtimeManagementMode">runtimeManagementMode</a></code> | <code>aws-cdk-lib.aws_lambda.RuntimeManagementMode</code> | Sets the runtime management configuration for a function's version. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.securityGroups">securityGroups</a></code> | <code>aws-cdk-lib.aws_ec2.ISecurityGroup[]</code> | The list of security groups to associate with the Lambda's network interfaces. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.snapStart">snapStart</a></code> | <code>aws-cdk-lib.aws_lambda.SnapStartConf</code> | Enable SnapStart for Lambda Function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.timeout">timeout</a></code> | <code>aws-cdk-lib.Duration</code> | The function execution time (in seconds) after which Lambda terminates the function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.tracing">tracing</a></code> | <code>aws-cdk-lib.aws_lambda.Tracing</code> | Enable AWS X-Ray Tracing for Lambda Function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.vpc">vpc</a></code> | <code>aws-cdk-lib.aws_ec2.IVpc</code> | VPC network to place Lambda network interfaces. |
@@ -9316,6 +9357,21 @@ Only used if 'vpc' is supplied.
 
 ---
 
+##### `snapStart`<sup>Optional</sup> <a name="snapStart" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.snapStart"></a>
+
+```typescript
+public readonly snapStart: SnapStartConf;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.SnapStartConf
+- *Default:* No snapstart
+
+Enable SnapStart for Lambda Function.
+
+SnapStart is currently supported only for Java 11, 17 runtime
+
+---
+
 ##### `timeout`<sup>Optional</sup> <a name="timeout" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.timeout"></a>
 
 ```typescript
@@ -9479,7 +9535,7 @@ public readonly runtime: Runtime;
 ```
 
 - *Type:* aws-cdk-lib.aws_lambda.Runtime
-- *Default:* Runtime.NODEJS_14_X
+- *Default:* Runtime.NODEJS_18_X
 
 The runtime environment.
 
@@ -9606,6 +9662,7 @@ const functionNodeProps: aws_lambda.FunctionNodeProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.role">role</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | Lambda execution role. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.runtimeManagementMode">runtimeManagementMode</a></code> | <code>aws-cdk-lib.aws_lambda.RuntimeManagementMode</code> | Sets the runtime management configuration for a function's version. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.securityGroups">securityGroups</a></code> | <code>aws-cdk-lib.aws_ec2.ISecurityGroup[]</code> | The list of security groups to associate with the Lambda's network interfaces. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.snapStart">snapStart</a></code> | <code>aws-cdk-lib.aws_lambda.SnapStartConf</code> | Enable SnapStart for Lambda Function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.timeout">timeout</a></code> | <code>aws-cdk-lib.Duration</code> | The function execution time (in seconds) after which Lambda terminates the function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.tracing">tracing</a></code> | <code>aws-cdk-lib.aws_lambda.Tracing</code> | Enable AWS X-Ray Tracing for Lambda Function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.vpc">vpc</a></code> | <code>aws-cdk-lib.aws_ec2.IVpc</code> | VPC network to place Lambda network interfaces. |
@@ -10132,6 +10189,21 @@ Only used if 'vpc' is supplied.
 
 ---
 
+##### `snapStart`<sup>Optional</sup> <a name="snapStart" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.snapStart"></a>
+
+```typescript
+public readonly snapStart: SnapStartConf;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.SnapStartConf
+- *Default:* No snapstart
+
+Enable SnapStart for Lambda Function.
+
+SnapStart is currently supported only for Java 11, 17 runtime
+
+---
+
 ##### `timeout`<sup>Optional</sup> <a name="timeout" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.timeout"></a>
 
 ```typescript
@@ -10295,7 +10367,7 @@ public readonly runtime: Runtime;
 ```
 
 - *Type:* aws-cdk-lib.aws_lambda.Runtime
-- *Default:* Runtime.NODEJS_14_X
+- *Default:* Runtime.NODEJS_18_X
 
 The runtime environment.
 
@@ -10382,6 +10454,7 @@ const functionProps: aws_lambda.FunctionProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.role">role</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | Lambda execution role. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.runtimeManagementMode">runtimeManagementMode</a></code> | <code>aws-cdk-lib.aws_lambda.RuntimeManagementMode</code> | Sets the runtime management configuration for a function's version. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.securityGroups">securityGroups</a></code> | <code>aws-cdk-lib.aws_ec2.ISecurityGroup[]</code> | The list of security groups to associate with the Lambda's network interfaces. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.snapStart">snapStart</a></code> | <code>aws-cdk-lib.aws_lambda.SnapStartConf</code> | Enable SnapStart for Lambda Function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.timeout">timeout</a></code> | <code>aws-cdk-lib.Duration</code> | The function execution time (in seconds) after which Lambda terminates the function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.tracing">tracing</a></code> | <code>aws-cdk-lib.aws_lambda.Tracing</code> | Enable AWS X-Ray Tracing for Lambda Function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.vpc">vpc</a></code> | <code>aws-cdk-lib.aws_ec2.IVpc</code> | VPC network to place Lambda network interfaces. |
@@ -10901,6 +10974,21 @@ public readonly securityGroups: ISecurityGroup[];
 The list of security groups to associate with the Lambda's network interfaces.
 
 Only used if 'vpc' is supplied.
+
+---
+
+##### `snapStart`<sup>Optional</sup> <a name="snapStart" id="neulabs-cdk-constructs.aws_lambda.FunctionProps.property.snapStart"></a>
+
+```typescript
+public readonly snapStart: SnapStartConf;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.SnapStartConf
+- *Default:* No snapstart
+
+Enable SnapStart for Lambda Function.
+
+SnapStart is currently supported only for Java 11, 17 runtime
 
 ---
 
