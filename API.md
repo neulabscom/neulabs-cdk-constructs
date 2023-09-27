@@ -1019,7 +1019,7 @@ If this is a nested stack, this represents its `AWS::CloudFormation::Stack` reso
 
 ---
 
-##### `terminationProtection`<sup>Optional</sup> <a name="terminationProtection" id="neulabs-cdk-constructs.stack.BaseStack.property.terminationProtection"></a>
+##### `terminationProtection`<sup>Required</sup> <a name="terminationProtection" id="neulabs-cdk-constructs.stack.BaseStack.property.terminationProtection"></a>
 
 ```typescript
 public readonly terminationProtection: boolean;
@@ -1506,14 +1506,26 @@ This method may be called more than once.
 ##### `addBaseEnvironment` <a name="addBaseEnvironment" id="neulabs-cdk-constructs.aws_lambda.Function.addBaseEnvironment"></a>
 
 ```typescript
-public addBaseEnvironment(): void
+public addBaseEnvironment(values?: BaseTagProps): void
 ```
+
+###### `values`<sup>Optional</sup> <a name="values" id="neulabs-cdk-constructs.aws_lambda.Function.addBaseEnvironment.parameter.values"></a>
+
+- *Type:* neulabs-cdk-constructs.utils.BaseTagProps
+
+---
 
 ##### `addBaseTags` <a name="addBaseTags" id="neulabs-cdk-constructs.aws_lambda.Function.addBaseTags"></a>
 
 ```typescript
-public addBaseTags(): void
+public addBaseTags(values?: BaseTagProps): void
 ```
+
+###### `values`<sup>Optional</sup> <a name="values" id="neulabs-cdk-constructs.aws_lambda.Function.addBaseTags.parameter.values"></a>
+
+- *Type:* neulabs-cdk-constructs.utils.BaseTagProps
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -2192,6 +2204,7 @@ new aws_lambda.FunctionNode(scope: Construct, id: string, __2: FunctionNodeProps
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.invalidateVersionBasedOn">invalidateVersionBasedOn</a></code> | Mix additional information into the hash of the Version object. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.addBaseEnvironment">addBaseEnvironment</a></code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.addBaseTags">addBaseTags</a></code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.addPowerToolsLayer">addPowerToolsLayer</a></code> | *No description.* |
 
 ---
 
@@ -2594,14 +2607,44 @@ This method may be called more than once.
 ##### `addBaseEnvironment` <a name="addBaseEnvironment" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addBaseEnvironment"></a>
 
 ```typescript
-public addBaseEnvironment(): void
+public addBaseEnvironment(values?: BaseTagProps): void
 ```
+
+###### `values`<sup>Optional</sup> <a name="values" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addBaseEnvironment.parameter.values"></a>
+
+- *Type:* neulabs-cdk-constructs.utils.BaseTagProps
+
+---
 
 ##### `addBaseTags` <a name="addBaseTags" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addBaseTags"></a>
 
 ```typescript
-public addBaseTags(): void
+public addBaseTags(values?: BaseTagProps): void
 ```
+
+###### `values`<sup>Optional</sup> <a name="values" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addBaseTags.parameter.values"></a>
+
+- *Type:* neulabs-cdk-constructs.utils.BaseTagProps
+
+---
+
+##### `addPowerToolsLayer` <a name="addPowerToolsLayer" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addPowerToolsLayer"></a>
+
+```typescript
+public addPowerToolsLayer(scope: Construct, props: ILambdaPowerToolsProps): void
+```
+
+###### `scope`<sup>Required</sup> <a name="scope" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addPowerToolsLayer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+###### `props`<sup>Required</sup> <a name="props" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addPowerToolsLayer.parameter.props"></a>
+
+- *Type:* neulabs-cdk-constructs.aws_lambda.ILambdaPowerToolsProps
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -4230,7 +4273,7 @@ If this is a nested stack, this represents its `AWS::CloudFormation::Stack` reso
 
 ---
 
-##### `terminationProtection`<sup>Optional</sup> <a name="terminationProtection" id="neulabs-cdk-constructs.oidc.GithubOIDCStack.property.terminationProtection"></a>
+##### `terminationProtection`<sup>Required</sup> <a name="terminationProtection" id="neulabs-cdk-constructs.oidc.GithubOIDCStack.property.terminationProtection"></a>
 
 ```typescript
 public readonly terminationProtection: boolean;
@@ -4807,14 +4850,26 @@ This method may be called more than once.
 ##### `addBaseEnvironment` <a name="addBaseEnvironment" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addBaseEnvironment"></a>
 
 ```typescript
-public addBaseEnvironment(): void
+public addBaseEnvironment(values?: BaseTagProps): void
 ```
+
+###### `values`<sup>Optional</sup> <a name="values" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addBaseEnvironment.parameter.values"></a>
+
+- *Type:* neulabs-cdk-constructs.utils.BaseTagProps
+
+---
 
 ##### `addBaseTags` <a name="addBaseTags" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addBaseTags"></a>
 
 ```typescript
-public addBaseTags(): void
+public addBaseTags(values?: BaseTagProps): void
 ```
+
+###### `values`<sup>Optional</sup> <a name="values" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addBaseTags.parameter.values"></a>
+
+- *Type:* neulabs-cdk-constructs.utils.BaseTagProps
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -5493,6 +5548,7 @@ new aws_lambda.NewRelicFunctionNode(scope: Construct, id: string, props: Functio
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.invalidateVersionBasedOn">invalidateVersionBasedOn</a></code> | Mix additional information into the hash of the Version object. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.addBaseEnvironment">addBaseEnvironment</a></code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.addBaseTags">addBaseTags</a></code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.addPowerToolsLayer">addPowerToolsLayer</a></code> | *No description.* |
 
 ---
 
@@ -5895,14 +5951,44 @@ This method may be called more than once.
 ##### `addBaseEnvironment` <a name="addBaseEnvironment" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.addBaseEnvironment"></a>
 
 ```typescript
-public addBaseEnvironment(): void
+public addBaseEnvironment(values?: BaseTagProps): void
 ```
+
+###### `values`<sup>Optional</sup> <a name="values" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.addBaseEnvironment.parameter.values"></a>
+
+- *Type:* neulabs-cdk-constructs.utils.BaseTagProps
+
+---
 
 ##### `addBaseTags` <a name="addBaseTags" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.addBaseTags"></a>
 
 ```typescript
-public addBaseTags(): void
+public addBaseTags(values?: BaseTagProps): void
 ```
+
+###### `values`<sup>Optional</sup> <a name="values" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.addBaseTags.parameter.values"></a>
+
+- *Type:* neulabs-cdk-constructs.utils.BaseTagProps
+
+---
+
+##### `addPowerToolsLayer` <a name="addPowerToolsLayer" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.addPowerToolsLayer"></a>
+
+```typescript
+public addPowerToolsLayer(scope: Construct, props: ILambdaPowerToolsProps): void
+```
+
+###### `scope`<sup>Required</sup> <a name="scope" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.addPowerToolsLayer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+###### `props`<sup>Required</sup> <a name="props" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.addPowerToolsLayer.parameter.props"></a>
+
+- *Type:* neulabs-cdk-constructs.aws_lambda.ILambdaPowerToolsProps
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -7556,7 +7642,7 @@ If this is a nested stack, this represents its `AWS::CloudFormation::Stack` reso
 
 ---
 
-##### `terminationProtection`<sup>Optional</sup> <a name="terminationProtection" id="neulabs-cdk-constructs.newrelic.NewRelicStack.property.terminationProtection"></a>
+##### `terminationProtection`<sup>Required</sup> <a name="terminationProtection" id="neulabs-cdk-constructs.newrelic.NewRelicStack.property.terminationProtection"></a>
 
 ```typescript
 public readonly terminationProtection: boolean;
@@ -7913,30 +7999,9 @@ const baseTagProps: utils.BaseTagProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#neulabs-cdk-constructs.utils.BaseTagProps.property.businessUnit">businessUnit</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.utils.BaseTagProps.property.domain">domain</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.utils.BaseTagProps.property.repositoryName">repositoryName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.utils.BaseTagProps.property.repositoryVersion">repositoryVersion</a></code> | <code>string</code> | *No description.* |
-
----
-
-##### `businessUnit`<sup>Optional</sup> <a name="businessUnit" id="neulabs-cdk-constructs.utils.BaseTagProps.property.businessUnit"></a>
-
-```typescript
-public readonly businessUnit: string;
-```
-
-- *Type:* string
-
----
-
-##### `domain`<sup>Optional</sup> <a name="domain" id="neulabs-cdk-constructs.utils.BaseTagProps.property.domain"></a>
-
-```typescript
-public readonly domain: string;
-```
-
-- *Type:* string
+| <code><a href="#neulabs-cdk-constructs.utils.BaseTagProps.property.team">team</a></code> | <code>string</code> | *No description.* |
 
 ---
 
@@ -7954,6 +8019,16 @@ public readonly repositoryName: string;
 
 ```typescript
 public readonly repositoryVersion: string;
+```
+
+- *Type:* string
+
+---
+
+##### `team`<sup>Optional</sup> <a name="team" id="neulabs-cdk-constructs.utils.BaseTagProps.property.team"></a>
+
+```typescript
+public readonly team: string;
 ```
 
 - *Type:* string
@@ -8056,6 +8131,8 @@ const functionNewRelicProps: aws_lambda.FunctionNewRelicProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.handler">handler</a></code> | <code>string</code> | The name of the method within your code that Lambda calls to execute your function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.runtime">runtime</a></code> | <code>aws-cdk-lib.aws_lambda.Runtime</code> | The runtime environment for the Lambda function that you are uploading. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.stage">stage</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.baseEnvironmentValues">baseEnvironmentValues</a></code> | <code>neulabs-cdk-constructs.utils.BaseTagProps</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.baseTagsValues">baseTagsValues</a></code> | <code>neulabs-cdk-constructs.utils.BaseTagProps</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.withBaseEnvironment">withBaseEnvironment</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.withBaseTags">withBaseTags</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.newRelicAccountId">newRelicAccountId</a></code> | <code>string</code> | *No description.* |
@@ -8718,6 +8795,26 @@ public readonly stage: string;
 
 ---
 
+##### `baseEnvironmentValues`<sup>Optional</sup> <a name="baseEnvironmentValues" id="neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.baseEnvironmentValues"></a>
+
+```typescript
+public readonly baseEnvironmentValues: BaseTagProps;
+```
+
+- *Type:* neulabs-cdk-constructs.utils.BaseTagProps
+
+---
+
+##### `baseTagsValues`<sup>Optional</sup> <a name="baseTagsValues" id="neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.baseTagsValues"></a>
+
+```typescript
+public readonly baseTagsValues: BaseTagProps;
+```
+
+- *Type:* neulabs-cdk-constructs.utils.BaseTagProps
+
+---
+
 ##### `withBaseEnvironment`<sup>Optional</sup> <a name="withBaseEnvironment" id="neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.withBaseEnvironment"></a>
 
 ```typescript
@@ -8839,6 +8936,8 @@ const functionNodeNewRelicProps: aws_lambda.FunctionNodeNewRelicProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.projectRoot">projectRoot</a></code> | <code>string</code> | The path to the directory containing project config files (`package.json` or `tsconfig.json`). |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.runtime">runtime</a></code> | <code>aws-cdk-lib.aws_lambda.Runtime</code> | The runtime environment. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.stage">stage</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.baseEnvironmentValues">baseEnvironmentValues</a></code> | <code>neulabs-cdk-constructs.utils.BaseTagProps</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.baseTagsValues">baseTagsValues</a></code> | <code>neulabs-cdk-constructs.utils.BaseTagProps</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.withBaseEnvironment">withBaseEnvironment</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.withBaseTags">withBaseTags</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.newRelicAccountId">newRelicAccountId</a></code> | <code>string</code> | *No description.* |
@@ -9554,6 +9653,26 @@ public readonly stage: string;
 
 ---
 
+##### `baseEnvironmentValues`<sup>Optional</sup> <a name="baseEnvironmentValues" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.baseEnvironmentValues"></a>
+
+```typescript
+public readonly baseEnvironmentValues: BaseTagProps;
+```
+
+- *Type:* neulabs-cdk-constructs.utils.BaseTagProps
+
+---
+
+##### `baseTagsValues`<sup>Optional</sup> <a name="baseTagsValues" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.baseTagsValues"></a>
+
+```typescript
+public readonly baseTagsValues: BaseTagProps;
+```
+
+- *Type:* neulabs-cdk-constructs.utils.BaseTagProps
+
+---
+
 ##### `withBaseEnvironment`<sup>Optional</sup> <a name="withBaseEnvironment" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.withBaseEnvironment"></a>
 
 ```typescript
@@ -9675,6 +9794,8 @@ const functionNodeProps: aws_lambda.FunctionNodeProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.projectRoot">projectRoot</a></code> | <code>string</code> | The path to the directory containing project config files (`package.json` or `tsconfig.json`). |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.runtime">runtime</a></code> | <code>aws-cdk-lib.aws_lambda.Runtime</code> | The runtime environment. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.stage">stage</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.baseEnvironmentValues">baseEnvironmentValues</a></code> | <code>neulabs-cdk-constructs.utils.BaseTagProps</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.baseTagsValues">baseTagsValues</a></code> | <code>neulabs-cdk-constructs.utils.BaseTagProps</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.withBaseEnvironment">withBaseEnvironment</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.withBaseTags">withBaseTags</a></code> | <code>boolean</code> | *No description.* |
 
@@ -10386,6 +10507,26 @@ public readonly stage: string;
 
 ---
 
+##### `baseEnvironmentValues`<sup>Optional</sup> <a name="baseEnvironmentValues" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.baseEnvironmentValues"></a>
+
+```typescript
+public readonly baseEnvironmentValues: BaseTagProps;
+```
+
+- *Type:* neulabs-cdk-constructs.utils.BaseTagProps
+
+---
+
+##### `baseTagsValues`<sup>Optional</sup> <a name="baseTagsValues" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.baseTagsValues"></a>
+
+```typescript
+public readonly baseTagsValues: BaseTagProps;
+```
+
+- *Type:* neulabs-cdk-constructs.utils.BaseTagProps
+
+---
+
 ##### `withBaseEnvironment`<sup>Optional</sup> <a name="withBaseEnvironment" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.withBaseEnvironment"></a>
 
 ```typescript
@@ -10463,6 +10604,8 @@ const functionProps: aws_lambda.FunctionProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.handler">handler</a></code> | <code>string</code> | The name of the method within your code that Lambda calls to execute your function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.runtime">runtime</a></code> | <code>aws-cdk-lib.aws_lambda.Runtime</code> | The runtime environment for the Lambda function that you are uploading. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.stage">stage</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.baseEnvironmentValues">baseEnvironmentValues</a></code> | <code>neulabs-cdk-constructs.utils.BaseTagProps</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.baseTagsValues">baseTagsValues</a></code> | <code>neulabs-cdk-constructs.utils.BaseTagProps</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.withBaseEnvironment">withBaseEnvironment</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.withBaseTags">withBaseTags</a></code> | <code>boolean</code> | *No description.* |
 
@@ -11118,6 +11261,26 @@ public readonly stage: string;
 ```
 
 - *Type:* string
+
+---
+
+##### `baseEnvironmentValues`<sup>Optional</sup> <a name="baseEnvironmentValues" id="neulabs-cdk-constructs.aws_lambda.FunctionProps.property.baseEnvironmentValues"></a>
+
+```typescript
+public readonly baseEnvironmentValues: BaseTagProps;
+```
+
+- *Type:* neulabs-cdk-constructs.utils.BaseTagProps
+
+---
+
+##### `baseTagsValues`<sup>Optional</sup> <a name="baseTagsValues" id="neulabs-cdk-constructs.aws_lambda.FunctionProps.property.baseTagsValues"></a>
+
+```typescript
+public readonly baseTagsValues: BaseTagProps;
+```
+
+- *Type:* neulabs-cdk-constructs.utils.BaseTagProps
 
 ---
 
@@ -11897,6 +12060,85 @@ public readonly newRelicApiUrlMetrics: EndpointUrlMetrics;
 ---
 
 
+## Protocols <a name="Protocols" id="Protocols"></a>
+
+### ILambdaPowerToolsProps <a name="ILambdaPowerToolsProps" id="neulabs-cdk-constructs.aws_lambda.ILambdaPowerToolsProps"></a>
+
+- *Implemented By:* neulabs-cdk-constructs.aws_lambda.ILambdaPowerToolsProps
+
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.ILambdaPowerToolsProps.property.lambdaFunction">lambdaFunction</a></code> | <code>aws-cdk-lib.aws_lambda.Function</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.ILambdaPowerToolsProps.property.lambdaPowerToolsLayerAccountId">lambdaPowerToolsLayerAccountId</a></code> | <code>neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerAccountId</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.ILambdaPowerToolsProps.property.lambdaPowerToolsLayerName">lambdaPowerToolsLayerName</a></code> | <code>neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerName</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.ILambdaPowerToolsProps.property.lambdaPowerToolsLayerVersion">lambdaPowerToolsLayerVersion</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.ILambdaPowerToolsProps.property.setLogLevel">setLogLevel</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.ILambdaPowerToolsProps.property.setPowertoolsDev">setPowertoolsDev</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `lambdaFunction`<sup>Required</sup> <a name="lambdaFunction" id="neulabs-cdk-constructs.aws_lambda.ILambdaPowerToolsProps.property.lambdaFunction"></a>
+
+```typescript
+public readonly lambdaFunction: Function;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.Function
+
+---
+
+##### `lambdaPowerToolsLayerAccountId`<sup>Required</sup> <a name="lambdaPowerToolsLayerAccountId" id="neulabs-cdk-constructs.aws_lambda.ILambdaPowerToolsProps.property.lambdaPowerToolsLayerAccountId"></a>
+
+```typescript
+public readonly lambdaPowerToolsLayerAccountId: LambdaPowerToolsLayerAccountId;
+```
+
+- *Type:* neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerAccountId
+
+---
+
+##### `lambdaPowerToolsLayerName`<sup>Required</sup> <a name="lambdaPowerToolsLayerName" id="neulabs-cdk-constructs.aws_lambda.ILambdaPowerToolsProps.property.lambdaPowerToolsLayerName"></a>
+
+```typescript
+public readonly lambdaPowerToolsLayerName: LambdaPowerToolsLayerName;
+```
+
+- *Type:* neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerName
+
+---
+
+##### `lambdaPowerToolsLayerVersion`<sup>Required</sup> <a name="lambdaPowerToolsLayerVersion" id="neulabs-cdk-constructs.aws_lambda.ILambdaPowerToolsProps.property.lambdaPowerToolsLayerVersion"></a>
+
+```typescript
+public readonly lambdaPowerToolsLayerVersion: number;
+```
+
+- *Type:* number
+
+---
+
+##### `setLogLevel`<sup>Optional</sup> <a name="setLogLevel" id="neulabs-cdk-constructs.aws_lambda.ILambdaPowerToolsProps.property.setLogLevel"></a>
+
+```typescript
+public readonly setLogLevel: string;
+```
+
+- *Type:* string
+
+---
+
+##### `setPowertoolsDev`<sup>Optional</sup> <a name="setPowertoolsDev" id="neulabs-cdk-constructs.aws_lambda.ILambdaPowerToolsProps.property.setPowertoolsDev"></a>
+
+```typescript
+public readonly setPowertoolsDev: boolean;
+```
+
+- *Type:* boolean
+
+---
 
 ## Enums <a name="Enums" id="Enums"></a>
 
@@ -11963,6 +12205,54 @@ public readonly newRelicApiUrlMetrics: EndpointUrlMetrics;
 ---
 
 
+### LambdaPowerToolsLayerAccountId <a name="LambdaPowerToolsLayerAccountId" id="neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerAccountId"></a>
+
+#### Members <a name="Members" id="Members"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerAccountId.PYTHON">PYTHON</a></code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerAccountId.TYPESCRIPT">TYPESCRIPT</a></code> | *No description.* |
+
+---
+
+##### `PYTHON` <a name="PYTHON" id="neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerAccountId.PYTHON"></a>
+
+---
+
+
+##### `TYPESCRIPT` <a name="TYPESCRIPT" id="neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerAccountId.TYPESCRIPT"></a>
+
+---
+
+
+### LambdaPowerToolsLayerName <a name="LambdaPowerToolsLayerName" id="neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerName"></a>
+
+#### Members <a name="Members" id="Members"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerName.PYTHON_ARM">PYTHON_ARM</a></code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerName.PYTHON_X86">PYTHON_X86</a></code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerName.TYPESCRIPT">TYPESCRIPT</a></code> | *No description.* |
+
+---
+
+##### `PYTHON_ARM` <a name="PYTHON_ARM" id="neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerName.PYTHON_ARM"></a>
+
+---
+
+
+##### `PYTHON_X86` <a name="PYTHON_X86" id="neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerName.PYTHON_X86"></a>
+
+---
+
+
+##### `TYPESCRIPT` <a name="TYPESCRIPT" id="neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerName.TYPESCRIPT"></a>
+
+---
+
+
 ### ProviderUrl <a name="ProviderUrl" id="neulabs-cdk-constructs.oidc.ProviderUrl"></a>
 
 #### Members <a name="Members" id="Members"></a>
@@ -11974,51 +12264,6 @@ public readonly newRelicApiUrlMetrics: EndpointUrlMetrics;
 ---
 
 ##### `GITHUB` <a name="GITHUB" id="neulabs-cdk-constructs.oidc.ProviderUrl.GITHUB"></a>
-
----
-
-
-### TagsKey <a name="TagsKey" id="neulabs-cdk-constructs.utils.TagsKey"></a>
-
-#### Members <a name="Members" id="Members"></a>
-
-| **Name** | **Description** |
-| --- | --- |
-| <code><a href="#neulabs-cdk-constructs.utils.TagsKey.ENVIRONMENT">ENVIRONMENT</a></code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.utils.TagsKey.TIMESTAMP_DEPLOY_CDK">TIMESTAMP_DEPLOY_CDK</a></code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.utils.TagsKey.BUSINESS_UNIT">BUSINESS_UNIT</a></code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.utils.TagsKey.DOMAIN">DOMAIN</a></code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.utils.TagsKey.REPOSITORY_NAME">REPOSITORY_NAME</a></code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.utils.TagsKey.REPOSITORY_VERSION">REPOSITORY_VERSION</a></code> | *No description.* |
-
----
-
-##### `ENVIRONMENT` <a name="ENVIRONMENT" id="neulabs-cdk-constructs.utils.TagsKey.ENVIRONMENT"></a>
-
----
-
-
-##### `TIMESTAMP_DEPLOY_CDK` <a name="TIMESTAMP_DEPLOY_CDK" id="neulabs-cdk-constructs.utils.TagsKey.TIMESTAMP_DEPLOY_CDK"></a>
-
----
-
-
-##### `BUSINESS_UNIT` <a name="BUSINESS_UNIT" id="neulabs-cdk-constructs.utils.TagsKey.BUSINESS_UNIT"></a>
-
----
-
-
-##### `DOMAIN` <a name="DOMAIN" id="neulabs-cdk-constructs.utils.TagsKey.DOMAIN"></a>
-
----
-
-
-##### `REPOSITORY_NAME` <a name="REPOSITORY_NAME" id="neulabs-cdk-constructs.utils.TagsKey.REPOSITORY_NAME"></a>
-
----
-
-
-##### `REPOSITORY_VERSION` <a name="REPOSITORY_VERSION" id="neulabs-cdk-constructs.utils.TagsKey.REPOSITORY_VERSION"></a>
 
 ---
 

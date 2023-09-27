@@ -6,7 +6,6 @@ import { CDK_ACCOUNT_ID, CDK_REGION } from '../../common/env';
 
 export const NEW_RELIC_LAYERS_ACCOUNT_ID = '451483290750'; // AWS account id of NewRelic where exposed layers https://layers.newrelic-external.com/
 
-
 export interface FunctionNewRelicProps extends FunctionProps {
   readonly newRelicLayerName: string;
   readonly newRelicLayerVersion: number;

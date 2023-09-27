@@ -1,10 +1,9 @@
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as lambdaNode from 'aws-cdk-lib/aws-lambda-nodejs';
 import { Construct } from 'constructs';
+import * as lambda_powertools from './lambda-powertools';
 import * as env from '../../common/env';
 import { addBaseTags, BaseTagProps } from '../../common/utils';
-
-export const NEW_RELIC_LAYERS_ACCOUNT_ID = '451483290750'; // AWS account id of NewRelic where exposed layers https://layers.newrelic-external.com/
 
 export interface FunctionProps extends lambda.FunctionProps {
   readonly stage: string;
@@ -94,5 +93,15 @@ export class FunctionNode extends lambdaNode.NodejsFunction {
 
   addBaseEnvironment(values: BaseTagProps = {}) {
     addBaseEnvironment(this, this.stage, values);
+  }
+
+  addPowerToolsLayer(scope: Construct, props: lambda_powertools.ILambdaPowerToolsProps) {
+    lambda_powertools.addLamdaPowerToolsLayer(
+      scope,
+      {
+        ...props,
+        lambdaFunction: this,
+      },
+    );
   }
 }
