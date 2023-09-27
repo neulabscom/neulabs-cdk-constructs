@@ -1,1 +1,1 @@
-export * from './lambda-extension';
+export * from './lambda-functions';
