@@ -10,14 +10,16 @@ export interface FunctionProps extends lambda.FunctionProps {
   readonly stage: string;
   readonly withBaseEnvironment?: boolean;
   readonly withBaseTags?: boolean;
-  readonly baseTagProps?: BaseTagProps;
+  readonly baseTagsValues?: BaseTagProps;
+  readonly baseEnvironmentValues?: BaseTagProps;
 }
 
 export interface FunctionNodeProps extends lambdaNode.NodejsFunctionProps {
   readonly stage: string;
   readonly withBaseEnvironment?: boolean;
   readonly withBaseTags?: boolean;
-  readonly baseTagProps?: BaseTagProps;
+  readonly baseTagsValues?: BaseTagProps;
+  readonly baseEnvironmentValues?: BaseTagProps;
 }
 
 export function addBaseEnvironment(lambdaFunction: lambda.Function, stage: string, props?: BaseTagProps) {
@@ -48,20 +50,20 @@ export class Function extends lambda.Function {
     this.stage = props.stage;
 
     if (props.withBaseEnvironment ?? true) {
-      this.addBaseEnvironment();
+      this.addBaseEnvironment(props.baseEnvironmentValues);
     }
 
     if (props.withBaseTags ?? true) {
-      this.addBaseTags(props.baseTagProps);
+      this.addBaseTags(props.baseTagsValues);
     }
   }
 
-  addBaseTags(baseTagProps: BaseTagProps = {}) {
-    addBaseTags(this, baseTagProps);
+  addBaseTags(values: BaseTagProps = {}) {
+    addBaseTags(this, values);
   }
 
-  addBaseEnvironment() {
-    addBaseEnvironment(this, this.stage);
+  addBaseEnvironment(values: BaseTagProps = {}) {
+    addBaseEnvironment(this, this.stage, values);
   }
 }
 
@@ -78,19 +80,19 @@ export class FunctionNode extends lambdaNode.NodejsFunction {
     this.stage = props.stage;
 
     if (props.withBaseEnvironment ?? true) {
-      this.addBaseEnvironment();
+      this.addBaseEnvironment(props.baseEnvironmentValues);
     }
 
     if (props.withBaseTags ?? true) {
-      this.addBaseTags();
+      this.addBaseTags(props.baseTagsValues);
     }
   }
 
-  addBaseTags() {
-    addBaseTags(this);
+  addBaseTags(values: BaseTagProps = {}) {
+    addBaseTags(this, values);
   }
 
-  addBaseEnvironment() {
-    addBaseEnvironment(this, this.stage);
+  addBaseEnvironment(values: BaseTagProps = {}) {
+    addBaseEnvironment(this, this.stage, values);
   }
 }
