@@ -64,6 +64,16 @@ export class Function extends lambda.Function {
   addBaseEnvironment(values: BaseTagProps = {}) {
     addBaseEnvironment(this, this.stage, values);
   }
+
+  addPowerToolsLayer(scope: Construct, props: lambda_powertools.ILambdaPowerToolsProps) {
+    lambda_powertools.addLamdaPowerToolsLayer(
+      scope,
+      {
+        ...props,
+        lambdaFunction: this,
+      },
+    );
+  }
 }
 
 export class FunctionNode extends lambdaNode.NodejsFunction {

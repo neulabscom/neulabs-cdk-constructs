@@ -1104,6 +1104,7 @@ new aws_lambda.Function(scope: Construct, id: string, props: FunctionProps)
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.Function.invalidateVersionBasedOn">invalidateVersionBasedOn</a></code> | Mix additional information into the hash of the Version object. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.Function.addBaseEnvironment">addBaseEnvironment</a></code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.Function.addBaseTags">addBaseTags</a></code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.Function.addPowerToolsLayer">addPowerToolsLayer</a></code> | *No description.* |
 
 ---
 
@@ -1524,6 +1525,24 @@ public addBaseTags(values?: BaseTagProps): void
 ###### `values`<sup>Optional</sup> <a name="values" id="neulabs-cdk-constructs.aws_lambda.Function.addBaseTags.parameter.values"></a>
 
 - *Type:* neulabs-cdk-constructs.utils.BaseTagProps
+
+---
+
+##### `addPowerToolsLayer` <a name="addPowerToolsLayer" id="neulabs-cdk-constructs.aws_lambda.Function.addPowerToolsLayer"></a>
+
+```typescript
+public addPowerToolsLayer(scope: Construct, props: ILambdaPowerToolsProps): void
+```
+
+###### `scope`<sup>Required</sup> <a name="scope" id="neulabs-cdk-constructs.aws_lambda.Function.addPowerToolsLayer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+###### `props`<sup>Required</sup> <a name="props" id="neulabs-cdk-constructs.aws_lambda.Function.addPowerToolsLayer.parameter.props"></a>
+
+- *Type:* neulabs-cdk-constructs.aws_lambda.ILambdaPowerToolsProps
 
 ---
 
@@ -4448,6 +4467,8 @@ new aws_lambda.NewRelicFunction(scope: Construct, id: string, props: FunctionNew
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunction.invalidateVersionBasedOn">invalidateVersionBasedOn</a></code> | Mix additional information into the hash of the Version object. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addBaseEnvironment">addBaseEnvironment</a></code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addBaseTags">addBaseTags</a></code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addPowerToolsLayer">addPowerToolsLayer</a></code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addNewRelicLayer">addNewRelicLayer</a></code> | *No description.* |
 
 ---
 
@@ -4868,6 +4889,42 @@ public addBaseTags(values?: BaseTagProps): void
 ###### `values`<sup>Optional</sup> <a name="values" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addBaseTags.parameter.values"></a>
 
 - *Type:* neulabs-cdk-constructs.utils.BaseTagProps
+
+---
+
+##### `addPowerToolsLayer` <a name="addPowerToolsLayer" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addPowerToolsLayer"></a>
+
+```typescript
+public addPowerToolsLayer(scope: Construct, props: ILambdaPowerToolsProps): void
+```
+
+###### `scope`<sup>Required</sup> <a name="scope" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addPowerToolsLayer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+###### `props`<sup>Required</sup> <a name="props" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addPowerToolsLayer.parameter.props"></a>
+
+- *Type:* neulabs-cdk-constructs.aws_lambda.ILambdaPowerToolsProps
+
+---
+
+##### `addNewRelicLayer` <a name="addNewRelicLayer" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addNewRelicLayer"></a>
+
+```typescript
+public addNewRelicLayer(scope: Construct, props: NewRelicLayerProps): void
+```
+
+###### `scope`<sup>Required</sup> <a name="scope" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addNewRelicLayer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+###### `props`<sup>Required</sup> <a name="props" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addNewRelicLayer.parameter.props"></a>
+
+- *Type:* neulabs-cdk-constructs.aws_lambda.NewRelicLayerProps
 
 ---
 
@@ -5549,6 +5606,7 @@ new aws_lambda.NewRelicFunctionNode(scope: Construct, id: string, props: Functio
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.addBaseEnvironment">addBaseEnvironment</a></code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.addBaseTags">addBaseTags</a></code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.addPowerToolsLayer">addPowerToolsLayer</a></code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.addNewRelicLayer">addNewRelicLayer</a></code> | *No description.* |
 
 ---
 
@@ -5987,6 +6045,24 @@ public addPowerToolsLayer(scope: Construct, props: ILambdaPowerToolsProps): void
 ###### `props`<sup>Required</sup> <a name="props" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.addPowerToolsLayer.parameter.props"></a>
 
 - *Type:* neulabs-cdk-constructs.aws_lambda.ILambdaPowerToolsProps
+
+---
+
+##### `addNewRelicLayer` <a name="addNewRelicLayer" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.addNewRelicLayer"></a>
+
+```typescript
+public addNewRelicLayer(scope: Construct, props: NewRelicLayerProps): void
+```
+
+###### `scope`<sup>Required</sup> <a name="scope" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.addNewRelicLayer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+###### `props`<sup>Required</sup> <a name="props" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.addNewRelicLayer.parameter.props"></a>
+
+- *Type:* neulabs-cdk-constructs.aws_lambda.NewRelicLayerProps
 
 ---
 
@@ -8138,6 +8214,7 @@ const functionNewRelicProps: aws_lambda.FunctionNewRelicProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.newRelicAccountId">newRelicAccountId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.newRelicLayerName">newRelicLayerName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.newRelicLayerVersion">newRelicLayerVersion</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.disableNewRelic">disableNewRelic</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.newRelicwithExtensionSendLogs">newRelicwithExtensionSendLogs</a></code> | <code>boolean</code> | *No description.* |
 
 ---
@@ -8865,6 +8942,16 @@ public readonly newRelicLayerVersion: number;
 
 ---
 
+##### `disableNewRelic`<sup>Optional</sup> <a name="disableNewRelic" id="neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.disableNewRelic"></a>
+
+```typescript
+public readonly disableNewRelic: boolean;
+```
+
+- *Type:* boolean
+
+---
+
 ##### `newRelicwithExtensionSendLogs`<sup>Optional</sup> <a name="newRelicwithExtensionSendLogs" id="neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.newRelicwithExtensionSendLogs"></a>
 
 ```typescript
@@ -8943,6 +9030,7 @@ const functionNodeNewRelicProps: aws_lambda.FunctionNodeNewRelicProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.newRelicAccountId">newRelicAccountId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.newRelicLayerName">newRelicLayerName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.newRelicLayerVersion">newRelicLayerVersion</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.disableNewRelic">disableNewRelic</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.newRelicwithExtensionSendLogs">newRelicwithExtensionSendLogs</a></code> | <code>boolean</code> | *No description.* |
 
 ---
@@ -9720,6 +9808,16 @@ public readonly newRelicLayerVersion: number;
 ```
 
 - *Type:* number
+
+---
+
+##### `disableNewRelic`<sup>Optional</sup> <a name="disableNewRelic" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.disableNewRelic"></a>
+
+```typescript
+public readonly disableNewRelic: boolean;
+```
+
+- *Type:* boolean
 
 ---
 
@@ -11662,29 +11760,29 @@ public readonly tokenActionCustom: string;
 
 ---
 
-### NewRelicProps <a name="NewRelicProps" id="neulabs-cdk-constructs.aws_lambda.NewRelicProps"></a>
+### NewRelicLayerProps <a name="NewRelicLayerProps" id="neulabs-cdk-constructs.aws_lambda.NewRelicLayerProps"></a>
 
-#### Initializer <a name="Initializer" id="neulabs-cdk-constructs.aws_lambda.NewRelicProps.Initializer"></a>
+#### Initializer <a name="Initializer" id="neulabs-cdk-constructs.aws_lambda.NewRelicLayerProps.Initializer"></a>
 
 ```typescript
 import { aws_lambda } from 'neulabs-cdk-constructs'
 
-const newRelicProps: aws_lambda.NewRelicProps = { ... }
+const newRelicLayerProps: aws_lambda.NewRelicLayerProps = { ... }
 ```
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicProps.property.handler">handler</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicProps.property.newRelicAccountId">newRelicAccountId</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicProps.property.newRelicLayerName">newRelicLayerName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicProps.property.newRelicLayerVersion">newRelicLayerVersion</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicProps.property.newRelicwithExtensionSendLogs">newRelicwithExtensionSendLogs</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicLayerProps.property.handler">handler</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicLayerProps.property.newRelicAccountId">newRelicAccountId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicLayerProps.property.newRelicLayerName">newRelicLayerName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicLayerProps.property.newRelicLayerVersion">newRelicLayerVersion</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicLayerProps.property.newRelicwithExtensionSendLogs">newRelicwithExtensionSendLogs</a></code> | <code>boolean</code> | *No description.* |
 
 ---
 
-##### `handler`<sup>Required</sup> <a name="handler" id="neulabs-cdk-constructs.aws_lambda.NewRelicProps.property.handler"></a>
+##### `handler`<sup>Required</sup> <a name="handler" id="neulabs-cdk-constructs.aws_lambda.NewRelicLayerProps.property.handler"></a>
 
 ```typescript
 public readonly handler: string;
@@ -11694,7 +11792,7 @@ public readonly handler: string;
 
 ---
 
-##### `newRelicAccountId`<sup>Required</sup> <a name="newRelicAccountId" id="neulabs-cdk-constructs.aws_lambda.NewRelicProps.property.newRelicAccountId"></a>
+##### `newRelicAccountId`<sup>Required</sup> <a name="newRelicAccountId" id="neulabs-cdk-constructs.aws_lambda.NewRelicLayerProps.property.newRelicAccountId"></a>
 
 ```typescript
 public readonly newRelicAccountId: string;
@@ -11704,7 +11802,7 @@ public readonly newRelicAccountId: string;
 
 ---
 
-##### `newRelicLayerName`<sup>Required</sup> <a name="newRelicLayerName" id="neulabs-cdk-constructs.aws_lambda.NewRelicProps.property.newRelicLayerName"></a>
+##### `newRelicLayerName`<sup>Required</sup> <a name="newRelicLayerName" id="neulabs-cdk-constructs.aws_lambda.NewRelicLayerProps.property.newRelicLayerName"></a>
 
 ```typescript
 public readonly newRelicLayerName: string;
@@ -11714,7 +11812,7 @@ public readonly newRelicLayerName: string;
 
 ---
 
-##### `newRelicLayerVersion`<sup>Required</sup> <a name="newRelicLayerVersion" id="neulabs-cdk-constructs.aws_lambda.NewRelicProps.property.newRelicLayerVersion"></a>
+##### `newRelicLayerVersion`<sup>Required</sup> <a name="newRelicLayerVersion" id="neulabs-cdk-constructs.aws_lambda.NewRelicLayerProps.property.newRelicLayerVersion"></a>
 
 ```typescript
 public readonly newRelicLayerVersion: number;
@@ -11724,7 +11822,7 @@ public readonly newRelicLayerVersion: number;
 
 ---
 
-##### `newRelicwithExtensionSendLogs`<sup>Optional</sup> <a name="newRelicwithExtensionSendLogs" id="neulabs-cdk-constructs.aws_lambda.NewRelicProps.property.newRelicwithExtensionSendLogs"></a>
+##### `newRelicwithExtensionSendLogs`<sup>Optional</sup> <a name="newRelicwithExtensionSendLogs" id="neulabs-cdk-constructs.aws_lambda.NewRelicLayerProps.property.newRelicwithExtensionSendLogs"></a>
 
 ```typescript
 public readonly newRelicwithExtensionSendLogs: boolean;

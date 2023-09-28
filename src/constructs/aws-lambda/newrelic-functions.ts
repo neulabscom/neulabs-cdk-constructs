@@ -11,6 +11,7 @@ export interface FunctionNewRelicProps extends FunctionProps {
   readonly newRelicLayerVersion: number;
   readonly newRelicAccountId: string;
   readonly newRelicwithExtensionSendLogs?: boolean;
+  readonly disableNewRelic?: boolean;
 }
 
 export interface FunctionNodeNewRelicProps extends FunctionNodeProps {
@@ -18,9 +19,10 @@ export interface FunctionNodeNewRelicProps extends FunctionNodeProps {
   readonly newRelicLayerVersion: number;
   readonly newRelicAccountId: string;
   readonly newRelicwithExtensionSendLogs?: boolean;
+  readonly disableNewRelic?: boolean;
 }
 
-export interface NewRelicProps {
+export interface NewRelicLayerProps {
   readonly handler: string;
   readonly newRelicLayerName: string;
   readonly newRelicLayerVersion: number;
@@ -36,7 +38,7 @@ export function getNewRelicLayer(scope: Construct, functionName:string, layerNam
   );
 }
 
-export function addNewRelicLayer(scope: Construct, lambdaFunction: lambda.Function, props: NewRelicProps) {
+export function addNewRelicLayer(scope: Construct, lambdaFunction: lambda.Function, props: NewRelicLayerProps) {
   lambdaFunction.addToRolePolicy(
     new iam.PolicyStatement({
       actions: ['secretsmanager:GetSecretValue'],
@@ -69,13 +71,19 @@ export class NewRelicFunction extends Function {
 
     super(scope, id, { ...props, handler });
 
-    addNewRelicLayer(scope, this, {
-      handler: app_handler,
-      newRelicLayerName: props.newRelicLayerName,
-      newRelicLayerVersion: props.newRelicLayerVersion,
-      newRelicAccountId: props.newRelicAccountId,
-      newRelicwithExtensionSendLogs: props.newRelicwithExtensionSendLogs ?? true,
-    });
+    if (props.disableNewRelic !== false) {
+      this.addNewRelicLayer(scope, {
+        handler: app_handler,
+        newRelicLayerName: props.newRelicLayerName,
+        newRelicLayerVersion: props.newRelicLayerVersion,
+        newRelicAccountId: props.newRelicAccountId,
+        newRelicwithExtensionSendLogs: props.newRelicwithExtensionSendLogs ?? true,
+      });
+    }
+  }
+
+  addNewRelicLayer(scope: Construct, props: NewRelicLayerProps) {
+    addNewRelicLayer(scope, this, props);
   }
 }
 
@@ -86,12 +94,18 @@ export class NewRelicFunctionNode extends FunctionNode {
 
     super(scope, id, { ...props, handler });
 
-    addNewRelicLayer(scope, this, {
-      handler: app_handler,
-      newRelicLayerName: props.newRelicLayerName,
-      newRelicLayerVersion: props.newRelicLayerVersion,
-      newRelicAccountId: props.newRelicAccountId,
-      newRelicwithExtensionSendLogs: props.newRelicwithExtensionSendLogs ?? true,
-    });
+    if (props.disableNewRelic !== false) {
+      this.addNewRelicLayer(scope, {
+        handler: app_handler,
+        newRelicLayerName: props.newRelicLayerName,
+        newRelicLayerVersion: props.newRelicLayerVersion,
+        newRelicAccountId: props.newRelicAccountId,
+        newRelicwithExtensionSendLogs: props.newRelicwithExtensionSendLogs ?? true,
+      });
+    }
+  }
+
+  addNewRelicLayer(scope: Construct, props: NewRelicLayerProps) {
+    addNewRelicLayer(scope, this, props);
   }
 }
