@@ -8,7 +8,7 @@ export interface BaseTagProps {
 }
 
 export function addBaseTags(module: any, props?: BaseTagProps) {
-  Tags.of(module).add('Environment', env.TAG_ENVIRONMENT);
+  Tags.of(module).add('Environment', env.ENVIRONMENT);
   Tags.of(module).add('TimestampDeployCDK', env.TAG_TIMESTAMP_DEPLOY_CDK);
 
   let team = props?.team ?? env.TAG_TEAM;

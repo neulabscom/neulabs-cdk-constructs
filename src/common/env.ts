@@ -19,8 +19,8 @@ function formatDate(date: Date) {
 
 export const CDK_REGION = process.env.CDK_DEFAULT_REGION ?? '';
 export const CDK_ACCOUNT_ID = process.env.CDK_DEFAULT_ACCOUNT ?? '';
-export const TAG_ENVIRONMENT = process.env.ENVIRONMENT ?? '';
-export const TAG_TEAM = process.env.TEAM ?? '';
-export const TAG_REPOSITORY_NAME = process.env.REPOSITORY_NAME ?? '';
-export const TAG_REPOSITORY_VERSION = process.env.REPOSITORY_VERSION ?? '';
+export const ENVIRONMENT = process.env.ENVIRONMENT ?? '';
+export const TAG_TEAM = process.env.TAG_TEAM ?? '';
+export const TAG_REPOSITORY_NAME = process.env.TAG_REPOSITORY_NAME ?? '';
+export const TAG_REPOSITORY_VERSION = process.env.TAG_REPOSITORY_VERSION ?? '';
 export const TAG_TIMESTAMP_DEPLOY_CDK = formatDate(new Date());
