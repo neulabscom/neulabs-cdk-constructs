@@ -1,5 +1,7 @@
 import * as lambda from 'aws-cdk-lib/aws-lambda';
+import * as lambdaNode from 'aws-cdk-lib/aws-lambda-nodejs';
 import { Construct } from 'constructs';
+import { Function, FunctionNode } from './lambda-functions';
 
 //TODO: integrate https://github.com/aws-powertools/powertools-lambda-layer-cdk
 
@@ -15,12 +17,12 @@ export enum LambdaPowerToolsLayerName {
 }
 
 export interface ILambdaPowerToolsProps {
-  lambdaFunction: lambda.Function;
-  lambdaPowerToolsLayerName: LambdaPowerToolsLayerName;
-  lambdaPowerToolsLayerAccountId: LambdaPowerToolsLayerAccountId;
-  lambdaPowerToolsLayerVersion: number;
-  setPowertoolsDev?: boolean;
-  setLogLevel?: string;
+  readonly lambdaFunction: lambda.Function | lambdaNode.NodejsFunction | Function | FunctionNode;
+  readonly lambdaPowerToolsLayerName: LambdaPowerToolsLayerName;
+  readonly lambdaPowerToolsLayerAccountId: LambdaPowerToolsLayerAccountId;
+  readonly lambdaPowerToolsLayerVersion: number;
+  readonly setPowertoolsDev?: boolean;
+  readonly setLogLevel?: string;
 }
 
 export function getLamdaPowerToolsLayer(

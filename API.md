@@ -1531,7 +1531,7 @@ public addBaseTags(values?: BaseTagProps): void
 ##### `addPowerToolsLayer` <a name="addPowerToolsLayer" id="neulabs-cdk-constructs.aws_lambda.Function.addPowerToolsLayer"></a>
 
 ```typescript
-public addPowerToolsLayer(scope: Construct, props: ILambdaPowerToolsProps): void
+public addPowerToolsLayer(scope: Construct, lambdaPowerToolsLayerName: LambdaPowerToolsLayerName, lambdaPowerToolsLayerAccountId: LambdaPowerToolsLayerAccountId, lambdaPowerToolsLayerVersion: number, setPowertoolsDev?: boolean, setLogLevel?: string): void
 ```
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="neulabs-cdk-constructs.aws_lambda.Function.addPowerToolsLayer.parameter.scope"></a>
@@ -1540,9 +1540,33 @@ public addPowerToolsLayer(scope: Construct, props: ILambdaPowerToolsProps): void
 
 ---
 
-###### `props`<sup>Required</sup> <a name="props" id="neulabs-cdk-constructs.aws_lambda.Function.addPowerToolsLayer.parameter.props"></a>
+###### `lambdaPowerToolsLayerName`<sup>Required</sup> <a name="lambdaPowerToolsLayerName" id="neulabs-cdk-constructs.aws_lambda.Function.addPowerToolsLayer.parameter.lambdaPowerToolsLayerName"></a>
 
-- *Type:* neulabs-cdk-constructs.aws_lambda.ILambdaPowerToolsProps
+- *Type:* neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerName
+
+---
+
+###### `lambdaPowerToolsLayerAccountId`<sup>Required</sup> <a name="lambdaPowerToolsLayerAccountId" id="neulabs-cdk-constructs.aws_lambda.Function.addPowerToolsLayer.parameter.lambdaPowerToolsLayerAccountId"></a>
+
+- *Type:* neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerAccountId
+
+---
+
+###### `lambdaPowerToolsLayerVersion`<sup>Required</sup> <a name="lambdaPowerToolsLayerVersion" id="neulabs-cdk-constructs.aws_lambda.Function.addPowerToolsLayer.parameter.lambdaPowerToolsLayerVersion"></a>
+
+- *Type:* number
+
+---
+
+###### `setPowertoolsDev`<sup>Optional</sup> <a name="setPowertoolsDev" id="neulabs-cdk-constructs.aws_lambda.Function.addPowerToolsLayer.parameter.setPowertoolsDev"></a>
+
+- *Type:* boolean
+
+---
+
+###### `setLogLevel`<sup>Optional</sup> <a name="setLogLevel" id="neulabs-cdk-constructs.aws_lambda.Function.addPowerToolsLayer.parameter.setLogLevel"></a>
+
+- *Type:* string
 
 ---
 
@@ -2650,7 +2674,7 @@ public addBaseTags(values?: BaseTagProps): void
 ##### `addPowerToolsLayer` <a name="addPowerToolsLayer" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addPowerToolsLayer"></a>
 
 ```typescript
-public addPowerToolsLayer(scope: Construct, props: ILambdaPowerToolsProps): void
+public addPowerToolsLayer(scope: Construct, lambdaPowerToolsLayerName: LambdaPowerToolsLayerName, lambdaPowerToolsLayerAccountId: LambdaPowerToolsLayerAccountId, lambdaPowerToolsLayerVersion: number, setPowertoolsDev?: boolean, setLogLevel?: string): void
 ```
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addPowerToolsLayer.parameter.scope"></a>
@@ -2659,9 +2683,33 @@ public addPowerToolsLayer(scope: Construct, props: ILambdaPowerToolsProps): void
 
 ---
 
-###### `props`<sup>Required</sup> <a name="props" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addPowerToolsLayer.parameter.props"></a>
+###### `lambdaPowerToolsLayerName`<sup>Required</sup> <a name="lambdaPowerToolsLayerName" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addPowerToolsLayer.parameter.lambdaPowerToolsLayerName"></a>
 
-- *Type:* neulabs-cdk-constructs.aws_lambda.ILambdaPowerToolsProps
+- *Type:* neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerName
+
+---
+
+###### `lambdaPowerToolsLayerAccountId`<sup>Required</sup> <a name="lambdaPowerToolsLayerAccountId" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addPowerToolsLayer.parameter.lambdaPowerToolsLayerAccountId"></a>
+
+- *Type:* neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerAccountId
+
+---
+
+###### `lambdaPowerToolsLayerVersion`<sup>Required</sup> <a name="lambdaPowerToolsLayerVersion" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addPowerToolsLayer.parameter.lambdaPowerToolsLayerVersion"></a>
+
+- *Type:* number
+
+---
+
+###### `setPowertoolsDev`<sup>Optional</sup> <a name="setPowertoolsDev" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addPowerToolsLayer.parameter.setPowertoolsDev"></a>
+
+- *Type:* boolean
+
+---
+
+###### `setLogLevel`<sup>Optional</sup> <a name="setLogLevel" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.addPowerToolsLayer.parameter.setLogLevel"></a>
+
+- *Type:* string
 
 ---
 
@@ -4895,7 +4943,7 @@ public addBaseTags(values?: BaseTagProps): void
 ##### `addPowerToolsLayer` <a name="addPowerToolsLayer" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addPowerToolsLayer"></a>
 
 ```typescript
-public addPowerToolsLayer(scope: Construct, props: ILambdaPowerToolsProps): void
+public addPowerToolsLayer(scope: Construct, lambdaPowerToolsLayerName: LambdaPowerToolsLayerName, lambdaPowerToolsLayerAccountId: LambdaPowerToolsLayerAccountId, lambdaPowerToolsLayerVersion: number, setPowertoolsDev?: boolean, setLogLevel?: string): void
 ```
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addPowerToolsLayer.parameter.scope"></a>
@@ -4904,9 +4952,33 @@ public addPowerToolsLayer(scope: Construct, props: ILambdaPowerToolsProps): void
 
 ---
 
-###### `props`<sup>Required</sup> <a name="props" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addPowerToolsLayer.parameter.props"></a>
+###### `lambdaPowerToolsLayerName`<sup>Required</sup> <a name="lambdaPowerToolsLayerName" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addPowerToolsLayer.parameter.lambdaPowerToolsLayerName"></a>
 
-- *Type:* neulabs-cdk-constructs.aws_lambda.ILambdaPowerToolsProps
+- *Type:* neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerName
+
+---
+
+###### `lambdaPowerToolsLayerAccountId`<sup>Required</sup> <a name="lambdaPowerToolsLayerAccountId" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addPowerToolsLayer.parameter.lambdaPowerToolsLayerAccountId"></a>
+
+- *Type:* neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerAccountId
+
+---
+
+###### `lambdaPowerToolsLayerVersion`<sup>Required</sup> <a name="lambdaPowerToolsLayerVersion" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addPowerToolsLayer.parameter.lambdaPowerToolsLayerVersion"></a>
+
+- *Type:* number
+
+---
+
+###### `setPowertoolsDev`<sup>Optional</sup> <a name="setPowertoolsDev" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addPowerToolsLayer.parameter.setPowertoolsDev"></a>
+
+- *Type:* boolean
+
+---
+
+###### `setLogLevel`<sup>Optional</sup> <a name="setLogLevel" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunction.addPowerToolsLayer.parameter.setLogLevel"></a>
+
+- *Type:* string
 
 ---
 
@@ -6033,7 +6105,7 @@ public addBaseTags(values?: BaseTagProps): void
 ##### `addPowerToolsLayer` <a name="addPowerToolsLayer" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.addPowerToolsLayer"></a>
 
 ```typescript
-public addPowerToolsLayer(scope: Construct, props: ILambdaPowerToolsProps): void
+public addPowerToolsLayer(scope: Construct, lambdaPowerToolsLayerName: LambdaPowerToolsLayerName, lambdaPowerToolsLayerAccountId: LambdaPowerToolsLayerAccountId, lambdaPowerToolsLayerVersion: number, setPowertoolsDev?: boolean, setLogLevel?: string): void
 ```
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.addPowerToolsLayer.parameter.scope"></a>
@@ -6042,9 +6114,33 @@ public addPowerToolsLayer(scope: Construct, props: ILambdaPowerToolsProps): void
 
 ---
 
-###### `props`<sup>Required</sup> <a name="props" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.addPowerToolsLayer.parameter.props"></a>
+###### `lambdaPowerToolsLayerName`<sup>Required</sup> <a name="lambdaPowerToolsLayerName" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.addPowerToolsLayer.parameter.lambdaPowerToolsLayerName"></a>
 
-- *Type:* neulabs-cdk-constructs.aws_lambda.ILambdaPowerToolsProps
+- *Type:* neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerName
+
+---
+
+###### `lambdaPowerToolsLayerAccountId`<sup>Required</sup> <a name="lambdaPowerToolsLayerAccountId" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.addPowerToolsLayer.parameter.lambdaPowerToolsLayerAccountId"></a>
+
+- *Type:* neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerAccountId
+
+---
+
+###### `lambdaPowerToolsLayerVersion`<sup>Required</sup> <a name="lambdaPowerToolsLayerVersion" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.addPowerToolsLayer.parameter.lambdaPowerToolsLayerVersion"></a>
+
+- *Type:* number
+
+---
+
+###### `setPowertoolsDev`<sup>Optional</sup> <a name="setPowertoolsDev" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.addPowerToolsLayer.parameter.setPowertoolsDev"></a>
+
+- *Type:* boolean
+
+---
+
+###### `setLogLevel`<sup>Optional</sup> <a name="setLogLevel" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.addPowerToolsLayer.parameter.setLogLevel"></a>
+
+- *Type:* string
 
 ---
 
@@ -12169,7 +12265,7 @@ public readonly newRelicApiUrlMetrics: EndpointUrlMetrics;
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#neulabs-cdk-constructs.aws_lambda.ILambdaPowerToolsProps.property.lambdaFunction">lambdaFunction</a></code> | <code>aws-cdk-lib.aws_lambda.Function</code> | *No description.* |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.ILambdaPowerToolsProps.property.lambdaFunction">lambdaFunction</a></code> | <code>aws-cdk-lib.aws_lambda.Function \| aws-cdk-lib.aws_lambda_nodejs.NodejsFunction \| neulabs-cdk-constructs.aws_lambda.Function \| neulabs-cdk-constructs.aws_lambda.FunctionNode</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.ILambdaPowerToolsProps.property.lambdaPowerToolsLayerAccountId">lambdaPowerToolsLayerAccountId</a></code> | <code>neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerAccountId</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.ILambdaPowerToolsProps.property.lambdaPowerToolsLayerName">lambdaPowerToolsLayerName</a></code> | <code>neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerName</code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.ILambdaPowerToolsProps.property.lambdaPowerToolsLayerVersion">lambdaPowerToolsLayerVersion</a></code> | <code>number</code> | *No description.* |
@@ -12181,10 +12277,10 @@ public readonly newRelicApiUrlMetrics: EndpointUrlMetrics;
 ##### `lambdaFunction`<sup>Required</sup> <a name="lambdaFunction" id="neulabs-cdk-constructs.aws_lambda.ILambdaPowerToolsProps.property.lambdaFunction"></a>
 
 ```typescript
-public readonly lambdaFunction: Function;
+public readonly lambdaFunction: Function | NodejsFunction | Function | FunctionNode;
 ```
 
-- *Type:* aws-cdk-lib.aws_lambda.Function
+- *Type:* aws-cdk-lib.aws_lambda.Function | aws-cdk-lib.aws_lambda_nodejs.NodejsFunction | neulabs-cdk-constructs.aws_lambda.Function | neulabs-cdk-constructs.aws_lambda.FunctionNode
 
 ---
 
