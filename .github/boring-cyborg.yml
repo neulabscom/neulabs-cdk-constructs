@@ -1,0 +1,24 @@
+labelPRBasedOnFilePath:
+  documentation:
+    - docs/*
+    - docs/**/*
+
+  constructs:
+    - src/constructs/*
+    - src/constructs/**/*
+
+  commons:
+    - src/common/*
+    - src/common/**/*
+
+  stacks:
+    - src/stacks/*
+    - src/stacks/**/*  
+
+  tests:
+    - test/*
+    - test/**/*
+
+# Comment to be posted to welcome users when they open their first PR
+firstPRWelcomeComment: >
+  Thanks for opening this pull request! Please check out our contributing guidelines.
