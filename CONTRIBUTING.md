@@ -27,4 +27,8 @@ Setup env:
 
 ## Pull Requests
 
-...in progress
+1. This project uses >= node@16.x and npm@9.x for development
+2. Before opening a Pull Request, please find the existing related issue or open a new one to discuss the proposed changes. A PR without a related issue or discussion has a high risk of being rejected. We are very appreciative and thankful for your time and efforts, and we want to make sure they are not wasted.
+3. After your proposal has been reviewed and accepted by at least one of the project's maintainers, you can submit a pull request.
+4. When opening a PR, make sure to follow the checklist inside the pull request template.
+
