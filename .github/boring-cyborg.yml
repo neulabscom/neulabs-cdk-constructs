@@ -19,6 +19,13 @@ labelPRBasedOnFilePath:
     - test/*
     - test/**/*
 
-# Comment to be posted to welcome users when they open their first PR
 firstPRWelcomeComment: >
   Thanks for opening this pull request! Please check out our contributing guidelines.
+
+verifyTitles:
+  titleRegexp: ^(feat|fix|docs|refactor|test|chore)\((stacks|commons|constructs|layers|ci|docs|structure)\):.*
+  alwaysUsePrTitle: true
+  validateEitherPrOrSingleCommitTitle: true
+  statusTitle: "Title Validator"
+  successMessage: "Validation successful!"
+  failureMessage: "Wrong ${type} title: ${title}"
