@@ -1,4 +1,4 @@
-const { cdk, javascript } = require('projen');
+const { cdk, javascript, typescript } = require('projen');
 
 const cdkVersion = '2.99.0';
 
@@ -28,7 +28,8 @@ const project = new cdk.JsiiProject({
   scripts: {
     prepare: 'husky install',
   },
-  jsiiVersion: '~5.0.7',
+  jsiiVersion: '5.0.x',
+  pullRequestTemplate: false,
 });
 
 project.synth();
