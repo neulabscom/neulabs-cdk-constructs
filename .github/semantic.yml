@@ -15,3 +15,4 @@ scopes:
   - ci
   - docs
   - structure
+  - deps

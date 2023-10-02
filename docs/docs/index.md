@@ -10,7 +10,6 @@ title: Getting Started
 [![PyPI](https://img.shields.io/github/last-commit/neulabscom/neulabs-cdk-constructs/main)](https://github.com/neulabscom/neulabs-cdk-constructs/commits/main)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](https://github.com/neulabscom/neulabs-cdk-constructs/blob/main/LICENSE)
 
-[![View on Construct Hub](https://constructs.dev/badge?package=neulabs-cdk-constructs)](https://constructs.dev/packages/neulabs-cdk-constructs)
 
 The neulabs-cdk-constructs library contains CDK-based constructs and stacks to allow the creation of cloud infrastructure on AWS.
 
@@ -36,7 +35,7 @@ pip install neulabs-cdk-constructs
 
 ### Construct APIs
 
-See [`API.md`](https://github.com/neulabscom/neulabs-cdk-constructs/blob/main/API.md) file.
+[![View on Construct Hub](https://constructs.dev/badge?package=neulabs-cdk-constructs)](https://constructs.dev/packages/neulabs-cdk-constructs)
 
 ## Examples
 
@@ -147,10 +146,19 @@ Once deployed you can copy the ARN of the 'NewRelicInfrastructure-Integrations' 
 
 ## Dev mode
 
-Run in shell
+### Requirements
+
+- Node >= v16.14.0
+- Yarn >= 1.22
+
+### Setup env
 
 ```
+yarn install
+
 npx projen default
+
+cd docs yarn install
 ```
 
 ## Contributors

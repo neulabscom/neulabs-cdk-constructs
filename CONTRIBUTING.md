@@ -16,14 +16,16 @@ We have two type of issue:
 
 ### Online one-click setup for contributing
 
-Reuirements:
+Requirements:
 
 - Node >= v16.14.0
 - Yarn >= 1.22
 
 Setup env:
 
-- npx projen build
+- yarn install
+- npx projen default
+- cd docs yarn install
 
 ## Pull Requests
 
