@@ -155,7 +155,9 @@ Once deployed you can copy the ARN of the 'NewRelicInfrastructure-Integrations' 
 
 ```
 yarn install
+
 npx projen default
+
 cd docs yarn install
 ```
 
