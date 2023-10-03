@@ -66,14 +66,16 @@ export function addNewRelicLayer(scope: Construct, lambdaFunction: lambda.Functi
 
 export class NewRelicFunction extends Function {
   constructor(scope: Construct, id: string, props: FunctionNewRelicProps) {
-    const app_handler = props.handler;
-    const handler = 'newrelic_lambda_wrapper.handler';
-
-    super(scope, id, { ...props, handler });
-
     const disableNewRelic = props.disableNewRelic ?? false;
 
-    if (disableNewRelic === false) {
+    if (disableNewRelic === true) {
+      super(scope, id, props);
+    } else {
+      const app_handler = props.handler;
+      const handler = 'newrelic_lambda_wrapper.handler';
+
+      super(scope, id, { ...props, handler });
+
       this.addNewRelicLayer(scope, {
         handler: app_handler,
         newRelicLayerName: props.newRelicLayerName,
@@ -82,6 +84,7 @@ export class NewRelicFunction extends Function {
         newRelicwithExtensionSendLogs: props.newRelicwithExtensionSendLogs ?? true,
       });
     }
+
   }
 
   addNewRelicLayer(scope: Construct, props: NewRelicLayerProps) {
@@ -91,14 +94,16 @@ export class NewRelicFunction extends Function {
 
 export class NewRelicFunctionNode extends FunctionNode {
   constructor(scope: Construct, id: string, props: FunctionNodeNewRelicProps) {
-    const app_handler = props.handler ?? 'index.handler';
-    const handler = 'newrelic-lambda-wrapper.handler';
-
-    super(scope, id, { ...props, handler });
-
     const disableNewRelic = props.disableNewRelic ?? false;
 
-    if (disableNewRelic === false) {
+    if (disableNewRelic === true) {
+      super(scope, id, props);
+    } else {
+      const app_handler = props.handler ?? 'index.handler';
+      const handler = 'newrelic-lambda-wrapper.handler';
+
+      super(scope, id, { ...props, handler });
+
       this.addNewRelicLayer(scope, {
         handler: app_handler,
         newRelicLayerName: props.newRelicLayerName,
