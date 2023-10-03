@@ -94,7 +94,7 @@ export class NewRelicFunctionNode extends FunctionNode {
 
     super(scope, id, { ...props, handler });
 
-    if (props.disableNewRelic !== false) {
+    if (props.disableNewRelic === false) {
       this.addNewRelicLayer(scope, {
         handler: app_handler,
         newRelicLayerName: props.newRelicLayerName,
