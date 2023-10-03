@@ -71,7 +71,9 @@ export class NewRelicFunction extends Function {
 
     super(scope, id, { ...props, handler });
 
-    if (props.disableNewRelic === false) {
+    const disableNewRelic = props.disableNewRelic ?? false;
+
+    if (disableNewRelic === false) {
       this.addNewRelicLayer(scope, {
         handler: app_handler,
         newRelicLayerName: props.newRelicLayerName,
@@ -94,7 +96,9 @@ export class NewRelicFunctionNode extends FunctionNode {
 
     super(scope, id, { ...props, handler });
 
-    if (props.disableNewRelic === false) {
+    const disableNewRelic = props.disableNewRelic ?? false;
+
+    if (disableNewRelic === false) {
       this.addNewRelicLayer(scope, {
         handler: app_handler,
         newRelicLayerName: props.newRelicLayerName,
