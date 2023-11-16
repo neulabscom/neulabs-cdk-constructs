@@ -1154,6 +1154,7 @@ new aws_lambda.Function(scope: Construct, id: string, props: FunctionProps)
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.Function.configureAsyncInvoke">configureAsyncInvoke</a></code> | Configures options for asynchronous invocation. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.Function.considerWarningOnInvokeFunctionPermissions">considerWarningOnInvokeFunctionPermissions</a></code> | A warning will be added to functions under the following conditions: - permissions that include `lambda:InvokeFunction` are added to the unqualified function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.Function.grantInvoke">grantInvoke</a></code> | Grant the given identity permissions to invoke this Lambda. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.Function.grantInvokeCompositePrincipal">grantInvokeCompositePrincipal</a></code> | Grant multiple principals the ability to invoke this Lambda via CompositePrincipal. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.Function.grantInvokeUrl">grantInvokeUrl</a></code> | Grant the given identity permissions to invoke this Lambda Function URL. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.Function.metric">metric</a></code> | Return the given named metric for this Function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.Function.metricDuration">metricDuration</a></code> | How long execution of this Lambda takes. |
@@ -1346,6 +1347,20 @@ Grant the given identity permissions to invoke this Lambda.
 ###### `grantee`<sup>Required</sup> <a name="grantee" id="neulabs-cdk-constructs.aws_lambda.Function.grantInvoke.parameter.grantee"></a>
 
 - *Type:* aws-cdk-lib.aws_iam.IGrantable
+
+---
+
+##### `grantInvokeCompositePrincipal` <a name="grantInvokeCompositePrincipal" id="neulabs-cdk-constructs.aws_lambda.Function.grantInvokeCompositePrincipal"></a>
+
+```typescript
+public grantInvokeCompositePrincipal(compositePrincipal: CompositePrincipal): Grant[]
+```
+
+Grant multiple principals the ability to invoke this Lambda via CompositePrincipal.
+
+###### `compositePrincipal`<sup>Required</sup> <a name="compositePrincipal" id="neulabs-cdk-constructs.aws_lambda.Function.grantInvokeCompositePrincipal.parameter.compositePrincipal"></a>
+
+- *Type:* aws-cdk-lib.aws_iam.CompositePrincipal
 
 ---
 
@@ -2297,6 +2312,7 @@ new aws_lambda.FunctionNode(scope: Construct, id: string, __2: FunctionNodeProps
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.configureAsyncInvoke">configureAsyncInvoke</a></code> | Configures options for asynchronous invocation. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.considerWarningOnInvokeFunctionPermissions">considerWarningOnInvokeFunctionPermissions</a></code> | A warning will be added to functions under the following conditions: - permissions that include `lambda:InvokeFunction` are added to the unqualified function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.grantInvoke">grantInvoke</a></code> | Grant the given identity permissions to invoke this Lambda. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.grantInvokeCompositePrincipal">grantInvokeCompositePrincipal</a></code> | Grant multiple principals the ability to invoke this Lambda via CompositePrincipal. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.grantInvokeUrl">grantInvokeUrl</a></code> | Grant the given identity permissions to invoke this Lambda Function URL. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.metric">metric</a></code> | Return the given named metric for this Function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNode.metricDuration">metricDuration</a></code> | How long execution of this Lambda takes. |
@@ -2489,6 +2505,20 @@ Grant the given identity permissions to invoke this Lambda.
 ###### `grantee`<sup>Required</sup> <a name="grantee" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.grantInvoke.parameter.grantee"></a>
 
 - *Type:* aws-cdk-lib.aws_iam.IGrantable
+
+---
+
+##### `grantInvokeCompositePrincipal` <a name="grantInvokeCompositePrincipal" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.grantInvokeCompositePrincipal"></a>
+
+```typescript
+public grantInvokeCompositePrincipal(compositePrincipal: CompositePrincipal): Grant[]
+```
+
+Grant multiple principals the ability to invoke this Lambda via CompositePrincipal.
+
+###### `compositePrincipal`<sup>Required</sup> <a name="compositePrincipal" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.grantInvokeCompositePrincipal.parameter.compositePrincipal"></a>
+
+- *Type:* aws-cdk-lib.aws_iam.CompositePrincipal
 
 ---
 
@@ -4565,6 +4595,7 @@ new aws_lambda.NewRelicFunction(scope: Construct, id: string, props: FunctionNew
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunction.configureAsyncInvoke">configureAsyncInvoke</a></code> | Configures options for asynchronous invocation. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunction.considerWarningOnInvokeFunctionPermissions">considerWarningOnInvokeFunctionPermissions</a></code> | A warning will be added to functions under the following conditions: - permissions that include `lambda:InvokeFunction` are added to the unqualified function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunction.grantInvoke">grantInvoke</a></code> | Grant the given identity permissions to invoke this Lambda. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunction.grantInvokeCompositePrincipal">grantInvokeCompositePrincipal</a></code> | Grant multiple principals the ability to invoke this Lambda via CompositePrincipal. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunction.grantInvokeUrl">grantInvokeUrl</a></code> | Grant the given identity permissions to invoke this Lambda Function URL. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunction.metric">metric</a></code> | Return the given named metric for this Function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunction.metricDuration">metricDuration</a></code> | How long execution of this Lambda takes. |
@@ -4758,6 +4789,20 @@ Grant the given identity permissions to invoke this Lambda.
 ###### `grantee`<sup>Required</sup> <a name="grantee" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunction.grantInvoke.parameter.grantee"></a>
 
 - *Type:* aws-cdk-lib.aws_iam.IGrantable
+
+---
+
+##### `grantInvokeCompositePrincipal` <a name="grantInvokeCompositePrincipal" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunction.grantInvokeCompositePrincipal"></a>
+
+```typescript
+public grantInvokeCompositePrincipal(compositePrincipal: CompositePrincipal): Grant[]
+```
+
+Grant multiple principals the ability to invoke this Lambda via CompositePrincipal.
+
+###### `compositePrincipal`<sup>Required</sup> <a name="compositePrincipal" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunction.grantInvokeCompositePrincipal.parameter.compositePrincipal"></a>
+
+- *Type:* aws-cdk-lib.aws_iam.CompositePrincipal
 
 ---
 
@@ -5727,6 +5772,7 @@ new aws_lambda.NewRelicFunctionNode(scope: Construct, id: string, props: Functio
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.configureAsyncInvoke">configureAsyncInvoke</a></code> | Configures options for asynchronous invocation. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.considerWarningOnInvokeFunctionPermissions">considerWarningOnInvokeFunctionPermissions</a></code> | A warning will be added to functions under the following conditions: - permissions that include `lambda:InvokeFunction` are added to the unqualified function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.grantInvoke">grantInvoke</a></code> | Grant the given identity permissions to invoke this Lambda. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.grantInvokeCompositePrincipal">grantInvokeCompositePrincipal</a></code> | Grant multiple principals the ability to invoke this Lambda via CompositePrincipal. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.grantInvokeUrl">grantInvokeUrl</a></code> | Grant the given identity permissions to invoke this Lambda Function URL. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.metric">metric</a></code> | Return the given named metric for this Function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.metricDuration">metricDuration</a></code> | How long execution of this Lambda takes. |
@@ -5920,6 +5966,20 @@ Grant the given identity permissions to invoke this Lambda.
 ###### `grantee`<sup>Required</sup> <a name="grantee" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.grantInvoke.parameter.grantee"></a>
 
 - *Type:* aws-cdk-lib.aws_iam.IGrantable
+
+---
+
+##### `grantInvokeCompositePrincipal` <a name="grantInvokeCompositePrincipal" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.grantInvokeCompositePrincipal"></a>
+
+```typescript
+public grantInvokeCompositePrincipal(compositePrincipal: CompositePrincipal): Grant[]
+```
+
+Grant multiple principals the ability to invoke this Lambda via CompositePrincipal.
+
+###### `compositePrincipal`<sup>Required</sup> <a name="compositePrincipal" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.grantInvokeCompositePrincipal.parameter.compositePrincipal"></a>
+
+- *Type:* aws-cdk-lib.aws_iam.CompositePrincipal
 
 ---
 
@@ -9880,7 +9940,7 @@ public readonly runtime: Runtime;
 ```
 
 - *Type:* aws-cdk-lib.aws_lambda.Runtime
-- *Default:* Runtime.NODEJS_18_X
+- *Default:* `Runtime.NODEJS_LATEST` if the `@aws-cdk/aws-lambda-nodejs:useLatestRuntimeVersion` feature flag is enabled, otherwise `Runtime.NODEJS_16_X`
 
 The runtime environment.
 
@@ -10744,7 +10804,7 @@ public readonly runtime: Runtime;
 ```
 
 - *Type:* aws-cdk-lib.aws_lambda.Runtime
-- *Default:* Runtime.NODEJS_18_X
+- *Default:* `Runtime.NODEJS_LATEST` if the `@aws-cdk/aws-lambda-nodejs:useLatestRuntimeVersion` feature flag is enabled, otherwise `Runtime.NODEJS_16_X`
 
 The runtime environment.
 
