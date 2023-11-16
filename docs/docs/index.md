@@ -158,6 +158,8 @@ yarn install
 
 npx projen default
 
+chmod +x .husky/pre-commit
+
 cd docs yarn install
 ```
 
