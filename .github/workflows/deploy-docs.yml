@@ -12,6 +12,7 @@ env:
   PROJECT_NAME: "neulabs-cdk-constructs"
   AWS_REGION: "eu-west-1"
   AWS_ROLE_NAME: 'github-oidc-workflow-role'
+  AWS_ACCOUNT_ID: "482061573712" # AWS DevOps account id
 
 permissions:
     id-token: write
@@ -19,7 +20,7 @@ permissions:
 
 jobs:
   trigger-workflow:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Git clone the repository
         uses: actions/checkout@v3
@@ -27,7 +28,7 @@ jobs:
       - name: Configure aws credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
-          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/${{ env.AWS_ROLE_NAME }}
+          role-to-assume: arn:aws:iam::${{ env.AWS_ACCOUNT_ID }}:role/${{ env.AWS_ROLE_NAME }}
           aws-region: ${{ env.AWS_REGION }}
           mask-aws-account-id: no
 
