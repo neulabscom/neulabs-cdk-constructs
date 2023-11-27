@@ -5,7 +5,6 @@ import * as firehose from 'aws-cdk-lib/aws-kinesisfirehose';
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import * as secretsmanager from 'aws-cdk-lib/aws-secretsmanager';
 import { Construct } from 'constructs';
-import { addBaseTags } from '../../common/utils';
 import { BaseStack, BaseStackProps } from '../../stack';
 
 
@@ -87,14 +86,14 @@ export class NewRelicStack extends BaseStack {
   }
 
   createCloudwatchMetricStream(firehoseArn: string, props?: CfnMetricStreamProps) {
-    let role = new iam.Role(
+    const role = new iam.Role(
       this,
       'newrelic-cloudwatch-stream-role', {
         roleName: 'NewRelicInfrastructure-CloudwatchMetricsStream',
         assumedBy: new iam.ServicePrincipal('streams.metrics.cloudwatch.amazonaws.com'),
       },
     );
-    addBaseTags(role);
+    this.addBaseTags(role);
 
     role.addToPolicy(
       new iam.PolicyStatement({
@@ -116,7 +115,7 @@ export class NewRelicStack extends BaseStack {
   }
 
   createCloudwatchLogsStreamRole(): iam.IRole {
-    let role = new iam.Role(
+    const role = new iam.Role(
       this,
       'newrelic-logstream-role', {
         roleName: 'NewRelicInfrastructure-CloudwatchLogsStream',
@@ -136,13 +135,13 @@ export class NewRelicStack extends BaseStack {
       }),
     );
 
-    addBaseTags(role);
+    this.addBaseTags(role);
 
     return role;
   }
 
   createNewRelicRole(newRelicAccountId: string): iam.IRole {
-    let role = new iam.Role(
+    const role = new iam.Role(
       this,
       'newrelic-role', {
         roleName: 'NewRelicInfrastructure-Integrations',
@@ -166,7 +165,7 @@ export class NewRelicStack extends BaseStack {
       }),
     );
 
-    addBaseTags(role);
+    this.addBaseTags(role);
 
     new CfnOutput(this, 'newrelic-role-output', {
       value: role.roleArn,
@@ -194,7 +193,7 @@ export class NewRelicStack extends BaseStack {
       sizeInMBs: 15,
     };
 
-    let httpEndpointMetrics: firehose.CfnDeliveryStream.HttpEndpointDestinationConfigurationProperty = {
+    const httpEndpointMetrics: firehose.CfnDeliveryStream.HttpEndpointDestinationConfigurationProperty = {
       bufferingHints: bufferingHints ?? bufferingHintsDefault,
       endpointConfiguration: {
         url: endpointUrl,
@@ -211,7 +210,7 @@ export class NewRelicStack extends BaseStack {
       roleArn: role.roleArn,
     };
 
-    let firehoseStream = new firehose.CfnDeliveryStream(
+    const firehoseStream = new firehose.CfnDeliveryStream(
       this,
       `newrelic-firehose-${endpointType}`,
       {
@@ -220,12 +219,12 @@ export class NewRelicStack extends BaseStack {
         httpEndpointDestinationConfiguration: httpEndpointMetrics,
       },
     );
-    addBaseTags(firehoseStream);
+    this.addBaseTags(firehoseStream);
     return firehoseStream;
   }
 
   createSecrets(newRelicAccountId: string, newRelicLicenseLey: string) {
-    let secret = new secretsmanager.Secret(
+    const secret = new secretsmanager.Secret(
       this,
       'newrelic-secret',
       {
@@ -236,12 +235,12 @@ export class NewRelicStack extends BaseStack {
         },
       },
     );
-    addBaseTags(secret);
+    this.addBaseTags(secret);
     return secret;
   }
 
   createFirehoseBucket(newRelicBucketName: string): s3.IBucket {
-    let bucket = new s3.Bucket(
+    const bucket = new s3.Bucket(
       this,
       'newrelic-bucket',
       {
@@ -264,18 +263,18 @@ export class NewRelicStack extends BaseStack {
         autoDeleteObjects: true,
       },
     );
-    addBaseTags(bucket);
+    this.addBaseTags(bucket);
     return bucket;
   }
 
   createFirehoseRole(newRelicFirehoseBucket: s3.IBucket): iam.IRole {
-    let role = new iam.Role(
+    const role = new iam.Role(
       this,
       'newrelic-firehose-role', {
         assumedBy: new iam.ServicePrincipal('firehose.amazonaws.com'),
       },
     );
-    addBaseTags(role);
+    this.addBaseTags(role);
 
     // TODO: create more restrictive policy
     role.addToPolicy(
