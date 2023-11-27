@@ -11,7 +11,7 @@ export interface DopplerSecretsManagerStackProps extends BaseStackProps {
   readonly withSecretCreation?: boolean;
 }
 
-// Docs: https://docs.doppler.com/docs/aws-secrets-manager
+// Docs: see https://docs.doppler.com/docs/aws-secrets-manager
 export class DopplerSecretsManagerStack extends BaseStack {
   dopplerSecret: secretsmanager.ISecret;
   role: iam.IRole;
