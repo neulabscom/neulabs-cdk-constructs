@@ -11,6 +11,7 @@ export interface DopplerSecretsManagerStackProps extends BaseStackProps {
   readonly withSecretCreation?: boolean;
 }
 
+// Docs: see https://docs.doppler.com/docs/aws-secrets-manager
 export class DopplerSecretsManagerStack extends BaseStack {
   dopplerSecret: secretsmanager.ISecret;
   role: iam.IRole;
@@ -25,7 +26,7 @@ export class DopplerSecretsManagerStack extends BaseStack {
     const name = `${props.dopplerSecretName}/${this.stage}/doppler`;
 
     if (props.withSecretCreation) {
-      new secretsmanager.Secret(
+      const secret = new secretsmanager.Secret(
         this,
         'doppler-secret',
         {
@@ -33,6 +34,7 @@ export class DopplerSecretsManagerStack extends BaseStack {
           secretObjectValue: {},
         },
       );
+      this.addBaseTags(secret);
     }
 
     this.role = new iam.Role(
