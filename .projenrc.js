@@ -1,6 +1,6 @@
 const { cdk, javascript, typescript } = require('projen');
 
-const cdkVersion = '2.110.0';
+const cdkVersion = '2.111.0';
 
 const project = new cdk.JsiiProject({
   author: 'Neulabs',
@@ -9,7 +9,7 @@ const project = new cdk.JsiiProject({
   name: 'neulabs-cdk-constructs',
   repositoryUrl: 'https://github.com/neulabscom/neulabs-cdk-constructs.git',
   authorOrganization: true,
-  packageManager: javascript.NodePackageManager.YARN,
+  packageManager: javascript.NodePackageManager.YARN_CLASSIC,
   minNodeVersion: '16.14.0',
   peerDeps: [
     `aws-cdk-lib@${cdkVersion}`,
