@@ -6,27 +6,27 @@ on:
     branches:
       - main
     paths:
-      - 'docs/**'
+      - "docs/**"
 
 env:
   PROJECT_NAME: "neulabs-cdk-constructs"
   AWS_REGION: "eu-west-1"
-  AWS_ROLE_NAME: 'github-oidc-workflow-role'
+  AWS_ROLE_NAME: "github-oidc-workflow-role"
   AWS_ACCOUNT_ID: "482061573712" # AWS DevOps account id
 
 permissions:
-    id-token: write
-    contents: read    # This is required for actions/checkout
+  id-token: write
+  contents: read # This is required for actions/checkout
 
 jobs:
   trigger-workflow:
     runs-on: ubuntu-22.04
     steps:
       - name: Git clone the repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Configure aws credentials
-        uses: aws-actions/configure-aws-credentials@v2
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::${{ env.AWS_ACCOUNT_ID }}:role/${{ env.AWS_ROLE_NAME }}
           aws-region: ${{ env.AWS_REGION }}
@@ -34,24 +34,24 @@ jobs:
 
       - name: Upload docs to S3 bucket
         run: |
-            python3 .github/scripts/upload_docs.py --project-name ${{ env.PROJECT_NAME }}
+          python3 .github/scripts/upload_docs.py --project-name ${{ env.PROJECT_NAME }}
 
       - name: Trigger deploy workflow in neulbas-docs Repository
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
-            github-token: ${{ secrets.NEULABS_MANAGE_ACTION_WORKFLOWS }}
-            retries: 3
-            script: |
-                const owner = 'neulabscom';
-                const repo = 'neulabs-docs';
-                const event_type = 'deploy';
-                const ref = 'main';
+          github-token: ${{ secrets.NEULABS_MANAGE_ACTION_WORKFLOWS }}
+          retries: 3
+          script: |
+            const owner = 'neulabscom';
+            const repo = 'neulabs-docs';
+            const event_type = 'deploy';
+            const ref = 'main';
 
-                github.rest.repos.createDispatchEvent({
-                    owner,
-                    repo,
-                    event_type,
-                    client_payload: {
-                        "project_name": process.env.PROJECT_NAME
-                    }
-                });
+            github.rest.repos.createDispatchEvent({
+                owner,
+                repo,
+                event_type,
+                client_payload: {
+                    "project_name": process.env.PROJECT_NAME
+                }
+            });
