@@ -6,7 +6,7 @@
     },
     {
       "name": "@types/node",
-      "version": "^16",
+      "version": "^18",
       "type": "build"
     },
     {
@@ -72,12 +72,12 @@
     },
     {
       "name": "jsii-rosetta",
-      "version": "5.0.x",
+      "version": "5.3.27",
       "type": "build"
     },
     {
       "name": "jsii",
-      "version": "5.0.x",
+      "version": "5.3.27",
       "type": "build"
     },
     {

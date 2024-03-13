@@ -22,7 +22,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version-file: ".nvmrc"
+          node-version: 18.16.0
       - name: Install dependencies
         run: yarn install --check-files
       - name: build
@@ -116,7 +116,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v4
         with:
-          node-version-file: ".nvmrc"
+          node-version: 18.16.0
       - uses: actions/setup-python@v4
         with:
           python-version: 3.x
