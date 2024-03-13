@@ -13,7 +13,8 @@ export enum LambdaPowerToolsLayerAccountId {
 export enum LambdaPowerToolsLayerName {
   PYTHON_ARM = 'AWSLambdaPowertoolsPythonV2-Arm64',
   PYTHON_X86 = 'AWSLambdaPowertoolsPythonV2',
-  TYPESCRIPT = 'AWSLambdaPowertoolsTypeScript'
+  TYPESCRIPT_OLD = 'AWSLambdaPowertoolsTypeScript',
+  TYPESCRIPT = 'AWSLambdaPowertoolsTypeScriptV2'
 }
 
 export interface ILambdaPowerToolsProps {
