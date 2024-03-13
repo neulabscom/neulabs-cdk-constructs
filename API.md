@@ -12776,7 +12776,6 @@ public readonly setPowertoolsDev: boolean;
 | --- | --- |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerName.PYTHON_ARM">PYTHON_ARM</a></code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerName.PYTHON_X86">PYTHON_X86</a></code> | *No description.* |
-| <code><a href="#neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerName.TYPESCRIPT_OLD">TYPESCRIPT_OLD</a></code> | *No description.* |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerName.TYPESCRIPT">TYPESCRIPT</a></code> | *No description.* |
 
 ---
@@ -12787,11 +12786,6 @@ public readonly setPowertoolsDev: boolean;
 
 
 ##### `PYTHON_X86` <a name="PYTHON_X86" id="neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerName.PYTHON_X86"></a>
-
----
-
-
-##### `TYPESCRIPT_OLD` <a name="TYPESCRIPT_OLD" id="neulabs-cdk-constructs.aws_lambda.LambdaPowerToolsLayerName.TYPESCRIPT_OLD"></a>
 
 ---
 

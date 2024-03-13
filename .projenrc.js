@@ -10,7 +10,7 @@ const project = new cdk.JsiiProject({
   repositoryUrl: 'https://github.com/neulabscom/neulabs-cdk-constructs.git',
   authorOrganization: true,
   packageManager: javascript.NodePackageManager.YARN_CLASSIC,
-  minNodeVersion: '18.16.0',
+  minNodeVersion: '16.14.0',
   peerDeps: [
     `aws-cdk-lib@${cdkVersion}`,
   ],
@@ -28,7 +28,7 @@ const project = new cdk.JsiiProject({
   scripts: {
     prepare: 'husky install',
   },
-  jsiiVersion: '5.3.27',
+  jsiiVersion: '5.0.x',
   pullRequestTemplate: false,
 });
 
