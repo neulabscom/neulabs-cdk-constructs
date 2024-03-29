@@ -148,7 +148,7 @@ Once deployed you can copy the ARN of the 'NewRelicInfrastructure-Integrations' 
 
 ### Requirements
 
-- Node >= v16.14.0
+- Node >= v20.12.0
 - Yarn >= 1.22
 
 ### Setup env
