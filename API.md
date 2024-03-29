@@ -1772,6 +1772,9 @@ aws_lambda.Function.fromFunctionArn(scope: Construct, id: string, functionArn: s
 
 Import a lambda function into the CDK using its ARN.
 
+For `Function.addPermissions()` to work on this imported lambda, make sure that is
+in the same account and region as the stack you are importing it into.
+
 ###### `scope`<sup>Required</sup> <a name="scope" id="neulabs-cdk-constructs.aws_lambda.Function.fromFunctionArn.parameter.scope"></a>
 
 - *Type:* constructs.Construct
@@ -1799,6 +1802,9 @@ aws_lambda.Function.fromFunctionAttributes(scope: Construct, id: string, attrs: 
 ```
 
 Creates a Lambda function object which represents a function not defined within this stack.
+
+For `Function.addPermissions()` to work on this imported lambda, set the sameEnvironment property to true
+if this imported lambda is in the same account and region as the stack you are importing it into.
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="neulabs-cdk-constructs.aws_lambda.Function.fromFunctionAttributes.parameter.scope"></a>
 
@@ -2930,6 +2936,9 @@ aws_lambda.FunctionNode.fromFunctionArn(scope: Construct, id: string, functionAr
 
 Import a lambda function into the CDK using its ARN.
 
+For `Function.addPermissions()` to work on this imported lambda, make sure that is
+in the same account and region as the stack you are importing it into.
+
 ###### `scope`<sup>Required</sup> <a name="scope" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.fromFunctionArn.parameter.scope"></a>
 
 - *Type:* constructs.Construct
@@ -2957,6 +2966,9 @@ aws_lambda.FunctionNode.fromFunctionAttributes(scope: Construct, id: string, att
 ```
 
 Creates a Lambda function object which represents a function not defined within this stack.
+
+For `Function.addPermissions()` to work on this imported lambda, set the sameEnvironment property to true
+if this imported lambda is in the same account and region as the stack you are importing it into.
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="neulabs-cdk-constructs.aws_lambda.FunctionNode.fromFunctionAttributes.parameter.scope"></a>
 
@@ -5232,6 +5244,9 @@ aws_lambda.NewRelicFunction.fromFunctionArn(scope: Construct, id: string, functi
 
 Import a lambda function into the CDK using its ARN.
 
+For `Function.addPermissions()` to work on this imported lambda, make sure that is
+in the same account and region as the stack you are importing it into.
+
 ###### `scope`<sup>Required</sup> <a name="scope" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunction.fromFunctionArn.parameter.scope"></a>
 
 - *Type:* constructs.Construct
@@ -5259,6 +5274,9 @@ aws_lambda.NewRelicFunction.fromFunctionAttributes(scope: Construct, id: string,
 ```
 
 Creates a Lambda function object which represents a function not defined within this stack.
+
+For `Function.addPermissions()` to work on this imported lambda, set the sameEnvironment property to true
+if this imported lambda is in the same account and region as the stack you are importing it into.
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunction.fromFunctionAttributes.parameter.scope"></a>
 
@@ -6409,6 +6427,9 @@ aws_lambda.NewRelicFunctionNode.fromFunctionArn(scope: Construct, id: string, fu
 
 Import a lambda function into the CDK using its ARN.
 
+For `Function.addPermissions()` to work on this imported lambda, make sure that is
+in the same account and region as the stack you are importing it into.
+
 ###### `scope`<sup>Required</sup> <a name="scope" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.fromFunctionArn.parameter.scope"></a>
 
 - *Type:* constructs.Construct
@@ -6436,6 +6457,9 @@ aws_lambda.NewRelicFunctionNode.fromFunctionAttributes(scope: Construct, id: str
 ```
 
 Creates a Lambda function object which represents a function not defined within this stack.
+
+For `Function.addPermissions()` to work on this imported lambda, set the sameEnvironment property to true
+if this imported lambda is in the same account and region as the stack you are importing it into.
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="neulabs-cdk-constructs.aws_lambda.NewRelicFunctionNode.fromFunctionAttributes.parameter.scope"></a>
 
@@ -8407,9 +8431,11 @@ const functionNewRelicProps: aws_lambda.FunctionNewRelicProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.functionName">functionName</a></code> | <code>string</code> | A name for the function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.initialPolicy">initialPolicy</a></code> | <code>aws-cdk-lib.aws_iam.PolicyStatement[]</code> | Initial policy statements to add to the created Lambda Role. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.insightsVersion">insightsVersion</a></code> | <code>aws-cdk-lib.aws_lambda.LambdaInsightsVersion</code> | Specify the version of CloudWatch Lambda insights to use for monitoring. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.ipv6AllowedForDualStack">ipv6AllowedForDualStack</a></code> | <code>boolean</code> | Allows outbound IPv6 traffic on VPC functions that are connected to dual-stack subnets. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.layers">layers</a></code> | <code>aws-cdk-lib.aws_lambda.ILayerVersion[]</code> | A list of layers to add to the function's execution environment. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.logFormat">logFormat</a></code> | <code>string</code> | Sets the logFormat for the function. |
-| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.logGroup">logGroup</a></code> | <code>aws-cdk-lib.aws_logs.ILogGroup</code> | Sets the log group name for the function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.loggingFormat">loggingFormat</a></code> | <code>aws-cdk-lib.aws_lambda.LoggingFormat</code> | Sets the loggingFormat for the function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.logGroup">logGroup</a></code> | <code>aws-cdk-lib.aws_logs.ILogGroup</code> | The log group the function sends logs to. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.logRetention">logRetention</a></code> | <code>aws-cdk-lib.aws_logs.RetentionDays</code> | The number of days log events are kept in CloudWatch Logs. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.logRetentionRetryOptions">logRetentionRetryOptions</a></code> | <code>aws-cdk-lib.aws_lambda.LogRetentionRetryOptions</code> | When log retention is specified, a custom resource attempts to create the CloudWatch log group. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.logRetentionRole">logRetentionRole</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | The IAM role for the Lambda function associated with the custom resource that sets the retention policy. |
@@ -8530,6 +8556,9 @@ Whether to allow the Lambda to send all network traffic.
 If set to false, you must individually add traffic rules to allow the
 Lambda to connect to network targets.
 
+Do not specify this property if the `securityGroups` or `securityGroup` property is set.
+Instead, configure `allowAllOutbound` directly on the security group.
+
 ---
 
 ##### `allowPublicSubnet`<sup>Optional</sup> <a name="allowPublicSubnet" id="neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.allowPublicSubnet"></a>
@@ -8556,7 +8585,7 @@ public readonly applicationLogLevel: string;
 ```
 
 - *Type:* string
-- *Default:* INFO
+- *Default:* "INFO"
 
 Sets the application log level for the function.
 
@@ -8775,6 +8804,21 @@ Specify the version of CloudWatch Lambda insights to use for monitoring.
 
 ---
 
+##### `ipv6AllowedForDualStack`<sup>Optional</sup> <a name="ipv6AllowedForDualStack" id="neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.ipv6AllowedForDualStack"></a>
+
+```typescript
+public readonly ipv6AllowedForDualStack: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Allows outbound IPv6 traffic on VPC functions that are connected to dual-stack subnets.
+
+Only used if 'vpc' is supplied.
+
+---
+
 ##### `layers`<sup>Optional</sup> <a name="layers" id="neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.layers"></a>
 
 ```typescript
@@ -8799,9 +8843,22 @@ public readonly logFormat: string;
 ```
 
 - *Type:* string
-- *Default:* Text format
+- *Default:* "Text"
 
 Sets the logFormat for the function.
+
+---
+
+##### `loggingFormat`<sup>Optional</sup> <a name="loggingFormat" id="neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.loggingFormat"></a>
+
+```typescript
+public readonly loggingFormat: LoggingFormat;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.LoggingFormat
+- *Default:* LoggingFormat.TEXT
+
+Sets the loggingFormat for the function.
 
 ---
 
@@ -8812,9 +8869,17 @@ public readonly logGroup: ILogGroup;
 ```
 
 - *Type:* aws-cdk-lib.aws_logs.ILogGroup
-- *Default:* `/aws/lambda/${this.functionName}` default log group name created by Lambda
+- *Default:* `/aws/lambda/${this.functionName}` - default log group created by Lambda
 
-Sets the log group name for the function.
+The log group the function sends logs to.
+
+By default, Lambda functions send logs to an automatically created default log group named /aws/lambda/\<function name\>.
+However you cannot change the properties of this auto-created log group using the AWS CDK, e.g. you cannot set a different log retention.
+
+Use the `logGroup` property to create a fully customizable LogGroup ahead of time, and instruct the Lambda function to send logs to it.
+
+Providing a user-controlled log group was rolled out to commercial regions on 2023-11-16.
+If you are deploying to another type of region, please check regional availability first.
 
 ---
 
@@ -8833,6 +8898,20 @@ When updating
 this property, unsetting it doesn't remove the log retention policy. To
 remove the retention policy, set the value to `INFINITE`.
 
+This is a legacy API and we strongly recommend you move away from it if you can.
+Instead create a fully customizable log group with `logs.LogGroup` and use the `logGroup` property
+to instruct the Lambda function to send logs to it.
+Migrating from `logRetention` to `logGroup` will cause the name of the log group to change.
+Users and code and referencing the name verbatim will have to adjust.
+
+In AWS CDK code, you can access the log group name directly from the LogGroup construct:
+```ts
+import * as logs from 'aws-cdk-lib/aws-logs';
+
+declare const myLogGroup: logs.LogGroup;
+myLogGroup.logGroupName;
+```
+
 ---
 
 ##### `logRetentionRetryOptions`<sup>Optional</sup> <a name="logRetentionRetryOptions" id="neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.logRetentionRetryOptions"></a>
@@ -8848,6 +8927,9 @@ When log retention is specified, a custom resource attempts to create the CloudW
 
 These options control the retry policy when interacting with CloudWatch APIs.
 
+This is a legacy API and we strongly recommend you migrate to `logGroup` if you can.
+`logGroup` allows you to create a fully customizable log group and instruct the Lambda function to send logs to it.
+
 ---
 
 ##### `logRetentionRole`<sup>Optional</sup> <a name="logRetentionRole" id="neulabs-cdk-constructs.aws_lambda.FunctionNewRelicProps.property.logRetentionRole"></a>
@@ -8860,6 +8942,9 @@ public readonly logRetentionRole: IRole;
 - *Default:* A new role is created.
 
 The IAM role for the Lambda function associated with the custom resource that sets the retention policy.
+
+This is a legacy API and we strongly recommend you migrate to `logGroup` if you can.
+`logGroup` allows you to create a fully customizable log group and instruct the Lambda function to send logs to it.
 
 ---
 
@@ -9013,7 +9098,7 @@ public readonly systemLogLevel: string;
 ```
 
 - *Type:* string
-- *Default:* INFO
+- *Default:* "INFO"
 
 Sets the system log level for the function.
 
@@ -9275,9 +9360,11 @@ const functionNodeNewRelicProps: aws_lambda.FunctionNodeNewRelicProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.functionName">functionName</a></code> | <code>string</code> | A name for the function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.initialPolicy">initialPolicy</a></code> | <code>aws-cdk-lib.aws_iam.PolicyStatement[]</code> | Initial policy statements to add to the created Lambda Role. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.insightsVersion">insightsVersion</a></code> | <code>aws-cdk-lib.aws_lambda.LambdaInsightsVersion</code> | Specify the version of CloudWatch Lambda insights to use for monitoring. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.ipv6AllowedForDualStack">ipv6AllowedForDualStack</a></code> | <code>boolean</code> | Allows outbound IPv6 traffic on VPC functions that are connected to dual-stack subnets. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.layers">layers</a></code> | <code>aws-cdk-lib.aws_lambda.ILayerVersion[]</code> | A list of layers to add to the function's execution environment. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.logFormat">logFormat</a></code> | <code>string</code> | Sets the logFormat for the function. |
-| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.logGroup">logGroup</a></code> | <code>aws-cdk-lib.aws_logs.ILogGroup</code> | Sets the log group name for the function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.loggingFormat">loggingFormat</a></code> | <code>aws-cdk-lib.aws_lambda.LoggingFormat</code> | Sets the loggingFormat for the function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.logGroup">logGroup</a></code> | <code>aws-cdk-lib.aws_logs.ILogGroup</code> | The log group the function sends logs to. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.logRetention">logRetention</a></code> | <code>aws-cdk-lib.aws_logs.RetentionDays</code> | The number of days log events are kept in CloudWatch Logs. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.logRetentionRetryOptions">logRetentionRetryOptions</a></code> | <code>aws-cdk-lib.aws_lambda.LogRetentionRetryOptions</code> | When log retention is specified, a custom resource attempts to create the CloudWatch log group. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.logRetentionRole">logRetentionRole</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | The IAM role for the Lambda function associated with the custom resource that sets the retention policy. |
@@ -9402,6 +9489,9 @@ Whether to allow the Lambda to send all network traffic.
 If set to false, you must individually add traffic rules to allow the
 Lambda to connect to network targets.
 
+Do not specify this property if the `securityGroups` or `securityGroup` property is set.
+Instead, configure `allowAllOutbound` directly on the security group.
+
 ---
 
 ##### `allowPublicSubnet`<sup>Optional</sup> <a name="allowPublicSubnet" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.allowPublicSubnet"></a>
@@ -9428,7 +9518,7 @@ public readonly applicationLogLevel: string;
 ```
 
 - *Type:* string
-- *Default:* INFO
+- *Default:* "INFO"
 
 Sets the application log level for the function.
 
@@ -9647,6 +9737,21 @@ Specify the version of CloudWatch Lambda insights to use for monitoring.
 
 ---
 
+##### `ipv6AllowedForDualStack`<sup>Optional</sup> <a name="ipv6AllowedForDualStack" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.ipv6AllowedForDualStack"></a>
+
+```typescript
+public readonly ipv6AllowedForDualStack: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Allows outbound IPv6 traffic on VPC functions that are connected to dual-stack subnets.
+
+Only used if 'vpc' is supplied.
+
+---
+
 ##### `layers`<sup>Optional</sup> <a name="layers" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.layers"></a>
 
 ```typescript
@@ -9671,9 +9776,22 @@ public readonly logFormat: string;
 ```
 
 - *Type:* string
-- *Default:* Text format
+- *Default:* "Text"
 
 Sets the logFormat for the function.
+
+---
+
+##### `loggingFormat`<sup>Optional</sup> <a name="loggingFormat" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.loggingFormat"></a>
+
+```typescript
+public readonly loggingFormat: LoggingFormat;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.LoggingFormat
+- *Default:* LoggingFormat.TEXT
+
+Sets the loggingFormat for the function.
 
 ---
 
@@ -9684,9 +9802,17 @@ public readonly logGroup: ILogGroup;
 ```
 
 - *Type:* aws-cdk-lib.aws_logs.ILogGroup
-- *Default:* `/aws/lambda/${this.functionName}` default log group name created by Lambda
+- *Default:* `/aws/lambda/${this.functionName}` - default log group created by Lambda
 
-Sets the log group name for the function.
+The log group the function sends logs to.
+
+By default, Lambda functions send logs to an automatically created default log group named /aws/lambda/\<function name\>.
+However you cannot change the properties of this auto-created log group using the AWS CDK, e.g. you cannot set a different log retention.
+
+Use the `logGroup` property to create a fully customizable LogGroup ahead of time, and instruct the Lambda function to send logs to it.
+
+Providing a user-controlled log group was rolled out to commercial regions on 2023-11-16.
+If you are deploying to another type of region, please check regional availability first.
 
 ---
 
@@ -9705,6 +9831,20 @@ When updating
 this property, unsetting it doesn't remove the log retention policy. To
 remove the retention policy, set the value to `INFINITE`.
 
+This is a legacy API and we strongly recommend you move away from it if you can.
+Instead create a fully customizable log group with `logs.LogGroup` and use the `logGroup` property
+to instruct the Lambda function to send logs to it.
+Migrating from `logRetention` to `logGroup` will cause the name of the log group to change.
+Users and code and referencing the name verbatim will have to adjust.
+
+In AWS CDK code, you can access the log group name directly from the LogGroup construct:
+```ts
+import * as logs from 'aws-cdk-lib/aws-logs';
+
+declare const myLogGroup: logs.LogGroup;
+myLogGroup.logGroupName;
+```
+
 ---
 
 ##### `logRetentionRetryOptions`<sup>Optional</sup> <a name="logRetentionRetryOptions" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.logRetentionRetryOptions"></a>
@@ -9720,6 +9860,9 @@ When log retention is specified, a custom resource attempts to create the CloudW
 
 These options control the retry policy when interacting with CloudWatch APIs.
 
+This is a legacy API and we strongly recommend you migrate to `logGroup` if you can.
+`logGroup` allows you to create a fully customizable log group and instruct the Lambda function to send logs to it.
+
 ---
 
 ##### `logRetentionRole`<sup>Optional</sup> <a name="logRetentionRole" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeNewRelicProps.property.logRetentionRole"></a>
@@ -9732,6 +9875,9 @@ public readonly logRetentionRole: IRole;
 - *Default:* A new role is created.
 
 The IAM role for the Lambda function associated with the custom resource that sets the retention policy.
+
+This is a legacy API and we strongly recommend you migrate to `logGroup` if you can.
+`logGroup` allows you to create a fully customizable log group and instruct the Lambda function to send logs to it.
 
 ---
 
@@ -9885,7 +10031,7 @@ public readonly systemLogLevel: string;
 ```
 
 - *Type:* string
-- *Default:* INFO
+- *Default:* "INFO"
 
 Sets the system log level for the function.
 
@@ -10200,9 +10346,11 @@ const functionNodeProps: aws_lambda.FunctionNodeProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.functionName">functionName</a></code> | <code>string</code> | A name for the function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.initialPolicy">initialPolicy</a></code> | <code>aws-cdk-lib.aws_iam.PolicyStatement[]</code> | Initial policy statements to add to the created Lambda Role. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.insightsVersion">insightsVersion</a></code> | <code>aws-cdk-lib.aws_lambda.LambdaInsightsVersion</code> | Specify the version of CloudWatch Lambda insights to use for monitoring. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.ipv6AllowedForDualStack">ipv6AllowedForDualStack</a></code> | <code>boolean</code> | Allows outbound IPv6 traffic on VPC functions that are connected to dual-stack subnets. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.layers">layers</a></code> | <code>aws-cdk-lib.aws_lambda.ILayerVersion[]</code> | A list of layers to add to the function's execution environment. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.logFormat">logFormat</a></code> | <code>string</code> | Sets the logFormat for the function. |
-| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.logGroup">logGroup</a></code> | <code>aws-cdk-lib.aws_logs.ILogGroup</code> | Sets the log group name for the function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.loggingFormat">loggingFormat</a></code> | <code>aws-cdk-lib.aws_lambda.LoggingFormat</code> | Sets the loggingFormat for the function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.logGroup">logGroup</a></code> | <code>aws-cdk-lib.aws_logs.ILogGroup</code> | The log group the function sends logs to. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.logRetention">logRetention</a></code> | <code>aws-cdk-lib.aws_logs.RetentionDays</code> | The number of days log events are kept in CloudWatch Logs. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.logRetentionRetryOptions">logRetentionRetryOptions</a></code> | <code>aws-cdk-lib.aws_lambda.LogRetentionRetryOptions</code> | When log retention is specified, a custom resource attempts to create the CloudWatch log group. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.logRetentionRole">logRetentionRole</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | The IAM role for the Lambda function associated with the custom resource that sets the retention policy. |
@@ -10322,6 +10470,9 @@ Whether to allow the Lambda to send all network traffic.
 If set to false, you must individually add traffic rules to allow the
 Lambda to connect to network targets.
 
+Do not specify this property if the `securityGroups` or `securityGroup` property is set.
+Instead, configure `allowAllOutbound` directly on the security group.
+
 ---
 
 ##### `allowPublicSubnet`<sup>Optional</sup> <a name="allowPublicSubnet" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.allowPublicSubnet"></a>
@@ -10348,7 +10499,7 @@ public readonly applicationLogLevel: string;
 ```
 
 - *Type:* string
-- *Default:* INFO
+- *Default:* "INFO"
 
 Sets the application log level for the function.
 
@@ -10567,6 +10718,21 @@ Specify the version of CloudWatch Lambda insights to use for monitoring.
 
 ---
 
+##### `ipv6AllowedForDualStack`<sup>Optional</sup> <a name="ipv6AllowedForDualStack" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.ipv6AllowedForDualStack"></a>
+
+```typescript
+public readonly ipv6AllowedForDualStack: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Allows outbound IPv6 traffic on VPC functions that are connected to dual-stack subnets.
+
+Only used if 'vpc' is supplied.
+
+---
+
 ##### `layers`<sup>Optional</sup> <a name="layers" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.layers"></a>
 
 ```typescript
@@ -10591,9 +10757,22 @@ public readonly logFormat: string;
 ```
 
 - *Type:* string
-- *Default:* Text format
+- *Default:* "Text"
 
 Sets the logFormat for the function.
+
+---
+
+##### `loggingFormat`<sup>Optional</sup> <a name="loggingFormat" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.loggingFormat"></a>
+
+```typescript
+public readonly loggingFormat: LoggingFormat;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.LoggingFormat
+- *Default:* LoggingFormat.TEXT
+
+Sets the loggingFormat for the function.
 
 ---
 
@@ -10604,9 +10783,17 @@ public readonly logGroup: ILogGroup;
 ```
 
 - *Type:* aws-cdk-lib.aws_logs.ILogGroup
-- *Default:* `/aws/lambda/${this.functionName}` default log group name created by Lambda
+- *Default:* `/aws/lambda/${this.functionName}` - default log group created by Lambda
 
-Sets the log group name for the function.
+The log group the function sends logs to.
+
+By default, Lambda functions send logs to an automatically created default log group named /aws/lambda/\<function name\>.
+However you cannot change the properties of this auto-created log group using the AWS CDK, e.g. you cannot set a different log retention.
+
+Use the `logGroup` property to create a fully customizable LogGroup ahead of time, and instruct the Lambda function to send logs to it.
+
+Providing a user-controlled log group was rolled out to commercial regions on 2023-11-16.
+If you are deploying to another type of region, please check regional availability first.
 
 ---
 
@@ -10625,6 +10812,20 @@ When updating
 this property, unsetting it doesn't remove the log retention policy. To
 remove the retention policy, set the value to `INFINITE`.
 
+This is a legacy API and we strongly recommend you move away from it if you can.
+Instead create a fully customizable log group with `logs.LogGroup` and use the `logGroup` property
+to instruct the Lambda function to send logs to it.
+Migrating from `logRetention` to `logGroup` will cause the name of the log group to change.
+Users and code and referencing the name verbatim will have to adjust.
+
+In AWS CDK code, you can access the log group name directly from the LogGroup construct:
+```ts
+import * as logs from 'aws-cdk-lib/aws-logs';
+
+declare const myLogGroup: logs.LogGroup;
+myLogGroup.logGroupName;
+```
+
 ---
 
 ##### `logRetentionRetryOptions`<sup>Optional</sup> <a name="logRetentionRetryOptions" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.logRetentionRetryOptions"></a>
@@ -10640,6 +10841,9 @@ When log retention is specified, a custom resource attempts to create the CloudW
 
 These options control the retry policy when interacting with CloudWatch APIs.
 
+This is a legacy API and we strongly recommend you migrate to `logGroup` if you can.
+`logGroup` allows you to create a fully customizable log group and instruct the Lambda function to send logs to it.
+
 ---
 
 ##### `logRetentionRole`<sup>Optional</sup> <a name="logRetentionRole" id="neulabs-cdk-constructs.aws_lambda.FunctionNodeProps.property.logRetentionRole"></a>
@@ -10652,6 +10856,9 @@ public readonly logRetentionRole: IRole;
 - *Default:* A new role is created.
 
 The IAM role for the Lambda function associated with the custom resource that sets the retention policy.
+
+This is a legacy API and we strongly recommend you migrate to `logGroup` if you can.
+`logGroup` allows you to create a fully customizable log group and instruct the Lambda function to send logs to it.
 
 ---
 
@@ -10805,7 +11012,7 @@ public readonly systemLogLevel: string;
 ```
 
 - *Type:* string
-- *Default:* INFO
+- *Default:* "INFO"
 
 Sets the system log level for the function.
 
@@ -11070,9 +11277,11 @@ const functionProps: aws_lambda.FunctionProps = { ... }
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.functionName">functionName</a></code> | <code>string</code> | A name for the function. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.initialPolicy">initialPolicy</a></code> | <code>aws-cdk-lib.aws_iam.PolicyStatement[]</code> | Initial policy statements to add to the created Lambda Role. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.insightsVersion">insightsVersion</a></code> | <code>aws-cdk-lib.aws_lambda.LambdaInsightsVersion</code> | Specify the version of CloudWatch Lambda insights to use for monitoring. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.ipv6AllowedForDualStack">ipv6AllowedForDualStack</a></code> | <code>boolean</code> | Allows outbound IPv6 traffic on VPC functions that are connected to dual-stack subnets. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.layers">layers</a></code> | <code>aws-cdk-lib.aws_lambda.ILayerVersion[]</code> | A list of layers to add to the function's execution environment. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.logFormat">logFormat</a></code> | <code>string</code> | Sets the logFormat for the function. |
-| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.logGroup">logGroup</a></code> | <code>aws-cdk-lib.aws_logs.ILogGroup</code> | Sets the log group name for the function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.loggingFormat">loggingFormat</a></code> | <code>aws-cdk-lib.aws_lambda.LoggingFormat</code> | Sets the loggingFormat for the function. |
+| <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.logGroup">logGroup</a></code> | <code>aws-cdk-lib.aws_logs.ILogGroup</code> | The log group the function sends logs to. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.logRetention">logRetention</a></code> | <code>aws-cdk-lib.aws_logs.RetentionDays</code> | The number of days log events are kept in CloudWatch Logs. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.logRetentionRetryOptions">logRetentionRetryOptions</a></code> | <code>aws-cdk-lib.aws_lambda.LogRetentionRetryOptions</code> | When log retention is specified, a custom resource attempts to create the CloudWatch log group. |
 | <code><a href="#neulabs-cdk-constructs.aws_lambda.FunctionProps.property.logRetentionRole">logRetentionRole</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | The IAM role for the Lambda function associated with the custom resource that sets the retention policy. |
@@ -11188,6 +11397,9 @@ Whether to allow the Lambda to send all network traffic.
 If set to false, you must individually add traffic rules to allow the
 Lambda to connect to network targets.
 
+Do not specify this property if the `securityGroups` or `securityGroup` property is set.
+Instead, configure `allowAllOutbound` directly on the security group.
+
 ---
 
 ##### `allowPublicSubnet`<sup>Optional</sup> <a name="allowPublicSubnet" id="neulabs-cdk-constructs.aws_lambda.FunctionProps.property.allowPublicSubnet"></a>
@@ -11214,7 +11426,7 @@ public readonly applicationLogLevel: string;
 ```
 
 - *Type:* string
-- *Default:* INFO
+- *Default:* "INFO"
 
 Sets the application log level for the function.
 
@@ -11433,6 +11645,21 @@ Specify the version of CloudWatch Lambda insights to use for monitoring.
 
 ---
 
+##### `ipv6AllowedForDualStack`<sup>Optional</sup> <a name="ipv6AllowedForDualStack" id="neulabs-cdk-constructs.aws_lambda.FunctionProps.property.ipv6AllowedForDualStack"></a>
+
+```typescript
+public readonly ipv6AllowedForDualStack: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Allows outbound IPv6 traffic on VPC functions that are connected to dual-stack subnets.
+
+Only used if 'vpc' is supplied.
+
+---
+
 ##### `layers`<sup>Optional</sup> <a name="layers" id="neulabs-cdk-constructs.aws_lambda.FunctionProps.property.layers"></a>
 
 ```typescript
@@ -11457,9 +11684,22 @@ public readonly logFormat: string;
 ```
 
 - *Type:* string
-- *Default:* Text format
+- *Default:* "Text"
 
 Sets the logFormat for the function.
+
+---
+
+##### `loggingFormat`<sup>Optional</sup> <a name="loggingFormat" id="neulabs-cdk-constructs.aws_lambda.FunctionProps.property.loggingFormat"></a>
+
+```typescript
+public readonly loggingFormat: LoggingFormat;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.LoggingFormat
+- *Default:* LoggingFormat.TEXT
+
+Sets the loggingFormat for the function.
 
 ---
 
@@ -11470,9 +11710,17 @@ public readonly logGroup: ILogGroup;
 ```
 
 - *Type:* aws-cdk-lib.aws_logs.ILogGroup
-- *Default:* `/aws/lambda/${this.functionName}` default log group name created by Lambda
+- *Default:* `/aws/lambda/${this.functionName}` - default log group created by Lambda
 
-Sets the log group name for the function.
+The log group the function sends logs to.
+
+By default, Lambda functions send logs to an automatically created default log group named /aws/lambda/\<function name\>.
+However you cannot change the properties of this auto-created log group using the AWS CDK, e.g. you cannot set a different log retention.
+
+Use the `logGroup` property to create a fully customizable LogGroup ahead of time, and instruct the Lambda function to send logs to it.
+
+Providing a user-controlled log group was rolled out to commercial regions on 2023-11-16.
+If you are deploying to another type of region, please check regional availability first.
 
 ---
 
@@ -11491,6 +11739,20 @@ When updating
 this property, unsetting it doesn't remove the log retention policy. To
 remove the retention policy, set the value to `INFINITE`.
 
+This is a legacy API and we strongly recommend you move away from it if you can.
+Instead create a fully customizable log group with `logs.LogGroup` and use the `logGroup` property
+to instruct the Lambda function to send logs to it.
+Migrating from `logRetention` to `logGroup` will cause the name of the log group to change.
+Users and code and referencing the name verbatim will have to adjust.
+
+In AWS CDK code, you can access the log group name directly from the LogGroup construct:
+```ts
+import * as logs from 'aws-cdk-lib/aws-logs';
+
+declare const myLogGroup: logs.LogGroup;
+myLogGroup.logGroupName;
+```
+
 ---
 
 ##### `logRetentionRetryOptions`<sup>Optional</sup> <a name="logRetentionRetryOptions" id="neulabs-cdk-constructs.aws_lambda.FunctionProps.property.logRetentionRetryOptions"></a>
@@ -11506,6 +11768,9 @@ When log retention is specified, a custom resource attempts to create the CloudW
 
 These options control the retry policy when interacting with CloudWatch APIs.
 
+This is a legacy API and we strongly recommend you migrate to `logGroup` if you can.
+`logGroup` allows you to create a fully customizable log group and instruct the Lambda function to send logs to it.
+
 ---
 
 ##### `logRetentionRole`<sup>Optional</sup> <a name="logRetentionRole" id="neulabs-cdk-constructs.aws_lambda.FunctionProps.property.logRetentionRole"></a>
@@ -11518,6 +11783,9 @@ public readonly logRetentionRole: IRole;
 - *Default:* A new role is created.
 
 The IAM role for the Lambda function associated with the custom resource that sets the retention policy.
+
+This is a legacy API and we strongly recommend you migrate to `logGroup` if you can.
+`logGroup` allows you to create a fully customizable log group and instruct the Lambda function to send logs to it.
 
 ---
 
@@ -11671,7 +11939,7 @@ public readonly systemLogLevel: string;
 ```
 
 - *Type:* string
-- *Default:* INFO
+- *Default:* "INFO"
 
 Sets the system log level for the function.
 

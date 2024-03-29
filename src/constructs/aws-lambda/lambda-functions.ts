@@ -21,9 +21,16 @@ export interface FunctionNodeProps extends lambdaNode.NodejsFunctionProps {
   readonly baseEnvironmentValues?: BaseTagProps;
 }
 
-export function addBaseEnvironment(lambdaFunction: lambda.Function, stage: string, props?: BaseTagProps) {
+export function addBaseEnvironment(
+  lambdaFunction: lambda.Function,
+  stage: string,
+  props?: BaseTagProps,
+) {
   lambdaFunction.addEnvironment('ENVIRONMENT', stage);
-  lambdaFunction.addEnvironment('TIMESTAMP_DEPLOY_CDK', env.TAG_TIMESTAMP_DEPLOY_CDK);
+  lambdaFunction.addEnvironment(
+    'TIMESTAMP_DEPLOY_CDK',
+    env.TAG_TIMESTAMP_DEPLOY_CDK,
+  );
 
   let team = props?.team ?? env.TAG_TEAM;
   if (team) {
@@ -35,7 +42,8 @@ export function addBaseEnvironment(lambdaFunction: lambda.Function, stage: strin
     lambdaFunction.addEnvironment('REPOSITORY_NAME', repositoryName);
   }
 
-  let repositoryVersion = props?.repositoryVersion ?? env.TAG_REPOSITORY_VERSION;
+  let repositoryVersion =
+    props?.repositoryVersion ?? env.TAG_REPOSITORY_VERSION;
   if (env.TAG_REPOSITORY_VERSION) {
     lambdaFunction.addEnvironment('REPOSITORY_VERSION', repositoryVersion);
   }
@@ -65,34 +73,36 @@ export class Function extends lambda.Function {
     addBaseEnvironment(this, this.stage, values);
   }
 
-  addPowerToolsLayer(scope: Construct,
+  addPowerToolsLayer(
+    scope: Construct,
     lambdaPowerToolsLayerName: lambda_powertools.LambdaPowerToolsLayerName,
     lambdaPowerToolsLayerAccountId: lambda_powertools.LambdaPowerToolsLayerAccountId,
     lambdaPowerToolsLayerVersion: number,
     setPowertoolsDev?: boolean,
     setLogLevel?: string,
   ) {
-    lambda_powertools.addLamdaPowerToolsLayer(
-      scope,
-      {
-        lambdaFunction: this,
-        lambdaPowerToolsLayerName,
-        lambdaPowerToolsLayerAccountId,
-        lambdaPowerToolsLayerVersion,
-        setPowertoolsDev,
-        setLogLevel,
-      },
-    );
+    lambda_powertools.addLamdaPowerToolsLayer(scope, {
+      lambdaFunction: this,
+      lambdaPowerToolsLayerName,
+      lambdaPowerToolsLayerAccountId,
+      lambdaPowerToolsLayerVersion,
+      setPowertoolsDev,
+      setLogLevel,
+    });
   }
 }
 
 export class FunctionNode extends lambdaNode.NodejsFunction {
   public readonly stage: string;
 
-  constructor(scope: Construct, id: string, { runtime, architecture, ...props }: FunctionNodeProps) {
+  constructor(
+    scope: Construct,
+    id: string,
+    { runtime, architecture, ...props }: FunctionNodeProps,
+  ) {
     super(scope, id, {
       ...props,
-      runtime: runtime ?? lambda.Runtime.NODEJS_18_X,
+      runtime: runtime ?? lambda.Runtime.NODEJS_20_X,
       architecture: architecture ?? lambda.Architecture.ARM_64,
     });
 
@@ -115,23 +125,21 @@ export class FunctionNode extends lambdaNode.NodejsFunction {
     addBaseEnvironment(this, this.stage, values);
   }
 
-  addPowerToolsLayer(scope: Construct,
+  addPowerToolsLayer(
+    scope: Construct,
     lambdaPowerToolsLayerName: lambda_powertools.LambdaPowerToolsLayerName,
     lambdaPowerToolsLayerAccountId: lambda_powertools.LambdaPowerToolsLayerAccountId,
     lambdaPowerToolsLayerVersion: number,
     setPowertoolsDev?: boolean,
     setLogLevel?: string,
   ) {
-    lambda_powertools.addLamdaPowerToolsLayer(
-      scope,
-      {
-        lambdaFunction: this,
-        lambdaPowerToolsLayerName,
-        lambdaPowerToolsLayerAccountId,
-        lambdaPowerToolsLayerVersion,
-        setPowertoolsDev,
-        setLogLevel,
-      },
-    );
+    lambda_powertools.addLamdaPowerToolsLayer(scope, {
+      lambdaFunction: this,
+      lambdaPowerToolsLayerName,
+      lambdaPowerToolsLayerAccountId,
+      lambdaPowerToolsLayerVersion,
+      setPowertoolsDev,
+      setLogLevel,
+    });
   }
 }
