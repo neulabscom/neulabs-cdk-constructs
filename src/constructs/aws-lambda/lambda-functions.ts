@@ -21,7 +21,7 @@ export interface FunctionNodeProps extends lambdaNode.NodejsFunctionProps {
   readonly baseEnvironmentValues?: BaseTagProps;
 }
 
-export function addBaseEnvironment(
+function addBaseEnvironment(
   lambdaFunction: lambda.Function,
   stage: string,
   props?: BaseTagProps,
@@ -81,7 +81,7 @@ export class Function extends lambda.Function {
     setPowertoolsDev?: boolean,
     setLogLevel?: string,
   ) {
-    lambda_powertools.addLamdaPowerToolsLayer(scope, {
+    lambda_powertools.addLambdaPowerToolsLayer(scope, {
       lambdaFunction: this,
       lambdaPowerToolsLayerName,
       lambdaPowerToolsLayerAccountId,
@@ -133,7 +133,7 @@ export class FunctionNode extends lambdaNode.NodejsFunction {
     setPowertoolsDev?: boolean,
     setLogLevel?: string,
   ) {
-    lambda_powertools.addLamdaPowerToolsLayer(scope, {
+    lambda_powertools.addLambdaPowerToolsLayer(scope, {
       lambdaFunction: this,
       lambdaPowerToolsLayerName,
       lambdaPowerToolsLayerAccountId,
