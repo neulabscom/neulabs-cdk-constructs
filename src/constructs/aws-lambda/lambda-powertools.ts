@@ -26,7 +26,7 @@ export interface ILambdaPowerToolsProps {
   readonly setLogLevel?: string;
 }
 
-export function getLamdaPowerToolsLayer(
+export function getLambdaPowerToolsLayer(
   scope: Construct,
   functionName: string,
   layerName: LambdaPowerToolsLayerName,
@@ -41,11 +41,11 @@ export function getLamdaPowerToolsLayer(
   );
 }
 
-export function addLamdaPowerToolsLayer(
+export function addLambdaPowerToolsLayer(
   scope: Construct,
   props: ILambdaPowerToolsProps,
 ) {
-  const layer = getLamdaPowerToolsLayer(
+  const layer = getLambdaPowerToolsLayer(
     scope,
     props.lambdaFunction.functionName,
     props.lambdaPowerToolsLayerName,
