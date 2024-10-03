@@ -21,6 +21,19 @@ export interface FunctionNodeProps extends lambdaNode.NodejsFunctionProps {
   readonly baseEnvironmentValues?: BaseTagProps;
 }
 
+export interface BaseFunction {
+  addBaseTags(values?: BaseTagProps): void;
+  addBaseEnvironment(values?: BaseTagProps): void;
+  addPowerToolsLayer(
+    scope: Construct,
+    lambdaPowerToolsLayerName: lambda_powertools.LambdaPowerToolsLayerName,
+    lambdaPowerToolsLayerAccountId: lambda_powertools.LambdaPowerToolsLayerAccountId,
+    lambdaPowerToolsLayerVersion: number,
+    setPowertoolsDev?: boolean,
+    setLogLevel?: string,
+  ): void;
+}
+
 function addBaseEnvironment(
   lambdaFunction: lambda.Function,
   stage: string,
@@ -32,24 +45,24 @@ function addBaseEnvironment(
     env.TAG_TIMESTAMP_DEPLOY_CDK,
   );
 
-  let team = props?.team ?? env.TAG_TEAM;
+  const team = props?.team ?? env.TAG_TEAM;
   if (team) {
     lambdaFunction.addEnvironment('TEAM', team);
   }
 
-  let repositoryName = props?.repositoryName ?? env.TAG_REPOSITORY_NAME;
-  if (env.TAG_REPOSITORY_NAME) {
+  const repositoryName = props?.repositoryName ?? env.TAG_REPOSITORY_NAME;
+  if (repositoryName) {
     lambdaFunction.addEnvironment('REPOSITORY_NAME', repositoryName);
   }
 
-  let repositoryVersion =
+  const repositoryVersion =
     props?.repositoryVersion ?? env.TAG_REPOSITORY_VERSION;
-  if (env.TAG_REPOSITORY_VERSION) {
+  if (repositoryVersion) {
     lambdaFunction.addEnvironment('REPOSITORY_VERSION', repositoryVersion);
   }
 }
 
-export class Function extends lambda.Function {
+export class Function extends lambda.Function implements BaseFunction {
   public readonly stage: string;
 
   constructor(scope: Construct, id: string, props: FunctionProps) {
@@ -92,7 +105,7 @@ export class Function extends lambda.Function {
   }
 }
 
-export class FunctionNode extends lambdaNode.NodejsFunction {
+export class FunctionNode extends lambdaNode.NodejsFunction implements BaseFunction {
   public readonly stage: string;
 
   constructor(
